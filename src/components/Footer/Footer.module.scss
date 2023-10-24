@@ -1,0 +1,11 @@
+@import "../../styles/variables.scss";
+
+.footer {
+    width:100%;
+    background: $gray;
+    display: flex;
+}
+.menuItem {
+    margin-right: 50px;
+    cursor:pointer;
+}
