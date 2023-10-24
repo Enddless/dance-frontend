@@ -1,24 +1,15 @@
-import SimpleButton from "@mui/material/Button";
-
 interface ButtonProps {
   text: string;
-  sxString?: { [k: string]: number | string };
+  sxString?:  string ;
   children?: React.ReactNode;
 }
 
 const Button = ({ text, sxString, children }: ButtonProps) => {
   return (
-    <SimpleButton
-      variant="contained"
-      color="primary"
-      sx={{
-        borderRadius: "30px",
-        ...sxString,
-      }}
-    >
+    <button className={sxString}>
       {children}
       {text}
-    </SimpleButton>
+    </button>
   );
 };
 

@@ -2,8 +2,6 @@ import css from "./Lead.module.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { Card, CardContent, Typography } from "@mui/material";
-
 import "./sliderCustomSettings.scss";
 
 interface ISettings {
@@ -38,20 +36,9 @@ const Lead = () => {
     <Slider {...settings} className={css.slider}>
       {cards.map((card) => {
         return (
-          <Card
-            key={card}
-            sx={{ minWidth: 275, backgroundColor: "#e4e3e3", height: "300px" }}
-          >
-            <CardContent>
-              <Typography
-                sx={{ fontSize: 14 }}
-                color="text.secondary"
-                gutterBottom
-              >
-                {card}
-              </Typography>
-            </CardContent>
-          </Card>
+          <div className={css.card} key={card}>
+            {card}
+          </div>
         );
       })}
     </Slider>
