@@ -1,0 +1,12 @@
+@import "../../styles//variables.scss";
+
+.header {
+    width:100%;
+    height:100px;
+}
+.menuItem {
+    text-align:center;
+}
+.menuItem:hover {
+    background: $gray;
+}
