@@ -1,5 +1,4 @@
-import { IPagesFooter } from "../interfaces/interfaces";
-import { IPagesHeader } from "../interfaces/interfaces";
+import { IPagesFooter, IPagesHeader, IServicesInfo, IPricesInfo, IReviewsInfo } from "../interfaces/interfaces";
 
 export const pagesFooterColumn1: IPagesFooter[] = [
   {
@@ -94,7 +93,7 @@ export const pagesHeader: IPagesHeader[] = [
   {
     id: 1,
     title: "О студии",
-    url: "",
+    url: "/",
   },
   {
     id: 2,
@@ -125,5 +124,127 @@ export const pagesHeader: IPagesHeader[] = [
     id: 7,
     title: "Скачать приложение",
     url: "",
+  },
+];
+
+export const servicesInfo: IServicesInfo[] = [
+  {
+    id: 1,
+    data: {
+      title: "Услуга 1",
+      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, amet.",
+      url: "",
+    }
+  },
+  {
+    id: 2,
+    data: {
+      title: "Услуга 2",
+      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, amet.",
+      url: "",
+    }
+  },
+  {
+    id: 3,
+    data: {
+      title: "Услуга 3",
+      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, amet.",
+      url: "",
+    }
+  },
+  {
+    id: 4,
+    data: {
+      title: "Услуга 4",
+      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, amet.",
+      url: "",
+    }
+  }
+];
+
+export const pricesInfo: IPricesInfo[] = [
+  {
+    id: 1,
+    data: {
+      title: "Абонемент 1",
+      price: 1000,
+      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, amet.",
+      url: "",
+    }
+  },
+  {
+    id: 2,
+    data: {
+      title: "Абонемент 2",
+      price: 1000,
+      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, amet.",
+      url: "",
+    }
+  },
+  {
+    id: 3,
+    data: {
+      title: "Абонемент 3",
+      price: 1000,
+      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, amet.",
+      url: "",
+    }
+  },
+  {
+    id: 4,
+    data: {
+      title: "Абонемент 4",
+      price: 1000,
+      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, amet.",
+      url: "",
+    }
+  },
+  {
+    id: 5,
+    data: {
+      title: "Абонемент 5",
+      price: 1000,
+      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, amet.",
+      url: "",
+    }
+  },
+  {
+    id: 6,
+    data: {
+      title: "Абонемент 6",
+      price: 1000,
+      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, amet.",
+      url: "",
+    }
+  }
+];
+
+export const reviewsInfo: IReviewsInfo[] = [
+  {
+    id: 1,
+    data: {
+      user: "Сергей Иванов",
+      stars: 4,
+      date: "22.12.2016",
+      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, amet.",
+    }
+  },
+  {
+    id: 2,
+    data: {
+      user: "Сергей Иванов",
+      stars: 4,
+      date: "22.12.2016",
+      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, amet.",
+    }
+  },
+  {
+    id: 3,
+    data: {
+      user: "Сергей Иванов",
+      stars: 4,
+      date: "22.12.2016",
+      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, amet.",
+    }
   },
 ];
