@@ -11,6 +11,8 @@ interface ISettings {
   speed: number;
   slidesToShow: number;
   slidesToScroll: number;
+  autoplay: true;
+  autoplaySpeed: number;
 }
 const settings: ISettings = {
   dots: true,
@@ -19,19 +21,15 @@ const settings: ISettings = {
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 5000, //скорость воспроизведения слайдов
 };
-const cards = [
-  "Slide 1",
-  "Slide 2",
-  "Slide 3",
-  "Slide 4",
-  "Slide 5",
-  "Slide 6",
-  "Slide 7",
-  "Slide 8",
-];
 
-const Lead = () => {
+type ICardsProps = {
+  cards: string[]
+}
+
+const Lead = ({cards}:ICardsProps) => {
   return (
     <Slider {...settings} className={css.slider}>
       {cards.map((card) => {

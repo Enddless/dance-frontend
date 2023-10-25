@@ -1,3 +1,4 @@
+import css from "./Title.module.scss"
 
 interface ITitleSectionProps {
   title: string;
@@ -6,7 +7,7 @@ interface ITitleSectionProps {
 
 const TitleSection = ({ title, className }: ITitleSectionProps) => {
   return (
-    <div className={className}>{title}</div>
+    <div className={`${css.title} ${className}`}>{title}</div>
   );
 };
 

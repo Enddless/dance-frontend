@@ -1,0 +1,10 @@
+@import "../../styles/variables.scss";
+
+.text {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.card {
+  grid-column: span 3;
+}
