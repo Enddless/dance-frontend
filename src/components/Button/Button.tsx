@@ -5,9 +5,10 @@ interface ButtonProps {
   text: string;
   cls?: string ;
   children?: React.ReactNode;
+  openModalForm?: () => void;
 }
 
-const Button = ({ text, cls, children }: ButtonProps) => {
+const Button = ({ text, cls, children, openModalForm }: ButtonProps) => {
   const check = cls ==="def" //для других классов, чтобы подставлять сразу в перечень классов
   const classNamesList = classNames(css.btn, {
     [css.def]:check,
@@ -15,7 +16,7 @@ const Button = ({ text, cls, children }: ButtonProps) => {
 
 
   return (
-    <button className={classNamesList}>
+    <button className={classNamesList} onClick={openModalForm}>
       {children}
       {text}
     </button>

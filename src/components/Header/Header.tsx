@@ -1,11 +1,15 @@
 import css from "./Header.module.scss";
 import Logo from "../Logo/Logo";
 import Button from "../Button/Button";
-
+import { useState } from "react";
 import { pagesHeader } from "../../mocks/mocks";
+import GeneralForm from "../Forms/GeneralForm";
 
 const Header = () => {
-  //
+  const [isOpenModal, setIsModal] = useState(false);
+  const openModalForm = () => {
+    setIsModal(!isOpenModal)
+  };
   return (
     <div className={css.header}>
       <Logo />
@@ -21,7 +25,8 @@ const Header = () => {
         </ul>
       </nav>
 
-      <Button text="Вход" ></Button>
+      <Button text="Вход" openModalForm={openModalForm}></Button>
+      {isOpenModal && <GeneralForm />}
     </div>
   );
 };

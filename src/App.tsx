@@ -9,6 +9,7 @@ import Contacts from "./components/BlockContacts/Contacts";
 import ReviewsPage from "./pages/ReviewsPage/ReviewsPage";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
 
+
 const App = () => {
   return (
     <div className={css.app}>
@@ -22,6 +23,7 @@ const App = () => {
           <Route path={"/reviews"} element={<ReviewsPage/>} />
           <Route path={"/contacts"} element={<Contacts />}  /> {/*скорректировать переход, т.к. это не отдельная страница */}
           <Route path={"/*"} element={<NFPage />} />
+
         </Routes>
       </BrowserRouter>
 
