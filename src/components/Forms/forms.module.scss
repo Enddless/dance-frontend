@@ -6,7 +6,12 @@
   justify-content: center;
   align-items: center;
   border: 1px solid $athens-gray;
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: rgb(80, 71, 71);
+  z-index: 100;
 }
 h3 {
   text-align: center;

@@ -1,12 +1,22 @@
+import css from "./Button.module.scss";
+import classNames from "classnames";
+
 interface ButtonProps {
   text: string;
-  sxString?:  string ;
+  cls?: string ;
   children?: React.ReactNode;
+  openModalForm?: () => void;
 }
 
-const Button = ({ text, sxString, children }: ButtonProps) => {
+const Button = ({ text, cls, children, openModalForm }: ButtonProps) => {
+  const check = cls ==="def" //для других классов, чтобы подставлять сразу в перечень классов
+  const classNamesList = classNames(css.btn, {
+    [css.def]:check,
+  });
+
+
   return (
-    <button className={sxString}>
+    <button className={classNamesList} onClick={openModalForm}>
       {children}
       {text}
     </button>

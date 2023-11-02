@@ -2,11 +2,13 @@
 
 .header {
   width: 100%;
-  height: 100px;
+  height: 139px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding:0 30px;
+  padding:30px 100px;
+  background: $header-background;
+  color: $header-color;
 }
 .navigation {
   display: flex;

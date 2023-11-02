@@ -1,35 +1,48 @@
 import TitleSection from "../Title/Title";
 import css from "./About.module.scss";
+import { hallUrl } from "../../mocks/mocks";
 
 const About = () => {
   return (
     <section className={css.about}>
-      <TitleSection title="О студии" className={css.title}/>
+      <TitleSection title="О студии"/>
       <div className={css.text}>
         <p>
-          Lorem ipsum dolor sit amet consectetur. Urna cras nibh nullam ornare
-          facilisis euismod massa venenatis vel. Tempor ut imperdiet scelerisque
-          dictumst. Pellentesque accumsan adipiscing quis pulvinar fusce
-          pharetra. Proin tellus malesuada nisl nibh sed. Aliquet ultricies
-          elementum aliquam viverra parturient luctus. Ultricies velit nullam eu
-          non hac tellus congue. Volutpat at nisi urna augue risus in. Id amet
-          purus nunc eget. Ut ut mauris vitae hac id. Nisi tempor turpis non
-          semper adipiscing commodo.
-        </p>
-        <p>
-          Placerat consequat euismod pulvinar in viverra sed habitasse mattis
-          risus. Aliquam dignissim at urna eget consectetur nullam dictum.
-          Feugiat sit sed sit id amet cursus aliquam. Sed amet lorem at feugiat
-          tortor sed odio sit. Felis curabitur amet nunc iaculis quis et a nisl.
-          Vestibulum sagittis elit et tristique eget malesuada ante. In
-          elementum vel integer bibendum. Donec tristique amet elit congue non
-          vulputate. At orci platea turpis placerat. Iaculis posuere nisl vel
-          commodo mauris nam risus quis nunc. Hendrerit ultricies tempor tempor
-          integer. Vitae duis integer nisi blandit turpis sit. Sit massa
-          bibendum lorem risus proin amet. Ullamcorper integer sed lectus dolor.
+          Следует отметить, что существующая теория создаёт необходимость
+          включения в производственный план целого ряда внеочередных мероприятий
+          с учётом комплекса новых принципов формирования
+          материально-технической и кадровой базы. Мы вынуждены отталкиваться от
+          того, что понимание сути ресурсосберегающих технологий, в своём
+          классическом представлении, допускает внедрение вывода текущих
+          активов. Учитывая ключевые сценарии поведения, дальнейшее развитие
+          различных форм деятельности предполагает независимые способы
+          реализации прогресса профессионального сообщества. Современные
+          технологии достигли такого уровня, что начало повседневной работы по
+          формированию позиции позволяет оценить значение укрепления моральных
+          ценностей. Как принято считать, тщательные исследования конкурентов
+          призывают нас к новым свершениям, которые, в свою очередь, должны быть
+          преданы социально-демократической анафеме. Разнообразный и богатый
+          опыт говорит нам, что сплочённость команды профессионалов однозначно
+          фиксирует необходимость вывода текущих активов. Господа, глубокий
+          уровень погружения играет определяющее значение для существующих
+          финансовых и административных условий.
         </p>
       </div>
-      <img src="" alt="" className={css.photo} />
+      <div className={css.galerry}>
+        {hallUrl.map((item) => {
+          return (
+            <div key={item.id} className={css.container}>
+              <img
+                
+                src={item.url}
+                alt="Galerry"
+                className={css.photo}
+              />
+              <h2 className={css.caption}>{item.title}</h2>
+            </div>
+          );
+        })}
+      </div>
     </section>
   );
 };

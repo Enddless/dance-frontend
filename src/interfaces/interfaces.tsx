@@ -12,23 +12,11 @@ export interface IPagesFooter {
   };
 }
 
-export interface IServicesInfo {
-  id: number;
-  data: {
-    title: string;
-    description: string;
-    url: string;
-  };
-}
-
 export interface IPricesInfo {
   id: number;
-  data: {
-    title: string;
-    price: number;
-    description: string;
-    url: string;
-  };
+  title: string;
+  data: string[];
+  price: number;
 }
 
 export interface IReviewsInfo {
@@ -39,4 +27,23 @@ export interface IReviewsInfo {
     date: string;
     description: string;
   };
+}
+
+export interface IBannerUrl {
+  id: number;
+  url: string;
+}
+
+export interface IHallUrl {
+  id: number;
+  url: string;
+  title: string;
+}
+
+
+export interface IStaffInfo {
+  name: string;
+  description: string;
+  img: string;
+  id: number;
 }
