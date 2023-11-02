@@ -1,12 +1,12 @@
-import css from "./App.module.css";
+import css from "./App.module.scss";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import MainPage from "./pages/MainPage/MainPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NFPage from "./pages/NotFoundPage/NFPage";
-import StaffPage from "./pages/StaffPage";
-import Services from "./components/BlockServices/Services";
 import Prices from "./components/BlockPrices/Prices";
+import Contacts from "./components/BlockContacts/Contacts";
+import ReviewsPage from "./pages/ReviewsPage/ReviewsPage";
 
 const App = () => {
   return (
@@ -16,12 +16,10 @@ const App = () => {
         <Routes>
           
           <Route path={"/"}  element={<MainPage />} />
-          <Route path={"/service"} element={<Services />} />
-          <Route path={"/price"} element={<Prices />}  />
+           <Route path={"/prices"} element={<Prices />}  /> {/*скорректировать переход, т.к. это не отдельная страница */}
           <Route path={"/dashboard"} element={""}  />
-          <Route path={"/personal"} element={<StaffPage />} />
-          <Route path={"/contacts"} element={""}  />
-
+          <Route path={"/reviews"} element={<ReviewsPage/>} />
+          <Route path={"/contacts"} element={<Contacts />}  /> {/*скорректировать переход, т.к. это не отдельная страница */}
           <Route path={"/*"} element={<NFPage />} />
         </Routes>
       </BrowserRouter>

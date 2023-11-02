@@ -1,25 +1,25 @@
-
 import { pricesInfo } from "../../mocks/mocks";
+import CardPrice from "../Card/Card";
 import TitleSection from "../Title/Title";
 import css from "./Prices.module.scss";
 
 const Prices = () => {
   return (
     <section className={css.services}>
-      <TitleSection title="Цены и абонементы" />
-      <div className={css.text}>
+      <TitleSection title="Услуги и цены"/>
+      <div className={css.container}>
         {pricesInfo.map((item) => {
-          return(
-            <div className={css.card} key={item.id}>
-              <p>{item.data.title}</p>
-              <p>{item.data.price}</p>
-              <p>{item.data.description}</p>
-              <button className={css.more}></button>
-            </div>
-          )
+          return <CardPrice key={item.id} item={item}/>;
         })}
       </div>
-      <img src="" alt="" className={css.photo} />
+      <p>
+        Повседневная практика показывает, что глубокий уровень погружения в
+        значительной степени обусловливает важность приоретизации разума над
+        эмоциями. Идейные соображения высшего порядка, а также перспективное
+        планирование говорит о возможностях форм воздействия. Также в клубе есть
+        возможность аренды зала и дополнительные услуги. Подробнее Вы можете
+        уточнить у администратора или по телефону +7 (495) 788-77-50
+      </p>
     </section>
   );
 };

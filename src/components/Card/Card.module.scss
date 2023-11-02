@@ -1,0 +1,29 @@
+@import "../../styles//variables.scss";
+.card {
+  grid-column: span 3;
+
+  display: flex;
+  height: 381px;
+  padding: 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border-radius: 10px;
+  background: $card-price-background;
+  box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.05);
+}
+
+
+
+.reviewsCard {
+  grid-column: span 3;
+  height: 218px;
+  background: inherit;
+  gap:0;
+  padding: 20px;
+}
+.reviewsCard:last-child {
+  filter:  blur(3px);
+  -webkit-filter:  blur(3px);
+}

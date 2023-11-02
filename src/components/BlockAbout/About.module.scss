@@ -3,16 +3,36 @@
 .about {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+  margin:0 100px;
 }
-.title {
-  margin: 0 auto;
+
+.text,
+.galerry {
   grid-column: span 12;
 }
-.text,
-.photo {
-  grid-column: span 6;
+.galerry {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 20px;
 }
 .photo {
-  background: $gray;
-  height: 500px;
+    
+}
+.container {
+  grid-column: span 4;
+  position: relative;
+}
+.caption {
+  position: absolute;
+  bottom: 20px;
+  left: auto;
+  right:auto;
+  margin:0 auto;
+  color: $subtitle-color-default;
+  font-family: Gotham Pro;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.96px;
 }

@@ -1,10 +1,11 @@
 @import "../../styles/variables.scss";
 
-.text {
+.services {
+  margin:0 100px 100px;
+}
+.container {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+  column-gap:20px;
 }
 
-.card {
-  grid-column: span 3;
-}

@@ -1,26 +1,19 @@
-
 import { reviewsInfo } from "../../mocks/mocks";
-import Button from "../Button/Button";
+import Card from "../Card/Card";
 import TitleSection from "../Title/Title";
 import css from "./Reviews.module.scss";
 
 const Reviews = () => {
   return (
-    <section className={css.services}>
+    <section className={css.reviews}>
       <TitleSection title="Отзывы" />
-      <div className={css.text}>
-        {reviewsInfo.map((item) => {
+      <div className={css.container}>
+        {reviewsInfo.slice(0,4).map((review) => {
           return(
-            <div className={css.card} key={item.id}>
-              <p>{item.data.user}</p>
-              <p>{item.data.stars}</p>
-              <p>{item.data.date}</p>
-              <p>{item.data.description}</p>
-            </div>
+            <Card review={review} key={review.id} cls="reviewsCard"/>
           )
         })}
       </div>
-        <Button  text="Показать еще"/>
     </section>
   );
 };

@@ -1,8 +1,10 @@
-@import "../../styles/variables.scss";
+@import "../../styles//variables.scss";
 
 .footer {
     width:100%;
-    background: $gray;
+    height: 259px;
+    background: $footer-background;
+    color: $footer-color;
     display: flex;
 }
 .menuItem {

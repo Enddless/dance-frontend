@@ -21,7 +21,7 @@ const Header = () => {
         </ul>
       </nav>
 
-      <Button text="Вход"></Button>
+      <Button text="Вход" ></Button>
     </div>
   );
 };

@@ -1,3 +1,25 @@
+@import "../../styles//variables.scss";
+
 .title {
-    text-align:center;
-  }
+  text-align: center;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1.44px;
+  color: $title-color-default;
+
+}
+.container {
+  // margin: 0 auto;
+  grid-column: span 12;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.line path{
+  // position:absolute;
+  stroke: #563E0E;
+}
+
