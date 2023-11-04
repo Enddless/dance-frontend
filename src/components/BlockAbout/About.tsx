@@ -6,8 +6,8 @@ const About = () => {
   return (
     <section className={css.about}>
       <TitleSection title="О студии"/>
-      <div className={css.text}>
-        <p>
+      <p className={css.text}>
+
           Следует отметить, что существующая теория создаёт необходимость
           включения в производственный план целого ряда внеочередных мероприятий
           с учётом комплекса новых принципов формирования
@@ -26,14 +26,13 @@ const About = () => {
           фиксирует необходимость вывода текущих активов. Господа, глубокий
           уровень погружения играет определяющее значение для существующих
           финансовых и административных условий.
-        </p>
-      </div>
+
+      </p>
       <div className={css.galerry}>
         {hallUrl.map((item) => {
           return (
             <div key={item.id} className={css.container}>
               <img
-                
                 src={item.url}
                 alt="Galerry"
                 className={css.photo}

@@ -8,6 +8,7 @@ import { IBannerUrl, IStaffInfo } from "../../interfaces/interfaces";
 interface ISettings {
   dots?: boolean;
   arrow?: boolean;
+  variableWidth?:boolean;
   infinite: boolean;
   speed: number;
   slidesToShow: number;
@@ -18,7 +19,7 @@ interface ISettings {
 const settings: ISettings = {
   dots: true,
   arrow: true,
-  infinite: false,
+  infinite: true,
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
@@ -28,12 +29,12 @@ const settings: ISettings = {
 const settingsForStaff: ISettings = {
   // dots: true,
   // arrow: true,
-  infinite: false,
+  infinite: true,
   speed: 500,
-  slidesToShow: 3,
+  slidesToShow: 4,
   slidesToScroll: 1,
-  // autoplay: true,
-  // autoplaySpeed: 5000,
+  autoplay: true,
+  autoplaySpeed: 5000,
 };
 
 type ICardsProps = {
@@ -65,7 +66,7 @@ const SliderBlock = ({ cards, staffInfo }: ICardsProps) => {
               </div>
 
               <div className={css.staffDescr}>
-                <h4>{name}</h4>
+                <h6>{name}</h6>
                 <p>{description}</p>
               </div>
             </div>

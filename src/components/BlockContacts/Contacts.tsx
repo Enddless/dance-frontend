@@ -5,7 +5,7 @@ import css from "./Contacts.module.scss";
 
 const Contacts = () => {
   return (
-    <section className={css.contacts}>
+    <section className={css.contacts} id="contactsBlock">
        <TitleSection title="Контакты"/>
        <MapBlock />
     </section>

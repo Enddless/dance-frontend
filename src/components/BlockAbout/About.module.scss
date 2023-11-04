@@ -10,6 +10,9 @@
 .galerry {
   grid-column: span 12;
 }
+.text {
+  margin-bottom:30px;
+}
 .galerry {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -28,11 +31,4 @@
   left: auto;
   right:auto;
   margin:0 auto;
-  color: $subtitle-color-default;
-  font-family: Gotham Pro;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  letter-spacing: 0.96px;
 }

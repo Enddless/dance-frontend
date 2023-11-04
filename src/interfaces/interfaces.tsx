@@ -40,10 +40,17 @@ export interface IHallUrl {
   title: string;
 }
 
-
 export interface IStaffInfo {
   name: string;
   description: string;
   img: string;
   id: number;
+}
+
+export interface IDashboardInfo {
+  id: number;
+  title: string;
+  time: Date;
+  hall: string;
+  teacher: string;
 }

@@ -1,13 +1,26 @@
 @import "../../styles//variables.scss";
 
 .footer {
-    width:100%;
-    height: 259px;
-    background: $footer-background;
-    color: $footer-color;
-    display: flex;
+  width: 100%;
+  height: 259px;
+  padding: 30px 100px;
+  background: $footer-background;
+  color: $footer-color;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;;
+}
+.logoPosition {
+    position:relative;
+    top:50%;
+    left:0;
+    transform: translate(0, -50%);
+    -webkit-transform: translate(0, -50%);
+    -moz-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    -o-transform: translate(0, -50%);
 }
 .menuItem {
-    margin-right: 50px;
-    cursor:pointer;
+  margin-right: 50px;
+  cursor: pointer;
 }

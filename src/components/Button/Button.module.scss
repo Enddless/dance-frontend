@@ -1,20 +1,30 @@
 @import "../../styles//variables.scss";
 
-
 .btn {
   display: flex;
+  width: 119px;
   padding: 5px 10px;
   justify-content: center;
   align-items: center;
   gap: 10px;
+  border:none;
   border-radius: 10px;
   background: $btn-background-default;
+
+  font-family: $body-family-secondary-regular;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.96px;
 }
 
-//класс для проверки
-.def {
-    color:red;
-}
 .btn:hover {
-    background: $btn-background-hover;
+  background: $btn-background-hover;
+}
+
+.btnMore {
+  width:750px;
+  margin:30px auto 0;
+  color: $btn-color-secondary;
+  padding:15px 20px;
 }
