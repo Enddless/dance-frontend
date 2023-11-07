@@ -6,10 +6,8 @@ export interface IPagesHeader {
 
 export interface IPagesFooter {
   id: number;
-  data: {
-    title: string;
-    url: string;
-  };
+  title: string;
+  url: string;
 }
 
 export interface IPricesInfo {
@@ -53,4 +51,16 @@ export interface IDashboardInfo {
   time: Date;
   hall: string;
   teacher: string;
+}
+
+export interface IPoints {
+  title: string;
+  lat: number;
+  lng: number;
+}
+export interface ICity {
+  title: string;
+  lat: number;
+  lng: number;
+  zoom: number;
 }

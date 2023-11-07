@@ -7,20 +7,35 @@
   background: $footer-background;
   color: $footer-color;
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;;
+  align-items: center;
+  justify-content: space-between;
 }
-.logoPosition {
-    position:relative;
-    top:50%;
-    left:0;
-    transform: translate(0, -50%);
-    -webkit-transform: translate(0, -50%);
-    -moz-transform: translate(0, -50%);
-    -ms-transform: translate(0, -50%);
-    -o-transform: translate(0, -50%);
-}
+
 .menuItem {
   margin-right: 50px;
   cursor: pointer;
+  display:flex;
+  flex-direction: row;
+}
+.menuItem:last-child, .download{
+  font-weight: 700;
+  border-bottom: 1px solid $header-color;
+}
+.social {
+  display:flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap:20px;
+  & svg {
+    border-radius:10px  ;
+    -webkit-border-radius:10px  ;
+    -moz-border-radius:10px  ;
+    -ms-border-radius:10px  ;
+    -o-border-radius:10px  ;
+}
+}
+
+.phone, .location {
+  display: flex;
+  flex-direction: row;
 }
