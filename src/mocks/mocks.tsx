@@ -6,7 +6,7 @@ import {
   IHallUrl,
   IBannerUrl,
   IStaffInfo,
-  IDashboardInfo
+  IDashboardInfo,
 } from "../interfaces/interfaces";
 import banner from "../assets/lead-banner.png";
 import hallOne from "../assets/images/hall-one.png";
@@ -121,96 +121,38 @@ export const StaffInfo: IStaffInfo[] = [
   },
 ];
 
-export const pagesFooterColumn1: IPagesFooter[] = [
+export const pagesFooter: IPagesFooter[] = [
   {
     id: 1,
-    data: {
-      title: "О студии",
-      url: "/",
-    },
+    title: "О студии",
+    url: "/",
   },
   {
     id: 2,
-    data: {
-      title: "Новости",
-      url: "/news",
-    },
-  },
-  {
-    id: 3,
-    data: {
-      title: "Акции",
-      url: "/actions",
-    },
-  },
-  {
-    id: 4,
-    data: {
-      title: "Наши залы",
-      url: "/areas",
-    },
-  },
-  {
-    id: 5,
-    data: {
-      title: "Отзывы",
-      url: "/reviews",
-    },
-  },
-  {
-    id: 6,
-    data: {
-      title: "Наши достижения",
-      url: "/achievements",
-    },
-  },
-];
-export const pagesFooterColumn2: IPagesFooter[] = [
-  {
-    id: 1,
-    data: {
-      title: "Правила поведения",
-      url: "/rules",
-    },
-  },
-  {
-    id: 2,
-    data: {
-      title: "Услуги и цены",
+    title: "Услуги и цены",
     url: "/#pricesBlock",
-    },
   },
-  
   {
     id: 3,
-    data: {
-      title: "Расписание",
+    title: "Расписание",
     url: "/dashboard",
-    },
   },
   {
     id: 4,
-    data: {
-      title: "Отзывы",
+    title: "Отзывы",
     url: "/#reviewsBlock",
-    },
   },
   {
     id: 5,
-    data: {
-      title: "Контакты",
+    title: "Контакты",
     url: "/#contactsBlock",
-    },
   },
   {
     id: 6,
-    data: {
-      title: "Полезная информация",
-      url: "/info",
-    },
+    title: "Юридическая информация",
+    url: "/policy",
   },
 ];
-
 
 export const pagesHeader: IPagesHeader[] = [
   {
@@ -242,7 +184,7 @@ export const pagesHeader: IPagesHeader[] = [
     id: 6,
     title: "Скачать приложение",
     url: "/download",
-  }
+  },
 ];
 
 export const pricesInfo: IPricesInfo[] = [
@@ -250,44 +192,43 @@ export const pricesInfo: IPricesInfo[] = [
     id: 1,
     title: "Абонемент 1",
     data: [
-      "Абонемент на любые 20 групповых либо детских занятий", 
+      "Абонемент на любые 20 групповых либо детских занятий",
       "Срок действия 90 дней (3 месяца)",
       "Только в ноябре",
     ],
-    price:1000,
+    price: 1000,
   },
   {
     id: 2,
     title: "Абонемент 2",
     data: [
-      "Разовое посещение любой групповой программы", 
+      "Разовое посещение любой групповой программы",
       "Срок действия 90 дней (3 месяца)",
       "В любой день",
     ],
-    price:1000,
+    price: 1000,
   },
   {
     id: 3,
     title: "Абонемент 3",
     data: [
-      "Абонемент на любые 10 групповых либо детских занятий", 
+      "Абонемент на любые 10 групповых либо детских занятий",
       "Срок действия 90 дней (3 месяца)",
       "Только в ноябре",
     ],
-    price:1000,
+    price: 1000,
   },
   {
     id: 4,
     title: "Абонемент 4",
     data: [
-      "Абонемент на любые 50 групповых занятий.", 
+      "Абонемент на любые 50 групповых занятий.",
       " Срок действия 180 дней (6 месяцев)",
       "В любой день",
     ],
-    price:10000,
+    price: 10000,
   },
 ];
-
 
 export const reviewsInfo: IReviewsInfo[] = [
   {
@@ -345,101 +286,115 @@ export const reviewsInfo: IReviewsInfo[] = [
 export const dashboardInfo: IDashboardInfo[] = [
   {
     id: 1,
-    title:"Занятие 1",
+    title: "Занятие 1",
     time: new Date("2023-11-06T08:00:00"),
-    hall:"Зал 1",
-    teacher:"Тренер Тренерович"
+    hall: "Зал 1",
+    teacher: "Тренер Тренерович",
   },
   {
     id: 2,
-    title:"Занятие 1",
+    title: "Занятие 1",
     time: new Date("2023-11-07T08:00:00"),
-    hall:"Зал 1",
-    teacher:"Тренер Тренерович"
+    hall: "Зал 1",
+    teacher: "Тренер Тренерович",
   },
   {
     id: 3,
-    title:"Занятие 1",
+    title: "Занятие 1",
     time: new Date("2023-11-08T08:00:00"),
-    hall:"Зал 1",
-    teacher:"Тренер Тренерович"
+    hall: "Зал 1",
+    teacher: "Тренер Тренерович",
   },
   {
     id: 4,
-    title:"Занятие 1",
+    title: "Занятие 1",
     time: new Date("2023-11-09T08:00:00"),
-    hall:"Зал 1",
-    teacher:"Тренер Тренерович"
+    hall: "Зал 1",
+    teacher: "Тренер Тренерович",
   },
   {
     id: 5,
-    title:"Занятие 1",
+    title: "Занятие 1",
     time: new Date("2023-11-10T08:00:00"),
-    hall:"Зал 1",
-    teacher:"Тренер Тренерович"
+    hall: "Зал 1",
+    teacher: "Тренер Тренерович",
   },
   {
     id: 6,
-    title:"Занятие 1",
+    title: "Занятие 1",
     time: new Date("2023-11-11T08:00:00"),
-    hall:"Зал 1",
-    teacher:"Тренер Тренерович"
+    hall: "Зал 1",
+    teacher: "Тренер Тренерович",
   },
   {
     id: 7,
-    title:"Занятие 1",
+    title: "Занятие 1",
     time: new Date("2023-11-12T08:00:00"),
-    hall:"Зал 1",
-    teacher:"Тренер Тренерович"
+    hall: "Зал 1",
+    teacher: "Тренер Тренерович",
   },
 
   {
     id: 8,
-    title:"Занятие 2",
+    title: "Занятие 2",
     time: new Date("2023-11-06T09:00:00"),
-    hall:"Зал 2",
-    teacher:"Тренер Тренерович"
+    hall: "Зал 2",
+    teacher: "Тренер Тренерович",
   },
   {
     id: 9,
-    title:"Занятие 2",
+    title: "Занятие 2",
     time: new Date("2023-11-07T09:00:00"),
-    hall:"Зал 2",
-    teacher:"Тренер Тренерович"
+    hall: "Зал 2",
+    teacher: "Тренер Тренерович",
   },
   {
     id: 10,
-    title:"Занятие 2",
+    title: "Занятие 2",
     time: new Date("2023-11-08T09:00:00"),
-    hall:"Зал 2",
-    teacher:"Тренер Тренерович"
+    hall: "Зал 2",
+    teacher: "Тренер Тренерович",
   },
   {
     id: 11,
-    title:"Занятие 2",
+    title: "Занятие 2",
     time: new Date("2023-11-09T09:00:00"),
-    hall:"Зал 2",
-    teacher:"Тренер Тренерович"
+    hall: "Зал 2",
+    teacher: "Тренер Тренерович",
   },
   {
     id: 12,
-    title:"Занятие 2",
+    title: "Занятие 2",
     time: new Date("2023-11-10T09:00:00"),
-    hall:"Зал 2",
-    teacher:"Тренер Тренерович"
+    hall: "Зал 2",
+    teacher: "Тренер Тренерович",
   },
   {
     id: 13,
-    title:"Занятие 2",
+    title: "Занятие 2",
     time: new Date("2023-11-11T09:00:00"),
-    hall:"Зал 2",
-    teacher:"Тренер Тренерович"
+    hall: "Зал 2",
+    teacher: "Тренер Тренерович",
   },
   {
     id: 14,
-    title:"Занятие 2",
+    title: "Занятие 2",
     time: new Date("2023-11-12T09:00:00"),
-    hall:"Зал 2",
-    teacher:"Тренер Тренерович"
+    hall: "Зал 2",
+    teacher: "Тренер Тренерович",
   },
 ];
+
+export const POINTS = [
+  {
+    title: "Южно-Сахалинск",
+    lat: 46.960761,
+    lng: 142.74549,
+  },
+];
+export const CITY = {
+  title: "Южно-Сахалинск",
+  lat: 46.960761,
+  lng: 142.74549,
+  zoom: 17,
+};
