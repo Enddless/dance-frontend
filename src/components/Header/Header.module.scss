@@ -5,8 +5,8 @@
   height: 139px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding:30px 100px;
+  align-items: flex-end;
+  padding: 40px 80px 30px;
   background: $header-background;
   color: $header-color;
 }
@@ -16,10 +16,18 @@
   justify-content: space-between;
 }
 .menuItem {
-  padding:10px 15px;
-  margin:0 10px;
-  cursor:pointer;
+  padding: 10px 0;
+  margin: 0 30px;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: normal;
+  letter-spacing: 0.96px;
+  font-family: $body-family-secondary-regular;
 }
 .menuItem:hover {
-  background: $gray;
+  font-weight: 600;
+}
+.menuItem:last-child {
+  font-weight: 700;
+  border-bottom: 1px solid $header-color;
 }

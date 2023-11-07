@@ -7,6 +7,11 @@ $athens-gray: #d9d9d9;
 //PRIMARY SETTINGS
 $body-background-primary: #fdf8f0;
 $body-color-primary: #13340a;
+$body-family-primary: "Helvetica, sans-serif";
+$body-family-secondary-regular: "Gotham Pro regular";
+$body-family-secondary-bold: "Gotham Pro bold";
+$body-family-secondary-medium: "Gotham Pro medium";
+$body-family-secondary-black: "Gotham Pro black";
 
 //HEADER SETTINGS
 $header-background: #13340a;
@@ -19,12 +24,18 @@ $footer-color: #fdf8f0;
 //BUTTON SETTINGS
 $btn-background-default: #ffa800;
 $btn-background-hover: #ffc700;
-
+$btn-color-secondary: #FDF8F0;
 //TITLE SETTINGS
 $title-color-default: #ffa800;
 $subtitle-color-default: #fdf8f0;
 
 
-//CARD-PRICE SETTINGS
+//CARD SETTINGS
 $card-price-background: #FFF;
+
+//REVIEWS SETTINGS
+$date-color:#71856C;
+
+//DASHBOARD SETTINGS
+$dashboard-color: #13340a;
 

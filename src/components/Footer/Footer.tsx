@@ -5,7 +5,7 @@ import { pagesFooterColumn1, pagesFooterColumn2 } from "../../mocks/mocks";
 const Footer = () => {
   return (
     <div className={css.footer}>
-      <Logo />
+      <div className={css.logoPosition}><Logo /></div>
 
       <ul className={css.menuItem}>
         {pagesFooterColumn1.map((page) => {
@@ -26,6 +26,14 @@ const Footer = () => {
           );
         })}
       </ul>
+      <div className={css.menuItem}>
+        <p>Адрес, город, улица, дом</p>
+        <p>c 00:00 до 00:00</p>
+        <p>+7 (495) 788-77-50</p>
+        <p>Мы в социальных сетях:</p>
+        <div className={css.social}></div>
+        <p>Скачать приложение</p>
+      </div>
     </div>
   );
 };

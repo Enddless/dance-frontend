@@ -1,25 +1,26 @@
 @import "../../styles//variables.scss";
 
 .title {
-  text-align: center;
-  font-size: 36px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: 1.44px;
-  color: $title-color-default;
-
+  
 }
 .container {
-  // margin: 0 auto;
+
   grid-column: span 12;
-  display:flex;
+  display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
-.line path{
-  // position:absolute;
-  stroke: #563E0E;
+.line {
+  width:650px;
+  height:1px;
+  background: linear-gradient(90deg, #563E0E 0%, rgba(86, 62, 14, 0.00) 100%);
+}
+.lineLeft {
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
 }
 

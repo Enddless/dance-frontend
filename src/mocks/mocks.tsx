@@ -6,6 +6,7 @@ import {
   IHallUrl,
   IBannerUrl,
   IStaffInfo,
+  IDashboardInfo
 } from "../interfaces/interfaces";
 import banner from "../assets/lead-banner.png";
 import hallOne from "../assets/images/hall-one.png";
@@ -90,6 +91,34 @@ export const StaffInfo: IStaffInfo[] = [
     description:
       "Lorem ipsum dolor sit amet consectetur. Urna cras nibh nullam ornare facilisis euismod massa venenatis vel.",
   },
+  {
+    name: "Имя Фамилия",
+    img: `${person}`,
+    id: 5,
+    description:
+      "Lorem ipsum dolor sit amet consectetur. Urna cras nibh nullam ornare facilisis euismod massa venenatis vel.",
+  },
+  {
+    name: "Имя Фамилия",
+    img: `${person}`,
+    id: 6,
+    description:
+      "Lorem ipsum dolor sit amet consectetur. Urna cras nibh nullam ornare facilisis euismod massa venenatis vel.",
+  },
+  {
+    name: "Имя Фамилия",
+    img: `${person}`,
+    id: 7,
+    description:
+      "Lorem ipsum dolor sit amet consectetur. Urna cras nibh nullam ornare facilisis euismod massa venenatis vel.",
+  },
+  {
+    name: "Имя Фамилия",
+    img: `${person}`,
+    id: 8,
+    description:
+      "Lorem ipsum dolor sit amet consectetur. Urna cras nibh nullam ornare facilisis euismod massa venenatis vel.",
+  },
 ];
 
 export const pagesFooterColumn1: IPagesFooter[] = [
@@ -141,45 +170,47 @@ export const pagesFooterColumn2: IPagesFooter[] = [
     id: 1,
     data: {
       title: "Правила поведения",
-      url: "/",
+      url: "/rules",
     },
   },
   {
     id: 2,
     data: {
-      title: "Услуги",
-      url: "/service",
+      title: "Услуги и цены",
+    url: "/#pricesBlock",
     },
   },
+  
   {
     id: 3,
     data: {
-      title: "Цены и абонементы",
-      url: "/price",
+      title: "Расписание",
+    url: "/dashboard",
     },
   },
   {
     id: 4,
     data: {
-      title: "Расписание",
-      url: "/dashboard",
+      title: "Отзывы",
+    url: "/#reviewsBlock",
     },
   },
   {
     id: 5,
     data: {
-      title: "Персонал",
-      url: "/personal",
+      title: "Контакты",
+    url: "/#contactsBlock",
     },
   },
   {
     id: 6,
     data: {
-      title: "Контакты",
-      url: "/contacts",
+      title: "Полезная информация",
+      url: "/info",
     },
   },
 ];
+
 
 export const pagesHeader: IPagesHeader[] = [
   {
@@ -190,7 +221,7 @@ export const pagesHeader: IPagesHeader[] = [
   {
     id: 2,
     title: "Услуги и цены",
-    url: "/prices",
+    url: "/#pricesBlock",
   },
   {
     id: 3,
@@ -200,18 +231,18 @@ export const pagesHeader: IPagesHeader[] = [
   {
     id: 4,
     title: "Отзывы",
-    url: "/reviews",
+    url: "/#reviewsBlock",
   },
   {
     id: 5,
     title: "Контакты",
-    url: "/contacts",
+    url: "/#contactsBlock",
   },
   {
     id: 6,
     title: "Скачать приложение",
-    url: "",
-  },
+    url: "/download",
+  }
 ];
 
 export const pricesInfo: IPricesInfo[] = [
@@ -229,9 +260,9 @@ export const pricesInfo: IPricesInfo[] = [
     id: 2,
     title: "Абонемент 2",
     data: [
-      "Разовое посещение любой групповой программы, детской программы или посещения тренажерного зала ", 
+      "Разовое посещение любой групповой программы", 
       "Срок действия 90 дней (3 месяца)",
-      "При не использовании в течение 14 дней с даты приобретения, активизируется автоматически на 15-й день",
+      "В любой день",
     ],
     price:1000,
   },
@@ -308,5 +339,107 @@ export const reviewsInfo: IReviewsInfo[] = [
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, amet.",
     },
+  },
+];
+
+export const dashboardInfo: IDashboardInfo[] = [
+  {
+    id: 1,
+    title:"Занятие 1",
+    time: new Date("2023-11-06T08:00:00"),
+    hall:"Зал 1",
+    teacher:"Тренер Тренерович"
+  },
+  {
+    id: 2,
+    title:"Занятие 1",
+    time: new Date("2023-11-07T08:00:00"),
+    hall:"Зал 1",
+    teacher:"Тренер Тренерович"
+  },
+  {
+    id: 3,
+    title:"Занятие 1",
+    time: new Date("2023-11-08T08:00:00"),
+    hall:"Зал 1",
+    teacher:"Тренер Тренерович"
+  },
+  {
+    id: 4,
+    title:"Занятие 1",
+    time: new Date("2023-11-09T08:00:00"),
+    hall:"Зал 1",
+    teacher:"Тренер Тренерович"
+  },
+  {
+    id: 5,
+    title:"Занятие 1",
+    time: new Date("2023-11-10T08:00:00"),
+    hall:"Зал 1",
+    teacher:"Тренер Тренерович"
+  },
+  {
+    id: 6,
+    title:"Занятие 1",
+    time: new Date("2023-11-11T08:00:00"),
+    hall:"Зал 1",
+    teacher:"Тренер Тренерович"
+  },
+  {
+    id: 7,
+    title:"Занятие 1",
+    time: new Date("2023-11-12T08:00:00"),
+    hall:"Зал 1",
+    teacher:"Тренер Тренерович"
+  },
+
+  {
+    id: 8,
+    title:"Занятие 2",
+    time: new Date("2023-11-06T09:00:00"),
+    hall:"Зал 2",
+    teacher:"Тренер Тренерович"
+  },
+  {
+    id: 9,
+    title:"Занятие 2",
+    time: new Date("2023-11-07T09:00:00"),
+    hall:"Зал 2",
+    teacher:"Тренер Тренерович"
+  },
+  {
+    id: 10,
+    title:"Занятие 2",
+    time: new Date("2023-11-08T09:00:00"),
+    hall:"Зал 2",
+    teacher:"Тренер Тренерович"
+  },
+  {
+    id: 11,
+    title:"Занятие 2",
+    time: new Date("2023-11-09T09:00:00"),
+    hall:"Зал 2",
+    teacher:"Тренер Тренерович"
+  },
+  {
+    id: 12,
+    title:"Занятие 2",
+    time: new Date("2023-11-10T09:00:00"),
+    hall:"Зал 2",
+    teacher:"Тренер Тренерович"
+  },
+  {
+    id: 13,
+    title:"Занятие 2",
+    time: new Date("2023-11-11T09:00:00"),
+    hall:"Зал 2",
+    teacher:"Тренер Тренерович"
+  },
+  {
+    id: 14,
+    title:"Занятие 2",
+    time: new Date("2023-11-12T09:00:00"),
+    hall:"Зал 2",
+    teacher:"Тренер Тренерович"
   },
 ];

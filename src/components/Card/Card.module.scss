@@ -6,24 +6,74 @@
   height: 381px;
   padding: 40px;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  align-items: stretch;
   gap: 20px;
   border-radius: 10px;
   background: $card-price-background;
   box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.05);
 }
 
+.title {
+  font-weight: bold;
+  line-height: normal;
+  text-align: center;
+}
+.checkbox {
+  height: 75px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.textCheck {
+  font-size: 16px;
+  line-height: normal;
+  letter-spacing: 0.32px;
+  margin-left: 10px;
+}
+.checkbox svg {
+  stroke: #3aa31e;
+  fill: #3aa31e;
+}
 
-
+.userInfo,
+.star {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.star {
+  gap: 10px;
+}
 .reviewsCard {
   grid-column: span 3;
   height: 218px;
   background: inherit;
-  gap:0;
+  gap: 10px;
   padding: 20px;
 }
+
+.date {
+  color: $date-color;
+  font-size: 16px;
+  line-height: normal;
+  letter-spacing: 0.32px;
+}
 .reviewsCard:last-child {
-  filter:  blur(3px);
-  -webkit-filter:  blur(3px);
+  filter: blur(6px);
+  -webkit-filter: blur(6px);
+}
+
+//для карточек отзывов, публикующихся на отдельной странице
+.containerReviewsPage {
+  width:750px;
+  margin:0 auto;
+}
+.containerReviewsPage .reviewsCard {
+  margin:10px 0;
+}
+
+.containerReviewsPage +.reviewsCard:last-child {
+  filter: blur(0px);
+  -webkit-filter: blur(0px);
 }

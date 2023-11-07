@@ -1,18 +1,18 @@
 import { pricesInfo } from "../../mocks/mocks";
-import CardPrice from "../Card/Card";
+import Card from "../Card/Card";
 import TitleSection from "../Title/Title";
 import css from "./Prices.module.scss";
 
 const Prices = () => {
   return (
-    <section className={css.services}>
+    <section className={css.services} id="pricesBlock">
       <TitleSection title="Услуги и цены"/>
       <div className={css.container}>
-        {pricesInfo.map((item) => {
-          return <CardPrice key={item.id} item={item}/>;
+        {pricesInfo.map((price) => {
+          return <Card key={price.id} price={price}/>;
         })}
       </div>
-      <p>
+      <p className={css.text}>
         Повседневная практика показывает, что глубокий уровень погружения в
         значительной степени обусловливает важность приоретизации разума над
         эмоциями. Идейные соображения высшего порядка, а также перспективное
