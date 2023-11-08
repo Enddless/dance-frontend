@@ -3,12 +3,17 @@ import Logo from "../Logo/Logo";
 import Button from "../Button/Button";
 import { useState } from "react";
 import { pagesHeader } from "../../mocks/mocks";
-import GeneralForm from "../Forms/GeneralForm";
+import LoginForm from "../Forms/LoginForm";
+import useTheme from "../../hooks/useTheme";
+
 
 const Header = () => {
+  const {isDark, setIsDark} = useTheme()
+
   const [isOpenModal, setIsModal] = useState(false);
   const openModalForm = () => {
     setIsModal(!isOpenModal)
+    setIsDark(!isDark)
   };
   return (
     <div className={css.header}>
@@ -26,7 +31,7 @@ const Header = () => {
       </nav>
 
       <Button text="Вход" openModalForm={openModalForm}></Button>
-      {isOpenModal && <GeneralForm />}
+      {isOpenModal && <LoginForm openModalForm={openModalForm}/>}
     </div>
   );
 };

@@ -70,4 +70,8 @@ h6 {
   line-height: normal;
   letter-spacing: 0.72px;
 }
-
+.blurContent {
+  filter: blur(7px);
+  background: $blur-background;
+  -webkit-filter: blur(7px);
+}

@@ -8,7 +8,7 @@ import { IBannerUrl, IStaffInfo } from "../../interfaces/interfaces";
 interface ISettings {
   dots?: boolean;
   arrow?: boolean;
-  variableWidth?:boolean;
+  variableWidth?: boolean;
   infinite: boolean;
   speed: number;
   slidesToShow: number;
@@ -27,7 +27,7 @@ const settings: ISettings = {
   autoplaySpeed: 5000, //скорость воспроизведения слайдов
 };
 const settingsForStaff: ISettings = {
-  // dots: true,
+  dots: true,
   // arrow: true,
   infinite: true,
   speed: 500,
@@ -49,7 +49,7 @@ const SliderBlock = ({ cards, staffInfo }: ICardsProps) => {
         <Slider {...settings} className={css.slider}>
           {cards.map((card) => {
             return (
-              <div className={css.card} key={card.id}>
+              <div className={css.card} key={card.id} id="cards">
                 <img src={card.url} alt="banner" />
               </div>
             );
@@ -58,20 +58,22 @@ const SliderBlock = ({ cards, staffInfo }: ICardsProps) => {
       )}
 
       {staffInfo && (
-        <Slider {...settingsForStaff} className={css.sliderStaff}>
-          {staffInfo.map(({ name, img, description, id }) => (
-            <div key={id} className={css.staffInfo}>
-              <div className={css.avatar}>
-                <img src={img} alt="staffPhoto" />
-              </div>
+        <div id="staff">
+          <Slider {...settingsForStaff} className={css.sliderStaff}>
+            {staffInfo.map(({ name, img, description, id }) => (
+              <div key={id} className={css.staffInfo}>
+                <div className={css.avatar}>
+                  <img src={img} alt="staffPhoto" />
+                </div>
 
-              <div className={css.staffDescr}>
-                <h6>{name}</h6>
-                <p>{description}</p>
+                <div className={css.staffDescr}>
+                  <h6>{name}</h6>
+                  <p>{description}</p>
+                </div>
               </div>
-            </div>
-          ))}
-        </Slider>
+            ))}
+          </Slider>
+        </div>
       )}
     </>
   );
