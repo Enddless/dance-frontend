@@ -173,7 +173,7 @@ export const pagesHeader: IPagesHeader[] = [
   {
     id: 4,
     title: "Отзывы",
-    url: "/#reviewsBlock",
+    url: "/reviews",
   },
   {
     id: 5,

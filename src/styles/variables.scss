@@ -3,6 +3,7 @@ $white: #fff;
 $gray: #e4e3e3;
 $opacity-black: #00000099;
 $athens-gray: #d9d9d9;
+$blur-background: #f7f2f2;
 
 //PRIMARY SETTINGS
 $body-background-primary: #fdf8f0;
@@ -24,18 +25,43 @@ $footer-color: #fdf8f0;
 //BUTTON SETTINGS
 $btn-background-default: #ffa800;
 $btn-background-hover: #ffc700;
-$btn-color-secondary: #FDF8F0;
+$btn-color-secondary: #fdf8f0;
+$btn-background-secondary: #13340a;
+
+@mixin ButtonPrimary {
+  display: flex;
+  width: 119px;
+  padding: 5px 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: $body-family-primary;
+  font-size: 20px;
+  line-height: normal;
+  font-weight: 400;
+  color: $white;
+}
+@mixin ButtonDisabled {
+  background: $gray;
+  cursor: not-allowed;
+}
+
 //TITLE SETTINGS
 $title-color-default: #ffa800;
 $subtitle-color-default: #fdf8f0;
 
-
 //CARD SETTINGS
-$card-price-background: #FFF;
+$card-price-background: #fff;
 
 //REVIEWS SETTINGS
-$date-color:#71856C;
+$date-color: #71856c;
 
 //DASHBOARD SETTINGS
 $dashboard-color: #13340a;
 
+//FORM ENTER SETTINGS
+$form-enter-background: #fdf8f0;
+$form-enter-color: #13340a;

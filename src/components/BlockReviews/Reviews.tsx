@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import classNames from "classnames";
 
 interface IPageIDProps {
-  id: string;
+  id?: string;
 }
 const Reviews = ({ id }: IPageIDProps) => {
   const page = id === "forPage" 

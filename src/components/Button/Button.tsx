@@ -11,7 +11,7 @@ interface ButtonProps {
 const Button = ({ text, cls, children, openModalForm }: ButtonProps) => {
   const check = cls ==="btn-more" //для других классов, чтобы подставлять сразу в перечень классов
   const classNamesList = classNames(css.btn, {
-    [css.btnMore]:check,
+    [css.btnMore]:check
   });
 
 
