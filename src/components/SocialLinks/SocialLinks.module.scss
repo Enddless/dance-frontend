@@ -1,0 +1,13 @@
+.social {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  & svg {
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+  }
+}

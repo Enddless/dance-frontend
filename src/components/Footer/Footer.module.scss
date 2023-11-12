@@ -14,28 +14,22 @@
 .menuItem {
   margin-right: 50px;
   cursor: pointer;
-  display:flex;
+  display: flex;
   flex-direction: row;
 }
-.menuItem:last-child, .download{
+.menuItem:last-child,
+.download {
   font-weight: 700;
   border-bottom: 1px solid $header-color;
 }
-.social {
-  display:flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap:20px;
-  & svg {
-    border-radius:10px  ;
-    -webkit-border-radius:10px  ;
-    -moz-border-radius:10px  ;
-    -ms-border-radius:10px  ;
-    -o-border-radius:10px  ;
-}
-}
 
-.phone, .location {
+.phone,
+.location {
   display: flex;
   flex-direction: row;
+}
+
+.phone svg,
+.location svg {
+  stroke: #fdf8f0;
 }

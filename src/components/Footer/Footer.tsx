@@ -2,6 +2,7 @@ import css from "./Footer.module.scss";
 import Logo from "../Logo/Logo";
 import { pagesFooter } from "../../mocks/mocks";
 import sprite from "../../assets/sprite.svg";
+import SocialLinks from "../SocialLinks/SocialLinks";
 
 const Footer = () => {
   return (
@@ -33,17 +34,7 @@ const Footer = () => {
         </div>
 
         <p>Мы в социальных сетях:</p>
-        <div className={css.social}>
-          <svg width="40" height="40" viewBox="0 0 40 40">
-            <use xlinkHref={`${sprite}#ok`}></use>
-          </svg>
-          <svg width="40" height="40" viewBox="0 0 40 40">
-            <use xlinkHref={`${sprite}#vk`}></use>
-          </svg>
-          <svg width="40" height="40" viewBox="0 0 40 40">
-            <use xlinkHref={`${sprite}#telegram`}></use>
-          </svg>
-        </div>
+        <SocialLinks />
         <p className={css.download}>Скачать приложение</p>
       </div>
     </div>
