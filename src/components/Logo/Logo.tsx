@@ -1,9 +1,13 @@
-import css from "./Logo.module.scss"
-import logo from "../../assets/logo.png"
+import css from "./Logo.module.scss";
+import logo from "../../assets/logo.png";
+import { AppRoute } from "../../const/route";
+import { Link } from "react-router-dom";
 const Logo = () => {
   return (
     <div className={css.logo}>
-      <img src={logo} alt="Logotype" />
+      <Link to={AppRoute.Root}>
+        <img src={logo} alt="Logotype" />
+      </Link>
     </div>
   );
 };

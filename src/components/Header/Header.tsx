@@ -5,25 +5,37 @@ import { useState } from "react";
 import { pagesHeader } from "../../mocks/mocks";
 import LoginForm from "../Forms/LoginForm";
 import useTheme from "../../hooks/useTheme";
-
+import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 const Header = () => {
-  const {isDark, setIsDark} = useTheme()
+
+  const { isDark, setIsDark } = useTheme();
 
   const [isOpenModal, setIsModal] = useState(false);
   const openModalForm = () => {
-    setIsModal(!isOpenModal)
-    setIsDark(!isDark)
+    setIsModal(!isOpenModal);
+    setIsDark(!isDark);
+
   };
+
   return (
     <div className={css.header}>
       <Logo />
       <nav>
         <ul className={css.navigation}>
           {pagesHeader.map((page) => {
+            const check =
+              page.title === "Услуги и цены" || page.title === "Контакты";
             return (
               <li key={page.id} className={css.menuItem}>
-                <a href={page.url}>{page.title}</a>
+                {check ? (
+                  <HashLink smooth to={page.url}>
+                    {page.title}
+                  </HashLink>
+                ) : (
+                  <Link to={page.url}>{page.title}</Link>
+                )}
               </li>
             );
           })}
@@ -31,7 +43,8 @@ const Header = () => {
       </nav>
 
       <Button text="Вход" openModalForm={openModalForm}></Button>
-      {isOpenModal && <LoginForm openModalForm={openModalForm}/>}
+
+      {isOpenModal && <LoginForm openModalForm={openModalForm} />}
     </div>
   );
 };
