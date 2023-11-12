@@ -9,10 +9,18 @@ import {
   IDashboardInfo,
 } from "../interfaces/interfaces";
 import banner from "../assets/lead-banner.png";
+import bannerTwo from "../assets/lead-banner-two.png";
 import hallOne from "../assets/images/hall-one.png";
 import hallTwo from "../assets/images/hall-two.png";
 import hallThree from "../assets/images/hall-three.png";
 import person from "../assets/images/person-one.png";
+import person2 from "../assets/images/person-two.png";
+import person3 from "../assets/images/person-three.png";
+import person4 from "../assets/images/person-four.png";
+import person5 from "../assets/images/person-five.png";
+import person6 from "../assets/images/person-six.png";
+import person7 from "../assets/images/person-seven.png";
+import person8 from "../assets/images/person-eight.png";
 
 export const bannerUrl: IBannerUrl[] = [
   {
@@ -21,7 +29,7 @@ export const bannerUrl: IBannerUrl[] = [
   },
   {
     id: 2,
-    url: `${banner}`,
+    url: `${bannerTwo}`,
   },
   {
     id: 3,
@@ -29,7 +37,7 @@ export const bannerUrl: IBannerUrl[] = [
   },
   {
     id: 4,
-    url: `${banner}`,
+    url: `${bannerTwo}`,
   },
   {
     id: 5,
@@ -37,7 +45,7 @@ export const bannerUrl: IBannerUrl[] = [
   },
   {
     id: 6,
-    url: `${banner}`,
+    url: `${bannerTwo}`,
   },
   {
     id: 7,
@@ -65,14 +73,14 @@ export const hallUrl: IHallUrl[] = [
 export const StaffInfo: IStaffInfo[] = [
   {
     name: "Имя Фамилия",
-    img: `${person}`,
+    img: `${person7}`,
     id: 1,
     description:
       "Lorem ipsum dolor sit amet consectetur. Urna cras nibh nullam ornare facilisis euismod massa venenatis vel.",
   },
   {
     name: "Имя Фамилия",
-    img: `${person}`,
+    img: `${person8}`,
     id: 2,
     description:
       "Lorem ipsum dolor sit amet consectetur. Urna cras nibh nullam ornare facilisis euismod massa venenatis vel.",
@@ -86,35 +94,35 @@ export const StaffInfo: IStaffInfo[] = [
   },
   {
     name: "Имя Фамилия",
-    img: `${person}`,
+    img: `${person4}`,
     id: 4,
     description:
       "Lorem ipsum dolor sit amet consectetur. Urna cras nibh nullam ornare facilisis euismod massa venenatis vel.",
   },
   {
     name: "Имя Фамилия",
-    img: `${person}`,
+    img: `${person5}`,
     id: 5,
     description:
       "Lorem ipsum dolor sit amet consectetur. Urna cras nibh nullam ornare facilisis euismod massa venenatis vel.",
   },
   {
     name: "Имя Фамилия",
-    img: `${person}`,
+    img: `${person6}`,
     id: 6,
     description:
       "Lorem ipsum dolor sit amet consectetur. Urna cras nibh nullam ornare facilisis euismod massa venenatis vel.",
   },
   {
     name: "Имя Фамилия",
-    img: `${person}`,
+    img: `${person3}`,
     id: 7,
     description:
       "Lorem ipsum dolor sit amet consectetur. Urna cras nibh nullam ornare facilisis euismod massa venenatis vel.",
   },
   {
     name: "Имя Фамилия",
-    img: `${person}`,
+    img: `${person2}`,
     id: 8,
     description:
       "Lorem ipsum dolor sit amet consectetur. Urna cras nibh nullam ornare facilisis euismod massa venenatis vel.",

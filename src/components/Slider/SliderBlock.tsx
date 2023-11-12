@@ -24,7 +24,7 @@ const settings: ISettings = {
   slidesToShow: 1,
   slidesToScroll: 1,
   autoplay: true,
-  autoplaySpeed: 5000, //скорость воспроизведения слайдов
+  autoplaySpeed: 4000, //скорость воспроизведения слайдов
 };
 const settingsForStaff: ISettings = {
   dots: true,
@@ -34,7 +34,7 @@ const settingsForStaff: ISettings = {
   slidesToShow: 4,
   slidesToScroll: 1,
   autoplay: true,
-  autoplaySpeed: 5000,
+  autoplaySpeed: 4000,
 };
 
 type ICardsProps = {
