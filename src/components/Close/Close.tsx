@@ -1,4 +1,3 @@
-import React from "react";
 import css from "./Close.module.scss";
 import sprite from "../../assets/sprite.svg";
 
