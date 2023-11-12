@@ -8,7 +8,6 @@ import ReviewsPage from "./pages/ReviewsPage/ReviewsPage";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import useTheme from "./hooks/useTheme";
 import { AppRoute } from "./const/route";
-import LoginForm from "./components/Forms/LoginForm";
 import RegistrationForm from "./components/Forms/RegistrationForm";
 import RecoveryForm from "./components/Forms/RecoveryForm";
 
@@ -24,7 +23,6 @@ const App = () => {
             <Route path={AppRoute.Dashboard} element={<DashboardPage />} />
             <Route path={AppRoute.Reviews} element={<ReviewsPage />} />
             <Route path={AppRoute.NotFound} element={<NFPage />} />
-            <Route path={AppRoute.Login} element={<LoginForm />} />
             <Route
               path={AppRoute.Registration}
               element={<RegistrationForm />}

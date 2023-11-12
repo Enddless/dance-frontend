@@ -7,15 +7,16 @@ import LoginForm from "../Forms/LoginForm";
 import useTheme from "../../hooks/useTheme";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
-import { AppRoute } from "../../const/route";
 
 const Header = () => {
+
   const { isDark, setIsDark } = useTheme();
 
   const [isOpenModal, setIsModal] = useState(false);
   const openModalForm = () => {
     setIsModal(!isOpenModal);
     setIsDark(!isDark);
+
   };
 
   return (
