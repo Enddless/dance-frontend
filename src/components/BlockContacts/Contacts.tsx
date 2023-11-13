@@ -11,9 +11,11 @@ const Contacts = () => {
       <MapBlock />
       <div className={css.info}>
         <div className={css.location}>
-          <svg width="24" height="33" viewBox="0 0 24 33">
-            <use xlinkHref={`${sprite}#location`}></use>
-          </svg>
+          <div>
+            <svg width="25" height="33" viewBox="0 0 25 33">
+              <use xlinkHref={`${sprite}#location`}></use>
+            </svg>
+          </div>
           <p>Южно-Сахалинск, Коммунистический проспект, 20,</p>
         </div>
 
@@ -26,8 +28,10 @@ const Contacts = () => {
           </p>
         </div>
 
-        <p>Мы в социальных сетях:</p>
-        <SocialLinks />
+        <div className={css.socialBlock}>
+          <p>Мы в социальных сетях:</p>
+          <SocialLinks />
+        </div>
       </div>
     </section>
   );

@@ -5,7 +5,6 @@ import sprite from "../../assets/sprite.svg";
 import SocialLinks from "../SocialLinks/SocialLinks";
 import { HashLink } from "react-router-hash-link";
 import { Link } from "react-router-dom";
-import { AppRoute } from "../../const/route";
 
 const Footer = () => {
   return (
