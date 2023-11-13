@@ -27,6 +27,9 @@ $btn-background-default: #ffa800;
 $btn-background-hover: #ffc700;
 $btn-color-secondary: #fdf8f0;
 $btn-background-secondary: #13340a;
+$btn-border-default: #13340a;
+$btn-boxshadow: #0000004d;
+$btn-menuArea-background-active: #3AA31E;
 
 @mixin ButtonPrimary {
   display: flex;
@@ -42,7 +45,8 @@ $btn-background-secondary: #13340a;
   font-size: 20px;
   line-height: normal;
   font-weight: 400;
-  color: $white;
+  color: #13340a;
+  background:transparent;
 }
 @mixin ButtonDisabled {
   background: $gray;

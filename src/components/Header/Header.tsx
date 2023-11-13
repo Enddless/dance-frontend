@@ -7,16 +7,18 @@ import LoginForm from "../Forms/LoginForm";
 import useTheme from "../../hooks/useTheme";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
+import useLogin from "../../hooks/useLogin";
+import { usersMock } from "../../mocks/usersMock";
+import AreaForm from "../Forms/AreaForm";
 
 const Header = () => {
-
   const { isDark, setIsDark } = useTheme();
-
+  const { isLogged } = useLogin();
+  //  открытие модалки регистрации или входа
   const [isOpenModal, setIsModal] = useState(false);
   const openModalForm = () => {
     setIsModal(!isOpenModal);
     setIsDark(!isDark);
-
   };
 
   return (
@@ -42,9 +44,25 @@ const Header = () => {
         </ul>
       </nav>
 
-      <Button text="Вход" openModalForm={openModalForm}></Button>
-
-      {isOpenModal && <LoginForm openModalForm={openModalForm} />}
+      {isLogged ? (
+        <>
+          <Button
+            text={usersMock.username}
+            cls="btn-enter"
+            openModalForm={openModalForm}
+          ></Button>
+          {isOpenModal && <AreaForm openModalForm={openModalForm} />}
+        </>
+      ) : (
+        <>
+          <Button
+            text="Вход"
+            cls="btn-enter"
+            openModalForm={openModalForm}
+          ></Button>
+          {isOpenModal && <LoginForm openModalForm={openModalForm} />}
+        </>
+      )}
     </div>
   );
 };

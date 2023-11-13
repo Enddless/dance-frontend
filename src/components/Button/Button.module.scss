@@ -2,12 +2,14 @@
 
 .btn {
   @include ButtonPrimary();
+}
+.btnEnter {
   background: $btn-background-default;
-  color:$body-color-primary;
+  color: $body-color-primary;
   font-family: $body-family-secondary-regular;
-  font-size: 24px;
   font-weight: 600;
   letter-spacing: 0.96px;
+  font-size:24px;
 }
 
 .btn:hover {
@@ -15,8 +17,22 @@
 }
 
 .btnMore {
-  width:750px;
-  margin:30px auto 0;
+  width: 750px;
+  margin: 30px auto 0;
+  background: $btn-background-default;
   color: $btn-color-secondary;
-  padding:15px 20px;
+  padding: 15px 20px;
+  font-size:24px;
+}
+.menuAreaButton {
+  background: transparent;
+  width: 100%;
+  outline: 1px solid $btn-border-default;
+  box-shadow: 2px 2px 15px 0px $btn-boxshadow;
+}
+.menuAreaButton:hover,
+.active {
+  background: $btn-menuArea-background-active;
+  color: $white;
+  outline:none;
 }
