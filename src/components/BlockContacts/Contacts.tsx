@@ -12,7 +12,7 @@ const Contacts = () => {
       <div className={css.info}>
         <div className={css.location}>
           <div>
-            <svg width="25" height="33" viewBox="0 0 25 33">
+            <svg width="25" height="25" viewBox="0 0 25 25">
               <use xlinkHref={`${sprite}#location`}></use>
             </svg>
           </div>

@@ -32,8 +32,8 @@ const Footer = () => {
       </ul>
       <div className={css.contacts}>
         <div className={css.location}>
-          <div>
-            <svg width="25" height="33" viewBox="0 0 25 33">
+          <div style={{width:"24"}}>
+            <svg width="25" height="25" viewBox="0 0 25 25">
               <use xlinkHref={`${sprite}#location`}></use>
             </svg>
           </div>
