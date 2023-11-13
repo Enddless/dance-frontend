@@ -3,38 +3,61 @@ import Logo from "../Logo/Logo";
 import { pagesFooter } from "../../mocks/mocks";
 import sprite from "../../assets/sprite.svg";
 import SocialLinks from "../SocialLinks/SocialLinks";
+import { HashLink } from "react-router-hash-link";
+import { Link } from "react-router-dom";
+import { AppRoute } from "../../const/route";
 
 const Footer = () => {
   return (
     <div className={css.footer}>
-      <Logo />
+      <div className={css.logo}>
+        <Logo />
+      </div>
+
       <ul className={css.menuItem}>
         {pagesFooter.map((page) => {
+          const check =
+            page.title === "Услуги и цены" || page.title === "Контакты";
           return (
             <li key={page.id} className={css.menuItem}>
-              {page.title}
+              {check ? (
+                <HashLink smooth to={page.url}>
+                  {page.title}
+                </HashLink>
+              ) : (
+                <Link to={page.url}>{page.title}</Link>
+              )}
             </li>
           );
         })}
       </ul>
       <div className={css.contacts}>
-
         <div className={css.location}>
-          <svg width="17" height="17" viewBox="0 0 17 17">
-            <use xlinkHref={`${sprite}#location`}></use>
-          </svg>
-          <p>Адрес, город, улица, дом <br/>c 00:00 до 00:00</p>
+          <div>
+            <svg width="25" height="33" viewBox="0 0 25 33">
+              <use xlinkHref={`${sprite}#location`}></use>
+            </svg>
+          </div>
+          <p>
+            Южно-Сахалинск, Коммунистический проспект, 20, <br />c 09:00 до
+            21:00
+          </p>
         </div>
 
         <div className={css.phone}>
-          <svg width="14" height="14" viewBox="0 0 14 14">
+          <svg width="25" height="25" viewBox="0 0 25 25">
             <use xlinkHref={`${sprite}#phone`}></use>
           </svg>
-          <p>+7 (495) 788-77-50</p>
+          <p>
+            <a href="tel:+74957887750">+7 (495) 788-77-50</a>
+          </p>
         </div>
 
-        <p>Мы в социальных сетях:</p>
-        <SocialLinks />
+        <div className={css.socialBlock}>
+          <p>Мы в социальных сетях:</p>
+          <SocialLinks />
+        </div>
+
         <p className={css.download}>Скачать приложение</p>
       </div>
     </div>

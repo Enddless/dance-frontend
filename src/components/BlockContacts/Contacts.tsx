@@ -11,17 +11,19 @@ const Contacts = () => {
       <MapBlock />
       <div className={css.info}>
         <div className={css.location}>
-          <svg width="17" height="17" viewBox="0 0 17 17">
+          <svg width="24" height="33" viewBox="0 0 24 33">
             <use xlinkHref={`${sprite}#location`}></use>
           </svg>
-          <p>Адрес, город, улица, дом</p>
+          <p>Южно-Сахалинск, Коммунистический проспект, 20,</p>
         </div>
 
         <div className={css.phone}>
-          <svg width="14" height="14" viewBox="0 0 14 14">
+          <svg width="25" height="25" viewBox="0 0 25 25">
             <use xlinkHref={`${sprite}#phone`}></use>
           </svg>
-          <p>+7 (495) 788-77-50</p>
+          <p>
+            <a href="tel:+74957887750">+7 (495) 788-77-50</a>
+          </p>
         </div>
 
         <p>Мы в социальных сетях:</p>
