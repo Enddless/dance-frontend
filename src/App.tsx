@@ -10,6 +10,7 @@ import useTheme from "./hooks/useTheme";
 import { AppRoute } from "./const/route";
 import RegistrationForm from "./components/Forms/RegistrationForm";
 import RecoveryForm from "./components/Forms/RecoveryForm";
+import AreaPersonalPage from "./pages/AreaPersonalPage";
 
 const App = () => {
   const { isDark } = useTheme();
@@ -28,6 +29,7 @@ const App = () => {
               element={<RegistrationForm />}
             />
             <Route path={AppRoute.Recovery} element={<RecoveryForm />} />
+            <Route path={AppRoute.PersonalArea} element={<AreaPersonalPage />} />
           </Routes>
         </div>
 
