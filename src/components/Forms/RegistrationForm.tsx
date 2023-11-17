@@ -2,22 +2,44 @@ import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import css from "./forms.module.scss";
+import instance from "../../utils/axios";
+import ConfirmationForm from "./ConfirmationForm";
 
 const RegistrationForm = () => {
   const [checkPassword, setCheckPassword] = useState(false);
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-    dublPassword: "",
+    "email": "",
+    "password": "",
+    "dublPassword": "",
   });
 
   const handleChange = (e: { target: { name: string; value: string } }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
+  //регистрация пользователя
+  const [user, setUser] = useState()
+  const url = "/registration";
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
+    instance({
+      method: 'POST',
+      url: url,
+      data: {
+        "emailuser": formData.email,
+        "password": formData.password,
+      },
+    })
+      .then((response) => {
+        const rezult = response.data;
+        console.log("Данные  = " , rezult)
+        localStorage.setItem("user data:", JSON.stringify(rezult));
+        setUser(rezult);
+      })
+      .catch((error) => {
+        console.log('Ошибка выгрузки', error.response);
+      });
   };
+  
 
   const [showPassword, setShowPassword] = useState(false);
   const togglePasswordVisibility = () => {
@@ -95,6 +117,8 @@ const RegistrationForm = () => {
           Зарегистрироваться
         </button>
       </form>
+
+      {user !== undefined && <ConfirmationForm email={formData.email} password={formData.password}/>}
     </>
   );
 };

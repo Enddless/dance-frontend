@@ -15,7 +15,6 @@ type IModalFormProps = {
 const LoginForm = ({ openModalForm }: IModalFormProps) => {
   //состояния форм
   const [isLoginForm, setIsLoginForm] = useState(true);
-  console.log(setIsLoginForm);
   const [isRecovery, setIsRecovery] = useState(false);
   const [isRegistration, setIsRegistration] = useState(false);
 
