@@ -148,7 +148,7 @@ export const pagesFooter: IPagesFooter[] = [
   {
     id: 4,
     title: "Отзывы",
-    url: "/#reviewsBlock",
+    url: "/reviews",
   },
   {
     id: 5,
@@ -396,13 +396,13 @@ export const dashboardInfo: IDashboardInfo[] = [
 export const POINTS = [
   {
     title: "Южно-Сахалинск",
-    lat: 46.960761,
-    lng: 142.74549,
+    lat: 46.960791,
+    lng: 142.746179,
   },
 ];
 export const CITY = {
   title: "Южно-Сахалинск",
-  lat: 46.960761,
-  lng: 142.74549,
+  lat: 46.960791,
+  lng: 142.746179,
   zoom: 17,
 };
