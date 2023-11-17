@@ -19,7 +19,7 @@ const App = () => {
     <BrowserRouter>
       <div className={css.app}>
         <Header />
-        <div className={isDark ? `${css.blurContent}` : ""}>
+        <div className={isDark ? `${css.blurContent}` : ""}></div>
           <Routes>
             <Route path={AppRoute.Root} element={<MainPage />} />
             <Route path={AppRoute.Dashboard} element={<DashboardPage />} />
@@ -33,7 +33,7 @@ const App = () => {
             <Route path={AppRoute.PersonalArea} element={<AreaPersonalPage />} />
             <Route path={AppRoute.AdministratorArea} element={<AreaAdminPage />} />
           </Routes>
-        </div>
+        
 
         <Footer />
       </div>
