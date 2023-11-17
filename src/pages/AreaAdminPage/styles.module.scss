@@ -1,0 +1,21 @@
+@import "../../styles/variables.scss";
+
+.container {
+    display: grid;
+    grid-template-columns:repeat(12, 1fr);
+    background: #FDF8F0;
+    column-gap:20px;
+}
+.sidebar {
+  display: fixed;
+  left: 0;
+  top: 0;
+  background: $sidebar-background;
+  height: 100vh;
+  color: $sidebar-color;
+  grid-column: span 2;
+  padding:40px 15px 40px 40px;
+}
+.menuItem {
+  margin:10px 0;
+}
