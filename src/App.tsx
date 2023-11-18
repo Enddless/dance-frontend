@@ -11,6 +11,7 @@ import { AppRoute } from "./const/route";
 import RegistrationForm from "./components/Forms/RegistrationForm";
 import RecoveryForm from "./components/Forms/RecoveryForm";
 import AreaPersonalPage from "./pages/AreaPersonalPage";
+import AreaAdminPage from "./pages/AreaAdminPage";
 
 const App = () => {
   const { isDark } = useTheme();
@@ -30,6 +31,7 @@ const App = () => {
             />
             <Route path={AppRoute.Recovery} element={<RecoveryForm />} />
             <Route path={AppRoute.PersonalArea} element={<AreaPersonalPage />} />
+            <Route path={AppRoute.AdministratorArea} element={<AreaAdminPage />} />
           </Routes>
         
 
