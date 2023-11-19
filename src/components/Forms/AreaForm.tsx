@@ -14,6 +14,7 @@ type IModalFormProps = {
 const AreaForm = ({ openModalForm }: IModalFormProps) => {
   
   const navigate = useNavigate();
+
   const { setIsLogged } = useLogin();
   const classNamesList = classNames(css.formWrapper, css.area);
 
@@ -26,6 +27,9 @@ const AreaForm = ({ openModalForm }: IModalFormProps) => {
   return (
     <div className={classNamesList}>
       <Close openModalForm={openModalForm} />
+      {/* этот блок скорректировать, когда будет работать вход в ЛК
+      {role === "person" && <Link to={AppRoute.PersonalArea}>Личный кабинет</Link>}    
+       {role === "administrator" && <Link to={AppRoute.AdministratorArea}>Личный кабинет</Link>}   */}
       <Link to={AppRoute.PersonalArea}>Личный кабинет</Link>
       <button onClick={handleClick}>Выход из аккаунта</button>
     </div>

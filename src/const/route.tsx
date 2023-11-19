@@ -6,5 +6,6 @@ export enum AppRoute {
   Dashboard = "/dashboard",
   Reviews = "/reviews",
   PersonalArea = "personal-area",
+  AdministratorArea = "administration",
   NotFound = "/*",
 }

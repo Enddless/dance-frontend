@@ -3,7 +3,7 @@ $white: #fff;
 $gray: #e4e3e3;
 $opacity-black: #00000099;
 $athens-gray: #d9d9d9;
-$blur-background: #f7f2f2;
+$blur-background: rgba(0, 0, 0, 0.30);
 
 //PRIMARY SETTINGS
 $body-background-primary: #fdf8f0;
@@ -69,3 +69,7 @@ $dashboard-color: #13340a;
 //FORM ENTER SETTINGS
 $form-enter-background: #fdf8f0;
 $form-enter-color: #13340a;
+
+//SIDEBAR IN ADMIN SETTINGS
+$sidebar-background: #13340a;
+$sidebar-color: #fdf8f0;
