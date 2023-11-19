@@ -46,7 +46,7 @@ const AreaForm = ({ openModalForm }: IModalFormProps) => {
       .catch((error) => {
         console.log("Ошибка", error.response);
       });
-  }, []);
+  }, [token]);
 
   if (!role) return false;
   return (
