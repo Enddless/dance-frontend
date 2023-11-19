@@ -48,7 +48,7 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
         console.log("Данные  = ", rezult);
         setIsLoginForm(!isLoginForm);
         setIsLogged(!isLogged)
-        localStorage.setItem("user token", JSON.stringify(rezult));
+        localStorage.setItem("token", (rezult.token));
         if (openModalForm) openModalForm()
       })
       .catch((error) => {

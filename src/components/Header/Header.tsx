@@ -22,7 +22,7 @@ const Header = () => {
   };
 
   //получение данных пользователя
-  const userData = localStorage.getItem("user token")
+  const token = localStorage.getItem("token")
   
   return (
     <div className={css.header}>
@@ -47,7 +47,7 @@ const Header = () => {
         </ul>
       </nav>
 
-      {userData ? (
+      {token ? (
         <>
           <Button
             text="Енот"
