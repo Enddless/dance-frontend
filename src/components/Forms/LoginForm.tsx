@@ -6,13 +6,15 @@ import RecoveryForm from "./RecoveryForm";
 import RegistrationForm from "./RegistrationForm";
 import classNames from "classnames";
 import Close from "../Close/Close";
-
+import useLogin from "../../hooks/useLogin";
+import instance from "../../utils/axios";
 
 type IModalFormProps = {
   openModalForm?: () => void;
 };
 
 const LoginForm = ({ openModalForm }: IModalFormProps) => {
+  const { isLogged, setIsLogged } = useLogin();
   //состояния форм
   const [isLoginForm, setIsLoginForm] = useState(true);
   const [isRecovery, setIsRecovery] = useState(false);
@@ -21,7 +23,7 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
   
   //состояние инпутов главной формы
   const [item, setItem] = useState({
-    tel: "",
+    email: "",
     password: "",
   });
 
@@ -29,8 +31,29 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
     setItem({ ...item, [e.target.name]: e.target.value });
   };
 
+  //вход пользователя
+  const url = "/login";
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
+    instance({
+      method: "POST",
+      url: url,
+      data: {
+        emailuser: item.email,
+        password: item.password,
+      },
+    })
+      .then((response) => {
+        const rezult = response.data;
+        console.log("Данные  = ", rezult);
+        setIsLoginForm(!isLoginForm);
+        setIsLogged(!isLogged)
+        localStorage.setItem("user token", JSON.stringify(rezult));
+        if (openModalForm) openModalForm()
+      })
+      .catch((error) => {
+        console.log("Ошибка выгрузки", error.response);
+      });
   };
 
   //состояние переключения "глазика"
@@ -51,13 +74,13 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
           <h3>Вход</h3>
           <form onSubmit={handleSubmit} className={css.form}>
             <label htmlFor="tel">
-              Номер телефона
+              Адрес электронной почты
               <input
-                type="text"
-                value={item.tel}
+                type="email"
+                value={item.email}
                 onChange={handleChange}
-                name="tel"
-                placeholder="+7 (000) 0000000"
+                name="email"
+                placeholder="example@gmail.com"
               />
             </label>
 

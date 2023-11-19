@@ -7,7 +7,6 @@ type ICodeProps = {
   password: string;
 };
 const ConfirmationForm = ({email, password}: ICodeProps) => {
-
   //регистрация пользователя
   const [codeData, setCodeData] = useState("");
   const urlConfirm = "http://localhost:8585/confirmation";
@@ -24,10 +23,10 @@ const ConfirmationForm = ({email, password}: ICodeProps) => {
     }).then((response) => {
       const rezult = response.data;
       console.log("Данные  = ", rezult);
+    })
+    .catch((error) => {
+      console.log('Ошибка выгрузки сводки', error.response);
     });
-    // .catch((error) => {
-    //   console.log('Ошибка выгрузки сводки', error.response);
-    // });
   };
 
   return (

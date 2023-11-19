@@ -1,19 +1,19 @@
 import css from "./Header.module.scss";
 import Logo from "../Logo/Logo";
 import Button from "../Button/Button";
-import { useState } from "react";
+import { useState} from "react";
 import { pagesHeader } from "../../mocks/mocks";
 import LoginForm from "../Forms/LoginForm";
 import useTheme from "../../hooks/useTheme";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
-import useLogin from "../../hooks/useLogin";
-import { usersMock } from "../../mocks/usersMock";
+// import useLogin from "../../hooks/useLogin";
+// import { usersMock } from "../../mocks/usersMock";
 import AreaForm from "../Forms/AreaForm";
 
 const Header = () => {
   const { isDark, setIsDark } = useTheme();
-  const { isLogged } = useLogin();
+  // const { isLogged } = useLogin();
   //  открытие модалки регистрации или входа
   const [isOpenModal, setIsModal] = useState(false);
   const openModalForm = () => {
@@ -21,6 +21,9 @@ const Header = () => {
     setIsDark(!isDark);
   };
 
+  //получение данных пользователя
+  const userData = localStorage.getItem("user token")
+  
   return (
     <div className={css.header}>
       <Logo />
@@ -44,10 +47,10 @@ const Header = () => {
         </ul>
       </nav>
 
-      {isLogged ? (
+      {userData ? (
         <>
           <Button
-            text={usersMock.username}
+            text="Енот"
             cls="btn-enter"
             openModalForm={openModalForm}
           ></Button>
@@ -56,7 +59,7 @@ const Header = () => {
       ) : (
         <>
           <Button
-            text="Вход"
+            text={"Вход"}
             cls="btn-enter"
             openModalForm={openModalForm}
           ></Button>
