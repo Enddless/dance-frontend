@@ -105,7 +105,11 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
               />
             </label>
 
-            <div className={css.link}>
+            
+
+            <button type="submit">Войти</button>
+          </form>
+          <div className={css.link}>
               <button onClick={() => setIsRecovery(!isRecovery)}>
                 Восстановить пароль
               </button>
@@ -113,9 +117,6 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
                 Зарегистрироваться
               </button>
             </div>
-
-            <button type="submit">Войти</button>
-          </form>
         </div>
       )}
       {isRecovery && <RecoveryForm />}

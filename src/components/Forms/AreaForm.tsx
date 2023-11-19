@@ -12,6 +12,7 @@ type IModalFormProps = {
 };
 
 const AreaForm = ({ openModalForm }: IModalFormProps) => {
+  
   const navigate = useNavigate();
   const { setIsLogged } = useLogin();
   const classNamesList = classNames(css.formWrapper, css.area);
