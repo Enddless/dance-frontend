@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useState} from "react";
 import css from "./forms.module.scss";
 import instance from "../../utils/axios";
+import { useNavigate } from "react-router-dom";
 
 type ICodeProps = {
   email: string;
   password: string;
 };
 const ConfirmationForm = ({email, password}: ICodeProps) => {
+  const navigate = useNavigate();
   //регистрация пользователя
   const [codeData, setCodeData] = useState("");
   const urlConfirm = "http://localhost:8585/confirmation";
@@ -23,6 +25,7 @@ const ConfirmationForm = ({email, password}: ICodeProps) => {
     }).then((response) => {
       const rezult = response.data;
       console.log("Данные  = ", rezult);
+      navigate("/")
     })
     .catch((error) => {
       console.log('Ошибка выгрузки сводки', error.response);
