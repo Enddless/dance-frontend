@@ -20,7 +20,6 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
   const [isRecovery, setIsRecovery] = useState(false);
   const [isRegistration, setIsRegistration] = useState(false);
 
-  
   //состояние инпутов главной формы
   const [item, setItem] = useState({
     email: "",
@@ -47,9 +46,9 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
         const rezult = response.data;
         console.log("Данные  = ", rezult);
         setIsLoginForm(!isLoginForm);
-        setIsLogged(!isLogged)
-        localStorage.setItem("token", (rezult.token));
-        if (openModalForm) openModalForm()
+        setIsLogged(!isLogged);
+        localStorage.setItem("token", rezult.token);
+        if (openModalForm) openModalForm();
       })
       .catch((error) => {
         console.log("Ошибка выгрузки", error.response);
@@ -72,51 +71,51 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
       {isLoginForm && (
         <div className={classNamesList}>
           <h3>Вход</h3>
-          <form onSubmit={handleSubmit} className={css.form}>
-            <label htmlFor="tel">
-              Адрес электронной почты
-              <input
-                type="email"
-                value={item.email}
-                onChange={handleChange}
-                name="email"
-                placeholder="example@gmail.com"
-              />
-            </label>
+          <div className={css.container}>
+            <form onSubmit={handleSubmit} className={css.form}>
+              <label htmlFor="tel">
+                Адрес электронной почты
+                <input
+                  type="email"
+                  value={item.email}
+                  onChange={handleChange}
+                  name="email"
+                  placeholder="example@gmail.com"
+                />
+              </label>
 
-            <label htmlFor="password">
-              Пароль
-              <input
-                value={item.password}
-                onChange={handleChange}
-                name="password"
-                type={showPassword ? "text" : "password"}
-              />
-              <FontAwesomeIcon
-                icon={showPassword ? faEyeSlash : faEye}
-                onClick={togglePasswordVisibility}
-                style={{
-                  position: "absolute",
-                  right: "110px",
-                  top: "56%",
-                  transform: "translateY(-56%)",
-                  cursor: "pointer",
-                }}
-              />
-            </label>
+              <label htmlFor="password">
+                Пароль
+                <input
+                  value={item.password}
+                  onChange={handleChange}
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                />
+                <FontAwesomeIcon
+                  icon={showPassword ? faEyeSlash : faEye}
+                  onClick={togglePasswordVisibility}
+                  style={{
+                    position: "absolute",
+                    right: "110px",
+                    top: "56%",
+                    transform: "translateY(-56%)",
+                    cursor: "pointer",
+                  }}
+                />
+              </label>
+              <button type="submit">Войти</button>
+            </form>
 
-            
-
-            <button type="submit">Войти</button>
-          </form>
-          <div className={css.link}>
-              <button onClick={() => setIsRecovery(!isRecovery)}>
-                Восстановить пароль
-              </button>
+            <div className={css.link}>
               <button onClick={() => setIsRegistration(!isRegistration)}>
                 Зарегистрироваться
               </button>
+              <button onClick={() => setIsRecovery(!isRecovery)}>
+                Забыли пароль?
+              </button>
             </div>
+          </div>
         </div>
       )}
       {isRecovery && <RecoveryForm />}

@@ -22,7 +22,7 @@ const AreaForm = ({ openModalForm }: IModalFormProps) => {
     setIsLogged(false);
     if (openModalForm) openModalForm();
     navigate(AppRoute.Root);
-    localStorage.removeItem("user token");
+    localStorage.removeItem("token");
   };
 
   //определение роли пользователя
@@ -30,7 +30,6 @@ const AreaForm = ({ openModalForm }: IModalFormProps) => {
   const token = localStorage.getItem("token");
   const url = "/accessAccount";
 
-  console.log("123 = ", token)
   useEffect(() => {
     instance({
       method: "POST",
@@ -48,17 +47,23 @@ const AreaForm = ({ openModalForm }: IModalFormProps) => {
         console.log("Ошибка", error.response);
       });
   }, []);
+
+  if (!role) return false;
   return (
     <div className={classNamesList}>
       <Close openModalForm={openModalForm} />
 
       {role === "customers" && (
-        <Link to={AppRoute.PersonalArea}>Личный кабинет</Link>
+        <button>
+          <Link to={AppRoute.PersonalArea}>Профиль</Link>
+        </button>
       )}
       {role === "director" && (
-        <Link to={AppRoute.AdministratorArea}>Личный кабинет</Link>
+        <button>
+          <Link to={AppRoute.AdministratorArea}>Профиль</Link>
+        </button>
       )}
-      {/* <Link to={AppRoute.PersonalArea} onClick={getRoleUser}>Личный кабинет</Link> */}
+
       <button onClick={handleClick}>Выход из аккаунта</button>
     </div>
   );
