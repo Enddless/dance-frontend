@@ -8,7 +8,7 @@ import StaffPage from "../../components/BlockStaff";
 
 const MainPage = () => {
   return (
-    <div className={""}>
+    <div>
       <SliderBlock cards={bannerUrl} />
       <About />
       <StaffPage />
