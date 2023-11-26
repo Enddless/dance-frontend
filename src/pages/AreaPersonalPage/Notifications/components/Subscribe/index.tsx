@@ -10,7 +10,7 @@ const Subscribe = () => {
           name="radio"
           id="onRadio"
           className={css.checkbox}
-          checked
+          defaultChecked
         />
         <label htmlFor="onRadio" className={css.radioLabel}>Включить</label>
 
