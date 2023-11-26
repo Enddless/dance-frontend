@@ -7,6 +7,7 @@ import {
   IBannerUrl,
   IStaffInfo,
   IDashboardInfo,
+  INotification,
 } from "../interfaces/interfaces";
 import banner from "../assets/lead-banner.png";
 import bannerTwo from "../assets/lead-banner-two.png";
@@ -406,3 +407,31 @@ export const CITY = {
   lng: 142.746179,
   zoom: 17,
 };
+
+export const notificationData: INotification[] = [
+  {
+    id: 1,
+    text: 'Текст нового уведомления',
+    date: new Date(2014, 11, 31, 12, 30, 0),
+  },
+  {
+    id: 2,
+    text: 'Текст нового уведомления',
+    date: new Date(2014, 11, 31, 12, 30, 0),
+  },
+  {
+    id: 3,
+    text: 'Текст нового уведомленияТекст нового уведомленияТекст нового уведомленияТекст нового уведомленияТекст нового уведомленияТекст нового уведомленияТекст нового уведомленияТекст нового уведомленияТекст нового уведомленияТекст нового уведомленияТекст нового уведомления',
+    date: new Date(2014, 11, 31, 12, 30, 0),
+  },
+  {
+    id: 4,
+    text: 'Текст нового уведомления',
+    date: new Date(2014, 11, 31, 12, 30, 0),
+  },
+  {
+    id: 5,
+    text: 'Текст нового уведомления',
+    date: new Date(2014, 11, 31, 12, 30, 0),
+  },
+]

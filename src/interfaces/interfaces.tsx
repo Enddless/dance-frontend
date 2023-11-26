@@ -64,3 +64,9 @@ export interface ICity {
   lng: number;
   zoom: number;
 }
+
+export interface INotification {
+  id: number;
+  text: string;
+  date: Date;
+}
