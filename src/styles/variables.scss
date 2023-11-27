@@ -3,7 +3,7 @@ $white: #fff;
 $gray: #e4e3e3;
 $opacity-black: #00000099;
 $athens-gray: #d9d9d9;
-$blur-background: rgba(0, 0, 0, 0.30);
+$blur-background: rgba(0, 0, 0, 0.3);
 
 //PRIMARY SETTINGS
 $body-background-primary: #fdf8f0;
@@ -13,6 +13,10 @@ $body-family-secondary-regular: "Gotham Pro regular";
 $body-family-secondary-bold: "Gotham Pro bold";
 $body-family-secondary-medium: "Gotham Pro medium";
 $body-family-secondary-black: "Gotham Pro black";
+@mixin Grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
 
 //HEADER SETTINGS
 $header-background: #13340a;
@@ -29,8 +33,8 @@ $btn-color-secondary: #fdf8f0;
 $btn-background-secondary: #13340a;
 $btn-border-default: #13340a;
 $btn-boxshadow: #0000004d;
-$btn-areaForm-color: #3AA31E;
-$btn-menuArea-background-active: #3AA31E;
+$btn-areaForm-color: #3aa31e;
+$btn-menuArea-background-active: #3aa31e;
 
 @mixin ButtonPrimary {
   display: flex;
@@ -47,7 +51,7 @@ $btn-menuArea-background-active: #3AA31E;
   line-height: normal;
   font-weight: 400;
   color: #13340a;
-  background:transparent;
+  background: transparent;
 }
 @mixin ButtonDisabled {
   background: $gray;
@@ -76,7 +80,4 @@ $sidebar-background: #13340a;
 $sidebar-color: #fdf8f0;
 
 //PERSONAL AREA: NOTIFICATION SETTINGS
-$notification-background: #C4CCC1;
-
-
-
+$notification-background: #c4ccc1;
