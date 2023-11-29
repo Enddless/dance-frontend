@@ -10,7 +10,12 @@
 .profileImg {
   width: 45%;
   height: 446px;
-  background: grey;  //будет удалено
+  background: grey; //будет удалено
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 5px;
+  padding: 15px;
 }
 .form {
   width: 45%;
