@@ -73,4 +73,18 @@
 			</defs>
 		</g>
 	</symbol>
+	<symbol id="note" width="24" height="24" viewBox="0 0 24 24" fill="none">
+		<g>
+      <path d="M10.0002 4H7.2002C6.08009 4 5.51962 4 5.0918 4.21799C4.71547 4.40973 4.40973 4.71547 4.21799 5.0918C4 5.51962 4 6.08009 4 7.2002V16.8002C4 17.9203 4 18.4801 4.21799 18.9079C4.40973 19.2842 4.71547 19.5905 5.0918 19.7822C5.5192 20 6.07899 20 7.19691 20H16.8031C17.921 20 18.48 20 18.9074 19.7822C19.2837 19.5905 19.5905 19.2839 19.7822 18.9076C20 18.4802 20 17.921 20 16.8031V14M16 5L10 11V14H13L19 8M16 5L19 2L22 5L19 8M16 5L19 8" stroke="#13340A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+		</g>
+	</symbol>
+	<symbol id="trash" width="24" height="24" viewBox="0 0 24 24" fill="none">
+		<g>
+      <path d="M21 5.98047C17.67 5.65047 14.32 5.48047 10.98 5.48047C9 5.48047 7.02 5.58047 5.04 5.78047L3 5.98047" stroke="#13340A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+			<path d="M8.5 4.97L8.72 3.66C8.88 2.71 9 2 10.69 2H13.31C15 2 15.13 2.75 15.28 3.67L15.5 4.97" stroke="#13340A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+			<path d="M18.8504 9.14062L18.2004 19.2106C18.0904 20.7806 18.0004 22.0006 15.2104 22.0006H8.79039C6.00039 22.0006 5.91039 20.7806 5.80039 19.2106L5.15039 9.14062" stroke="#13340A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+			<path d="M10.3301 16.5H13.6601" stroke="#13340A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+			<path d="M9.5 12.5H14.5" stroke="#13340A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+		</g>
+	</symbol>
 </svg>
