@@ -1,2 +1,18 @@
 @import "../../../styles/variables.scss";
 
+.ticketsTable {
+  border: none;
+  border-spacing: 20px;
+
+  td {
+    border: none;
+  }
+  .tableTitle {
+    font-size: 20px;
+  }
+  .tableRow {
+    background: $body-background-primary;
+    box-shadow: 0px 3px 10px 0px $table-shadow, 0px -3px 10px 0px $table-shadow;
+    text-align: center;
+  }
+}
