@@ -1,6 +1,6 @@
 import css from "./ReviewsPage.module.scss";
 
-import Reviews from "../../components/BlockReviews/Reviews";
+import Reviews from "../MainPage/components/Reviews/Reviews";
 
 const ReviewsPage = () => {
   return (

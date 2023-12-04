@@ -1,6 +1,6 @@
-import TitleSection from "../Title/Title";
+import TitleSection from "../../../../components/Title/Title";
 import css from "./About.module.scss";
-import { hallUrl } from "../../mocks/mocks";
+import { hallUrl } from "../../../../mocks/mocks";
 
 const About = () => {
   return (

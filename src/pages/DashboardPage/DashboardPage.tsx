@@ -1,4 +1,4 @@
-import Dashboard from "../../components/BlockDashboard/Dashboard";
+import Dashboard from "../MainPage/components/Dashboard/Dashboard";
 
 
 const DashboardPage = () => {
