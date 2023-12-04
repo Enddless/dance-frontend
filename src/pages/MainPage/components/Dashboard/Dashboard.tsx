@@ -1,6 +1,7 @@
-import TitleSection from "../Title/Title";
+
 import css from "./Dashboard.module.scss";
-import sprite from "../../assets/sprite.svg";
+import sprite from "../../../../assets/sprite.svg";
+import TitleSection from "../../../../components/Title/Title";
 
 const Dashboard = () => {
   return (

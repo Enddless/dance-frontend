@@ -1,15 +1,15 @@
-import { pricesInfo } from "../../mocks/mocks";
-import Card from "../Card/Card";
-import TitleSection from "../Title/Title";
+import { pricesInfo } from "../../../../mocks/mocks";
 import css from "./Prices.module.scss";
+import TitleSection from "../../../../components/Title/Title";
+import Card from "../../../../components/Card/Card";
 
 const Prices = () => {
   return (
     <section className={css.services} id="pricesBlock">
-      <TitleSection title="Услуги и цены"/>
+      <TitleSection title="Услуги и цены" />
       <div className={css.container}>
         {pricesInfo.map((price) => {
-          return <Card key={price.id} price={price}/>;
+          return <Card key={price.id} price={price} />;
         })}
       </div>
       <p className={css.text}>

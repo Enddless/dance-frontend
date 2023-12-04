@@ -1,10 +1,11 @@
-import { reviewsInfo } from "../../mocks/mocks";
-import Button from "../Button/Button";
-import Card from "../Card/Card";
-import TitleSection from "../Title/Title";
+
 import css from "./Reviews.module.scss";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
+import TitleSection from "../../../../components/Title/Title";
+import { reviewsInfo } from "../../../../mocks/mocks";
+import Card from "../../../../components/Card/Card";
+import Button from "../../../../components/Button/Button";
 
 interface IPageIDProps {
   id?: string;

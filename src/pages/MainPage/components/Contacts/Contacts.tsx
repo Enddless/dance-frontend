@@ -1,8 +1,8 @@
-import MapBlock from "../Map/Map";
-import SocialLinks from "../SocialLinks/SocialLinks";
-import TitleSection from "../Title/Title";
 import css from "./Contacts.module.scss";
-import sprite from "../../assets/sprite.svg";
+import sprite from "../../../../assets/sprite.svg";
+import TitleSection from "../../../../components/Title/Title";
+import MapBlock from "../../../../components/Map/Map";
+import SocialLinks from "../../../../components/SocialLinks/SocialLinks";
 
 const Contacts = () => {
   return (
