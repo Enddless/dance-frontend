@@ -10,6 +10,7 @@ import { HashLink } from "react-router-hash-link";
 // import useLogin from "../../hooks/useLogin";
 // import { usersMock } from "../../mocks/usersMock";
 import AreaForm from "../Forms/AreaForm";
+import { useAppSelector } from "../../services/type-service";
 
 const Header = () => {
   const { isDark, setIsDark } = useTheme();
@@ -22,7 +23,9 @@ const Header = () => {
   };
 
   //получение данных пользователя
-  const token = localStorage.getItem("token")
+  const authorizationStatus = useAppSelector(
+    (state) => state.auth.authStatus
+  );
   
   return (
     <div className={css.header}>
@@ -47,7 +50,7 @@ const Header = () => {
         </ul>
       </nav>
 
-      {token ? (
+      {authorizationStatus === 'AUTH' ? (
         <>
           <Button
             text="Енот"

@@ -4,13 +4,17 @@ import App from "./App.tsx";
 import "./index.css";
 import { ThemeProvider } from "./providers/ThemeProvider.tsx";
 import { LoginProvider } from "./providers/LoginProvider.tsx";
+import { store } from "./store/index.ts";
+import { Provider } from "react-redux";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <ThemeProvider>
-    <LoginProvider>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    </LoginProvider>
-  </ThemeProvider>
+  <React.StrictMode>
+    <Provider store={store}>
+      <ThemeProvider>
+        <LoginProvider>
+          <App />
+        </LoginProvider>
+      </ThemeProvider>
+    </Provider>
+  </React.StrictMode>
 );

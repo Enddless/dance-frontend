@@ -5,8 +5,9 @@ import useLogin from "../../hooks/useLogin";
 import { Link } from "react-router-dom";
 import { AppRoute } from "../../const/route";
 import { useNavigate } from "react-router-dom";
-import instance from "../../utils/axios";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../services/type-service";
+import { getCurrentUserData } from "../../services/thunk/userData";
 
 type IModalFormProps = {
   openModalForm?: () => void;
@@ -25,29 +26,15 @@ const AreaForm = ({ openModalForm }: IModalFormProps) => {
     localStorage.removeItem("token");
   };
 
+  console.log(localStorage.getItem("token"));
   //определение роли пользователя
-  const [role, setRole] = useState("");
-  const token = localStorage.getItem("token");
-  const url = "/accessAccount";
+  const role = useAppSelector((state) => state.user.userData)?.role;
 
+  console.log(role);
+  const dispatch = useAppDispatch();
   useEffect(() => {
-    instance({
-      method: "POST",
-      url: url,
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((response) => {
-        const rezult = response.data;
-        console.log("Роль пользователя  = ", rezult);
-        setRole(rezult.role);
-      })
-      .catch((error) => {
-        console.log("Ошибка", error.response);
-      });
-  }, [token]);
-
+    dispatch(getCurrentUserData());
+  }, [dispatch]);
   if (!role) return false;
   return (
     <div className={classNamesList}>
