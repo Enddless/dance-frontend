@@ -35,7 +35,6 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
   //вход пользователя
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    // dispatch
     const emailUser = item.email;
     const password = item.password;
     const data = {
@@ -43,6 +42,7 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
       password,
     };
     dispatch(login(data));
+    // dispatch(getCurrentUserData());
     setIsLoginForm(!isLoginForm);
     setIsLogged(!isLogged);
     if (openModalForm) openModalForm();

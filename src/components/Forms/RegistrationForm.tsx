@@ -7,14 +7,14 @@ import { useAppDispatch, useAppSelector } from "../../services/type-service";
 import { registration } from "../../services/thunk/auth";
 
 const RegistrationForm = () => {
-  const authorizationStatus = useAppSelector(
+  const registrationStatus = useAppSelector(
     (state) => state.auth.isRegistrationLoading
   );
   useEffect(() => {
-    if (authorizationStatus === "fulfilled") {
+    if (registrationStatus === "fulfilled") {
       setSuccessForm(!successForm);
     }
-  }, [authorizationStatus]);
+  }, [registrationStatus]);
 
   const [checkPassword, setCheckPassword] = useState(false);
   const [formData, setFormData] = useState({

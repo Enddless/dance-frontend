@@ -1,6 +1,5 @@
 import {  useState } from "react";
 import css from "./forms.module.scss";
-import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../services/type-service";
 import { confirmation } from "../../services/thunk/auth";
 
@@ -10,12 +9,10 @@ type ICodeProps = {
 };
 const ConfirmationForm = ({ email, password }: ICodeProps) => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const [codeData, setCodeData] = useState("");
 
   const confirmSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    // dispatch
     const code = Number(codeData);
     const data = {
       emailUser: email,
@@ -23,7 +20,6 @@ const ConfirmationForm = ({ email, password }: ICodeProps) => {
       code,
     };
     dispatch(confirmation(data));
-    navigate("/");
   };
 
   return (

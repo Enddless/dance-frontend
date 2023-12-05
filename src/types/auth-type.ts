@@ -5,6 +5,20 @@ export type StateAuth = {
   isRegistrationLoading: LoadingStatus;
   isConfirmationLoading: LoadingStatus;
   message: string;
+  userData: UserCurrentData | null;
+  isUserDataLoading: LoadingStatus;
+};
+
+export type UserCurrentData = {
+  id: number;
+  userName: string;
+  phoneNumber: number;
+  emailUser: string;
+  password: string;
+  dateOfBirth: null;
+  photoUser: string;
+  role: string;
+  code: number;
 };
 
 export type AuthData = {

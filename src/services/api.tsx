@@ -29,14 +29,4 @@ export const createAPI = (): AxiosInstance => {
   return api;
 };
 
-// создаем базовый экземпляр axios
-// const instance = axios.create({
-//   baseURL: API_URL,
-//   responseType: "json",
-//   headers: {
-//     Accept: "*",
-//     "Content-Type": "application/json",
-//   },
-// });
 
-// export default instance;

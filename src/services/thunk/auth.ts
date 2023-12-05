@@ -1,10 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { APIRoute } from "../../const/route";
-import { AuthData, AuthWithCodeData, ReturnData } from "../../types/auth-type";
+import { AuthData, AuthWithCodeData, ReturnData, UserCurrentData } from "../../types/auth-type";
 import { addToken } from "../token";
-// import { authSlice } from "../../store/slices/auth";
 import { Extra } from "../type-service";
-// import { AuthorizationStatus } from "../../const/const";
+
 
 // ********** AUTH **********
 export const registration = createAsyncThunk<ReturnData, AuthData, Extra>(
@@ -19,7 +18,11 @@ export const registration = createAsyncThunk<ReturnData, AuthData, Extra>(
   }
 );
 
-export const confirmation = createAsyncThunk<ReturnData, AuthWithCodeData, Extra>(
+export const confirmation = createAsyncThunk<
+  ReturnData,
+  AuthWithCodeData,
+  Extra
+>(
   "user/confirmation",
   async ({ emailUser, password, code }, { extra: api }) => {
     const { data } = await api.post<ReturnData>(APIRoute.Confirmation, {
@@ -35,7 +38,10 @@ export const confirmation = createAsyncThunk<ReturnData, AuthWithCodeData, Extra
 export const login = createAsyncThunk<void, AuthData, Extra>(
   "user/login",
   async ({ emailUser, password }, { extra: api }) => {
-    const { data: {token}, data} = await api.post(APIRoute.Login, {
+    const {
+      data: { token },
+      data,
+    } = await api.post(APIRoute.Login, {
       emailUser,
       password,
     });
@@ -44,30 +50,13 @@ export const login = createAsyncThunk<void, AuthData, Extra>(
   }
 );
 
-export const logout = createAsyncThunk<void, AuthData, Extra>(
-  "user/logout",
-  async ({ emailUser, password }, { extra: api }) => {
-    const { data } = await api.post(APIRoute.Login, {
-      emailUser,
-      password,
-    });
-    addToken(data.token);
-    return data;
-  }
-);
+// ********** USERDATA **********
+export const getCurrentUserData = createAsyncThunk<
+  UserCurrentData,
+  string | undefined,
+  Extra
+>("user/role", async (_arg, { extra: api }) => {
+  const { data } = await api.get<UserCurrentData>(APIRoute.Role);
 
-// export const checkAuth = createAsyncThunk<void, undefined, Extra>(
-//     'user/checkAuth',
-//     async (_arg, { dispatch, extra: api }) => {
-//       try {
-//         await api.post(APIRoute.Login);
-//         dispatch(
-//           authSlice.actions.requireAuthStatus(AuthorizationStatus.Auth)
-//         );
-//       } catch {
-//         dispatch(
-//           authSlice.actions.requireAuthStatus(AuthorizationStatus.NoAuth)
-//         );
-//       }
-//     }
-// );
+  return data;
+});

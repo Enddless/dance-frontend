@@ -7,23 +7,29 @@ import { StateAuth } from "../../types/auth-type";
 import { createSlice } from "@reduxjs/toolkit";
 import {
   confirmation,
+  getCurrentUserData,
   login,
-  logout,
   registration,
 } from "../../services/thunk/auth";
+import { deleteToken } from "../../services/token";
+
 const initialState: StateAuth = {
   authStatus: AuthorizationStatus.Unknown,
   isRegistrationLoading: LoadingStatus.Idle,
   isConfirmationLoading: LoadingStatus.Idle,
   message: "",
+  userData: null,
+  isUserDataLoading: LoadingStatus.Idle,
 };
 
 export const authSlice = createSlice({
   name: NameSpace.Auth,
   initialState,
   reducers: {
-    requireAuthStatus(state, action) {
-      state.authStatus = action.payload;
+    logout(state) {
+      state.authStatus = AuthorizationStatus.NoAuth;
+      state.userData = null;
+      deleteToken();
     },
   },
   extraReducers(builder) {
@@ -57,25 +63,21 @@ export const authSlice = createSlice({
       .addCase(login.fulfilled, (state) => {
         state.isConfirmationLoading = LoadingStatus.Fulfilled;
         state.authStatus = AuthorizationStatus.Auth;
-        // state.userData
       })
       .addCase(login.rejected, (state) => {
         state.isConfirmationLoading = LoadingStatus.Rejected;
         state.authStatus = AuthorizationStatus.NoAuth;
       })
-      // ***** logout *****
-      .addCase(logout.fulfilled, (state) => {
-        state.authStatus = AuthorizationStatus.NoAuth;
+      .addCase(getCurrentUserData.pending, (state) => {
+        state.isUserDataLoading = LoadingStatus.Pending;
+      })
+      .addCase(getCurrentUserData.fulfilled, (state, action) => {
+        state.userData = action.payload;
+        state.authStatus = AuthorizationStatus.Auth;
+        state.isUserDataLoading = LoadingStatus.Fulfilled;
+      })
+      .addCase(getCurrentUserData.rejected, (state) => {
+        state.isUserDataLoading = LoadingStatus.Rejected;
       });
-    // ***** checkAuth *****
-    // .addCase(checkAuth.pending, (state) => {
-    //   state.authStatus = AuthorizationStatus.Unknown;
-    // })
-    // .addCase(checkAuth.fulfilled, (state) => {
-    //   state.authStatus = AuthorizationStatus.Auth;
-    // })
-    // .addCase(checkAuth.rejected, (state) => {
-    //   state.authStatus = AuthorizationStatus.NoAuth;
-    // });
   },
 });

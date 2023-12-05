@@ -1,41 +1,38 @@
 import css from "./forms.module.scss";
 import Close from "../Close/Close";
 import classNames from "classnames";
-import useLogin from "../../hooks/useLogin";
 import { Link } from "react-router-dom";
 import { AppRoute } from "../../const/route";
-import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../services/type-service";
-import { getCurrentUserData } from "../../services/thunk/userData";
+import { getCurrentUserData } from "../../services/thunk/auth";
+import { authSlice } from "../../store/slices/auth";
+
 
 type IModalFormProps = {
   openModalForm?: () => void;
 };
 
 const AreaForm = ({ openModalForm }: IModalFormProps) => {
-  const navigate = useNavigate();
-  const { setIsLogged } = useLogin();
   const classNamesList = classNames(css.formWrapper, css.area);
 
   //выход из аккаунта
   const handleClick = () => {
-    setIsLogged(false);
-    if (openModalForm) openModalForm();
-    navigate(AppRoute.Root);
-    localStorage.removeItem("token");
+    dispatch(authSlice.actions.logout());
   };
 
-  console.log(localStorage.getItem("token"));
-  //определение роли пользователя
-  const role = useAppSelector((state) => state.user.userData)?.role;
+  //проверка авторизации пользователя
+  const authorizationStatus = useAppSelector((state) => state.auth.authStatus);
 
-  console.log(role);
+  //определение роли пользователя
+  const role = useAppSelector((state) => state.auth.userData)?.role;
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getCurrentUserData());
   }, [dispatch]);
-  if (!role) return false;
+
+  if (!role && authorizationStatus !== "AUTH") return false;
+
   return (
     <div className={classNamesList}>
       <Close openModalForm={openModalForm} />

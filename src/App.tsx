@@ -13,7 +13,6 @@ import RecoveryForm from "./components/Forms/RecoveryForm";
 import AreaPersonalPage from "./pages/AreaPersonalPage";
 import AreaAdminPage from "./pages/AreaAdminPage";
 
-
 const App = () => {
   const { isDark } = useTheme();
   return (
