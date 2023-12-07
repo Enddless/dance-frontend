@@ -1,3 +1,6 @@
+import hallOne from "../assets/images/hall-one.png";
+import hallTwo from "../assets/images/hall-two.png";
+import hallThree from "../assets/images/hall-three.png";
 export enum NameSpace {
   User = "user",
   Auth = "auth",
@@ -25,7 +28,11 @@ export const menuAreaPersonal = [
   { id: 6, title: "Смена пароля", path: "change-pass" },
   { id: 7, title: "Написать отзыв", path: "review" },
 ];
-export const DEFAULT_BUTTON_AREA_PERSONAL = { id: 1, title: "Основные настройки", path: "primary-settings" };
+export const DEFAULT_BUTTON_AREA_PERSONAL = {
+  id: 1,
+  title: "Основные настройки",
+  path: "primary-settings",
+};
 
 export const menuAreaAdministrator = [
   { id: 1, title: "О студии", path: "about" },
@@ -40,4 +47,38 @@ export const menuAreaAdministrator = [
   { id: 10, title: "Управление пользователями", path: "control-users" },
   { id: 11, title: "Настройки", path: "settings" },
 ];
-export const DEFAULT_BUTTON_AREA_ADMIN =   { id: 1, title: "О студии", path: "about" };
+export const DEFAULT_BUTTON_AREA_ADMIN = {
+  id: 1,
+  title: "О студии",
+  path: "about",
+};
+
+export type THalls = {
+  id: number;
+  name: string;
+  url: string;
+  description: string;
+};
+export const hallsData: THalls[] = [
+  {
+    id: 1,
+    name: "Зал 1",
+    url: `${hallOne}`,
+    description:
+      "Lorem ipsum dolor sit amet consectetur. Urna cras nibh nullam ornare facilisis euismod massa venenatis vel. Tempor ut imperdiet scelerisque dictumst. Pellentesque accumsan adipiscing quis pulvinar fusce pharetra. ",
+  },
+  {
+    id: 2,
+    name: "Зал 2",
+    url: `${hallTwo}`,
+    description:
+      "Lorem ipsum dolor sit amet consectetur. Urna cras nibh nullam ornare facilisis euismod massa venenatis vel. Tempor ut imperdiet scelerisque dictumst. Pellentesque accumsan adipiscing quis pulvinar fusce pharetra. ",
+  },
+  {
+    id: 3,
+    name: "Зал 3",
+    url: `${hallThree}`,
+    description:
+      "Lorem ipsum dolor sit amet consectetur. Urna cras nibh nullam ornare facilisis euismod massa venenatis vel. Tempor ut imperdiet scelerisque dictumst. Pellentesque accumsan adipiscing quis pulvinar fusce pharetra. ",
+  },
+];

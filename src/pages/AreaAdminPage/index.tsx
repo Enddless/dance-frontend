@@ -39,7 +39,7 @@ const AreaAdminPage = () => {
         <ul className={css.menu}>
           {menuAreaAdministrator.map((button) => {
             return (
-              <li onClick={() => openModalForm(button.title)}>
+              <li onClick={() => openModalForm(button.title)} key={button.id}>
                 <NavLink
                   to={`${AppRoute.AdministratorArea}/${button.path}`}
                   key={button.id}

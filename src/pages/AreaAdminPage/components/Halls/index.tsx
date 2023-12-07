@@ -1,22 +1,41 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Button from "../../../../components/Button/Button";
 import LayoutHalls from "./components";
 import css from "./styles.module.scss";
+import { hallsData } from "../../../../const/const";
 
 const Halls = () => {
-  const hallsName = ["Зал 1", "Зал 2", "Зал 3"];
-  const [isActiveButton, setIsActiveButton] = useState("Зал 1");
+  const [isActiveButton, setIsActiveButton] = useState("");
+  const [isLayoutVisible, setIsLayoutVisible] = useState(false);
+  const layoutRef = useRef<HTMLInputElement>(null);
   const openModalForm = (text: string) => {
     setIsActiveButton(text);
+    setIsLayoutVisible(true);
   };
+  const handleClickOutside = (event: Event) => {
+    if (
+      layoutRef.current &&
+      event.target &&
+      !layoutRef.current.contains(event.target as Node)
+    ) {
+      setIsLayoutVisible(false);
+    }
+  };
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <div className={css.container}>
       <div className={css.listGroup}>
         <ul>
-          {hallsName.map((item) => {
+          {hallsData.map((item) => {
             return (
-              <li key={item} onClick={() => openModalForm(item)}>
-                {item}
+              <li key={item.id} onClick={() => openModalForm(item.name)}>
+                {item.name}
               </li>
             );
           })}
@@ -24,7 +43,11 @@ const Halls = () => {
 
         <Button text="Добавить" cls="menuAreaButton" activeClass="active" />
       </div>
-      {isActiveButton && <LayoutHalls isActiveButton={isActiveButton}/>}
+      {isLayoutVisible && (
+        <div ref={layoutRef}>
+          <LayoutHalls isActiveButton={isActiveButton} />
+        </div>
+      )}
     </div>
   );
 };

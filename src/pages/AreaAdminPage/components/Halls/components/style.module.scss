@@ -1,0 +1,38 @@
+@import "../../../../../styles/variables.scss";
+
+.container {
+  padding: 20px;
+  border-radius: 10px;
+  background: $layout-card-background;
+  box-shadow: 2px 6px 10px 0px rgba(0, 0, 0, 0.1);
+  width: 700px;
+  height: 715px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.rightControls {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.controls svg {
+  cursor: pointer;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  margin-top:20px;
+  padding:0 50px;
+}
