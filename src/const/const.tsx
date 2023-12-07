@@ -16,3 +16,22 @@ export const enum AuthorizationStatus {
 
 
 export const AUTH_TOKEN_NAME = 'token';
+
+export const menuAreaPersonal = [
+  "Основные настройки",
+  "Мои абонементы",
+  "Уведомления",
+  "История посещений",
+  "Онлайн запись",
+  "Смена пароля",
+  "Написать отзыв",
+];
+export const menuArea = [
+  "settings",
+  "tickets",
+  "notifications",
+  "history",
+  "online-record",
+  "change-pass",
+  "review",
+];
