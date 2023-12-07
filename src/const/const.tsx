@@ -29,11 +29,15 @@ export const DEFAULT_BUTTON_AREA_PERSONAL = { id: 1, title: "Основные н
 
 export const menuAreaAdministrator = [
   { id: 1, title: "О студии", path: "about" },
-  { id: 2, title: "Услуги и цены", path: "price" },
-  { id: 3, title: "Расписание", path: "dashboard" },
-  { id: 4, title: "Отзывы", path: "reviews" },
-  { id: 5, title: "Контакты", path: "contacts" },
-  { id: 6, title: "Управление пользователями", path: "control-users" },
-  { id: 7, title: "Настройки", path: "settings" },
+  { id: 2, title: "Новости и акции", path: "news" },
+  { id: 3, title: "Наши залы", path: "halls" },
+  { id: 4, title: "Персонал", path: "personal" },
+  { id: 5, title: "Юридическая информация", path: "information" },
+  { id: 6, title: "Услуги и цены", path: "price" },
+  { id: 7, title: "Расписание", path: "dashboard" },
+  { id: 8, title: "Отзывы", path: "reviews" },
+  { id: 9, title: "Контакты", path: "contacts" },
+  { id: 10, title: "Управление пользователями", path: "control-users" },
+  { id: 11, title: "Настройки", path: "settings" },
 ];
 export const DEFAULT_BUTTON_AREA_ADMIN =   { id: 1, title: "О студии", path: "about" };

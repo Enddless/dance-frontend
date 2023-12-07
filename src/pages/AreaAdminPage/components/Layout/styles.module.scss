@@ -1,5 +1,8 @@
+@import "../../../../styles/variables.scss";
 .layout {
-    grid-column: span 10;
-    margin:40px 20px 40px 0;
-    background: white;
+  grid-column: span 10;
+  margin: 40px 20px 40px 0;
+  padding:30px;
+  background: white;
+  border: 1px solid $btn-border-default;
 }

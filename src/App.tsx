@@ -14,6 +14,7 @@ import AreaPersonalPage from "./pages/AreaPersonalPage";
 import AreaAdminPage from "./pages/AreaAdminPage";
 import { RedirectPersonalArea } from "./components/redirect-personal-area";
 import { menuAreaAdministrator, menuAreaPersonal } from "./const/const";
+import React from "react";
 
 const App = () => {
   const { isDark } = useTheme();
@@ -46,12 +47,12 @@ const App = () => {
               ></Route>
             ))}
           </Route>
-          <Route path={AppRoute.AdministratorArea} element={<AreaAdminPage />}>
+          <Route path={AppRoute.AdministratorArea} element={<React.Fragment><AreaAdminPage /></React.Fragment>}>
             {menuAreaAdministrator.map((name) => (
               <Route
                 key={name.title}
                 path={name.path}
-                element={<AreaAdminPage />}
+                element={<React.Fragment><AreaAdminPage /></React.Fragment>}
               ></Route>
             ))}
           </Route>
