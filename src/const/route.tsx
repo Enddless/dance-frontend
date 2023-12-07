@@ -9,3 +9,13 @@ export enum AppRoute {
   AdministratorArea = "administration",
   NotFound = "/*",
 }
+
+
+export enum APIRoute {
+  //auth
+  Registration = "/registration",
+  Confirmation = "/confirmation",
+  Login = '/login',
+  //user
+  Role = '/accessAccount',
+}

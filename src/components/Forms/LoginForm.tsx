@@ -7,13 +7,15 @@ import RegistrationForm from "./RegistrationForm";
 import classNames from "classnames";
 import Close from "../Close/Close";
 import useLogin from "../../hooks/useLogin";
-import instance from "../../utils/axios";
+import { useAppDispatch } from "../../services/type-service";
+import { login } from "../../services/thunk/auth";
 
 type IModalFormProps = {
   openModalForm?: () => void;
 };
 
 const LoginForm = ({ openModalForm }: IModalFormProps) => {
+  const dispatch = useAppDispatch();
   const { isLogged, setIsLogged } = useLogin();
   //состояния форм
   const [isLoginForm, setIsLoginForm] = useState(true);
@@ -31,28 +33,19 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
   };
 
   //вход пользователя
-  const url = "/login";
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    instance({
-      method: "POST",
-      url: url,
-      data: {
-        emailuser: item.email,
-        password: item.password,
-      },
-    })
-      .then((response) => {
-        const rezult = response.data;
-        console.log("Данные  = ", rezult);
-        setIsLoginForm(!isLoginForm);
-        setIsLogged(!isLogged);
-        localStorage.setItem("token", rezult.token);
-        if (openModalForm) openModalForm();
-      })
-      .catch((error) => {
-        console.log("Ошибка выгрузки", error.response);
-      });
+    const emailUser = item.email;
+    const password = item.password;
+    const data = {
+      emailUser,
+      password,
+    };
+    dispatch(login(data));
+    // dispatch(getCurrentUserData());
+    setIsLoginForm(!isLoginForm);
+    setIsLogged(!isLogged);
+    if (openModalForm) openModalForm();
   };
 
   //состояние переключения "глазика"

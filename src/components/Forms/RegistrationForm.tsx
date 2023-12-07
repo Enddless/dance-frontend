@@ -2,10 +2,20 @@ import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import css from "./forms.module.scss";
-import instance from "../../utils/axios";
 import ConfirmationForm from "./ConfirmationForm";
+import { useAppDispatch, useAppSelector } from "../../services/type-service";
+import { registration } from "../../services/thunk/auth";
 
 const RegistrationForm = () => {
+  const registrationStatus = useAppSelector(
+    (state) => state.auth.isRegistrationLoading
+  );
+  useEffect(() => {
+    if (registrationStatus === "fulfilled") {
+      setSuccessForm(!successForm);
+    }
+  }, [registrationStatus]);
+
   const [checkPassword, setCheckPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
@@ -17,26 +27,17 @@ const RegistrationForm = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   //регистрация пользователя
+  const dispatch = useAppDispatch();
   const [successForm, setSuccessForm] = useState(false);
-  const url = "/registration";
-  const handleSubmit = (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    instance({
-      method: "POST",
-      url: url,
-      data: {
-        emailuser: formData.email,
-        password: formData.password,
-      },
-    })
-      .then((response) => {
-        const rezult = response.data;
-        console.log("Данные  = ", rezult);
-        setSuccessForm(!successForm);
-      })
-      .catch((error) => {
-        console.log("Ошибка выгрузки", error.response);
-      });
+  const handleSubmit = (evt: { preventDefault: () => void }) => {
+    evt.preventDefault();
+    const emailUser = formData.email;
+    const password = formData.password;
+    const data = {
+      emailUser,
+      password,
+    };
+    dispatch(registration(data));
   };
 
   const [showPassword, setShowPassword] = useState(false);

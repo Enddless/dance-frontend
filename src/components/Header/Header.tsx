@@ -7,13 +7,11 @@ import LoginForm from "../Forms/LoginForm";
 import useTheme from "../../hooks/useTheme";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
-// import useLogin from "../../hooks/useLogin";
-// import { usersMock } from "../../mocks/usersMock";
 import AreaForm from "../Forms/AreaForm";
+import { useAppSelector } from "../../services/type-service";
 
 const Header = () => {
   const { isDark, setIsDark } = useTheme();
-  // const { isLogged } = useLogin();
   //  открытие модалки регистрации или входа
   const [isOpenModal, setIsModal] = useState(false);
   const openModalForm = () => {
@@ -21,8 +19,8 @@ const Header = () => {
     setIsDark(!isDark);
   };
 
-  //получение данных пользователя
-  const token = localStorage.getItem("token")
+  //проверка авторизации пользователя
+  const authorizationStatus = useAppSelector((state) => state.auth.authStatus);
   
   return (
     <div className={css.header}>
@@ -47,7 +45,7 @@ const Header = () => {
         </ul>
       </nav>
 
-      {token ? (
+      {authorizationStatus === 'AUTH' ? (
         <>
           <Button
             text="Енот"
