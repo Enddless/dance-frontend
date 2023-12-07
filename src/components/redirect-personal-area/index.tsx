@@ -3,16 +3,19 @@ import { AuthorizationStatus } from "../../const/const";
 import { useAppSelector } from "../../services/type-service";
 import { AppRoute } from "../../const/route";
 
-
 type RedirectProps = {
   children: JSX.Element;
-}
+};
 
-function RedirectPersonalArea ({children}: RedirectProps) {
+function RedirectPersonalArea({ children }: RedirectProps) {
   const authStatus = useAppSelector((state) => state.auth.authStatus);
-
-  return authStatus === AuthorizationStatus.Unknown ? <Navigate to={AppRoute.Root} /> : children;
-
+//как будут скорректированы адреса для форм регистрации, изменить здесь адрес
+  return authStatus === AuthorizationStatus.Unknown ||
+    authStatus === AuthorizationStatus.NoAuth ? (
+    <Navigate to={`${AppRoute.Root}`} />
+  ) : (
+    children
+  );
 }
 
-export {RedirectPersonalArea};
+export { RedirectPersonalArea };

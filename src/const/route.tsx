@@ -5,7 +5,7 @@ export enum AppRoute {
   Recovery = "/login/recovery",
   Dashboard = "/dashboard",
   Reviews = "/reviews",
-  PersonalArea = "personal-area",
+  PersonalArea = "/personal-area",
   AdministratorArea = "administration",
   NotFound = "/*",
 }

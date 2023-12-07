@@ -14,24 +14,15 @@ export const enum AuthorizationStatus {
   Unknown = "UNKNOWN",
 }
 
-
-export const AUTH_TOKEN_NAME = 'token';
+export const AUTH_TOKEN_NAME = "token";
 
 export const menuAreaPersonal = [
-  "Основные настройки",
-  "Мои абонементы",
-  "Уведомления",
-  "История посещений",
-  "Онлайн запись",
-  "Смена пароля",
-  "Написать отзыв",
+  { id: 1, title: "Основные настройки", path: "settings" },
+  { id: 2, title: "Мои абонементы", path: "tickets" },
+  { id: 3, title: "Уведомления", path: "notifications" },
+  { id: 4, title: "История посещений", path: "history" },
+  { id: 5, title: "Онлайн запись", path: "online-record" },
+  { id: 6, title: "Смена пароля", path: "change-pass" },
+  { id: 7, title: "Написать отзыв", path: "review" },
 ];
-export const menuArea = [
-  "settings",
-  "tickets",
-  "notifications",
-  "history",
-  "online-record",
-  "change-pass",
-  "review",
-];
+export const DEFAULT_BUTTON_AREA_PERSONAL = { id: 1, title: "Основные настройки", path: "primary-settings" };
