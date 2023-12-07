@@ -13,7 +13,7 @@ import RecoveryForm from "./components/Forms/RecoveryForm";
 import AreaPersonalPage from "./pages/AreaPersonalPage";
 import AreaAdminPage from "./pages/AreaAdminPage";
 import { RedirectPersonalArea } from "./components/redirect-personal-area";
-import { menuAreaPersonal } from "./const/const";
+import { menuAreaAdministrator, menuAreaPersonal } from "./const/const";
 
 const App = () => {
   const { isDark } = useTheme();
@@ -39,13 +39,22 @@ const App = () => {
             }
           >
             {menuAreaPersonal.map((name) => (
-                <Route key={name.title} path={name.path} element={<AreaPersonalPage />}></Route>
-              ))}
+              <Route
+                key={name.title}
+                path={name.path}
+                element={<AreaPersonalPage />}
+              ></Route>
+            ))}
           </Route>
-          <Route
-            path={AppRoute.AdministratorArea}
-            element={<AreaAdminPage />}
-          />
+          <Route path={AppRoute.AdministratorArea} element={<AreaAdminPage />}>
+            {menuAreaAdministrator.map((name) => (
+              <Route
+                key={name.title}
+                path={name.path}
+                element={<AreaAdminPage />}
+              ></Route>
+            ))}
+          </Route>
         </Routes>
 
         <Footer />

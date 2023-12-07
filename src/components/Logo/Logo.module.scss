@@ -1,7 +1,10 @@
 @import "../../styles/variables.scss";
 
 .logo {
-    background: inherit;
-    position: relative;
+  background: inherit;
+  position: relative;
   top: 10px;
+}
+.logo img {
+  width: 100%;
 }

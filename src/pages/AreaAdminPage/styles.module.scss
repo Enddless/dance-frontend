@@ -14,8 +14,22 @@
   height: 100vh;
   color: $sidebar-color;
   grid-column: span 2;
-  padding:40px 15px 40px 40px;
+}
+.logoContainer {
+  padding:40px 40px 0;
+}
+.menu {
+  margin-top: 157px;
 }
 .menuItem {
-  margin:10px 0;
+  display: block;
+  width:100%;
+  padding:15px;
+  
+}
+.menuItem:hover {
+  background: $btn-background-hover;
+}
+.active {
+  background: $btn-background-default;
 }
