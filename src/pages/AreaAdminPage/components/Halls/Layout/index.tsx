@@ -10,7 +10,7 @@ function LayoutHalls({ isActiveButton }: IActiveButtonProps) {
   if (!findCardInfo) return false;
   return (
     <div className={css.container}>
-      <ControlsButton isHallsSettings/>
+      <ControlsButton withCloseControl/>
       <div className={css.content}>
         <img src={findCardInfo.url} alt={findCardInfo.name} />
         <p>{findCardInfo.description}</p>

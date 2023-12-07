@@ -82,3 +82,4 @@ export const hallsData: THalls[] = [
       "Lorem ipsum dolor sit amet consectetur. Urna cras nibh nullam ornare facilisis euismod massa venenatis vel. Tempor ut imperdiet scelerisque dictumst. Pellentesque accumsan adipiscing quis pulvinar fusce pharetra. ",
   },
 ];
+

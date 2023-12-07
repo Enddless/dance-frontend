@@ -2,9 +2,9 @@ import sprite from "../../assets/sprite.svg";
 import css from "./styles.module.scss";
 
 type TControlsProps = {
-  isHallsSettings?: boolean;
+  withCloseControl?: boolean;
 };
-function ControlsButton({ isHallsSettings }: TControlsProps) {
+function ControlsButton({ withCloseControl }: TControlsProps) {
   return (
     <div className={css.controls}>
       <div className={css.leftControls}>
@@ -18,7 +18,7 @@ function ControlsButton({ isHallsSettings }: TControlsProps) {
           <use xlinkHref={`${sprite}#deleteControls`}></use>
         </svg>
         
-        {isHallsSettings && (
+        {withCloseControl && (
           <svg width="24" height="24" viewBox="0 0 24 24">
             <use xlinkHref={`${sprite}#closeControls`}></use>
           </svg>

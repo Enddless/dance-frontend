@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Button from "../../../../components/Button/Button";
-import LayoutHalls from "./components";
+import LayoutHalls from "./Layout";
 import css from "./styles.module.scss";
 import { hallsData } from "../../../../const/const";
 
