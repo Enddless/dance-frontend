@@ -42,7 +42,7 @@ const PriceSettings = () => {
       <Button text="Добавить" cls="menuAreaButton" activeClass="active" />
       </div>
       {isLayoutVisible && (
-        <div ref={layoutRef}>
+        <div ref={layoutRef} className={css.layout}>
           <LayoutPrice isActiveButton={isActiveButton} />
         </div>
       )}

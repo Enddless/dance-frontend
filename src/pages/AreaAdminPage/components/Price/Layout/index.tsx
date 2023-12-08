@@ -11,11 +11,10 @@ function LayoutPrice({ isActiveButton }: IActiveButtonProps) {
   const findCardInfo = pricesInfo.find((item) => item.title === isActiveButton);
   if (!findCardInfo) return false;
   return (
-    <div className={css.container}>
-      <div className={css.controls}>
+    <div className={css.wrapper}>
+      <Card price={findCardInfo}>
         <ControlsButton withCloseControl />
-        <Card price={findCardInfo} />
-      </div>
+      </Card>
     </div>
   );
 }
