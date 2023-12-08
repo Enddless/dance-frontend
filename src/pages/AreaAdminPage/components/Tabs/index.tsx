@@ -43,7 +43,7 @@ function TabsAdminMemo() {
           );
         })}
       </ul>
-      <div className={css.logout} onClick={handleClick}>
+      <div className={`${css.logout} ${LINK_CLASS}`} onClick={handleClick}>
         <svg width="25" height="25" viewBox="0 0 25 25">
           <use xlinkHref={`${sprite}#logout`}></use>
         </svg>
