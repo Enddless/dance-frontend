@@ -17,17 +17,17 @@ interface IActiveButtonProps {
 function Layout({ isActiveButton }: IActiveButtonProps) {
   return (
     <div className={css.layout}>
-      {isActiveButton === "О студии" && <AboutSettings />}
-      {isActiveButton === "Новости и акции" && <News />}
-      {isActiveButton === "Наши залы" && <Halls />}
-      {isActiveButton === "Персонал" && <Personal />}
-      {isActiveButton === "Юридическая информация" && <LegalInformation />}
-      {isActiveButton === "Услуги и цены" && <PriceSettings/>}
-      {isActiveButton === "Расписание" && <DashboardSettings />}
-      {isActiveButton === "Отзывы" && <ReviewSettings />}
-      {isActiveButton === "Контакты" && <ContactsSettings />}
-      {isActiveButton === "Управление пользователями" && <ControlUsers />}
-      {isActiveButton === "Настройки" && <SettingsAll />}
+      {isActiveButton === "about" && <AboutSettings />}
+      {isActiveButton === "news" && <News />}
+      {isActiveButton === "halls" && <Halls />}
+      {isActiveButton === "personal" && <Personal />}
+      {isActiveButton === "information" && <LegalInformation />}
+      {isActiveButton === "price" && <PriceSettings/>}
+      {isActiveButton === "dashboard" && <DashboardSettings />}
+      {isActiveButton === "reviews" && <ReviewSettings />}
+      {isActiveButton === "contacts" && <ContactsSettings />}
+      {isActiveButton === "control-users" && <ControlUsers />}
+      {isActiveButton === "settings" && <SettingsAll />}
     </div>
   );
 }

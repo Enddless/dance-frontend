@@ -4,6 +4,7 @@ import hallThree from "../assets/images/hall-three.png";
 export enum NameSpace {
   User = "user",
   Auth = "auth",
+  Admin = "admin"
 }
 export const enum LoadingStatus {
   Idle = "idle",

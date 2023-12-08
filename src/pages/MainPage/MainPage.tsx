@@ -5,16 +5,20 @@ import Reviews from "./components/Reviews/Reviews";
 import SliderBlock from "../../components/Slider/SliderBlock";
 import { bannerUrl } from "../../mocks/mocks";
 import StaffPage from "./components/BlockStaff";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 
 const MainPage = () => {
   return (
     <div>
+      <Header />
       <SliderBlock cards={bannerUrl} />
       <About />
       <StaffPage />
       <Prices />
       <Reviews />
       <Contacts />
+      <Footer />
     </div>
   );
 };

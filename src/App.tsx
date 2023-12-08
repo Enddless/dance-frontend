@@ -21,7 +21,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className={css.app}>
-        <Header />
+        {/* <Header /> */}
         <div className={isDark ? `${css.blurContent}` : ""}></div>
         <Routes>
           <Route path={AppRoute.Root} element={<MainPage />} />
@@ -58,7 +58,7 @@ const App = () => {
           </Route>
         </Routes>
 
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </BrowserRouter>
   );

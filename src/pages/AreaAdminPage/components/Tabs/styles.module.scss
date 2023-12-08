@@ -1,0 +1,28 @@
+@import "../../../../styles/variables.scss";
+
+.menu {
+    margin-top: 70px;
+  }
+  .menuItem {
+    display: block;
+    width:100%;
+    padding:15px 0 15px 30px;
+    
+  }
+  .menuItem:hover {
+    background: $btn-background-hover;
+  }
+  .active {
+    background: $btn-background-default;
+  }
+  
+  .logout {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding:15px 0 15px 30px;
+    cursor:pointer;
+    & svg {
+      margin-right:20px;
+    }
+  }

@@ -38,12 +38,12 @@ const AreaForm = ({ openModalForm }: IModalFormProps) => {
       <Close openModalForm={openModalForm} />
 
       {role === "customers" && (
-        <button>
+        <button onClick={openModalForm}>
           <Link to={AppRoute.PersonalArea}>Профиль</Link>
         </button>
       )}
       {role === "director" && (
-        <button>
+        <button onClick={openModalForm}>
           <Link to={AppRoute.AdministratorArea}>Профиль</Link>
         </button>
       )}

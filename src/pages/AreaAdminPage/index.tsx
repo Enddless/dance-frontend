@@ -1,61 +1,52 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Layout from "./components/Layout";
 import css from "./styles.module.scss";
 import Logo from "../../components/Logo/Logo";
 import {
   AuthorizationStatus,
   DEFAULT_BUTTON_AREA_ADMIN,
-  menuAreaAdministrator,
 } from "../../const/const";
-import { NavLink } from "react-router-dom";
 import { AppRoute } from "../../const/route";
-import { useNavigate } from "react-router-dom";
-import { useAppSelector } from "../../services/type-service";
+import { useAppDispatch, useAppSelector } from "../../services/type-service";
+import { useLocation, useNavigate } from "react-router-dom";
+import TabsAdmin from "./components/Tabs";
+import { adminSlice } from "../../store/slices/admin";
 
 const AreaAdminPage = () => {
   const navigate = useNavigate();
-  const [isActiveButton, setIsActiveButton] = useState(
-    DEFAULT_BUTTON_AREA_ADMIN.title
-  );
-  const openModalForm = (text: string) => {
-    setIsActiveButton(text);
-  };
+  const dispatch = useAppDispatch();
+  const currentMenuButton = useAppSelector((state) => state.admin.buttonActive);
   const authStatus = useAppSelector((state) => state.auth.authStatus);
+  const location = useLocation().pathname.slice(1).split("/")[1];
+
+  //если пользователь вышел, перенаправить на главную
   useEffect(() => {
     if (authStatus !== AuthorizationStatus.Auth.toString()) {
       navigate(AppRoute.Root);
     }
   }, [authStatus, navigate]);
+  // если поменялась кнопка,вызвать диспатч
+  useEffect(() => {
+    dispatch(adminSlice.actions.changeActiveButtonMenu(location));
+  }, [location, dispatch]);
 
-  const LINK_CLASS = `${css.menuItem}`;
-  const ACTIVE_CLASS = `${LINK_CLASS} ${css.active}`;
-  //добавить диспатч на изменение активного меню
+  // если определить адрес не удалось, направить на меню по дефолту
+  useEffect(() => {
+    if (!location) {
+      navigate(`${DEFAULT_BUTTON_AREA_ADMIN.path}`);
+    }
+  }, [navigate, location]);
   return (
     <div className={css.container}>
       <aside className={css.sidebar}>
         <div className={css.logoContainer}>
           <Logo />
         </div>
-        <ul className={css.menu}>
-          {menuAreaAdministrator.map((button) => {
-            return (
-              <li onClick={() => openModalForm(button.title)} key={button.id}>
-                <NavLink
-                  to={`${AppRoute.AdministratorArea}/${button.path}`}
-                  key={button.id}
-                  className={({ isActive }) =>
-                    isActive ? ACTIVE_CLASS : LINK_CLASS
-                  }
-                >
-                  {button.title}
-                </NavLink>
-              </li>
-            );
-          })}
-        </ul>
+
+        <TabsAdmin />
       </aside>
 
-      {isActiveButton && <Layout isActiveButton={isActiveButton} />}
+      {currentMenuButton && <Layout isActiveButton={currentMenuButton} />}
     </div>
   );
 };
