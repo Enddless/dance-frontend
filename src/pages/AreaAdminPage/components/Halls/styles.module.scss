@@ -27,3 +27,7 @@
 .listGroup li::after {
     content:url('../../../../assets/Expand_right.svg');
 }
+
+.layout {
+  grid-column: span 8;
+}

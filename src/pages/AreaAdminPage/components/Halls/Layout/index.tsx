@@ -9,11 +9,11 @@ function LayoutHalls({ isActiveButton }: IActiveButtonProps) {
   const findCardInfo = hallsData.find((item) => item.name === isActiveButton);
   if (!findCardInfo) return false;
   return (
-    <div className={css.container}>
+    <div className={css.wrapper}>
       <ControlsButton withCloseControl/>
       <div className={css.content}>
         <img src={findCardInfo.url} alt={findCardInfo.name} />
-        <p>{findCardInfo.description}</p>
+        <p className={css.description}>{findCardInfo.description}</p>
       </div>
     </div>
   );

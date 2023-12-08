@@ -44,7 +44,7 @@ const Halls = () => {
         <Button text="Добавить" cls="menuAreaButton" activeClass="active" />
       </div>
       {isLayoutVisible && (
-        <div ref={layoutRef}>
+        <div className={css.layout}>
           <LayoutHalls isActiveButton={isActiveButton} />
         </div>
       )}
