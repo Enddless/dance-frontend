@@ -1,7 +1,7 @@
 import css from "./style.module.scss";
-import ControlsButton from "../../../../../components/controls-button";
-import { pricesInfo } from "../../../../../mocks/mocks";
-import Card from "../../../../../components/Card/Card";
+import ControlsButton from "../../../../../../components/controls-button";
+import { pricesInfo } from "../../../../../../mocks/mocks";
+import Card from "../../../../../../components/Card/Card";
 
 interface IActiveButtonProps {
   isActiveButton: string;

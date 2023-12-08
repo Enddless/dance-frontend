@@ -1,8 +1,9 @@
 import Button from "../../../../components/Button/Button";
 import { pricesInfo } from "../../../../mocks/mocks";
-import LayoutPrice from "./Layout";
+import DescriptionPrice from "./component/Description";
+import LayoutPrice from "./component/Layout";
 import css from "./styles.module.scss";
-import {useEffect, useState, useRef} from 'react';
+import { useEffect, useState, useRef } from "react";
 
 const PriceSettings = () => {
   const [isActiveButton, setIsActiveButton] = useState("");
@@ -28,25 +29,29 @@ const PriceSettings = () => {
     };
   }, []);
   return (
-    <div className={css.container}>
-    <div className={css.listGroup}>
-      <ul>
-        {pricesInfo.map((item) => {
-          return (
-            <li key={item.id} onClick={() => openModalForm(item.title)}>
-              {item.title}
-            </li>
-          );
-        })}
-      </ul>
-      <Button text="Добавить" cls="menuAreaButton" activeClass="active" />
-      </div>
-      {isLayoutVisible && (
-        <div ref={layoutRef} className={css.layout}>
-          <LayoutPrice isActiveButton={isActiveButton} />
+    <>
+      <div className={css.container}>
+        <div className={css.listGroup}>
+          <ul>
+            {pricesInfo.map((item) => {
+              return (
+                <li key={item.id} onClick={() => openModalForm(item.title)}>
+                  {item.title}
+                </li>
+              );
+            })}
+          </ul>
+          <Button text="Добавить" cls="menuAreaButton" activeClass="active" />
         </div>
-      )}
-    </div>
+
+        {isLayoutVisible && (
+          <div ref={layoutRef} className={css.layout}>
+            <LayoutPrice isActiveButton={isActiveButton} />
+          </div>
+        )}
+      </div>
+      <DescriptionPrice />
+    </>
   );
 };
 

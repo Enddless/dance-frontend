@@ -3,6 +3,7 @@
 .container {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
+  height: 500px;
 }
 .listGroup {
   grid-column: span 2;
