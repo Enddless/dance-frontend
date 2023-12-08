@@ -11,6 +11,8 @@ import {
 import { AppRoute } from "../../const/route";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 
 const AreaPersonalPage = () => {
   const navigate = useNavigate();
@@ -30,28 +32,32 @@ const AreaPersonalPage = () => {
   }, [authStatus, navigate]);
 
   return (
-    <div className={css.container}>
-      <div className={css.btnGroup}>
-        {menuAreaPersonal.map((button) => {
-          return (
-            <NavLink
-              to={`${AppRoute.PersonalArea}/${button.path}`}
-              key={button.id}
-            >
-              <Button
-                text={button.title}
-                cls="menuAreaButton"
-                activeClass={`${
-                  isActiveButton === button.title ? "active" : ""
-                }`}
-                openModalForm={() => openModalForm(button.title)}
-              />
-            </NavLink>
-          );
-        })}
+    <>
+      <Header />
+      <div className={css.container}>
+        <div className={css.btnGroup}>
+          {menuAreaPersonal.map((button) => {
+            return (
+              <NavLink
+                to={`${AppRoute.PersonalArea}/${button.path}`}
+                key={button.id}
+              >
+                <Button
+                  text={button.title}
+                  cls="menuAreaButton"
+                  activeClass={`${
+                    isActiveButton === button.title ? "active" : ""
+                  }`}
+                  openModalForm={() => openModalForm(button.title)}
+                />
+              </NavLink>
+            );
+          })}
+        </div>
+        {isActiveButton && <Layout isActiveButton={isActiveButton} />}
       </div>
-      {isActiveButton && <Layout isActiveButton={isActiveButton} />}
-    </div>
+      <Footer />
+    </>
   );
 };
 

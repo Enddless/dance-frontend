@@ -19,6 +19,7 @@ const AreaForm = ({ openModalForm }: IModalFormProps) => {
   //выход из аккаунта
   const handleClick = () => {
     dispatch(authSlice.actions.logout());
+    if (openModalForm) {openModalForm()}
   };
 
   //проверка авторизации пользователя
