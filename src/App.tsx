@@ -12,6 +12,8 @@ import RegistrationForm from "./components/Forms/RegistrationForm";
 import RecoveryForm from "./components/Forms/RecoveryForm";
 import AreaPersonalPage from "./pages/AreaPersonalPage";
 import AreaAdminPage from "./pages/AreaAdminPage";
+import { RedirectPersonalArea } from "./components/redirect-personal-area";
+import { menuAreaPersonal } from "./const/const";
 
 const App = () => {
   const { isDark } = useTheme();
@@ -20,20 +22,31 @@ const App = () => {
       <div className={css.app}>
         <Header />
         <div className={isDark ? `${css.blurContent}` : ""}></div>
-          <Routes>
-            <Route path={AppRoute.Root} element={<MainPage />} />
-            <Route path={AppRoute.Dashboard} element={<DashboardPage />} />
-            <Route path={AppRoute.Reviews} element={<ReviewsPage />} />
-            <Route path={AppRoute.NotFound} element={<NFPage />} />
-            <Route
-              path={AppRoute.Registration}
-              element={<RegistrationForm />}
-            />
-            <Route path={AppRoute.Recovery} element={<RecoveryForm />} />
-            <Route path={AppRoute.PersonalArea} element={<AreaPersonalPage />} />
-            <Route path={AppRoute.AdministratorArea} element={<AreaAdminPage />} />
-          </Routes>
-        
+        <Routes>
+          <Route path={AppRoute.Root} element={<MainPage />} />
+          <Route path={AppRoute.Dashboard} element={<DashboardPage />} />
+          <Route path={AppRoute.Reviews} element={<ReviewsPage />} />
+          <Route path={AppRoute.NotFound} element={<NFPage />} />
+          <Route path={AppRoute.Registration} element={<RegistrationForm />} />
+          <Route path={AppRoute.Recovery} element={<RecoveryForm />} />
+
+          <Route
+            path={AppRoute.PersonalArea}
+            element={
+              <RedirectPersonalArea>
+                <AreaPersonalPage />
+              </RedirectPersonalArea>
+            }
+          >
+            {menuAreaPersonal.map((name) => (
+                <Route key={name.title} path={name.path} element={<AreaPersonalPage />}></Route>
+              ))}
+          </Route>
+          <Route
+            path={AppRoute.AdministratorArea}
+            element={<AreaAdminPage />}
+          />
+        </Routes>
 
         <Footer />
       </div>
