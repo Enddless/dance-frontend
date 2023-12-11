@@ -3,19 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import css from "./forms.module.scss";
 import ConfirmationForm from "./ConfirmationForm";
-import { useAppDispatch, useAppSelector } from "../../services/type-service";
+import { useAppDispatch } from "../../services/type-service";
 import { registration } from "../../services/thunk/auth";
 
 const RegistrationForm = () => {
-  const registrationStatus = useAppSelector(
-    (state) => state.auth.isRegistrationLoading
-  );
-  useEffect(() => {
-    if (registrationStatus === "fulfilled") {
-      setSuccessForm(!successForm);
-    }
-  }, [registrationStatus]);
-
   const [checkPassword, setCheckPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
@@ -37,7 +28,11 @@ const RegistrationForm = () => {
       emailUser,
       password,
     };
-    dispatch(registration(data));
+    dispatch(registration(data))
+      .unwrap()
+      .then(() => {
+        setSuccessForm(!successForm);
+      });
   };
 
   const [showPassword, setShowPassword] = useState(false);
@@ -55,68 +50,70 @@ const RegistrationForm = () => {
 
   return (
     <>
-      <h3>Регистрация</h3>
       {!successForm ? (
-        <form onSubmit={handleSubmit} className={css.form}>
-          <label htmlFor="email">
-            Email
-            <input
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-              name="email"
-              placeholder="example@mail.com"
-            />
-          </label>
-          <label htmlFor="password">
-            Пароль
-            <input
-              value={formData.password}
-              onChange={handleChange}
-              name="password"
-              type={showPassword ? "text" : "password"}
-            />
-            <FontAwesomeIcon
-              icon={showPassword ? faEyeSlash : faEye}
-              onClick={togglePasswordVisibility}
-              style={{
-                position: "absolute",
-                right: "110px",
-                top: "56%",
-                transform: "translateY(-56%)",
-                cursor: "pointer",
-              }}
-            />
-          </label>
-          <label htmlFor="dublPassword">
-            Повторите пароль
-            <input
-              value={formData.dublPassword}
-              onChange={handleChange}
-              name="dublPassword"
-              type={showPassword ? "text" : "password"}
-            />
-            <FontAwesomeIcon
-              icon={showPassword ? faEyeSlash : faEye}
-              onClick={togglePasswordVisibility}
-              style={{
-                position: "absolute",
-                right: "110px",
-                top: "56%",
-                transform: "translateY(-56%)",
-                cursor: "pointer",
-              }}
-            />
-          </label>
+        <>
+          <h3>Регистрация</h3>
+          <form onSubmit={handleSubmit} className={css.form}>
+            <label htmlFor="email">
+              Email
+              <input
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                name="email"
+                placeholder="example@mail.com"
+              />
+            </label>
+            <label htmlFor="password">
+              Пароль
+              <input
+                value={formData.password}
+                onChange={handleChange}
+                name="password"
+                type={showPassword ? "text" : "password"}
+              />
+              <FontAwesomeIcon
+                icon={showPassword ? faEyeSlash : faEye}
+                onClick={togglePasswordVisibility}
+                style={{
+                  position: "absolute",
+                  right: "110px",
+                  top: "56%",
+                  transform: "translateY(-56%)",
+                  cursor: "pointer",
+                }}
+              />
+            </label>
+            <label htmlFor="dublPassword">
+              Повторите пароль
+              <input
+                value={formData.dublPassword}
+                onChange={handleChange}
+                name="dublPassword"
+                type={showPassword ? "text" : "password"}
+              />
+              <FontAwesomeIcon
+                icon={showPassword ? faEyeSlash : faEye}
+                onClick={togglePasswordVisibility}
+                style={{
+                  position: "absolute",
+                  right: "110px",
+                  top: "56%",
+                  transform: "translateY(-56%)",
+                  cursor: "pointer",
+                }}
+              />
+            </label>
 
-          <button
-            type="submit"
-            disabled={!checkPassword}
-            className={!checkPassword ? `${css.disabled}` : ""}
-          >
-            Зарегистрироваться
-          </button>
-        </form>
+            <button
+              type="submit"
+              disabled={!checkPassword}
+              className={!checkPassword ? `${css.disabled}` : ""}
+            >
+              Зарегистрироваться
+            </button>
+          </form>
+        </>
       ) : (
         <ConfirmationForm email={formData.email} password={formData.password} />
       )}

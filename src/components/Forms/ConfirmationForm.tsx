@@ -28,20 +28,23 @@ const ConfirmationForm = ({ email, password }: ICodeProps) => {
   };
 
   return !success ? (
-    <form onSubmit={confirmSubmit} className={css.form}>
-      <label>
-        Код
-        <input
-          type="number"
-          value={codeData}
-          onChange={(e) => setCodeData((e.target as HTMLInputElement).value)}
-          name="code"
-          placeholder="****"
-        />
-      </label>
+    <>
+      <h3>Подтверждение регистрации</h3>
+      <form onSubmit={confirmSubmit} className={css.form}>
+        <label>
+          Код
+          <input
+            type="number"
+            value={codeData}
+            onChange={(e) => setCodeData((e.target as HTMLInputElement).value)}
+            name="code"
+            placeholder="****"
+          />
+        </label>
 
-      <button type="submit">Подтвердить</button>
-    </form>
+        <button type="submit">Подтвердить</button>
+      </form>
+    </>
   ) : (
     <>
       <p>Вы успешно зарегистрированы</p>

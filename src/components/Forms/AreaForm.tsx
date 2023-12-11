@@ -3,9 +3,7 @@ import Close from "../Close/Close";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 import { AppRoute } from "../../const/route";
-import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../services/type-service";
-import { getCurrentUserData } from "../../services/thunk/auth";
 import { authSlice } from "../../store/slices/auth";
 
 
@@ -29,10 +27,6 @@ const AreaForm = ({ openModalForm }: IModalFormProps) => {
   //определение роли пользователя
   const role = useAppSelector((state) => state.auth.userData)?.role;
   
-  // useEffect(() => {
-  //   dispatch(getCurrentUserData());
-  // }, [dispatch]);
-
   if (!role && authorizationStatus !== "AUTH") return false;
 
   return (
