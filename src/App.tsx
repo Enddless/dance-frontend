@@ -1,6 +1,4 @@
 import css from "./App.module.scss";
-import Footer from "./components/Footer/Footer";
-import Header from "./components/Header/Header";
 import MainPage from "./pages/MainPage/MainPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NFPage from "./pages/NotFoundPage/NFPage";
@@ -21,7 +19,6 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className={css.app}>
-        {/* <Header /> */}
         <div className={isDark ? `${css.blurContent}` : ""}></div>
         <Routes>
           <Route path={AppRoute.Root} element={<MainPage />} />
@@ -58,7 +55,6 @@ const App = () => {
           </Route>
         </Routes>
 
-        {/* <Footer /> */}
       </div>
     </BrowserRouter>
   );
