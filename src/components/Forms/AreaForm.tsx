@@ -17,6 +17,7 @@ const AreaForm = ({ openModalForm }: IModalFormProps) => {
   const classNamesList = classNames(css.formWrapper, css.area);
 
   //выход из аккаунта
+  const dispatch = useAppDispatch();
   const handleClick = () => {
     dispatch(authSlice.actions.logout());
     if (openModalForm) {openModalForm()}
@@ -27,10 +28,10 @@ const AreaForm = ({ openModalForm }: IModalFormProps) => {
 
   //определение роли пользователя
   const role = useAppSelector((state) => state.auth.userData)?.role;
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(getCurrentUserData());
-  }, [dispatch]);
+  
+  // useEffect(() => {
+  //   dispatch(getCurrentUserData());
+  // }, [dispatch]);
 
   if (!role && authorizationStatus !== "AUTH") return false;
 

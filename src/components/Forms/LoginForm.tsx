@@ -8,7 +8,7 @@ import classNames from "classnames";
 import Close from "../Close/Close";
 import useLogin from "../../hooks/useLogin";
 import { useAppDispatch } from "../../services/type-service";
-import { login } from "../../services/thunk/auth";
+import { getCurrentUserData, login } from "../../services/thunk/auth";
 
 type IModalFormProps = {
   openModalForm?: () => void;
@@ -41,8 +41,12 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
       emailUser,
       password,
     };
-    dispatch(login(data));
-    // dispatch(getCurrentUserData());
+    dispatch(login(data))
+      .unwrap()
+      .then(() => {
+        dispatch(getCurrentUserData());
+      });
+
     setIsLoginForm(!isLoginForm);
     setIsLogged(!isLogged);
     if (openModalForm) openModalForm();
