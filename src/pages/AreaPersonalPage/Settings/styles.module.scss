@@ -1,24 +1,23 @@
 @import "../../../styles/variables.scss";
 
 .container {
-  width: 762px;
-  display: flex;
-  justify-content: space-between;
-  margin: 0 auto;
-  text-align: left;
-}
-.profileImg {
-  width: 45%;
-  height: 446px;
-  background: grey; //будет удалено
-  display: flex;
-  flex-direction: column;
-  align-items: end;
-  gap: 5px;
-  padding: 15px;
+  // width: 762px;
+  // display: flex;
+  // justify-content: space-between;
+  // margin: 0 auto;
+  // text-align: left;
+  // @include Grid;
 }
 .form {
-  width: 45%;
+  @include Grid;
+
+  .info {
+    grid-column: 7/10;
+  }
+  fieldset {
+    border: none;
+    margin-bottom: 10px;
+  }
 
   .input {
     width: 100%;
@@ -28,7 +27,7 @@
     background: $white;
     box-shadow: 2px 6px 10px 0px rgba(0, 0, 0, 0.1);
     padding: 20px 24px;
-    margin-bottom: 10px;
+    cursor: pointer;
   }
   input:focus {
     outline: 3px solid $btn-background-default;
@@ -50,4 +49,42 @@ button {
   background: none;
   text-decoration: underline;
   font-weight: 400;
+}
+
+.form {
+  // margin: 20px 0;
+  // width: 20%;
+  // display: flex;
+  // justify-content: space-evenly;
+
+  input[type="radio"] {
+    display: none;
+    + .radioLabel {
+      &:before {
+        content: "";
+        background: #f4f4f4;
+        border-radius: 100%;
+        border: 3px solid #563e0e;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin-right: 4px;
+        vertical-align: top;
+        cursor: pointer;
+        text-align: center;
+        transition: all 250ms ease;
+      }
+    }
+    &:checked {
+      + .radioLabel {
+        &:before {
+          background-color: #563e0e;
+          box-shadow: inset 0 0 0 4px #f4f4f4;
+        }
+      }
+    }
+  }
+  .radioLabel {
+    align-items: center;
+  }
 }
