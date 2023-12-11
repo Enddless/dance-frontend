@@ -18,4 +18,5 @@ export enum APIRoute {
   Login = '/login',
   //user
   Role = '/accessAccount',
+  UserData = '/basicSettings',
 }

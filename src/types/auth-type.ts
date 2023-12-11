@@ -6,7 +6,9 @@ export type StateAuth = {
   isConfirmationLoading: LoadingStatus;
   message: string;
   userData: UserCurrentData | null;
+  userRole: UserCurrentRole | null;
   isUserDataLoading: LoadingStatus;
+  isUserRoleLoading:LoadingStatus;
 };
 
 export type UserCurrentData = {
@@ -19,6 +21,10 @@ export type UserCurrentData = {
   photoUser: string;
   role: string;
   code: number;
+};
+export type UserCurrentRole = {
+  id: number;
+  role: string;
 };
 
 export type AuthData = {

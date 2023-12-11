@@ -16,6 +16,7 @@ import React from "react";
 
 const App = () => {
   const { isDark } = useTheme();
+
   return (
     <BrowserRouter>
       <div className={css.app}>

@@ -1,11 +1,11 @@
 import css from "./forms.module.scss";
 import Close from "../Close/Close";
 import classNames from "classnames";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { AppRoute } from "../../const/route";
 import { useAppDispatch, useAppSelector } from "../../services/type-service";
 import { authSlice } from "../../store/slices/auth";
-
+import { AuthorizationStatus } from "../../const/const";
 
 type IModalFormProps = {
   openModalForm?: () => void;
@@ -18,16 +18,18 @@ const AreaForm = ({ openModalForm }: IModalFormProps) => {
   const dispatch = useAppDispatch();
   const handleClick = () => {
     dispatch(authSlice.actions.logout());
-    if (openModalForm) {openModalForm()}
+    if (openModalForm) {
+      openModalForm();
+    }
   };
 
   //проверка авторизации пользователя
   const authorizationStatus = useAppSelector((state) => state.auth.authStatus);
+  const role = useAppSelector((state) => state.auth.userRole)?.role;
 
-  //определение роли пользователя
-  const role = useAppSelector((state) => state.auth.userData)?.role;
-  
-  if (!role && authorizationStatus !== "AUTH") return false;
+  if (authorizationStatus !== AuthorizationStatus.Auth) {
+    <Navigate to={AppRoute.Root} />;
+  }
 
   return (
     <div className={classNamesList}>

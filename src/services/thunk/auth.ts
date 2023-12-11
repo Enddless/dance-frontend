@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { APIRoute } from "../../const/route";
-import { AuthData, AuthWithCodeData, ReturnData, UserCurrentData } from "../../types/auth-type";
+import { AuthData, AuthWithCodeData, ReturnData, UserCurrentData, UserCurrentRole } from "../../types/auth-type";
 import { addToken } from "../token";
 import { Extra } from "../type-service";
 
@@ -55,8 +55,19 @@ export const getCurrentUserData = createAsyncThunk<
   UserCurrentData,
   string | undefined,
   Extra
+>("user/data", async (_arg, { extra: api }) => {
+  const { data } = await api.get<UserCurrentData>(APIRoute.UserData);
+
+  return data;
+});
+
+// ********** USER-ROLE **********
+export const getCurrentUserRole = createAsyncThunk<
+UserCurrentRole,
+  string | undefined,
+  Extra
 >("user/role", async (_arg, { extra: api }) => {
-  const { data } = await api.get<UserCurrentData>(APIRoute.Role);
+  const { data } = await api.get<UserCurrentRole>(APIRoute.Role);
 
   return data;
 });

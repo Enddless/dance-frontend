@@ -8,6 +8,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   confirmation,
   getCurrentUserData,
+  getCurrentUserRole,
   login,
   registration,
 } from "../../services/thunk/auth";
@@ -19,7 +20,9 @@ const initialState: StateAuth = {
   isConfirmationLoading: LoadingStatus.Idle,
   message: "",
   userData: null,
+  userRole: null,
   isUserDataLoading: LoadingStatus.Idle,
+  isUserRoleLoading: LoadingStatus.Idle,
 };
 
 export const authSlice = createSlice({
@@ -29,6 +32,7 @@ export const authSlice = createSlice({
     logout(state) {
       state.authStatus = AuthorizationStatus.NoAuth;
       state.userData = null;
+      state.userRole = null;
       deleteToken();
     },
   },
@@ -68,6 +72,7 @@ export const authSlice = createSlice({
         state.isConfirmationLoading = LoadingStatus.Rejected;
         state.authStatus = AuthorizationStatus.NoAuth;
       })
+      // ***** userdata *****
       .addCase(getCurrentUserData.pending, (state) => {
         state.isUserDataLoading = LoadingStatus.Pending;
       })
@@ -78,6 +83,18 @@ export const authSlice = createSlice({
       })
       .addCase(getCurrentUserData.rejected, (state) => {
         state.isUserDataLoading = LoadingStatus.Rejected;
+      })
+      // ***** user-role *****
+      .addCase(getCurrentUserRole.pending, (state) => {
+        state.isUserRoleLoading = LoadingStatus.Pending;
+      })
+      .addCase(getCurrentUserRole.fulfilled, (state, action) => {
+        state.userRole = action.payload;
+        state.authStatus = AuthorizationStatus.Auth;
+        state.isUserRoleLoading = LoadingStatus.Fulfilled;
+      })
+      .addCase(getCurrentUserRole.rejected, (state) => {
+        state.isUserRoleLoading = LoadingStatus.Rejected;
       });
   },
 });

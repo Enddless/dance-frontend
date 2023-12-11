@@ -26,7 +26,7 @@ const AreaPersonalPage = () => {
   const authStatus = useAppSelector((state) => state.auth.authStatus);
 
   useEffect(() => {
-    if (authStatus !== AuthorizationStatus.Auth.toString()) {
+    if (authStatus !== AuthorizationStatus.Auth) {
       navigate(AppRoute.Root);
     }
   }, [authStatus, navigate]);
