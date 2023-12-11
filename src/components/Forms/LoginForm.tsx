@@ -6,9 +6,13 @@ import RecoveryForm from "./RecoveryForm";
 import RegistrationForm from "./RegistrationForm";
 import classNames from "classnames";
 import Close from "../Close/Close";
-import useLogin from "../../hooks/useLogin";
+// import useLogin from "../../hooks/useLogin";
 import { useAppDispatch } from "../../services/type-service";
-import { login } from "../../services/thunk/auth";
+import {
+  getCurrentUserData,
+  getCurrentUserRole,
+  login,
+} from "../../services/thunk/auth";
 
 type IModalFormProps = {
   openModalForm?: () => void;
@@ -16,7 +20,6 @@ type IModalFormProps = {
 
 const LoginForm = ({ openModalForm }: IModalFormProps) => {
   const dispatch = useAppDispatch();
-  const { isLogged, setIsLogged } = useLogin();
   //состояния форм
   const [isLoginForm, setIsLoginForm] = useState(true);
   const [isRecovery, setIsRecovery] = useState(false);
@@ -41,10 +44,16 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
       emailUser,
       password,
     };
-    dispatch(login(data));
-    // dispatch(getCurrentUserData());
+    dispatch(login(data))
+      .unwrap()
+      .then(() => {
+        dispatch(getCurrentUserRole());
+      })
+      .then(() => {
+        dispatch(getCurrentUserData());
+      });
+
     setIsLoginForm(!isLoginForm);
-    setIsLogged(!isLogged);
     if (openModalForm) openModalForm();
   };
 

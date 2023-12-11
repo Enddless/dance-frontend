@@ -1,7 +1,7 @@
 import css from "./Header.module.scss";
 import Logo from "../Logo/Logo";
 import Button from "../Button/Button";
-import { useState} from "react";
+import { useState } from "react";
 import { pagesHeader } from "../../mocks/mocks";
 import LoginForm from "../Forms/LoginForm";
 import useTheme from "../../hooks/useTheme";
@@ -21,7 +21,8 @@ const Header = () => {
 
   //проверка авторизации пользователя
   const authorizationStatus = useAppSelector((state) => state.auth.authStatus);
-  
+  const userData = useAppSelector((state) => state.auth.userData);
+
   return (
     <div className={css.header}>
       <Logo />
@@ -45,10 +46,10 @@ const Header = () => {
         </ul>
       </nav>
 
-      {authorizationStatus === 'AUTH' ? (
+      {authorizationStatus === "AUTH" ? (
         <>
           <Button
-            text="Енот"
+            text={userData ? `User_ ${userData?.userName}` : `Admin`}
             cls="btn-enter"
             openModalForm={openModalForm}
           ></Button>

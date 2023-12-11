@@ -2,6 +2,7 @@
 
 .btn {
   @include ButtonPrimary();
+  text-decoration: none;
 }
 .btnEnter {
   background: $btn-background-default;

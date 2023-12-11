@@ -1,37 +1,52 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import Layout from "./components/Layout";
 import css from "./styles.module.scss";
 import Logo from "../../components/Logo/Logo";
+import {
+  AuthorizationStatus,
+  DEFAULT_BUTTON_AREA_ADMIN,
+} from "../../const/const";
+import { AppRoute } from "../../const/route";
+import { useAppDispatch, useAppSelector } from "../../services/type-service";
+import { useLocation, useNavigate } from "react-router-dom";
+import TabsAdmin from "./components/Tabs";
+import { adminSlice } from "../../store/slices/admin";
+
 const AreaAdminPage = () => {
-  const menu = [
-    "О студии",
-    "Услуги и цены",
-    "Расписание",
-    "Отзывы",
-    "Контакты",
-    "Управление пользователями",
-    "Настройки"
-  ];
-  const [isActiveButton, setIsActiveButton] = useState("О студии");
-  const openModalForm = (text: string) => {
-    setIsActiveButton(text);
-  };
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const currentMenuButton = useAppSelector((state) => state.admin.buttonActive);
+  const authStatus = useAppSelector((state) => state.auth.authStatus);
+  const location = useLocation().pathname.slice(1).split("/")[1];
+
+  //если пользователь вышел, перенаправить на главную
+  useEffect(() => {
+    if (authStatus !== AuthorizationStatus.Auth.toString()) {
+      navigate(AppRoute.Root);
+    }
+  }, [authStatus, navigate]);
+  // если поменялась кнопка,вызвать диспатч
+  useEffect(() => {
+    dispatch(adminSlice.actions.changeActiveButtonMenu(location));
+  }, [location, dispatch]);
+
+  // если определить адрес не удалось, направить на меню по дефолту
+  useEffect(() => {
+    if (!location) {
+      navigate(`${DEFAULT_BUTTON_AREA_ADMIN.path}`);
+    }
+  }, [navigate, location]);
   return (
     <div className={css.container}>
       <aside className={css.sidebar}>
-        <Logo />
-        <ul>
-          {menu.map((item) => {
-            return (
-              <li key={item} onClick={() => openModalForm(item)} className={css.menuItem}>
-                {item}
-              </li>
-            );
-          })}
-        </ul>
+        <div className={css.logoContainer}>
+          <Logo />
+        </div>
+
+        <TabsAdmin />
       </aside>
 
-      {isActiveButton && <Layout isActiveButton={isActiveButton} />}
+      {currentMenuButton && <Layout isActiveButton={currentMenuButton} />}
     </div>
   );
 };

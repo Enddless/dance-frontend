@@ -1,13 +1,11 @@
 import css from "./forms.module.scss";
 import Close from "../Close/Close";
 import classNames from "classnames";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { AppRoute } from "../../const/route";
-import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../services/type-service";
-import { getCurrentUserData } from "../../services/thunk/auth";
 import { authSlice } from "../../store/slices/auth";
-
+import { AuthorizationStatus } from "../../const/const";
 
 type IModalFormProps = {
   openModalForm?: () => void;
@@ -17,33 +15,33 @@ const AreaForm = ({ openModalForm }: IModalFormProps) => {
   const classNamesList = classNames(css.formWrapper, css.area);
 
   //выход из аккаунта
+  const dispatch = useAppDispatch();
   const handleClick = () => {
     dispatch(authSlice.actions.logout());
+    if (openModalForm) {
+      openModalForm();
+    }
   };
 
   //проверка авторизации пользователя
   const authorizationStatus = useAppSelector((state) => state.auth.authStatus);
+  const role = useAppSelector((state) => state.auth.userRole)?.role;
 
-  //определение роли пользователя
-  const role = useAppSelector((state) => state.auth.userData)?.role;
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(getCurrentUserData());
-  }, [dispatch]);
-
-  if (!role && authorizationStatus !== "AUTH") return false;
+  if (authorizationStatus !== AuthorizationStatus.Auth) {
+    <Navigate to={AppRoute.Root} />;
+  }
 
   return (
     <div className={classNamesList}>
       <Close openModalForm={openModalForm} />
 
       {role === "customers" && (
-        <button>
+        <button onClick={openModalForm}>
           <Link to={AppRoute.PersonalArea}>Профиль</Link>
         </button>
       )}
       {role === "director" && (
-        <button>
+        <button onClick={openModalForm}>
           <Link to={AppRoute.AdministratorArea}>Профиль</Link>
         </button>
       )}

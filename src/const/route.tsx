@@ -5,8 +5,8 @@ export enum AppRoute {
   Recovery = "/login/recovery",
   Dashboard = "/dashboard",
   Reviews = "/reviews",
-  PersonalArea = "/personal-area",
-  AdministratorArea = "administration",
+  PersonalArea = "/inbox",
+  AdministratorArea = "/administration",
   NotFound = "/*",
 }
 
@@ -18,4 +18,5 @@ export enum APIRoute {
   Login = '/login',
   //user
   Role = '/accessAccount',
+  UserData = '/basicSettings',
 }

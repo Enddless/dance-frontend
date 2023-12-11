@@ -8,19 +8,21 @@ interface ICardProps {
   review?: IReviewsInfo;
   cls?: string;
   id?: string;
+  children?: JSX.Element;
 }
 
-const Card = ({ price, review, cls, id }: ICardProps) => {
+const Card = ({ price, review, cls, id, children }: ICardProps) => {
   const check = cls === "reviewsCard"; //для других классов, чтобы подставлять сразу в перечень классов
   const page = id === "forPage";
   const classNamesList = classNames(css.card, {
     [css.reviewsCard]: check,
-    [css.reviewsPageCard] : page,
+    [css.reviewsPageCard]: page,
   });
   return (
     <div className={classNamesList}>
       {price && (
         <>
+          {children}
           <p className={css.title}>{price.title}</p>
           {price.data.map((text) => {
             return (
@@ -59,7 +61,6 @@ const Card = ({ price, review, cls, id }: ICardProps) => {
 
           <p className={css.date}>{review.data.date}</p>
           <p>{review.data.description}</p>
-          
         </>
       )}
     </div>
