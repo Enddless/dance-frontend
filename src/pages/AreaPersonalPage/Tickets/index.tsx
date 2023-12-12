@@ -1,4 +1,4 @@
-import Spinner from "../../../components/Spinner";
+// import Spinner from "../../../components/Spinner";
 import { useAppSelector } from "../../../services/type-service";
 import css from "./styles.module.scss";
 
@@ -54,9 +54,10 @@ const ticketsData: ITicketsData[] = [
 const Tickets = () => {
   const tickets = useAppSelector((state) => state.user.userTickets);
   console.log(tickets);
-  if (!tickets) {
-    return <Spinner />;
-  }
+  //как только абонементы будут заполнены раскомментировать спиннер
+  // if (!tickets) {
+  //   return <Spinner />;
+  // }
   return (
     <div className={css.container}>
       <table className={css.ticketsTable}>
