@@ -3,14 +3,14 @@ import { NameSpace } from "../const/const";
 import { authSlice } from "./slices/auth";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { adminSlice } from "./slices/admin";
-import { userSlice } from "./slices/user";
+import { ticketSlice } from "./slices/tickets";
 
 export const api = createAPI();
 
 export const reducer = combineReducers({
   [NameSpace.Auth]: authSlice.reducer,
   [NameSpace.Admin]: adminSlice.reducer,
-  [NameSpace.User]: userSlice.reducer,
+  [NameSpace.Ticket]: ticketSlice.reducer,
 });
 
 export const store = configureStore({

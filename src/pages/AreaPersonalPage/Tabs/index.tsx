@@ -4,8 +4,8 @@ import { memo } from "react";
 import { useAppDispatch } from "../../../services/type-service";
 import { menuAreaPersonal } from "../../../const/const";
 import { AppRoute } from "../../../const/route";
-import { userSlice } from "../../../store/slices/user";
-import { getTickets } from "../../../services/thunk/user";
+import { getTickets } from "../../../services/thunk/tickets";
+import { authSlice } from "../../../store/slices/auth";
 
 function TabsPersonalMemo() {
   const dispatch = useAppDispatch();
@@ -13,7 +13,7 @@ function TabsPersonalMemo() {
   const ACTIVE_CLASS = `${LINK_CLASS} ${css.active}`;
 
   const handleClick = (path: string) => {
-    dispatch(userSlice.actions.changeActiveButtonMenuPersonal(path));
+    dispatch(authSlice.actions.changeActiveButtonMenuPersonal(path));
     // в зависимости от нажатой кнопки формировать dispatch
     switch (path) {
       case "tickets":

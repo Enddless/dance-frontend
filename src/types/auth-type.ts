@@ -9,6 +9,7 @@ export type StateAuth = {
   userRole: UserCurrentRole | null;
   isUserDataLoading: LoadingStatus;
   isUserRoleLoading:LoadingStatus;
+  buttonActive: string;
 };
 
 export type UserCurrentData = {

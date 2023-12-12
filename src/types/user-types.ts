@@ -12,5 +12,4 @@ export type ReturnDataTickets = {
 export type StateUserData = {
   userTickets: ReturnDataTickets | null;
   isTicketsLoading: LoadingStatus;
-  buttonActive: string;
 };

@@ -1,21 +1,19 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { DEFAULT_BUTTON_AREA_PERSONAL, LoadingStatus, NameSpace } from "../../const/const";
-import { getTickets } from "../../services/thunk/user";
+import { createSlice } from "@reduxjs/toolkit";
+import { LoadingStatus, NameSpace } from "../../const/const";
+import { getTickets } from "../../services/thunk/tickets";
 import { StateUserData } from "../../types/user-types";
 
 const initialState: StateUserData = {
   userTickets: null,
   isTicketsLoading: LoadingStatus.Idle,
-  buttonActive: DEFAULT_BUTTON_AREA_PERSONAL.title,
+  
 };
 
-export const userSlice = createSlice({
-  name: NameSpace.User,
+export const ticketSlice = createSlice({
+  name: NameSpace.Ticket,
   initialState,
   reducers: {
-    changeActiveButtonMenuPersonal(state, action: PayloadAction<string>) {
-      state.buttonActive = action.payload;
-    },
+    
   },
   extraReducers(builder) {
     builder
@@ -33,5 +31,3 @@ export const userSlice = createSlice({
       ;
   },
 });
-
-export const { changeActiveButtonMenuPersonal } = userSlice.actions;

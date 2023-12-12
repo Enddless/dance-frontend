@@ -11,14 +11,14 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import TabsPersonal from "./Tabs";
-import { userSlice } from "../../store/slices/user";
+import { authSlice } from "../../store/slices/auth";
 
 const AreaPersonalPage = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const location = useLocation().pathname.slice(1).split("/")[1];
   const authStatus = useAppSelector((state) => state.auth.authStatus);
-  const currentButton = useAppSelector((state) => state.user.buttonActive);
+  const currentButton = useAppSelector((state) => state.auth.buttonActive);
   useEffect(() => {
     if (authStatus !== AuthorizationStatus.Auth) {
       navigate(AppRoute.Root);
@@ -26,7 +26,7 @@ const AreaPersonalPage = () => {
   }, [authStatus, navigate]);
 
   useEffect(() => {
-    dispatch(userSlice.actions.changeActiveButtonMenuPersonal(location));
+    dispatch(authSlice.actions.changeActiveButtonMenuPersonal(location));
   }, [location, dispatch]);
 
   // если определить адрес не удалось, направить на меню по дефолту

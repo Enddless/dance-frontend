@@ -11,7 +11,6 @@ const Settings = () => {
     ? new Date(userData?.dateOfBirth)
     : undefined;
   const [userInput, setUserInput] = useState({
-    id: userData?.id,
     name: userData?.userName,
     gender: userData?.genders,
     tel: userData?.phoneNumber,

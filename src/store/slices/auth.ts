@@ -1,10 +1,11 @@
 import {
   AuthorizationStatus,
+  DEFAULT_BUTTON_AREA_PERSONAL,
   LoadingStatus,
   NameSpace,
 } from "../../const/const";
 import { StateAuth } from "../../types/auth-type";
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
   confirmation,
   getCurrentUserData,
@@ -23,6 +24,7 @@ const initialState: StateAuth = {
   userRole: null,
   isUserDataLoading: LoadingStatus.Idle,
   isUserRoleLoading: LoadingStatus.Idle,
+  buttonActive: DEFAULT_BUTTON_AREA_PERSONAL.title,
 };
 
 export const authSlice = createSlice({
@@ -34,6 +36,9 @@ export const authSlice = createSlice({
       state.userData = null;
       state.userRole = null;
       deleteToken();
+    },
+    changeActiveButtonMenuPersonal(state, action: PayloadAction<string>) {
+      state.buttonActive = action.payload;
     },
   },
   extraReducers(builder) {

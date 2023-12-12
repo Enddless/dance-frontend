@@ -52,7 +52,7 @@ const ticketsData: ITicketsData[] = [
 ];
 
 const Tickets = () => {
-  const tickets = useAppSelector((state) => state.user.userTickets);
+  const tickets = useAppSelector((state) => state.ticket.userTickets);
   console.log(tickets);
   //как только абонементы будут заполнены раскомментировать спиннер
   // if (!tickets) {
