@@ -1,9 +1,14 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { APIRoute } from "../../const/route";
-import { AuthData, AuthWithCodeData, ReturnData, UserCurrentData, UserCurrentRole } from "../../types/auth-type";
+import {
+  AuthData,
+  AuthWithCodeData,
+  ReturnData,
+  UserCurrentData,
+  UserCurrentRole,
+} from "../../types/auth-type";
 import { addToken } from "../token";
 import { Extra } from "../type-service";
-
 
 // ********** AUTH **********
 export const registration = createAsyncThunk<ReturnData, AuthData, Extra>(
@@ -39,13 +44,13 @@ export const login = createAsyncThunk<void, AuthData, Extra>(
   "user/login",
   async ({ emailUser, password }, { extra: api }) => {
     const {
-      data: { token },
+      data: { token, refresh },
       data,
     } = await api.post(APIRoute.Login, {
       emailUser,
       password,
     });
-    addToken(token);
+    addToken({ token, refresh });
     return data;
   }
 );
@@ -63,7 +68,7 @@ export const getCurrentUserData = createAsyncThunk<
 
 // ********** USER-ROLE **********
 export const getCurrentUserRole = createAsyncThunk<
-UserCurrentRole,
+  UserCurrentRole,
   string | undefined,
   Extra
 >("user/role", async (_arg, { extra: api }) => {
@@ -71,3 +76,16 @@ UserCurrentRole,
 
   return data;
 });
+
+// ********** UPDATE TOKEN **********
+export const updateToken = createAsyncThunk<void, undefined, Extra>(
+  "auth/updateToken",
+  async (_arg, { extra: api }) => {
+    const {
+      data: { token, refresh },
+      data,
+    } = await api.post(APIRoute.UpdateToken);
+    addToken({ token, refresh });
+    return data;
+  }
+);

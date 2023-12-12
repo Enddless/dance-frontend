@@ -19,4 +19,5 @@ export enum APIRoute {
   //user
   Role = '/accessAccount',
   UserData = '/basicSettings',
+  UpdateToken = '/loginRefresh',
 }

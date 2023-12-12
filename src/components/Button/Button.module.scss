@@ -30,6 +30,7 @@
 .menuAreaButton {
   background: transparent;
   width: 100%;
+  min-width: 240px;
   outline: 1px solid $btn-border-default;
   box-shadow: 2px 2px 15px 0px $btn-boxshadow;
 }
