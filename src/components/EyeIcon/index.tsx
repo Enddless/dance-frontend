@@ -12,13 +12,6 @@ function EyeIcon({togglePasswordVisibility, showPassword}:IVisibilityPassProps) 
     <FontAwesomeIcon
       icon={showPassword ? faEyeSlash : faEye}
       onClick={togglePasswordVisibility}
-    //   style={{
-    //     position: "absolute",
-    //     right: "110px",
-    //     top: "50%",
-    //     transform: "translateY(-50%)",
-    //     cursor: "pointer",
-    //   }}
     />
   );
 }

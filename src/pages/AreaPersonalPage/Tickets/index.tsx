@@ -1,3 +1,5 @@
+import Spinner from "../../../components/Spinner";
+import { useAppSelector } from "../../../services/type-service";
 import css from "./styles.module.scss";
 
 const titles = [
@@ -50,6 +52,11 @@ const ticketsData: ITicketsData[] = [
 ];
 
 const Tickets = () => {
+  const tickets = useAppSelector((state) => state.user.userTickets);
+  console.log(tickets);
+  if (!tickets) {
+    return <Spinner />;
+  }
   return (
     <div className={css.container}>
       <table className={css.ticketsTable}>

@@ -20,4 +20,5 @@ export enum APIRoute {
   Role = '/accessAccount',
   UserData = '/basicSettings',
   UpdateToken = '/loginRefresh',
+  Tickets = '/seasonTickets',
 }

@@ -7,18 +7,18 @@ import Tickets from "../Tickets/index";
 
 
 interface IActiveButtonProps {
-  isActiveButton: string;
+  currentButton: string;
 }
 
-function Layout({ isActiveButton }: IActiveButtonProps) {
+function Layout({ currentButton }: IActiveButtonProps) {
   return (
     <>
-      {isActiveButton === "Основные настройки" && <Settings />}
-      {isActiveButton === "Абонементы" && <Tickets />}
-      {isActiveButton === "Уведомления" && <Notifications />}
-      {isActiveButton === "Записи" && <OnlineRecovery />}
-      {isActiveButton === "Смена пароля" && <ChangePassword />}
-      {isActiveButton === "Написать отзыв" && <WriteReview />}
+      {currentButton === "settings" && <Settings />}
+      {currentButton === "tickets" && <Tickets />}
+      {currentButton === "notifications" && <Notifications />}
+      {currentButton === "record" && <OnlineRecovery />}
+      {currentButton === "changepass" && <ChangePassword />}
+      {currentButton === "review" && <WriteReview />}
     </>
   );
 }

@@ -26,13 +26,13 @@ export const menuAreaPersonal = [
   { id: 2, title: "Абонементы", path: "tickets" },
   { id: 3, title: "Уведомления", path: "notifications" },
   { id: 4, title: "Записи", path: "record" },
-  { id: 5, title: "Смена пароля", path: "change-pass" },
+  { id: 5, title: "Смена пароля", path: "changepass" },
   { id: 6, title: "Написать отзыв", path: "review" },
 ];
 export const DEFAULT_BUTTON_AREA_PERSONAL = {
   id: 1,
   title: "Основные настройки",
-  path: "primary-settings",
+  path: "settings",
 };
 
 export const menuAreaAdministrator = [
