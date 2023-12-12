@@ -17,7 +17,7 @@ export type UserCurrentData = {
   phoneNumber: number;
   emailUser: string;
   password: string;
-  dateOfBirth: Date | null | string;
+  dateOfBirth: Date ;
   photoUser: string;
   genders:string;
   role: string;

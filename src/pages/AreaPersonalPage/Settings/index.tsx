@@ -7,13 +7,16 @@ import Button from "../../../components/Button/Button";
 
 const Settings = () => {
   const userData = useAppSelector((state) => state.auth.userData);
+  const dateOfBirth = userData?.dateOfBirth
+    ? new Date(userData?.dateOfBirth)
+    : undefined;
   const [userInput, setUserInput] = useState({
     id: userData?.id,
     name: userData?.userName,
     gender: userData?.genders,
     tel: userData?.phoneNumber,
     email: userData?.emailUser,
-    dateOfBirth: userData?.dateOfBirth,
+    dateOfBirth: dateOfBirth && dateOfBirth.toISOString().substr(0, 10),
   });
   const handleChange = (e: { target: { name: string; value: string } }) => {
     setUserInput({ ...userInput, [e.target.name]: e.target.value });
@@ -22,6 +25,10 @@ const Settings = () => {
   if (!userData) {
     <Spinner />;
   }
+
+  const saveSettings = () => {
+    //добавить диспатч на сохранение данных в бд и обновление данных на странице
+  };
 
   return (
     <form className={css.form}>
@@ -51,6 +58,7 @@ const Settings = () => {
               className={css.radio}
               value={userInput.gender}
               onChange={handleChange}
+              defaultChecked
             />
             <label htmlFor="female" className={css.radioLabel}>
               Ж
@@ -102,13 +110,17 @@ const Settings = () => {
             name="date"
             id="date"
             className={css.input}
-            value="" //временно пустая строка
+            value={userInput.dateOfBirth}
             onChange={handleChange}
           />
         </fieldset>
 
         <div className={css.saveSettings}>
-          <Button text="Сохранить" cls="btn-save" />
+          <Button
+            text="Сохранить"
+            cls="btn-save"
+            openModalForm={saveSettings}
+          />
         </div>
       </div>
       <div className={css.deleteAccount}>

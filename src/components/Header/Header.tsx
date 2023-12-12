@@ -43,28 +43,28 @@ const Header = () => {
               </li>
             );
           })}
+          
         </ul>
       </nav>
-
       {authorizationStatus === "AUTH" ? (
-        <>
-          <Button
-            text={userData ? `User_ ${userData?.userName}` : `Admin`}
-            cls="btn-enter"
-            openModalForm={openModalForm}
-          ></Button>
-          {isOpenModal && <AreaForm openModalForm={openModalForm} />}
-        </>
-      ) : (
-        <>
-          <Button
-            text={"Вход"}
-            cls="btn-enter"
-            openModalForm={openModalForm}
-          ></Button>
-          {isOpenModal && <LoginForm openModalForm={openModalForm} />}
-        </>
-      )}
+            <>
+              <Button
+                text={userData ? `User_${userData?.userName}` : `Admin`}
+                cls="btn-enter"
+                openModalForm={openModalForm}
+              ></Button>
+              {isOpenModal && <AreaForm openModalForm={openModalForm} />}
+            </>
+          ) : (
+            <>
+              <Button
+                text={"Вход"}
+                cls="btn-enter"
+                openModalForm={openModalForm}
+              ></Button>
+              {isOpenModal && <LoginForm openModalForm={openModalForm} />}
+            </>
+          )}
     </div>
   );
 };
