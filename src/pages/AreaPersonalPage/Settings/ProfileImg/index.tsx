@@ -16,7 +16,7 @@ function ProfileImg() {
     // Проверяем формат файла
     const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
     if (!allowedExtensions.exec(file.name)) {
-      serErrorDownload("Допустимы только файлы формата jpeg, jpg и png");
+      serErrorDownload("Допустимы файлы формата jpeg, jpg и png");
       return;
     }
     // Создаем объект FileReader

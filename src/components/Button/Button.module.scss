@@ -37,3 +37,17 @@
   color: $white;
   outline:none;
 }
+.saveButton {
+  background: $btn-background-default;
+  color: $btn-color-secondary;
+  padding: 15px 5px;
+  font-size:20px;
+  width:100%;
+}
+.deleteButton {
+  background: $btn-background-secondary;
+  color: $btn-color-secondary;
+  padding: 15px 5px;
+  font-size:20px;
+  width:100%;
+}

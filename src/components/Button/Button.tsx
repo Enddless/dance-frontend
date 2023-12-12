@@ -11,15 +11,19 @@ interface ButtonProps {
 }
 
 const Button = ({ text, cls, activeClass, children, openModalForm  }: ButtonProps) => {
-  //классы для нажатых кнопок
+  //классы для нажатых кнопок, переделать в switch/case
   const enterButton = cls === "btn-enter";
   const more = cls === "btn-more";
   const menuAreaButton = cls === "menuAreaButton";
+  const saveButton = cls === "btn-save";
+  const deleteButton = cls === "btn-del";
   const classNamesList = classNames(css.btn, {
     [css.btnEnter]: enterButton,
     [css.btnMore]: more,
     [css.menuAreaButton]: menuAreaButton,
     [css.active]: activeClass,
+    [css.saveButton]: saveButton,
+    [css.deleteButton]: deleteButton,
   });
 
   
