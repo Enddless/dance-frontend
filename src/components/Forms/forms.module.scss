@@ -36,7 +36,7 @@
   align-items: flex-start;
   & button {
     @include ButtonPrimary();
-    width:100%;
+    width: 100%;
     font-size: 18px;
     font-weight: 700;
     letter-spacing: 0.72px;
@@ -54,10 +54,21 @@ h3 {
   display: flex;
   flex-direction: column;
 
-  label {
+  fieldset {
+    position: relative;
+    border: none;
     margin-top: 20px;
+  }
+  label {
     font-size: 16px;
     font-weight: 400;
+  }
+
+  .eyeIcon {
+    position: absolute;
+    right: 18px;
+    top: 50px;
+    cursor: pointer;
   }
 
   input {
@@ -71,6 +82,16 @@ h3 {
     font-weight: 400;
     padding: 14px 0 15px 10px;
     position: relative;
+  }
+  /* удаление иконки отображения пароля в IE */
+  input[type="password"]::-ms-reveal {
+    display: none;
+  }
+  /* удаление иконки стрелок */
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; 
   }
 
   a {

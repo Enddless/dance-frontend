@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import css from "./forms.module.scss";
 import ConfirmationForm from "./ConfirmationForm";
 import { useAppDispatch } from "../../services/type-service";
 import { registration } from "../../services/thunk/auth";
+import EyeIcon from "../EyeIcon";
 
 const RegistrationForm = () => {
   const [checkPassword, setCheckPassword] = useState(false);
@@ -36,8 +35,12 @@ const RegistrationForm = () => {
   };
 
   const [showPassword, setShowPassword] = useState(false);
+  const [showDoublePassword, setShowDoublePassword] = useState(false);
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+  };
+  const toggleDoublePasswordVisibility = () => {
+    setShowDoublePassword(!showDoublePassword);
   };
   //проверка на совпадение паролей
   useEffect(() => {
@@ -64,46 +67,41 @@ const RegistrationForm = () => {
                 placeholder="example@mail.com"
               />
             </label>
-            <label htmlFor="password">
-              Пароль
-              <input
-                value={formData.password}
-                onChange={handleChange}
-                name="password"
-                type={showPassword ? "text" : "password"}
-              />
-              <FontAwesomeIcon
-                icon={showPassword ? faEyeSlash : faEye}
-                onClick={togglePasswordVisibility}
-                style={{
-                  position: "absolute",
-                  right: "110px",
-                  top: "56%",
-                  transform: "translateY(-56%)",
-                  cursor: "pointer",
-                }}
-              />
-            </label>
-            <label htmlFor="dublPassword">
-              Повторите пароль
-              <input
-                value={formData.dublPassword}
-                onChange={handleChange}
-                name="dublPassword"
-                type={showPassword ? "text" : "password"}
-              />
-              <FontAwesomeIcon
-                icon={showPassword ? faEyeSlash : faEye}
-                onClick={togglePasswordVisibility}
-                style={{
-                  position: "absolute",
-                  right: "110px",
-                  top: "56%",
-                  transform: "translateY(-56%)",
-                  cursor: "pointer",
-                }}
-              />
-            </label>
+            <fieldset>
+              <label htmlFor="password">
+                Пароль
+                <input
+                  value={formData.password}
+                  onChange={handleChange}
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                />
+                <div className={css.eyeIcon}>
+                  <EyeIcon
+                    showPassword={showPassword}
+                    togglePasswordVisibility={togglePasswordVisibility}
+                  />
+                </div>
+              </label>
+            </fieldset>
+
+            <fieldset>
+              <label htmlFor="dublPassword">
+                Повторите пароль
+                <input
+                  value={formData.dublPassword}
+                  onChange={handleChange}
+                  name="dublPassword"
+                  type={showDoublePassword ? "text" : "password"}
+                />
+                <div className={css.eyeIcon}>
+                  <EyeIcon
+                    showPassword={showDoublePassword}
+                    togglePasswordVisibility={toggleDoublePasswordVisibility}
+                  />
+                </div>
+              </label>
+            </fieldset>
 
             <button
               type="submit"

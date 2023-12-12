@@ -1,18 +1,16 @@
 import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import css from "./forms.module.scss";
 import RecoveryForm from "./RecoveryForm";
 import RegistrationForm from "./RegistrationForm";
 import classNames from "classnames";
 import Close from "../Close/Close";
-// import useLogin from "../../hooks/useLogin";
 import { useAppDispatch } from "../../services/type-service";
 import {
   getCurrentUserData,
   getCurrentUserRole,
   login,
 } from "../../services/thunk/auth";
+import EyeIcon from "../EyeIcon";
 
 type IModalFormProps = {
   openModalForm?: () => void;
@@ -86,26 +84,24 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
                 />
               </label>
 
-              <label htmlFor="password">
-                Пароль
-                <input
-                  value={item.password}
-                  onChange={handleChange}
-                  name="password"
-                  type={showPassword ? "text" : "password"}
-                />
-                <FontAwesomeIcon
-                  icon={showPassword ? faEyeSlash : faEye}
-                  onClick={togglePasswordVisibility}
-                  style={{
-                    position: "absolute",
-                    right: "110px",
-                    top: "56%",
-                    transform: "translateY(-56%)",
-                    cursor: "pointer",
-                  }}
-                />
-              </label>
+              <fieldset>
+                <label htmlFor="password">
+                  Пароль
+                  <input
+                    value={item.password}
+                    onChange={handleChange}
+                    name="password"
+                    type={showPassword ? "text" : "password"}
+                  />
+                  <div className={css.eyeIcon}>
+                    <EyeIcon
+                      showPassword={showPassword}
+                      togglePasswordVisibility={togglePasswordVisibility}
+                    />
+                  </div>
+                </label>
+              </fieldset>
+
               <button type="submit">Войти</button>
             </form>
 
