@@ -70,17 +70,16 @@ const Header = () => {
           {isOpenModal && <AreaForm openModalForm={openModalForm} />}
         </>
       )}
-      {authorizationStatus === "NOAUTH" ||
-        (authorizationStatus === "ANKNOWN" && (
-          <>
-            <Button
-              text="Вход"
-              cls="btn-enter"
-              openModalForm={openModalForm}
-            ></Button>
-            {isOpenModal && <LoginForm openModalForm={openModalForm} />}
-          </>
-        ))}
+      {authorizationStatus === "NO_AUTH" || authorizationStatus === "UNKNOWN" &&(
+        <>
+          <Button
+            text="Вход"
+            cls="btn-enter"
+            openModalForm={openModalForm}
+          ></Button>
+          {isOpenModal && <LoginForm openModalForm={openModalForm} />}
+        </>
+      )}
     </div>
   );
 };
