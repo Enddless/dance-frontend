@@ -6,7 +6,7 @@ interface ButtonProps {
   cls?: string;
   activeClass?: string;
   children?: React.ReactNode;
-  openModalForm?: () => void;
+  openModalForm?: (() => void) | ((e: React.MouseEvent<HTMLButtonElement>) => void);
 
 }
 

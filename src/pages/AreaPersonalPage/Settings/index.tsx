@@ -1,33 +1,70 @@
 import { useState } from "react";
 import css from "./styles.module.scss";
-import { useAppSelector } from "../../../services/type-service";
+import { useAppDispatch, useAppSelector } from "../../../services/type-service";
 import Spinner from "../../../components/Spinner";
 import ProfileImg from "./ProfileImg";
 import Button from "../../../components/Button/Button";
+import {
+  changeUserData,
+  getCurrentUserData,
+} from "../../../services/thunk/auth";
 
 const Settings = () => {
+  const dispatch = useAppDispatch();
   const userData = useAppSelector((state) => state.auth.userData);
-  const dateOfBirth = userData?.dateOfBirth
-    ? new Date(userData?.dateOfBirth)
+  const dateOfBirth = userData.dateOfBirth
+    ? new Date(userData.dateOfBirth)
     : undefined;
+  //начальные данные из базы, почти все пустые
   const [userInput, setUserInput] = useState({
-    name: userData?.userName,
-    gender: userData?.genders,
-    tel: userData?.phoneNumber,
-    email: userData?.emailUser,
+    emailUser: userData.emailUser,
+    password: userData.password,
+    userName: userData.userName,
+    genders: userData.genders,
+    phoneNumber: userData.phoneNumber,
     dateOfBirth: dateOfBirth && dateOfBirth.toISOString().substr(0, 10),
   });
   const handleChange = (e: { target: { name: string; value: string } }) => {
     setUserInput({ ...userInput, [e.target.name]: e.target.value });
   };
+  const handleRadioChange = (e: {
+    target: { name: string; value: string };
+  }) => {
+    setUserInput({ ...userInput, genders: e.target.value });
+  };
+
+  //отправляем в базу обновленные данные всех полей, даже если заполнили только одно поле
+  const saveSettings = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    if (!userInput) return false;
+    dispatch(
+      changeUserData({
+        userName: userInput.userName,
+        genders: userInput.genders,
+        phoneNumber: userInput.phoneNumber,
+        // dateOfBirth: new Date(userInput.dateOfBirth).toISOString(),
+      })
+    )
+      .unwrap()
+      .then(() => {
+        dispatch(getCurrentUserData());
+      });
+  };
+  // в процессе
+  // const deleteAccount = (e: { preventDefault: () => void }) => {
+  //   e.preventDefault();
+  //   if (!userInput) return false;
+  //   dispatch(
+  //     deleteUserData({
+  //       emailUser: userInput.emailUser,
+  //       password: userInput.password,
+  //     })
+  //   );
+  // };
 
   if (!userData) {
     <Spinner />;
   }
-
-  const saveSettings = () => {
-    //добавить диспатч на сохранение данных в бд и обновление данных на странице
-  };
 
   return (
     <form className={css.form}>
@@ -38,11 +75,11 @@ const Settings = () => {
           <p>Имя</p>
           <input
             type="text"
-            name="name"
+            name="userName"
             id="name"
             placeholder="Введите имя"
             className={css.input}
-            value={userInput.name}
+            value={userInput.userName}
             onChange={handleChange}
           />
         </fieldset>
@@ -53,11 +90,11 @@ const Settings = () => {
             <input
               type="radio"
               id="female"
-              name="radio"
+              name="genders"
               className={css.radio}
-              value={userInput.gender}
-              onChange={handleChange}
-              defaultChecked
+              value="female"
+              onChange={handleRadioChange}
+              checked={userInput.genders === "female"}
             />
             <label htmlFor="female" className={css.radioLabel}>
               Ж
@@ -66,10 +103,11 @@ const Settings = () => {
             <input
               type="radio"
               id="male"
-              name="radio"
+              name="genders"
               className={css.radio}
-              value={userInput.gender}
-              onChange={handleChange}
+              value="male"
+              onChange={handleRadioChange}
+              checked={userInput.genders === "male"}
             />
             <label htmlFor="male" className={css.radioLabel}>
               М
@@ -81,11 +119,11 @@ const Settings = () => {
           <p>Номер телефона</p>
           <input
             type="text"
-            name="tel"
+            name="phoneNumber"
             id="tel"
             placeholder="+71111111111"
             className={css.input}
-            value={userInput.tel}
+            value={userInput.phoneNumber}
             onChange={handleChange}
           />
         </fieldset>
@@ -94,11 +132,12 @@ const Settings = () => {
           <p>E-mail</p>
           <input
             type="email"
-            name="email"
+            name="emailUser"
             id="email"
             className={css.input}
-            value={userInput.email}
-            onChange={handleChange}
+            value={userData.emailUser}
+            // onChange={handleChange}
+            disabled
           />
         </fieldset>
 
@@ -106,7 +145,7 @@ const Settings = () => {
           <p>Дата рождения</p>
           <input
             type="date"
-            name="date"
+            name="dateOfBirth"
             id="date"
             className={css.input}
             value={userInput.dateOfBirth}
@@ -118,12 +157,20 @@ const Settings = () => {
           <Button
             text="Сохранить"
             cls="btn-save"
-            openModalForm={saveSettings}
+            openModalForm={(e: React.MouseEvent<HTMLButtonElement>) =>
+              saveSettings(e)
+            }
           />
         </div>
       </div>
       <div className={css.deleteAccount}>
-        <Button text="Удалить профиль" cls="btn-del" />
+        <Button
+          text="Удалить профиль"
+          cls="btn-del"
+          // openModalForm={(e: React.MouseEvent<HTMLButtonElement>) =>
+          //   deleteAccount(e)
+          // }
+        />
       </div>
     </form>
   );

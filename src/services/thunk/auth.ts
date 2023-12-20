@@ -66,6 +66,31 @@ export const getCurrentUserData = createAsyncThunk<
   return data;
 });
 
+export const changeUserData = createAsyncThunk<string, UserCurrentData, Extra>(
+  "user/updatedata",
+  async ({ userName, genders, phoneNumber, dateOfBirth }, { extra: api }) => {
+    const { data } = await api.post(APIRoute.UserData, {
+      userName,
+      genders,
+      phoneNumber,
+      dateOfBirth,
+    });
+
+    return data;
+  }
+);
+// export const deleteUserData = createAsyncThunk<string, UserCurrentData, Extra>(
+//   "user/deleteData",
+//   async ({ emailUser, password }, { extra: api }) => {
+//     const { data } = await api.delete(APIRoute.DeleteUser, {
+//       emailUser,
+//       password
+//     });
+
+//     return data;
+//   }
+// );
+
 // ********** USER-ROLE **********
 export const getCurrentUserRole = createAsyncThunk<
   UserCurrentRole,

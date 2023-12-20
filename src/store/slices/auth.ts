@@ -7,6 +7,7 @@ import {
 import { StateAuth } from "../../types/auth-type";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
+  changeUserData,
   confirmation,
   getCurrentUserData,
   getCurrentUserRole,
@@ -20,7 +21,7 @@ const initialState: StateAuth = {
   isRegistrationLoading: LoadingStatus.Idle,
   isConfirmationLoading: LoadingStatus.Idle,
   message: "",
-  userData: null,
+  userData: {},
   userRole: null,
   isUserDataLoading: LoadingStatus.Idle,
   isUserRoleLoading: LoadingStatus.Idle,
@@ -33,7 +34,7 @@ export const authSlice = createSlice({
   reducers: {
     logout(state) {
       state.authStatus = AuthorizationStatus.NoAuth;
-      state.userData = null;
+      state.userData = {};
       state.userRole = null;
       deleteToken();
     },
@@ -89,6 +90,17 @@ export const authSlice = createSlice({
       .addCase(getCurrentUserData.rejected, (state) => {
         state.isUserDataLoading = LoadingStatus.Rejected;
       })
+      // ***** change userdata *****
+      .addCase(changeUserData.pending, (state) => {
+        state.isUserDataLoading = LoadingStatus.Pending;
+      })
+      .addCase(changeUserData.fulfilled, (state, action) => {
+        state.message = action.payload;
+        state.isUserDataLoading = LoadingStatus.Fulfilled;
+      })
+      .addCase(changeUserData.rejected, (state) => {
+        state.isUserDataLoading = LoadingStatus.Rejected;
+      })
       // ***** user-role *****
       .addCase(getCurrentUserRole.pending, (state) => {
         state.isUserRoleLoading = LoadingStatus.Pending;
@@ -100,6 +112,11 @@ export const authSlice = createSlice({
       })
       .addCase(getCurrentUserRole.rejected, (state) => {
         state.isUserRoleLoading = LoadingStatus.Rejected;
-      });
+      })
+      // ***** delete account *****
+      // .addCase(deleteUserData.fulfilled, (state, action) => {
+      //   state.authStatus = AuthorizationStatus.NoAuth;
+      //   state.message = action.payload;
+      // });
   },
 });

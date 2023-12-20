@@ -5,7 +5,7 @@ export type StateAuth = {
   isRegistrationLoading: LoadingStatus;
   isConfirmationLoading: LoadingStatus;
   message: string;
-  userData: UserCurrentData | null;
+  userData: UserCurrentData;
   userRole: UserCurrentRole | null;
   isUserDataLoading: LoadingStatus;
   isUserRoleLoading:LoadingStatus;
@@ -13,16 +13,16 @@ export type StateAuth = {
 };
 
 export type UserCurrentData = {
-  id: number;
-  userName: string;
-  phoneNumber: number;
-  emailUser: string;
-  password: string;
-  dateOfBirth: Date ;
-  photoUser: string;
-  genders:string;
-  role: string;
-  code: number;
+  id?: number;
+  userName?: string | undefined;
+  phoneNumber?: number | undefined;
+  emailUser?: string | undefined;
+  password?: string | undefined;
+  dateOfBirth?: Date | undefined;
+  photoUser?: string | undefined;
+  genders?:string | undefined;
+  role?: string;
+  code?: number;
 };
 export type UserCurrentRole = {
   id: number;
