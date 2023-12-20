@@ -22,7 +22,7 @@ const Header = () => {
   //проверка авторизации пользователя
   const authorizationStatus = useAppSelector((state) => state.auth.authStatus);
   const userData = useAppSelector((state) => state.auth.userData);
-
+  const userRole = useAppSelector((state) => state.auth.userRole)?.role;
   return (
     <div className={css.header}>
       <Logo />
@@ -43,28 +43,44 @@ const Header = () => {
               </li>
             );
           })}
-          
         </ul>
       </nav>
-      {authorizationStatus === "AUTH" ? (
-            <>
-              <Button
-                text={userData ? `User_${userData?.userName}` : `Admin`}
-                cls="btn-enter"
-                openModalForm={openModalForm}
-              ></Button>
-              {isOpenModal && <AreaForm openModalForm={openModalForm} />}
-            </>
-          ) : (
-            <>
-              <Button
-                text={"Вход"}
-                cls="btn-enter"
-                openModalForm={openModalForm}
-              ></Button>
-              {isOpenModal && <LoginForm openModalForm={openModalForm} />}
-            </>
-          )}
+      {authorizationStatus === "AUTH" && userRole === "customers" && (
+        <>
+          <Button
+            text={
+              userData?.userName !== ""
+                ? `${userData.userName}`
+                : `${userData.emailUser}`
+            }
+            cls="btn-enter"
+            openModalForm={openModalForm}
+          ></Button>
+          {isOpenModal && <AreaForm openModalForm={openModalForm} />}
+        </>
+      )}
+
+      {authorizationStatus === "AUTH" && userRole === "director" && (
+        <>
+          <Button
+            text="Admin"
+            cls="btn-enter"
+            openModalForm={openModalForm}
+          ></Button>
+          {isOpenModal && <AreaForm openModalForm={openModalForm} />}
+        </>
+      )}
+      {authorizationStatus === "NOAUTH" ||
+        (authorizationStatus === "ANKNOWN" && (
+          <>
+            <Button
+              text="Вход"
+              cls="btn-enter"
+              openModalForm={openModalForm}
+            ></Button>
+            {isOpenModal && <LoginForm openModalForm={openModalForm} />}
+          </>
+        ))}
     </div>
   );
 };
