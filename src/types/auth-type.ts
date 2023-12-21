@@ -9,6 +9,7 @@ export type StateAuth = {
   userRole: UserCurrentRole | null;
   isUserDataLoading: LoadingStatus;
   isUserRoleLoading:LoadingStatus;
+  isUserPhotoLoading:LoadingStatus;
   buttonActive: string;
 };
 
@@ -24,9 +25,16 @@ export type UserCurrentData = {
   role?: string;
   code?: number;
 };
+
 export type UserCurrentRole = {
   id: number;
   role: string;
+};
+// export type UserCurrentPhoto = {
+//   photoUser: string;
+// };
+export type UserCurrentPhoto = {
+  photoUser: File;
 };
 
 export type AuthData = {

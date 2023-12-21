@@ -1,7 +1,14 @@
 @import "../../../../styles/variables.scss";
 
+.submit {
+  top: 634px;
+  position: absolute;
+  cursor: pointer;
+}
 .profileImg {
   grid-column: 4 / 7;
+  width: 512px;
+  height: 512px;
   background: grey; //будет удалено
   display: flex;
   flex-direction: column;
@@ -9,20 +16,17 @@
   gap: 5px;
   padding: 20px;
   margin: 0 50px 0 0;
-  position:relative;
+  position: relative;
 
   & img {
-    position:absolute;
-    top:0;
-    left:0;
+    position: absolute;
+    top: 0;
+    left: 0;
     object-fit: cover;
     width: 100%;
     height: 100%;
   }
 
-  .download {
-    cursor: pointer;
-  }
   input[type="file"] {
     height: 100%;
     object-fit: cover;
@@ -32,13 +36,17 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    position:relative;
-    z-index:10;
+    position: relative;
+    z-index: 10;
+    svg {
+      cursor: pointer;
+    }
   }
   .errorMessage {
     position: absolute;
-    bottom:-40px;
-    color:red;
-    font-size:16px;
+    bottom: -40px;
+    left: 10px;
+    color: red;
+    font-size: 18px;
   }
 }

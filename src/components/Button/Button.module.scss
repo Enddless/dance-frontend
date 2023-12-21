@@ -10,7 +10,7 @@
   font-family: $body-family-secondary-regular;
   font-weight: 600;
   letter-spacing: 0.96px;
-  font-size:24px;
+  font-size: 24px;
   width: 100%;
   max-width: 190px;
 }
@@ -25,7 +25,7 @@
   background: $btn-background-default;
   color: $btn-color-secondary;
   padding: 15px 20px;
-  font-size:24px;
+  font-size: 24px;
 }
 .menuAreaButton {
   background: transparent;
@@ -38,19 +38,19 @@
 .active {
   background: $btn-menuArea-background-active;
   color: $white;
-  outline:none;
+  outline: none;
 }
 .saveButton {
-  background: $btn-background-default;
-  color: $btn-color-secondary;
+  background: $btn-saveButton-background;
+  color: $btn-saveButton-color;
   padding: 15px 5px;
-  font-size:20px;
-  width:100%;
+  font-size: 16px;
+  letter-spacing: 0.32px;
 }
 .deleteButton {
-  background: $btn-background-secondary;
-  color: $btn-color-secondary;
+  color: inherit;
+  text-decoration: underline;
   padding: 15px 5px;
-  font-size:20px;
-  width:100%;
+  font-size: 20px;
+  width: 100%;
 }

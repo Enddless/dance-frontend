@@ -5,6 +5,7 @@ import {
   AuthWithCodeData,
   ReturnData,
   UserCurrentData,
+  UserCurrentPhoto,
   UserCurrentRole,
 } from "../../types/auth-type";
 import { addToken } from "../token";
@@ -79,6 +80,24 @@ export const changeUserData = createAsyncThunk<string, UserCurrentData, Extra>(
     return data;
   }
 );
+export const changeUserPhoto = createAsyncThunk<
+  string,
+  UserCurrentPhoto,
+  Extra
+>("user/updatePhoto", async ({ photoUser }, { extra: api }) => {
+  const { data } = await api.post(
+    APIRoute.AddPhoto,
+    photoUser ,
+    {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    }
+  );
+
+  return data;
+});
+
 // export const deleteUserData = createAsyncThunk<string, UserCurrentData, Extra>(
 //   "user/deleteData",
 //   async ({ emailUser, password }, { extra: api }) => {

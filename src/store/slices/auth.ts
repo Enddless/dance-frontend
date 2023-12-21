@@ -8,6 +8,7 @@ import { StateAuth } from "../../types/auth-type";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
   changeUserData,
+  changeUserPhoto,
   confirmation,
   getCurrentUserData,
   getCurrentUserRole,
@@ -25,6 +26,7 @@ const initialState: StateAuth = {
   userRole: null,
   isUserDataLoading: LoadingStatus.Idle,
   isUserRoleLoading: LoadingStatus.Idle,
+  isUserPhotoLoading: LoadingStatus.Idle,
   buttonActive: DEFAULT_BUTTON_AREA_PERSONAL.title,
 };
 
@@ -100,6 +102,17 @@ export const authSlice = createSlice({
       })
       .addCase(changeUserData.rejected, (state) => {
         state.isUserDataLoading = LoadingStatus.Rejected;
+      })
+      // ***** change userphoto *****
+      .addCase(changeUserPhoto.pending, (state) => {
+        state.isUserPhotoLoading = LoadingStatus.Pending;
+      })
+      .addCase(changeUserPhoto.fulfilled, (state, action) => {
+        state.message = action.payload;
+        state.isUserPhotoLoading = LoadingStatus.Fulfilled;
+      })
+      .addCase(changeUserPhoto.rejected, (state) => {
+        state.isUserPhotoLoading = LoadingStatus.Rejected;
       })
       // ***** user-role *****
       .addCase(getCurrentUserRole.pending, (state) => {

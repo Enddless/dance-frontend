@@ -23,4 +23,5 @@ export enum APIRoute {
   //others-data
   UpdateToken = '/loginRefresh',
   Tickets = '/seasonTickets',
+  AddPhoto = '/addUsersPhoto'
 }
