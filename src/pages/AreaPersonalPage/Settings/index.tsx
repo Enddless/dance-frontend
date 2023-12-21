@@ -14,7 +14,7 @@ const Settings = () => {
   const userData = useAppSelector((state) => state.auth.userData);
   const dateOfBirth = userData.dateOfBirth
     ? new Date(userData.dateOfBirth)
-    : undefined;
+    : "";
   //начальные данные из базы, почти все пустые
   const [userInput, setUserInput] = useState({
     emailUser: userData.emailUser,
@@ -42,7 +42,7 @@ const Settings = () => {
         userName: userInput.userName,
         genders: userInput.genders,
         phoneNumber: userInput.phoneNumber,
-        // dateOfBirth: new Date(userInput.dateOfBirth).toISOString(),
+        dateOfBirth: new Date(userInput.dateOfBirth),
       })
     )
       .unwrap()

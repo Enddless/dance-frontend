@@ -19,7 +19,7 @@ export type UserCurrentData = {
   phoneNumber?: number | undefined;
   emailUser?: string | undefined;
   password?: string | undefined;
-  dateOfBirth?: Date | undefined;
+  dateOfBirth?: Date | string;
   photoUser?: string | undefined;
   genders?:string | undefined;
   role?: string;
