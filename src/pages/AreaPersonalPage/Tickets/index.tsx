@@ -1,5 +1,6 @@
 // import Spinner from "../../../components/Spinner";
 import { useAppSelector } from "../../../services/type-service";
+import EmptyTemplate from "../EmptyTemplate";
 import css from "./styles.module.scss";
 
 const titles = [
@@ -53,46 +54,53 @@ const ticketsData: ITicketsData[] = [
 
 const Tickets = () => {
   const tickets = useAppSelector((state) => state.ticket.userTickets);
-  console.log(tickets);
-  //как только абонементы будут заполнены раскомментировать спиннер
-  // if (!tickets) {
-  //   return <Spinner />;
-  // }
+
   return (
-    <div className={css.container}>
-      <table className={css.ticketsTable}>
-        <thead>
-          <tr className={css.tableTitle}>
-            {titles.map((item) => (
-              <th key={item}>{item}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {ticketsData.map(
-            ({
-              id,
-              dateOfPurchase,
-              startDate,
-              endDate,
-              usedClasses,
-              totalClasses,
-              status,
-            }) => (
-              <tr className={css.tableRow} key={id}>
-                <td>{id}</td>
-                <td>{dateOfPurchase}</td>
-                <td>{startDate}</td>
-                <td>{endDate}</td>
-                <td>
-                  {usedClasses}/{totalClasses}
-                </td>
-                <td>{status}</td>
-              </tr>
-            )
-          )}
-        </tbody>
-      </table>
+    <div className={css.wrapper}>
+      {tickets ? (
+        <table className={css.ticketsTable}>
+          <thead>
+            <tr className={css.tableTitle}>
+              {titles.map((item) => (
+                <th key={item}>{item}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {ticketsData.map(
+              ({
+                id,
+                dateOfPurchase,
+                startDate,
+                endDate,
+                usedClasses,
+                totalClasses,
+                status,
+              }) => (
+                <tr className={css.tableRow} key={id}>
+                  <td>{id}</td>
+                  <td>{dateOfPurchase}</td>
+                  <td>{startDate}</td>
+                  <td>{endDate}</td>
+                  <td>
+                    {usedClasses}/{totalClasses}
+                  </td>
+                  <td>{status}</td>
+                </tr>
+              )
+            )}
+          </tbody>
+        </table>
+      ) : (
+        <EmptyTemplate>
+          <p>У Вас ещё нет абонементов. </p>
+          <p>
+            Для приобритения обратитесь в студию по адресу: Южно-Сахалинск,
+            Коммунистический проспект, 20, c 09:00 до 21:00 или запишитесь на
+            пробное занятие по телефону: <a href="tel:+74957887750">+7 (495) 788-77-50</a>
+          </p>
+        </EmptyTemplate>
+      )}
     </div>
   );
 };
