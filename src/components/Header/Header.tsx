@@ -77,7 +77,7 @@ const Header = () => {
           {isOpenModal && <AreaForm openModalForm={openModalForm} />}
         </>
       )}
-      {(authorizationStatus === "NO_AUTH" || authorizationStatus === "UNKNOWN") && (
+      {(authorizationStatus === "NO_AUTH" || authorizationStatus === "UNKNOWN" || userRole === "") && (
           <>
             <Button
               text="Вход"

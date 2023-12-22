@@ -1,0 +1,22 @@
+.rbc-time-view .rbc-allday-cell {
+  display: none;
+}
+.rbc-calendar {
+  height: auto;
+}
+.rbc-toolbar .rbc-btn-group button {
+  background: green;
+  color: white;
+  cursor: pointer;
+}
+.rbc-toolbar .rbc-toolbar-label {
+  color: green;
+}
+.rbc-toolbar .rbc-btn-group button:hover {
+  background: #ffc700;
+  transition: background .3s ease-in-out;
+  -webkit-transition: background .3s ease-in-out;
+  -moz-transition: background .3s ease-in-out;
+  -ms-transition: background .3s ease-in-out;
+  -o-transition: background .3s ease-in-out;
+}

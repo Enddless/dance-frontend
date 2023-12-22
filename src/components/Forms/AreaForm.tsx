@@ -27,7 +27,7 @@ const AreaForm = ({ openModalForm }: IModalFormProps) => {
   const authorizationStatus = useAppSelector((state) => state.auth.authStatus);
   const role = useAppSelector((state) => state.auth.userRole)?.role;
 
-  if (authorizationStatus !== AuthorizationStatus.Auth) {
+  if (authorizationStatus !== AuthorizationStatus.Auth || role === "") {
     <Navigate to={AppRoute.Root} />;
   }
 
