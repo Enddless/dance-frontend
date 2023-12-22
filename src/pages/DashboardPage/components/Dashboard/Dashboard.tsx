@@ -1,28 +1,33 @@
 // import sprite from "../../../../assets/sprite.svg";
 import TitleSection from "../../../../components/Title/Title";
-import { Calendar, momentLocalizer } from "react-big-calendar";
+import { Calendar, momentLocalizer, stringOrDate } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import classNames from "classnames";
 import "moment/locale/ru";
 import "moment-timezone";
-import events from "./events";
+import dataEvents from "./dataEvents";
+import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
+import "react-big-calendar/lib/addons/dragAndDrop/styles.scss";
 import "./custom.css";
 import css from "./Dashboard.module.scss";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Close from "../../../../components/Close/Close";
 
 type TEvent = {
   id: number;
   title: string;
-  allDay: boolean;
+  allDay?: boolean;
   start: Date;
   end: Date;
-  halls: string;
+  halls?: string;
   desc: string;
+  isDraggable?: boolean;
+  isResizable?: boolean;
 };
 
 const Dashboard = () => {
+  const [events, setEvents] = useState(dataEvents);
   moment.updateLocale("ru", {
     months: {
       format:
@@ -109,13 +114,46 @@ const Dashboard = () => {
   };
   const closeMenu = () => {
     setShowDetail(!showDetail);
-  }
+  };
+  const DragAndDropCalendar = withDragAndDrop<TEvent>(Calendar);
+  const moveEvent = useCallback(
+    ({
+      event,
+      start,
+      end
+    }: {
+      event: TEvent;
+      start: stringOrDate;
+      end: stringOrDate;
+    }) => {
+      setEvents((prev) => {
+        const existing = prev.find((ev) => ev.id === event.id) ?? {};
+        const filtered = prev.filter((ev) => ev.id !== event.id);
+        return [...filtered, { ...existing, start, end }];
+      });
+    },
+    [setEvents]
+  );
 
+  const resizeEvent = useCallback(
+    ({ event, start, end } : {
+      event: TEvent;
+      start: stringOrDate;
+      end: stringOrDate;
+      }) => {
+      setEvents((prev) => {
+        const existing = prev.find((ev) => ev.id === event.id) ?? {};
+        const filtered = prev.filter((ev) => ev.id !== event.id);
+        return [...filtered, { ...existing, start, end }];
+      });
+    },
+    [setEvents]
+  );
   return (
     <section className={css.container}>
       <TitleSection title="Расписание" />
       <div className={css.dashboard}>
-        <Calendar
+        <DragAndDropCalendar
           views={["day", "week", "month"]}
           culture="ru"
           localizer={localizer}
@@ -137,7 +175,7 @@ const Dashboard = () => {
           popupOffset={{ x: 20, y: 20 }}
           style={{ height: 1350 }}
           dayLayoutAlgorithm="no-overlap"
-          dayPropGetter={(date) =>
+          dayPropGetter={(date: Date) =>
             date.getDay() === new Date().getDay()
               ? {
                   style: {
@@ -147,10 +185,14 @@ const Dashboard = () => {
               : {}
           }
           onSelectEvent={handleSelectEvent}
+          resizableAccessor={"isResizable"}
+          onEventDrop={moveEvent}
+          onEventResize={resizeEvent}
+          resizable
         />
         {showDetail && (
           <div className={css.detailEvent}>
-            <Close openModalForm={closeMenu}/>
+            <Close openModalForm={closeMenu} />
             <p>{selectedEvent.title}</p>
             <p>
               {selectedEvent.start.getHours()}:

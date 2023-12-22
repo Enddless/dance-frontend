@@ -37,3 +37,6 @@
 .rbc-day-slot .rbc-events-container {
   margin-right: 0;
 }
+.rbc-current-time-indicator{
+  display: none;
+}
