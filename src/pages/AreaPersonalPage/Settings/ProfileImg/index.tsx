@@ -6,6 +6,7 @@ import {
   useAppSelector,
 } from "../../../../services/type-service";
 import {
+  changeUserData,
   changeUserPhoto,
   getCurrentUserData,
 } from "../../../../services/thunk/auth";
@@ -14,9 +15,14 @@ import { API_URL } from "../../../../services/api";
 function ProfileImg() {
   const dispatch = useAppDispatch();
   const userData = useAppSelector((state) => state.auth.userData);
+
   const [previewImage, setPreviewImage] = useState("");
   const [errorDownload, serErrorDownload] = useState("");
   const [isValid, setIsValid] = useState(true);
+
+  // useEffect(() => {
+  //   dispatch(getCurrentUserData());
+  // }, [dispatch]);
 
   //изменение состояния фотографии
   const [file, setFile] = useState<File>();
@@ -69,6 +75,13 @@ function ProfileImg() {
     }
   }, [userData]);
 
+  const deletePhoto = () => {
+    dispatch(changeUserData({photoUser: ""}))
+      .unwrap()
+      .then(() => {
+        dispatch(getCurrentUserData());
+      });
+  };
   return (
     <form
       className={css.profileImg}
@@ -88,13 +101,13 @@ function ProfileImg() {
             <use xlinkHref={`${sprite}#note`}></use>
           </svg>
         </div>
-        {previewImage ? (
+        {previewImage && previewImage !== "" ? (
           <img src={previewImage} alt="Preview" onLoad={handleImageUpload} />
         ) : (
           ""
         )}
       </label>
-      <div className={css.controls}>
+      <div className={css.controls} onClick={deletePhoto}>
         <svg width="24" height="24" viewBox="0 0 24 24">
           <use xlinkHref={`${sprite}#trash`}></use>
         </svg>

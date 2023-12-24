@@ -71,6 +71,16 @@ h3 {
     cursor: pointer;
   }
 
+  .error {
+    color: red;
+    font-size: 12px;
+    position: absolute;
+    bottom: 262px;
+  }
+  .errorInput {
+    border: 1px solid red;
+  }
+
   input {
     margin-top: 9px;
     width: 351px;
@@ -91,7 +101,7 @@ h3 {
   input[type="number"]::-webkit-outer-spin-button,
   input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
-    margin: 0; 
+    margin: 0;
   }
 
   a {
@@ -114,6 +124,9 @@ h3 {
   }
   .disabled {
     @include ButtonDisabled();
+  }
+  .submit {
+    margin: 90px auto 0;
   }
 }
 .modalForm {
@@ -142,4 +155,10 @@ h3 {
     border: none;
     background: transparent;
   }
+}
+
+.agreement {
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  cursor: pointer;
 }

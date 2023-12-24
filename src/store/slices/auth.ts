@@ -10,6 +10,7 @@ import {
   changeUserData,
   changeUserPhoto,
   confirmation,
+  deleteUserPhoto,
   getCurrentUserData,
   getCurrentUserRole,
   login,
@@ -112,6 +113,17 @@ export const authSlice = createSlice({
         state.isUserPhotoLoading = LoadingStatus.Fulfilled;
       })
       .addCase(changeUserPhoto.rejected, (state) => {
+        state.isUserPhotoLoading = LoadingStatus.Rejected;
+      })
+      // ***** delete userphoto *****
+      .addCase(deleteUserPhoto.pending, (state) => {
+        state.isUserPhotoLoading = LoadingStatus.Pending;
+      })
+      .addCase(deleteUserPhoto.fulfilled, (state, action) => {
+        state.message = action.payload;
+        state.isUserPhotoLoading = LoadingStatus.Fulfilled;
+      })
+      .addCase(deleteUserPhoto.rejected, (state) => {
         state.isUserPhotoLoading = LoadingStatus.Rejected;
       })
       // ***** user-role *****

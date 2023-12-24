@@ -41,7 +41,7 @@ export const confirmation = createAsyncThunk<
   }
 );
 
-export const login = createAsyncThunk<void, AuthData, Extra>(
+export const login = createAsyncThunk<void | string, AuthData, Extra>(
   "user/login",
   async ({ emailUser, password }, { extra: api }) => {
     const {
@@ -85,18 +85,23 @@ export const changeUserPhoto = createAsyncThunk<
   UserCurrentPhoto,
   Extra
 >("user/updatePhoto", async ({ photoUser }, { extra: api }) => {
-  const { data } = await api.post(
-    APIRoute.AddPhoto,
-    photoUser ,
-    {
-      headers: {
-        "content-type": "multipart/form-data",
-      },
-    }
-  );
+  const { data } = await api.post(APIRoute.AddPhoto, photoUser, {
+    headers: {
+      "content-type": "multipart/form-data",
+    },
+  });
 
   return data;
 });
+
+export const deleteUserPhoto = createAsyncThunk<string, undefined, Extra>(
+  "user/deletePhoto",
+  async (_arg, { extra: api }) => {
+    const { data } = await api.delete(APIRoute.AddPhoto);
+
+    return data;
+  }
+);
 
 // export const deleteUserData = createAsyncThunk<string, UserCurrentData, Extra>(
 //   "user/deleteData",

@@ -2,7 +2,7 @@
 
 .container {
   @include Grid;
-  position:relative;
+  position: relative;
   margin-top: 66px;
 }
 .form {
@@ -35,26 +35,26 @@
   .saveSettings {
     margin-top: 20px;
   }
-
 }
 .deleteAccount {
   grid-row: 2;
   grid-column: 6/8;
   margin-top: 60px;
+
+  button {
+    color: $btn-background-secondary;
+    font-size: 16px;
+    border: none;
+    background: none;
+    text-decoration: underline;
+    font-weight: 400;
+  }
 }
 .radio {
   margin-right: 5px;
 }
 .radioLabel {
   margin-right: 10px;
-}
-button {
-  color: $btn-background-secondary;
-  font-size: 16px;
-  border: none;
-  background: none;
-  text-decoration: underline;
-  font-weight: 400;
 }
 
 .form {
