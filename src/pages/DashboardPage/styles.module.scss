@@ -1,0 +1,14 @@
+@import "../../styles/variables.scss";
+
+.container {
+  margin: 0 100px 100px;
+}
+.dashboard {
+  margin-top: 20px;
+  width: 100%;
+  display: block;
+  background: white;
+  border: 1px solid $dashboard-color;
+  position: relative;
+  color: rgba(19, 52, 10, 1);
+}
