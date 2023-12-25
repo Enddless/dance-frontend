@@ -1,7 +1,7 @@
 import css from "./Header.module.scss";
 import Logo from "../Logo/Logo";
 import Button from "../Button/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { pagesHeader } from "../../mocks/mocks";
 import LoginForm from "../Forms/LoginForm";
 import useTheme from "../../hooks/useTheme";
@@ -21,8 +21,15 @@ const Header = () => {
 
   //проверка авторизации пользователя
   const authorizationStatus = useAppSelector((state) => state.auth.authStatus);
-  const userData = useAppSelector((state) => state.auth.userData);
+  const user = useAppSelector((state) => state.auth.userData);
 
+  const [userData, setUserData] = useState(user);
+  useEffect(() => {
+    setUserData(user);
+  }, [user]);
+
+  console.log();
+  const userRole = useAppSelector((state) => state.auth.userRole)?.role;
   return (
     <div className={css.header}>
       <Logo />
@@ -45,26 +52,41 @@ const Header = () => {
           })}
         </ul>
       </nav>
-
-      {authorizationStatus === "AUTH" ? (
+      {authorizationStatus === "AUTH" && userRole === "customers" && (
         <>
           <Button
-            text={userData ? `User_ ${userData?.userName}` : `Admin`}
+            text={
+              userData?.userName !== ""
+                ? `${userData.userName}`
+                : `${userData.emailUser}`
+            }
             cls="btn-enter"
             openModalForm={openModalForm}
           ></Button>
           {isOpenModal && <AreaForm openModalForm={openModalForm} />}
         </>
-      ) : (
+      )}
+
+      {authorizationStatus === "AUTH" && userRole === "director" && (
         <>
           <Button
-            text={"Вход"}
+            text="Admin"
             cls="btn-enter"
             openModalForm={openModalForm}
           ></Button>
-          {isOpenModal && <LoginForm openModalForm={openModalForm} />}
+          {isOpenModal && <AreaForm openModalForm={openModalForm} />}
         </>
       )}
+      {(authorizationStatus === "NO_AUTH" || authorizationStatus === "UNKNOWN") && (
+          <>
+            <Button
+              text="Вход"
+              cls="btn-enter"
+              openModalForm={openModalForm}
+            ></Button>
+            {isOpenModal && <LoginForm openModalForm={openModalForm} />}
+          </>
+        )}
     </div>
   );
 };

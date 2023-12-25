@@ -1,4 +1,3 @@
-import History from "../History/index";
 import Notifications from "../Notifications/index";
 import ChangePassword from "../Password/index";
 import OnlineRecovery from "../Recovery/index";
@@ -8,19 +7,18 @@ import Tickets from "../Tickets/index";
 
 
 interface IActiveButtonProps {
-  isActiveButton: string;
+  currentButton: string;
 }
 
-function Layout({ isActiveButton }: IActiveButtonProps) {
+function Layout({ currentButton }: IActiveButtonProps) {
   return (
     <>
-      {isActiveButton === "Основные настройки" && <Settings />}
-      {isActiveButton === "Мои абонементы" && <Tickets />}
-      {isActiveButton === "Уведомления" && <Notifications />}
-      {isActiveButton === "История посещений" && <History />}
-      {isActiveButton === "Онлайн запись" && <OnlineRecovery />}
-      {isActiveButton === "Смена пароля" && <ChangePassword />}
-      {isActiveButton === "Написать отзыв" && <WriteReview />}
+      {currentButton === "settings" && <Settings />}
+      {currentButton === "tickets" && <Tickets />}
+      {currentButton === "notifications" && <Notifications />}
+      {currentButton === "record" && <OnlineRecovery />}
+      {currentButton === "changepass" && <ChangePassword />}
+      {currentButton === "review" && <WriteReview />}
     </>
   );
 }

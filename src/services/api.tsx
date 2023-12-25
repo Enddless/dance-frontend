@@ -1,10 +1,13 @@
-import axios, { AxiosInstance} from "axios";
+import axios, { AxiosInstance } from "axios";
 import { getToken } from "./token";
+
 
 export const API_URL = "http://localhost:8585";
 export const REQUEST_TIMEOUT = 5000;
 
+
 export const createAPI = (): AxiosInstance => {
+  
   const api = axios.create({
     baseURL: API_URL,
     timeout: REQUEST_TIMEOUT,
@@ -14,19 +17,20 @@ export const createAPI = (): AxiosInstance => {
       "Content-Type": "application/json",
     },
   });
-
+  // Перехватчик для обработки исходящих запросов
   api.interceptors.request.use((config) => {
     const token = getToken();
 
     if (token && config.headers) {
       // config.headers["x-token"] = token;
-      config.headers.Authorization = `Bearer ${token}`;
+      config.headers.Authorization = `Bearer ${token.token}`;
     }
 
     return config;
   });
 
+  
+
+
   return api;
 };
-
-

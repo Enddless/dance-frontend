@@ -4,7 +4,8 @@ import hallThree from "../assets/images/hall-three.png";
 export enum NameSpace {
   User = "user",
   Auth = "auth",
-  Admin = "admin"
+  Admin = "admin",
+  Ticket = "ticket",
 }
 export const enum LoadingStatus {
   Idle = "idle",
@@ -19,20 +20,20 @@ export const enum AuthorizationStatus {
 }
 
 export const AUTH_TOKEN_NAME = "token";
+export const AUTH_REFRESH_TOKEN_NAME = "refresh-token";
 
 export const menuAreaPersonal = [
   { id: 1, title: "Основные настройки", path: "settings" },
-  { id: 2, title: "Мои абонементы", path: "tickets" },
+  { id: 2, title: "Абонементы", path: "tickets" },
   { id: 3, title: "Уведомления", path: "notifications" },
-  { id: 4, title: "История посещений", path: "history" },
-  { id: 5, title: "Онлайн запись", path: "online-record" },
-  { id: 6, title: "Смена пароля", path: "change-pass" },
-  { id: 7, title: "Написать отзыв", path: "review" },
+  { id: 4, title: "Записи", path: "record" },
+  { id: 5, title: "Смена пароля", path: "changepass" },
+  { id: 6, title: "Написать отзыв", path: "review" },
 ];
 export const DEFAULT_BUTTON_AREA_PERSONAL = {
   id: 1,
   title: "Основные настройки",
-  path: "primary-settings",
+  path: "settings",
 };
 
 export const menuAreaAdministrator = [

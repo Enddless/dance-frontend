@@ -5,26 +5,36 @@ export type StateAuth = {
   isRegistrationLoading: LoadingStatus;
   isConfirmationLoading: LoadingStatus;
   message: string;
-  userData: UserCurrentData | null;
+  userData: UserCurrentData;
   userRole: UserCurrentRole | null;
   isUserDataLoading: LoadingStatus;
   isUserRoleLoading:LoadingStatus;
+  isUserPhotoLoading:LoadingStatus;
+  buttonActive: string;
 };
 
 export type UserCurrentData = {
-  id: number;
-  userName: string;
-  phoneNumber: number;
-  emailUser: string;
-  password: string;
-  dateOfBirth: null;
-  photoUser: string;
-  role: string;
-  code: number;
+  id?: number;
+  userName?: string | undefined;
+  phoneNumber?: number | undefined;
+  emailUser?: string | undefined;
+  password?: string | undefined;
+  dateOfBirth?: Date | string;
+  photoUser?: string | undefined;
+  genders?:string | undefined;
+  role?: string;
+  code?: number;
 };
+
 export type UserCurrentRole = {
   id: number;
   role: string;
+};
+// export type UserCurrentPhoto = {
+//   photoUser: string;
+// };
+export type UserCurrentPhoto = {
+  photoUser: File;
 };
 
 export type AuthData = {

@@ -89,7 +89,7 @@
           content: "";
           background: #f4f4f4;
           border-radius: 100%;
-          border: 3px solid #3aa31e;
+          border: 3px solid #563E0E;
           display: inline-block;
           width: 20px;
           height: 20px;
@@ -103,7 +103,7 @@
       &:checked {
         + .radioLabel {
           &:before {
-            background-color: #3aa31e;
+            background-color: #563E0E;
             box-shadow: inset 0 0 0 4px #f4f4f4;
           }
         }

@@ -10,7 +10,9 @@
   font-family: $body-family-secondary-regular;
   font-weight: 600;
   letter-spacing: 0.96px;
-  font-size:24px;
+  font-size: 24px;
+  width: 100%;
+  max-width: 190px;
 }
 
 .btn:hover {
@@ -23,11 +25,12 @@
   background: $btn-background-default;
   color: $btn-color-secondary;
   padding: 15px 20px;
-  font-size:24px;
+  font-size: 24px;
 }
 .menuAreaButton {
   background: transparent;
   width: 100%;
+  min-width: 240px;
   outline: 1px solid $btn-border-default;
   box-shadow: 2px 2px 15px 0px $btn-boxshadow;
 }
@@ -35,5 +38,19 @@
 .active {
   background: $btn-menuArea-background-active;
   color: $white;
-  outline:none;
+  outline: none;
+}
+.saveButton {
+  background: $btn-saveButton-background;
+  color: $btn-saveButton-color;
+  padding: 15px 5px;
+  font-size: 16px;
+  letter-spacing: 0.32px;
+}
+.deleteButton {
+  color: inherit;
+  text-decoration: underline;
+  padding: 15px 5px;
+  font-size: 20px;
+  width: 100%;
 }

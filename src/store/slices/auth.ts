@@ -1,12 +1,16 @@
 import {
   AuthorizationStatus,
+  DEFAULT_BUTTON_AREA_PERSONAL,
   LoadingStatus,
   NameSpace,
 } from "../../const/const";
 import { StateAuth } from "../../types/auth-type";
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
+  changeUserData,
+  changeUserPhoto,
   confirmation,
+  deleteUserPhoto,
   getCurrentUserData,
   getCurrentUserRole,
   login,
@@ -19,10 +23,12 @@ const initialState: StateAuth = {
   isRegistrationLoading: LoadingStatus.Idle,
   isConfirmationLoading: LoadingStatus.Idle,
   message: "",
-  userData: null,
+  userData: {},
   userRole: null,
   isUserDataLoading: LoadingStatus.Idle,
   isUserRoleLoading: LoadingStatus.Idle,
+  isUserPhotoLoading: LoadingStatus.Idle,
+  buttonActive: DEFAULT_BUTTON_AREA_PERSONAL.title,
 };
 
 export const authSlice = createSlice({
@@ -31,9 +37,12 @@ export const authSlice = createSlice({
   reducers: {
     logout(state) {
       state.authStatus = AuthorizationStatus.NoAuth;
-      state.userData = null;
+      state.userData = {};
       state.userRole = null;
       deleteToken();
+    },
+    changeActiveButtonMenuPersonal(state, action: PayloadAction<string>) {
+      state.buttonActive = action.payload;
     },
   },
   extraReducers(builder) {
@@ -84,6 +93,39 @@ export const authSlice = createSlice({
       .addCase(getCurrentUserData.rejected, (state) => {
         state.isUserDataLoading = LoadingStatus.Rejected;
       })
+      // ***** change userdata *****
+      .addCase(changeUserData.pending, (state) => {
+        state.isUserDataLoading = LoadingStatus.Pending;
+      })
+      .addCase(changeUserData.fulfilled, (state, action) => {
+        state.message = action.payload;
+        state.isUserDataLoading = LoadingStatus.Fulfilled;
+      })
+      .addCase(changeUserData.rejected, (state) => {
+        state.isUserDataLoading = LoadingStatus.Rejected;
+      })
+      // ***** change userphoto *****
+      .addCase(changeUserPhoto.pending, (state) => {
+        state.isUserPhotoLoading = LoadingStatus.Pending;
+      })
+      .addCase(changeUserPhoto.fulfilled, (state, action) => {
+        state.message = action.payload;
+        state.isUserPhotoLoading = LoadingStatus.Fulfilled;
+      })
+      .addCase(changeUserPhoto.rejected, (state) => {
+        state.isUserPhotoLoading = LoadingStatus.Rejected;
+      })
+      // ***** delete userphoto *****
+      .addCase(deleteUserPhoto.pending, (state) => {
+        state.isUserPhotoLoading = LoadingStatus.Pending;
+      })
+      .addCase(deleteUserPhoto.fulfilled, (state, action) => {
+        state.message = action.payload;
+        state.isUserPhotoLoading = LoadingStatus.Fulfilled;
+      })
+      .addCase(deleteUserPhoto.rejected, (state) => {
+        state.isUserPhotoLoading = LoadingStatus.Rejected;
+      })
       // ***** user-role *****
       .addCase(getCurrentUserRole.pending, (state) => {
         state.isUserRoleLoading = LoadingStatus.Pending;
@@ -95,6 +137,11 @@ export const authSlice = createSlice({
       })
       .addCase(getCurrentUserRole.rejected, (state) => {
         state.isUserRoleLoading = LoadingStatus.Rejected;
-      });
+      })
+      // ***** delete account *****
+      // .addCase(deleteUserData.fulfilled, (state, action) => {
+      //   state.authStatus = AuthorizationStatus.NoAuth;
+      //   state.message = action.payload;
+      // });
   },
 });

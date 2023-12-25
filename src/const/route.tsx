@@ -19,4 +19,9 @@ export enum APIRoute {
   //user
   Role = '/accessAccount',
   UserData = '/basicSettings',
+  DeleteUser = '/deleteLogin',
+  //others-data
+  UpdateToken = '/loginRefresh',
+  Tickets = '/seasonTickets',
+  AddPhoto = '/addUsersPhoto'
 }
