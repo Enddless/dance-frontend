@@ -10,6 +10,7 @@ import {
 } from "../../types/auth-type";
 import { addToken } from "../token";
 import { Extra } from "../type-service";
+// import Cookies from "js-cookie";
 
 // ********** AUTH **********
 export const registration = createAsyncThunk<ReturnData, AuthData, Extra>(
@@ -41,20 +42,59 @@ export const confirmation = createAsyncThunk<
   }
 );
 
-export const login = createAsyncThunk<void | string, AuthData, Extra>(
+export const login = createAsyncThunk<string, AuthData, Extra>(
   "user/login",
   async ({ emailUser, password }, { extra: api }) => {
-    const {
-      data: { token, refresh },
-      data,
-    } = await api.post(APIRoute.Login, {
+    const response = await api.post(APIRoute.Login, {
       emailUser,
       password,
     });
-    addToken({ token, refresh });
+
+    const token = response.data.token;
+    addToken({ token });
+    console.log(response)
+    // if (response) {console.log(response.headers.getSetCookie());}
+    return response.data;
+  }
+);
+
+export const refreshToken = createAsyncThunk<void | string, undefined, Extra>(
+  "user/refreshToken",
+  async (_arg, { extra: api }) => {
+    const { data } = await api.post(APIRoute.UpdateToken, {
+      // headers: "Set-Cookie"
+    });
+
     return data;
   }
 );
+// export const login = createAsyncThunk<void | string, AuthData, Extra>(
+//   "user/login",
+//   async ({ emailUser, password }, { extra: api }) => {
+//     const response = await api.post(
+//       APIRoute.Login,
+//       {
+//         emailUser,
+//         password,
+//       },
+//       // { withCredentials: true }
+//     );
+//     const { data } = response;
+//     addToken({ token: response.data.token });
+//     console.log(response.headers);
+
+//     const setCookieHeader: string | undefined =
+//       response.headers["set-cookie"]?.join("; ");
+
+//     if (setCookieHeader) {
+//       const refreshTokenCookie = setCookieHeader.split(";")[0];
+//       Cookies.set(AUTH_REFRESH_TOKEN_NAME, refreshTokenCookie);
+
+//       // Cookies.set(AUTH_REFRESH_TOKEN_NAME, refreshToken);
+//     }
+//     return data;
+//   }
+// );
 
 // ********** USERDATA **********
 export const getCurrentUserData = createAsyncThunk<
@@ -63,7 +103,7 @@ export const getCurrentUserData = createAsyncThunk<
   Extra
 >("user/data", async (_arg, { extra: api }) => {
   const { data } = await api.get<UserCurrentData>(APIRoute.UserData);
-
+  localStorage.setItem("user", JSON.stringify(data));
   return data;
 });
 
@@ -127,14 +167,14 @@ export const getCurrentUserRole = createAsyncThunk<
 });
 
 // ********** UPDATE TOKEN **********
-export const updateToken = createAsyncThunk<void, undefined, Extra>(
-  "auth/updateToken",
-  async (_arg, { extra: api }) => {
-    const {
-      data: { token, refresh },
-      data,
-    } = await api.post(APIRoute.UpdateToken);
-    addToken({ token, refresh });
-    return data;
-  }
-);
+// export const updateToken = createAsyncThunk<void, undefined, Extra>(
+//   "auth/updateToken",
+//   async (_arg, { extra: api }) => {
+//     const {
+//       data: { token, refresh },
+//       data,
+//     } = await api.post(APIRoute.UpdateToken);
+//     addToken({ token, refresh });
+//     return data;
+//   }
+// );

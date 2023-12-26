@@ -11,6 +11,7 @@ import {
   login,
 } from "../../services/thunk/auth";
 import EyeIcon from "../EyeIcon";
+import Cookies from "js-cookie";
 
 type IModalFormProps = {
   openModalForm?: () => void;
@@ -20,6 +21,7 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [agreement, setAgreement] = useState(false);
   const dispatch = useAppDispatch();
+
   //состояния форм
   const [isLoginForm, setIsLoginForm] = useState(true);
   const [isRecovery, setIsRecovery] = useState(false);
@@ -50,6 +52,12 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
       .then(() => {
         dispatch(getCurrentUserRole());
       })
+      // .then((response) => {
+      //   const cookies = response.headers.get("Set-Cookie");
+      //   if (cookies) {
+      //     Cookies.set("session", cookies);
+      //   }
+      // })
       .then(() => {
         dispatch(getCurrentUserData());
       })

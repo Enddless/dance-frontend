@@ -13,10 +13,15 @@ import AreaAdminPage from "./pages/AreaAdminPage";
 import { RedirectPersonalArea } from "./components/redirect-personal-area";
 import { menuAreaAdministrator, menuAreaPersonal } from "./const/const";
 import React from "react";
-
+// import Cookies from "js-cookie";
+import { useCookies } from 'react-cookie';
 const App = () => {
   const { isDark } = useTheme();
 
+  // const sessionCookie = Cookies.get("session");
+  // console.log("session= ",sessionCookie);
+  const [cookies, setCookie] = useCookies(['set-cookie']); // getting react hooks
+  console.log("cookies =", cookies)
   return (
     <BrowserRouter>
       <div className={css.app}>
@@ -45,17 +50,27 @@ const App = () => {
               ></Route>
             ))}
           </Route>
-          <Route path={AppRoute.AdministratorArea} element={<React.Fragment><AreaAdminPage /></React.Fragment>}>
+          <Route
+            path={AppRoute.AdministratorArea}
+            element={
+              <React.Fragment>
+                <AreaAdminPage />
+              </React.Fragment>
+            }
+          >
             {menuAreaAdministrator.map((name) => (
               <Route
                 key={name.title}
                 path={name.path}
-                element={<React.Fragment><AreaAdminPage /></React.Fragment>}
+                element={
+                  <React.Fragment>
+                    <AreaAdminPage />
+                  </React.Fragment>
+                }
               ></Route>
             ))}
           </Route>
         </Routes>
-
       </div>
     </BrowserRouter>
   );
