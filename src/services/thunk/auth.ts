@@ -52,7 +52,6 @@ export const login = createAsyncThunk<string, AuthData, Extra>(
 
     const token = response.data.token;
     addToken({ token });
-    console.log(response)
     // if (response) {console.log(response.headers.getSetCookie());}
     return response.data;
   }

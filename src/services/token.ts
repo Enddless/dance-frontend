@@ -1,5 +1,4 @@
-import {  AUTH_REFRESH_TOKEN_NAME, AUTH_TOKEN_NAME } from "../const/const";
-import Cookies from "js-cookie";
+import {  AUTH_TOKEN_NAME } from "../const/const";
 
 export type Token = {
   token: string;

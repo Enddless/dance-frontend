@@ -1,10 +1,6 @@
 import axios, { AxiosInstance } from "axios";
 import { addToken, getToken } from "./token";
-import { store } from "../store";
-import { refreshToken } from "./thunk/auth";
 import { APIRoute } from "../const/route";
-import Cookies from "js-cookie";
-import { AUTH_REFRESH_TOKEN_NAME } from "../const/const";
 
 export const API_URL = "http://localhost:8585";
 export const REQUEST_TIMEOUT = 5000;
@@ -14,13 +10,11 @@ export const createAPI = (): AxiosInstance => {
     baseURL: API_URL,
     timeout: REQUEST_TIMEOUT,
     responseType: "json",
-    // withCredentials: true,
+    withCredentials: true,
     headers: {
       Accept: "*",
       "Content-Type": "application/json",
-
     },
-    
   });
   // Перехватчик для обработки исходящих запросов
   api.interceptors.request.use((config) => {
@@ -49,15 +43,17 @@ export const createAPI = (): AxiosInstance => {
         // const access_token = await refreshToken();
 
         const access_token = await api.post(
-          APIRoute.UpdateToken,
+          APIRoute.UpdateToken
 
-          {
-            credentials: "include",
-            Cookie: `session=${Cookies.get("Set-Cookie")}`,
-          }
+          // {
+          //   credentials: "include",
+          //   withCredentials: true,
+          //   Cookie: `session=${Cookies.get("Set-Cookie")}`,
+          // }
         );
-        originalRequest.headers.Authorization = `Bearer ${access_token}`;
-        console.log("access_token = ", access_token);
+        const token = access_token.data.token;
+        originalRequest.headers.Authorization = `Bearer ${token}`;
+        addToken({ token });
         return api(originalRequest);
       }
       return Promise.reject(error);
