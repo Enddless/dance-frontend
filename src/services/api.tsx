@@ -31,26 +31,19 @@ export const createAPI = (): AxiosInstance => {
   // Перехватчик для обработки ответов
   api.interceptors.response.use(
     (response) => {
-      // Modify the response data here (e.g., parse, transform)
-
+      //если все ок, то пропускаем
       return response;
     },
     async function (error) {
-      // Handle response errors here
+      const currentToken = getToken().token;
       const originalRequest = error.config;
-      if (error.response.status === 401 && !originalRequest._retry) {
+      if (
+        error.response.status === 401 &&
+        !originalRequest._retry &&
+        currentToken !== ""
+      ) {
         originalRequest._retry = true;
-        // const access_token = await refreshToken();
-
-        const access_token = await api.post(
-          APIRoute.UpdateToken
-
-          // {
-          //   credentials: "include",
-          //   withCredentials: true,
-          //   Cookie: `session=${Cookies.get("Set-Cookie")}`,
-          // }
-        );
+        const access_token = await api.post(APIRoute.UpdateToken);
         const token = access_token.data.token;
         originalRequest.headers.Authorization = `Bearer ${token}`;
         addToken({ token });

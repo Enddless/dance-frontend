@@ -10,7 +10,6 @@ import {
 } from "../../types/auth-type";
 import { addToken } from "../token";
 import { Extra } from "../type-service";
-// import Cookies from "js-cookie";
 
 // ********** AUTH **********
 export const registration = createAsyncThunk<ReturnData, AuthData, Extra>(
@@ -52,48 +51,9 @@ export const login = createAsyncThunk<string, AuthData, Extra>(
 
     const token = response.data.token;
     addToken({ token });
-    // if (response) {console.log(response.headers.getSetCookie());}
     return response.data;
   }
 );
-
-export const refreshToken = createAsyncThunk<void | string, undefined, Extra>(
-  "user/refreshToken",
-  async (_arg, { extra: api }) => {
-    const { data } = await api.post(APIRoute.UpdateToken, {
-      // headers: "Set-Cookie"
-    });
-
-    return data;
-  }
-);
-// export const login = createAsyncThunk<void | string, AuthData, Extra>(
-//   "user/login",
-//   async ({ emailUser, password }, { extra: api }) => {
-//     const response = await api.post(
-//       APIRoute.Login,
-//       {
-//         emailUser,
-//         password,
-//       },
-//       // { withCredentials: true }
-//     );
-//     const { data } = response;
-//     addToken({ token: response.data.token });
-//     console.log(response.headers);
-
-//     const setCookieHeader: string | undefined =
-//       response.headers["set-cookie"]?.join("; ");
-
-//     if (setCookieHeader) {
-//       const refreshTokenCookie = setCookieHeader.split(";")[0];
-//       Cookies.set(AUTH_REFRESH_TOKEN_NAME, refreshTokenCookie);
-
-//       // Cookies.set(AUTH_REFRESH_TOKEN_NAME, refreshToken);
-//     }
-//     return data;
-//   }
-// );
 
 // ********** USERDATA **********
 export const getCurrentUserData = createAsyncThunk<
