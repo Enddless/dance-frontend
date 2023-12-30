@@ -41,18 +41,17 @@ export const confirmation = createAsyncThunk<
   }
 );
 
-export const login = createAsyncThunk<void | string, AuthData, Extra>(
+export const login = createAsyncThunk<string, AuthData, Extra>(
   "user/login",
   async ({ emailUser, password }, { extra: api }) => {
-    const {
-      data: { token, refresh },
-      data,
-    } = await api.post(APIRoute.Login, {
+    const response = await api.post(APIRoute.Login, {
       emailUser,
       password,
     });
-    addToken({ token, refresh });
-    return data;
+
+    const token = response.data.token;
+    addToken({ token });
+    return response.data;
   }
 );
 
@@ -63,7 +62,7 @@ export const getCurrentUserData = createAsyncThunk<
   Extra
 >("user/data", async (_arg, { extra: api }) => {
   const { data } = await api.get<UserCurrentData>(APIRoute.UserData);
-
+  localStorage.setItem("user", JSON.stringify(data));
   return data;
 });
 
@@ -127,14 +126,14 @@ export const getCurrentUserRole = createAsyncThunk<
 });
 
 // ********** UPDATE TOKEN **********
-export const updateToken = createAsyncThunk<void, undefined, Extra>(
-  "auth/updateToken",
-  async (_arg, { extra: api }) => {
-    const {
-      data: { token, refresh },
-      data,
-    } = await api.post(APIRoute.UpdateToken);
-    addToken({ token, refresh });
-    return data;
-  }
-);
+// export const updateToken = createAsyncThunk<void, undefined, Extra>(
+//   "auth/updateToken",
+//   async (_arg, { extra: api }) => {
+//     const {
+//       data: { token, refresh },
+//       data,
+//     } = await api.post(APIRoute.UpdateToken);
+//     addToken({ token, refresh });
+//     return data;
+//   }
+// );

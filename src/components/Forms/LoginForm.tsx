@@ -20,6 +20,7 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [agreement, setAgreement] = useState(false);
   const dispatch = useAppDispatch();
+
   //состояния форм
   const [isLoginForm, setIsLoginForm] = useState(true);
   const [isRecovery, setIsRecovery] = useState(false);
