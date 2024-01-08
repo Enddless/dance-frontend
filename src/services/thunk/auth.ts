@@ -8,7 +8,7 @@ import {
   UserCurrentPhoto,
   UserCurrentRole,
 } from "../../types/auth-type";
-import { addToken } from "../token";
+import { addToken, deleteToken } from "../token";
 import { Extra } from "../type-service";
 
 // ********** AUTH **********
@@ -52,6 +52,14 @@ export const login = createAsyncThunk<string, AuthData, Extra>(
     const token = response.data.token;
     addToken({ token });
     return response.data;
+  }
+);
+export const logout = createAsyncThunk<void, undefined, Extra>(
+  "user/logout",
+  async (_arg, { extra: api }) => {
+    const { data } = await api.get(APIRoute.Logout);
+    deleteToken();
+    return data;
   }
 );
 
@@ -124,16 +132,3 @@ export const getCurrentUserRole = createAsyncThunk<
 
   return data;
 });
-
-// ********** UPDATE TOKEN **********
-// export const updateToken = createAsyncThunk<void, undefined, Extra>(
-//   "auth/updateToken",
-//   async (_arg, { extra: api }) => {
-//     const {
-//       data: { token, refresh },
-//       data,
-//     } = await api.post(APIRoute.UpdateToken);
-//     addToken({ token, refresh });
-//     return data;
-//   }
-// );

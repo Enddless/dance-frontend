@@ -16,14 +16,11 @@ function ProfileImg() {
   const dispatch = useAppDispatch();
   const userData = useAppSelector((state) => state.auth.userData);
 
-  const [previewImage, setPreviewImage] = useState("");
+  const [previewImage, setPreviewImage] = useState(
+    userData.photoUser !== "" ? `${API_URL}${userData.photoUser}` : null
+  );
   const [errorDownload, serErrorDownload] = useState("");
   const [isValid, setIsValid] = useState(true);
-
-  // useEffect(() => {
-  //   dispatch(getCurrentUserData());
-  // }, [dispatch]);
-
   //изменение состояния фотографии
   const [file, setFile] = useState<File>();
 
@@ -54,29 +51,26 @@ function ProfileImg() {
     }
   };
 
-  //отправка фотографии на сервер
-  // const handleImageUpload = (event: React.FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-  const handleImageUpload = () => {
-    if (isValid && file && previewImage) {
+  // Отправка фотографии на сервер
+  useEffect(() => {
+    if (isValid && file) {
       dispatch(changeUserPhoto({ photoUser: file }))
         .unwrap()
         .then(() => {
           dispatch(getCurrentUserData());
         });
     }
-  };
+  }, [isValid, file, dispatch]);
 
-  //обновление фотографии на странице
+  // Обновление previewImage при изменении file
   useEffect(() => {
-    if (userData) {
-      const imageSrc = `${API_URL}${userData.photoUser}`;
-      setPreviewImage(imageSrc);
+    if (userData.photoUser !== "") {
+      setPreviewImage(`${API_URL}${userData.photoUser}?${Date.now()}`);
     }
-  }, [userData]);
+  }, [userData.photoUser]);
 
   const deletePhoto = () => {
-    dispatch(changeUserData({photoUser: ""}))
+    dispatch(changeUserData({ photoUser: "" }))
       .unwrap()
       .then(() => {
         dispatch(getCurrentUserData());
@@ -101,10 +95,12 @@ function ProfileImg() {
             <use xlinkHref={`${sprite}#note`}></use>
           </svg>
         </div>
-        {previewImage && previewImage !== "" ? (
-          <img src={previewImage} alt="Preview" onLoad={handleImageUpload} />
-        ) : (
-          ""
+        {previewImage && previewImage !== "" && (
+          <img
+            src={previewImage}
+            alt="Preview"
+            //onLoad={handleImageUpload}
+          />
         )}
       </label>
       <div className={css.controls} onClick={deletePhoto}>
@@ -113,9 +109,6 @@ function ProfileImg() {
         </svg>
       </div>
       {errorDownload && <p className={css.errorMessage}>{errorDownload}</p>}
-      {/* <button className={css.submit} type="submit">
-        Send
-      </button> */}
     </form>
   );
 }
