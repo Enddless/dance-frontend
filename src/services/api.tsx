@@ -43,7 +43,7 @@ export const createAPI = (): AxiosInstance => {
         currentToken !== ""
       ) {
         originalRequest._retry = true;
-        const access_token = await api.post(APIRoute.UpdateToken); // try catch
+        const access_token = await api.post(APIRoute.UpdateToken);  
         const token = access_token.data.token;
         originalRequest.headers.Authorization = `Bearer ${token}`;
         addToken({ token });
