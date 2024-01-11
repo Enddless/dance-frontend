@@ -2,11 +2,11 @@ import { NavLink } from "react-router-dom";
 import { menuAreaAdministrator } from "../../../../const/const";
 import { AppRoute } from "../../../../const/route";
 import { useAppDispatch } from "../../../../services/type-service";
-import { authSlice } from "../../../../store/slices/auth";
 import css from "./styles.module.scss";
 import { adminSlice } from "../../../../store/slices/admin";
 import sprite from "../../../../assets/sprite.svg";
 import { memo } from 'react';
+import { logout } from "../../../../services/thunk/auth";
 
 function TabsAdminMemo() {
   const dispatch = useAppDispatch();
@@ -15,7 +15,7 @@ function TabsAdminMemo() {
 
   //выход из аккаунта
   const handleClick = () => {
-    dispatch(authSlice.actions.logout());
+    dispatch(logout());
   };
   
 

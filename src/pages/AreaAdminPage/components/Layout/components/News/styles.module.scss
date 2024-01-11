@@ -1,0 +1,70 @@
+@import "../../../../../../styles/variables.scss";
+
+.card img {
+  width: 100%;
+}
+.container {
+  height: 750px;
+  overflow-y: scroll;
+  position: relative;
+  padding-right: 30px;
+}
+.controlGroup {
+  background: $body-background-primary;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 20px;
+  position: absolute;
+  right: 30px;
+}
+.add {
+  margin-top: 60px;
+  label {
+    @include ButtonPrimary();
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 12px;
+    width: 320px;
+    margin:0 auto;
+    background: $btn-saveButton-background;
+    color: $white;
+    font-family: $body-family-secondary-regular;
+  }
+  label:hover {
+    background: $btn-background-hover;
+  }
+  input[type="file"] {
+    height: 100%;
+    object-fit: cover;
+    display: none;
+  }
+}
+
+.errorMessage {
+  color: red;
+  font-size: 18px;
+  text-align: center;
+  margin-top:10px;
+}
+
+//scrollbar
+.container::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.container::-webkit-scrollbar-track {
+  background: #71856c;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background-color: #fdf8f0;
+  border: 1px solid #71856c;
+  border-radius: 10px 10px 10px 10px;
+}

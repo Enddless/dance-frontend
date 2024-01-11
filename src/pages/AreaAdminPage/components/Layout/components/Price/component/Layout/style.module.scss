@@ -1,0 +1,35 @@
+@import "../../../../../../../../styles/variables.scss";
+
+.wrapper {
+  border: 1px solid $card-border-color;
+  margin-left: 55px;
+  width: 572px;
+  height: 505px;
+  padding: 20px;
+  border-radius: 4px;
+  border: 1px solid $card-border-color;
+  background: $body-background-primary;
+  box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.05);
+  label {
+    display: flex;
+    margin: 0 auto;
+    height: 55px;
+    border-radius: 4px;
+    border: 1px solid #13340a;
+    background: #fff;
+    align-items: center;
+    justify-content: center;
+  }
+  input[type="text"] {
+    border: none;
+    width: 100%;
+  }
+
+}
+.controlGroup {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  column-gap: 20px;
+}
