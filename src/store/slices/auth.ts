@@ -10,12 +10,13 @@ import {
   changeUserData,
   changeUserPhoto,
   confirmation,
+  deleteUserPhoto,
   getCurrentUserData,
   getCurrentUserRole,
   login,
+  logout,
   registration,
 } from "../../services/thunk/auth";
-import { deleteToken } from "../../services/token";
 
 const initialState: StateAuth = {
   authStatus: AuthorizationStatus.Unknown,
@@ -34,12 +35,6 @@ export const authSlice = createSlice({
   name: NameSpace.Auth,
   initialState,
   reducers: {
-    logout(state) {
-      state.authStatus = AuthorizationStatus.NoAuth;
-      state.userData = {};
-      state.userRole = null;
-      deleteToken();
-    },
     changeActiveButtonMenuPersonal(state, action: PayloadAction<string>) {
       state.buttonActive = action.payload;
     },
@@ -80,6 +75,12 @@ export const authSlice = createSlice({
         state.isConfirmationLoading = LoadingStatus.Rejected;
         state.authStatus = AuthorizationStatus.NoAuth;
       })
+      // ***** logout *****
+      .addCase(logout.fulfilled, (state) => {
+        state.authStatus = AuthorizationStatus.NoAuth;
+        state.userData = {};
+        state.userRole = null;
+      })
       // ***** userdata *****
       .addCase(getCurrentUserData.pending, (state) => {
         state.isUserDataLoading = LoadingStatus.Pending;
@@ -114,6 +115,17 @@ export const authSlice = createSlice({
       .addCase(changeUserPhoto.rejected, (state) => {
         state.isUserPhotoLoading = LoadingStatus.Rejected;
       })
+      // ***** delete userphoto *****
+      .addCase(deleteUserPhoto.pending, (state) => {
+        state.isUserPhotoLoading = LoadingStatus.Pending;
+      })
+      .addCase(deleteUserPhoto.fulfilled, (state, action) => {
+        state.message = action.payload;
+        state.isUserPhotoLoading = LoadingStatus.Fulfilled;
+      })
+      .addCase(deleteUserPhoto.rejected, (state) => {
+        state.isUserPhotoLoading = LoadingStatus.Rejected;
+      })
       // ***** user-role *****
       .addCase(getCurrentUserRole.pending, (state) => {
         state.isUserRoleLoading = LoadingStatus.Pending;
@@ -125,11 +137,11 @@ export const authSlice = createSlice({
       })
       .addCase(getCurrentUserRole.rejected, (state) => {
         state.isUserRoleLoading = LoadingStatus.Rejected;
-      })
-      // ***** delete account *****
-      // .addCase(deleteUserData.fulfilled, (state, action) => {
-      //   state.authStatus = AuthorizationStatus.NoAuth;
-      //   state.message = action.payload;
-      // });
+      });
+    // ***** delete account *****
+    // .addCase(deleteUserData.fulfilled, (state, action) => {
+    //   state.authStatus = AuthorizationStatus.NoAuth;
+    //   state.message = action.payload;
+    // });
   },
 });

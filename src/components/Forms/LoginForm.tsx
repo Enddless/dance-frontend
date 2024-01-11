@@ -17,7 +17,10 @@ type IModalFormProps = {
 };
 
 const LoginForm = ({ openModalForm }: IModalFormProps) => {
+  const [errorMessage, setErrorMessage] = useState("");
+  const [agreement, setAgreement] = useState(false);
   const dispatch = useAppDispatch();
+
   //состояния форм
   const [isLoginForm, setIsLoginForm] = useState(true);
   const [isRecovery, setIsRecovery] = useState(false);
@@ -31,6 +34,7 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
 
   const handleChange = (e: { target: { name: string; value: string } }) => {
     setItem({ ...item, [e.target.name]: e.target.value });
+    setErrorMessage("");
   };
 
   //вход пользователя
@@ -49,10 +53,14 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
       })
       .then(() => {
         dispatch(getCurrentUserData());
+      })
+      .then(() => {
+        setIsLoginForm(!isLoginForm);
+        if (openModalForm) openModalForm();
+      })
+      .catch(() => {
+        setErrorMessage("Неправильный логин или пароль");
       });
-
-    setIsLoginForm(!isLoginForm);
-    if (openModalForm) openModalForm();
   };
 
   //состояние переключения "глазика"
@@ -80,6 +88,11 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
                   value={item.email}
                   onChange={handleChange}
                   name="email"
+                  className={
+                    errorMessage && errorMessage !== ""
+                      ? `${css.errorInput}`
+                      : ""
+                  }
                   placeholder="example@gmail.com"
                 />
               </label>
@@ -92,6 +105,11 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
                     onChange={handleChange}
                     name="password"
                     type={showPassword ? "text" : "password"}
+                    className={
+                      errorMessage && errorMessage !== ""
+                        ? `${css.errorInput}`
+                        : ""
+                    }
                   />
                   <div className={css.eyeIcon}>
                     <EyeIcon
@@ -102,7 +120,12 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
                 </label>
               </fieldset>
 
-              <button type="submit">Войти</button>
+              {errorMessage && errorMessage !== "" && (
+                <span className={css.error}>Неправильный логин или пароль</span>
+              )}
+              <button type="submit" className={css.submit}>
+                Войти
+              </button>
             </form>
 
             <div className={css.link}>
@@ -113,6 +136,19 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
                 Забыли пароль?
               </button>
             </div>
+          </div>
+
+          <div>
+            <input
+              type="checkbox"
+              id="agreement"
+              name="agreement"
+              onChange={() => setAgreement(!agreement)}
+            />
+            <label htmlFor="agreement" className={css.agreement}>
+              Регистрируясь, я соглашаюсь с Условиями пользования и Политикой
+              конфиденциалности
+            </label>
           </div>
         </div>
       )}

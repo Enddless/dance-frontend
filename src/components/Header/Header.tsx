@@ -28,7 +28,6 @@ const Header = () => {
     setUserData(user);
   }, [user]);
 
-  console.log();
   const userRole = useAppSelector((state) => state.auth.userRole)?.role;
   return (
     <div className={css.header}>
@@ -58,7 +57,7 @@ const Header = () => {
             text={
               userData?.userName !== ""
                 ? `${userData.userName}`
-                : `${userData.emailUser}`
+                : `${(userData.emailUser)?.split("@")[0]}`
             }
             cls="btn-enter"
             openModalForm={openModalForm}
@@ -67,7 +66,7 @@ const Header = () => {
         </>
       )}
 
-      {authorizationStatus === "AUTH" && userRole === "director" && (
+      {authorizationStatus === "AUTH" && userRole === "administrator" && (
         <>
           <Button
             text="Admin"

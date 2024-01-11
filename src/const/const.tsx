@@ -19,8 +19,8 @@ export const enum AuthorizationStatus {
   Unknown = "UNKNOWN",
 }
 
-export const AUTH_TOKEN_NAME = "token";
-export const AUTH_REFRESH_TOKEN_NAME = "refresh-token";
+export const AUTH_TOKEN_NAME = "justToken";
+export const AUTH_REFRESH_TOKEN_NAME = "session";
 
 export const menuAreaPersonal = [
   { id: 1, title: "Основные настройки", path: "settings" },

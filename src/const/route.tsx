@@ -16,6 +16,7 @@ export enum APIRoute {
   Registration = "/registration",
   Confirmation = "/confirmation",
   Login = '/login',
+  Logout = '/logOutOfAccount',
   //user
   Role = '/accessAccount',
   UserData = '/basicSettings',

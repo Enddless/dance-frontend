@@ -2,7 +2,7 @@
 
 .container {
   @include Grid;
-  position:relative;
+  position: relative;
   margin-top: 66px;
 }
 .form {
@@ -35,7 +35,6 @@
   .saveSettings {
     margin-top: 20px;
   }
-
 }
 .deleteAccount {
   grid-row: 2;
@@ -56,7 +55,6 @@
 .radioLabel {
   margin-right: 10px;
 }
-
 
 .form {
   // margin: 20px 0;

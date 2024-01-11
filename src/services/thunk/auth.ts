@@ -8,7 +8,7 @@ import {
   UserCurrentPhoto,
   UserCurrentRole,
 } from "../../types/auth-type";
-import { addToken } from "../token";
+import { addToken, deleteToken } from "../token";
 import { Extra } from "../type-service";
 
 // ********** AUTH **********
@@ -41,17 +41,24 @@ export const confirmation = createAsyncThunk<
   }
 );
 
-export const login = createAsyncThunk<void, AuthData, Extra>(
+export const login = createAsyncThunk<string, AuthData, Extra>(
   "user/login",
   async ({ emailUser, password }, { extra: api }) => {
-    const {
-      data: { token, refresh },
-      data,
-    } = await api.post(APIRoute.Login, {
+    const response = await api.post(APIRoute.Login, {
       emailUser,
       password,
     });
-    addToken({ token, refresh });
+
+    const token = response.data.token;
+    addToken({ token });
+    return response.data;
+  }
+);
+export const logout = createAsyncThunk<void, undefined, Extra>(
+  "user/logout",
+  async (_arg, { extra: api }) => {
+    const { data } = await api.get(APIRoute.Logout);
+    deleteToken();
     return data;
   }
 );
@@ -63,7 +70,7 @@ export const getCurrentUserData = createAsyncThunk<
   Extra
 >("user/data", async (_arg, { extra: api }) => {
   const { data } = await api.get<UserCurrentData>(APIRoute.UserData);
-
+  localStorage.setItem("user", JSON.stringify(data));
   return data;
 });
 
@@ -85,18 +92,23 @@ export const changeUserPhoto = createAsyncThunk<
   UserCurrentPhoto,
   Extra
 >("user/updatePhoto", async ({ photoUser }, { extra: api }) => {
-  const { data } = await api.post(
-    APIRoute.AddPhoto,
-    photoUser ,
-    {
-      headers: {
-        "content-type": "multipart/form-data",
-      },
-    }
-  );
+  const { data } = await api.post(APIRoute.AddPhoto, photoUser, {
+    headers: {
+      "content-type": "multipart/form-data",
+    },
+  });
 
   return data;
 });
+
+export const deleteUserPhoto = createAsyncThunk<string, undefined, Extra>(
+  "user/deletePhoto",
+  async (_arg, { extra: api }) => {
+    const { data } = await api.delete(APIRoute.AddPhoto);
+
+    return data;
+  }
+);
 
 // export const deleteUserData = createAsyncThunk<string, UserCurrentData, Extra>(
 //   "user/deleteData",
@@ -120,16 +132,3 @@ export const getCurrentUserRole = createAsyncThunk<
 
   return data;
 });
-
-// ********** UPDATE TOKEN **********
-export const updateToken = createAsyncThunk<void, undefined, Extra>(
-  "auth/updateToken",
-  async (_arg, { extra: api }) => {
-    const {
-      data: { token, refresh },
-      data,
-    } = await api.post(APIRoute.UpdateToken);
-    addToken({ token, refresh });
-    return data;
-  }
-);

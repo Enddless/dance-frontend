@@ -45,17 +45,27 @@ const App = () => {
               ></Route>
             ))}
           </Route>
-          <Route path={AppRoute.AdministratorArea} element={<React.Fragment><AreaAdminPage /></React.Fragment>}>
+          <Route
+            path={AppRoute.AdministratorArea}
+            element={
+              <React.Fragment>
+                <AreaAdminPage />
+              </React.Fragment>
+            }
+          >
             {menuAreaAdministrator.map((name) => (
               <Route
                 key={name.title}
                 path={name.path}
-                element={<React.Fragment><AreaAdminPage /></React.Fragment>}
+                element={
+                  <React.Fragment>
+                    <AreaAdminPage />
+                  </React.Fragment>
+                }
               ></Route>
             ))}
           </Route>
         </Routes>
-
       </div>
     </BrowserRouter>
   );
