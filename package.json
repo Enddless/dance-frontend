@@ -26,11 +26,7 @@
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.44",
     "react": "^18.2.0",
-<<<<<<< HEAD
-    "react-big-calendar": "^1.8.6",
-=======
     "react-cookie": "^6.1.1",
->>>>>>> feature
     "react-dom": "^18.2.0",
     "react-leaflet": "^4.2.1",
     "react-redux": "^9.0.0",
