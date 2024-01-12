@@ -6,8 +6,10 @@ const Personal = () => {
     <div className={css.container}>
       {StaffInfo.map(({ name, img, description, id }) => (
         <div key={id} className={css.staffContainer}>
-          <ControlButton id="edit" />
-          <ControlButton id="delete" />
+          <div className={css.controlGroup}>
+            <ControlButton id="edit" />
+            <ControlButton id="delete" />
+          </div>
           <div className={css.staffInfo}>
             <div className={css.avatar}>
               <img src={img} alt="staffPhoto" />
