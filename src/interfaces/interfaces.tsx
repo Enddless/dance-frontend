@@ -76,3 +76,27 @@ export interface IStudio {
   id: number;
   description: string[];
 }
+
+export interface IContactsStudio {
+  id: number,
+  address: string,
+  phone: string,
+  socialLonks: [
+    {
+      id: number,
+      urlLnk: string,
+      urlSvg: string,
+    },
+  ],
+  points: {
+    title: string,
+    lat: number,
+    lng: number,
+  },
+  city: {
+    title: string,
+    lat: number,
+    lng: number,
+    zoom: number,
+  },
+}

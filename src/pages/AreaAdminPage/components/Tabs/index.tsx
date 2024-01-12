@@ -7,8 +7,10 @@ import { adminSlice } from "../../../../store/slices/admin";
 import sprite from "../../../../assets/sprite.svg";
 import { memo } from 'react';
 import { logout } from "../../../../services/thunk/auth";
+import {  useNavigate } from "react-router-dom";
 
 function TabsAdminMemo() {
+  const navigate =  useNavigate();
   const dispatch = useAppDispatch();
   const LINK_CLASS = `${css.menuItem}`;
   const ACTIVE_CLASS = `${LINK_CLASS} ${css.active}`;
@@ -17,7 +19,10 @@ function TabsAdminMemo() {
   const handleClick = () => {
     dispatch(logout());
   };
-  
+  //возврат домой
+  const returnHome = () => {
+    navigate(AppRoute.Root);
+  };
 
   return (
     <>
@@ -43,6 +48,12 @@ function TabsAdminMemo() {
           );
         })}
       </ul>
+      <div className={`${css.logout} ${LINK_CLASS}`} onClick={returnHome}>
+        <svg width="25" height="25" viewBox="0 0 25 25">
+          <use xlinkHref={`${sprite}#return`}></use>
+        </svg>
+        <p>Вернуться на главную</p>
+      </div>
       <div className={`${css.logout} ${LINK_CLASS}`} onClick={handleClick}>
         <svg width="25" height="25" viewBox="0 0 25 25">
           <use xlinkHref={`${sprite}#logout`}></use>
