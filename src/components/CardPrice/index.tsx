@@ -1,14 +1,20 @@
 import css from "./style.module.scss";
 import sprite from "../../assets/sprite.svg";
 import { IPricesInfo } from "../../interfaces/interfaces";
+import classNames from "classnames";
 
 interface ICardProps {
   price: IPricesInfo;
+  cls?: string;
 }
 
-const CardPrice = ({ price }: ICardProps) => {
+const CardPrice = ({ price, cls }: ICardProps) => {
+  const isNoneShadow = cls === "noneShadow"
+  const classNameList = classNames(css.card, {
+    [css.noneShadow]: isNoneShadow,
+  })
   return (
-    <div className={css.card}>
+    <div className={classNameList}>
       {price && (
         <>
           <p className={css.title}>{price.title}</p>

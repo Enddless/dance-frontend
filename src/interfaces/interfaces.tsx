@@ -71,3 +71,8 @@ export interface INotification {
   text: string;
   date: Date;
 }
+
+export interface IStudio {
+  id: number;
+  description: string[];
+}

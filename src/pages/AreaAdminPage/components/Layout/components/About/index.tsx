@@ -1,15 +1,16 @@
 import { useState } from "react";
 import css from "./styles.module.scss";
 import ControlButton from "../../../../../../components/controls-button";
+import { aboutStudio } from "../../../../../../mocks/mocks";
 
 const AboutSettings = () => {
-  const data = "Здесь должно быть описание";
-  const [description, setDescription] = useState(data);
+  const [description, setDescription] = useState(aboutStudio.description.join("\n"));
   const [isActive, setIsActive] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
   const deleteData = () => {
     setDescription("");
+    setIsEditing(false);
   };
   return (
     <div className={css.container}>
