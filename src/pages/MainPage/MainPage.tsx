@@ -1,12 +1,12 @@
 import About from "./components/About/About";
 import Contacts from "./components/Contacts/Contacts";
 import Prices from "./components/Prices/Prices";
-import Reviews from "./components/Reviews/Reviews";
 import SliderBlock from "../../components/Slider/SliderBlock";
 import { bannerUrl } from "../../mocks/mocks";
 import StaffPage from "./components/BlockStaff";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import MainReviews from "./components/Reviews/Reviews";
 
 const MainPage = () => {
   return (
@@ -16,7 +16,7 @@ const MainPage = () => {
       <About />
       <StaffPage />
       <Prices />
-      <Reviews />
+      <MainReviews />
       <Contacts />
       <Footer />
     </div>

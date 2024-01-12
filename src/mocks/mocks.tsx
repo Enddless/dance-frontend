@@ -290,6 +290,56 @@ export const reviewsInfo: IReviewsInfo[] = [
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, amet.",
     },
   },
+  {
+    id: 6,
+    data: {
+      user: "Сергей Иванов",
+      stars: 4,
+      date: "22.12.2016",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, amet.",
+    },
+  },
+  {
+    id: 7,
+    data: {
+      user: "Сергей Иванов",
+      stars: 4,
+      date: "22.12.2016",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, amet.",
+    },
+  },
+  {
+    id: 8,
+    data: {
+      user: "Сергей Иванов",
+      stars: 4,
+      date: "22.12.2016",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, amet.",
+    },
+  },
+  {
+    id: 9,
+    data: {
+      user: "Сергей Иванов",
+      stars: 4,
+      date: "22.12.2016",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, amet.",
+    },
+  },
+  {
+    id: 10,
+    data: {
+      user: "Сергей Иванов",
+      stars: 4,
+      date: "22.12.2016",
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, amet.",
+    },
+  },
 ];
 
 export const dashboardInfo: IDashboardInfo[] = [
