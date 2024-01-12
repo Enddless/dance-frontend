@@ -1,0 +1,21 @@
+@import "../../styles//variables.scss";
+
+.container {
+  grid-column: span 4;
+  position: relative;
+}
+.photoContainer {
+  position: relative;
+}
+.caption {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%,-20px);
+  margin:0 auto;
+}
+.photo {
+  width:100%;
+  height:100%;
+  object-fit: cover;
+}

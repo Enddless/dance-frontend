@@ -16,19 +16,6 @@
 .galerry {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  column-gap: 20px;
+  gap: 20px;
 }
-.photo {
-    
-}
-.container {
-  grid-column: span 4;
-  position: relative;
-}
-.caption {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translate(-50%,-20px);
-  margin:0 auto;
-}
+

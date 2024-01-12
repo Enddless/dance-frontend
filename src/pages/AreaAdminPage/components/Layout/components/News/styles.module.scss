@@ -24,12 +24,16 @@
 .add {
   margin-top: 60px;
   label {
-    @include ButtonPrimary();
-    font-size: 24px;
+    display: block;
+    width: 160px;
+    padding: 18px 32px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.72px;
+    margin: 0 auto;
     cursor: pointer;
     border-radius: 12px;
-    width: 320px;
-    margin:0 auto;
     background: $btn-saveButton-background;
     color: $white;
     font-family: $body-family-secondary-regular;
@@ -48,7 +52,7 @@
   color: red;
   font-size: 18px;
   text-align: center;
-  margin-top:10px;
+  margin-top: 10px;
 }
 
 //scrollbar

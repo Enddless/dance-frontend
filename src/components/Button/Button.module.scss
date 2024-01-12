@@ -35,7 +35,8 @@
   box-shadow: 2px 2px 15px 0px $btn-boxshadow;
 }
 .menuAreaButton:hover,
-.active {
+.active,
+.add {
   background: $btn-menuArea-background-active;
   color: $white;
   outline: none;
@@ -53,4 +54,19 @@
   padding: 15px 5px;
   font-size: 20px;
   width: 100%;
+}
+
+.add {
+  width: 160px;
+  padding: 18px 32px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.72px;
+  margin: 0 auto;
+  border-radius: 12px;
+  font-family: $body-family-secondary-regular;
+}
+.add:hover {
+  background: $btn-background-default;
 }

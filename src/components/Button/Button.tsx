@@ -15,6 +15,7 @@ const Button = ({ text, cls, activeClass, children, openModalForm  }: ButtonProp
   const enterButton = cls === "btn-enter";
   const more = cls === "btn-more";
   const menuAreaButton = cls === "menuAreaButton";
+  const add = cls === "add";
   const saveButton = cls === "btn-save";
   const deleteButton = cls === "btn-del";
   const classNamesList = classNames(css.btn, {
@@ -24,6 +25,7 @@ const Button = ({ text, cls, activeClass, children, openModalForm  }: ButtonProp
     [css.active]: activeClass,
     [css.saveButton]: saveButton,
     [css.deleteButton]: deleteButton,
+    [css.add]: add,
   });
 
   

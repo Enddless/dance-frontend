@@ -53,22 +53,31 @@ export const bannerUrl: IBannerUrl[] = [
     url: `${banner}`,
   },
 ];
-export const hallUrl: IHallUrl[] = [
+
+
+export const hallsData: THalls[] = [
   {
     id: 1,
+    name: "Зал 1",
     url: `${hallOne}`,
-    title: "Зал 1",
+    description:
+      "Lorem ipsum dolor sit amet consectetur. Urna cras nibh nullam ornare facilisis euismod massa venenatis vel. Tempor ut imperdiet scelerisque dictumst. Pellentesque accumsan adipiscing quis pulvinar fusce pharetra. ",
   },
   {
     id: 2,
+    name: "Зал 2",
     url: `${hallTwo}`,
-    title: "Зал 2",
+    description:
+      "Lorem ipsum dolor sit amet consectetur. Urna cras nibh nullam ornare facilisis euismod massa venenatis vel. Tempor ut imperdiet scelerisque dictumst. Pellentesque accumsan adipiscing quis pulvinar fusce pharetra. ",
   },
   {
     id: 3,
+    name: "Зал 3",
     url: `${hallThree}`,
-    title: "Зал 3",
+    description:
+      "Lorem ipsum dolor sit amet consectetur. Urna cras nibh nullam ornare facilisis euismod massa venenatis vel. Tempor ut imperdiet scelerisque dictumst. Pellentesque accumsan adipiscing quis pulvinar fusce pharetra. ",
   },
+  
 ];
 
 export const StaffInfo: IStaffInfo[] = [

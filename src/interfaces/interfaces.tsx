@@ -32,10 +32,11 @@ export interface IBannerUrl {
   url: string;
 }
 
-export interface IHallUrl {
+export interface IHalls {
   id: number;
+  name: string;
   url: string;
-  title: string;
+  description: string;
 }
 
 export interface IStaffInfo {
