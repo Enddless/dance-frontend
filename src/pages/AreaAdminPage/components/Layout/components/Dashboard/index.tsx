@@ -1,9 +1,10 @@
-import Dashboard from "../../../../../MainPage/components/Dashboard/Dashboard";
+
+import DashboardPage from "../../../../../DashboardPage/DashboardPage";
 import css from "./styles.module.scss";
 
 const DashboardSettings = () => {
   return <div className={css.container}>
-    <Dashboard />
+    <DashboardPage />
   </div>;
 };
 
