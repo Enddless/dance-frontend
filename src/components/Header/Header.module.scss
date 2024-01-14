@@ -24,6 +24,7 @@
   line-height: normal;
   letter-spacing: 0.96px;
   font-family: $body-family-secondary-regular;
+  position: relative;
 }
 .menuItem:hover {
   font-weight: 600;
@@ -31,4 +32,11 @@
 .menuItem:last-child {
   font-weight: 700;
   border-bottom: 1px solid $header-color;
+}
+
+.submenu {
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%
 }

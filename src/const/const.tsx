@@ -3,6 +3,7 @@ export enum NameSpace {
   Auth = "auth",
   Admin = "admin",
   Ticket = "ticket",
+  Studio = "studio",
 }
 export const enum LoadingStatus {
   Idle = "idle",

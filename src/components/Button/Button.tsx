@@ -6,11 +6,22 @@ interface ButtonProps {
   cls?: string;
   activeClass?: string;
   children?: React.ReactNode;
-  openModalForm?: (() => void) | ((e: React.MouseEvent<HTMLButtonElement>) => void);
-
+  openModalForm?:
+    | (() => void)
+    | ((e: React.MouseEvent<HTMLButtonElement>) => void);
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }
 
-const Button = ({ text, cls, activeClass, children, openModalForm  }: ButtonProps) => {
+const Button = ({
+  text,
+  cls,
+  activeClass,
+  children,
+  openModalForm,
+  onMouseEnter,
+  onMouseLeave,
+}: ButtonProps) => {
   //классы для нажатых кнопок, переделать в switch/case
   const enterButton = cls === "btn-enter";
   const more = cls === "btn-more";
@@ -28,9 +39,13 @@ const Button = ({ text, cls, activeClass, children, openModalForm  }: ButtonProp
     [css.add]: add,
   });
 
-  
   return (
-    <button className={classNamesList} onClick={openModalForm}>
+    <button
+      className={classNamesList}
+      onClick={openModalForm}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       {children}
       {text}
     </button>

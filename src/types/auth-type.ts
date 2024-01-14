@@ -8,8 +8,8 @@ export type StateAuth = {
   userData: UserCurrentData;
   userRole: UserCurrentRole | null;
   isUserDataLoading: LoadingStatus;
-  isUserRoleLoading:LoadingStatus;
-  isUserPhotoLoading:LoadingStatus;
+  isUserRoleLoading: LoadingStatus;
+  isUserPhotoLoading: LoadingStatus;
   buttonActive: string;
 };
 
@@ -21,7 +21,7 @@ export type UserCurrentData = {
   password?: string | undefined;
   dateOfBirth?: Date | string;
   photoUser?: string | undefined;
-  genders?:string | undefined;
+  genders?: string | undefined;
   role?: string;
   code?: number;
 };
@@ -36,7 +36,27 @@ export type UserCurrentRole = {
 export type UserCurrentPhoto = {
   photoUser: File;
 };
-
+export type Banner = {
+  PhotoBanner: File;
+};
+export type StateStudio = {
+  message: string;
+  isStudioDataLoading:LoadingStatus;
+  isBannerLoading: LoadingStatus;
+  aboutStudioData: AboutStudioData | null;
+  bannersData: BannersData[] | null;
+};
+export type AboutStudioData = {
+  idAtelier?: number;
+  description: string;
+};
+export type BannersData = {
+  IdBanner: number;
+  PhotoBanner?: string;
+};
+export type CurrentBannerId = {
+  IdBanner: number;
+};
 export type AuthData = {
   emailUser: string;
   password: string;
@@ -46,6 +66,5 @@ export type AuthWithCodeData = {
   password: string;
   code: number;
 };
-
 
 export type ReturnData = string;

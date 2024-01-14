@@ -1,12 +1,26 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import ControlButton from "../../../../../../components/controls-button";
-import { bannerUrl } from "../../../../../../mocks/mocks";
+// import { bannerUrl } from "../../../../../../mocks/mocks";
 import css from "./styles.module.scss";
+import {
+  changeBanner,
+  deleteBanner,
+  getBanners,
+} from "../../../../../../services/thunk/studio";
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "../../../../../../services/type-service";
+import { API_URL } from "../../../../../../services/api";
 
 const News = () => {
-  const [banner, setBanner] = useState(bannerUrl);
+  const dispatch = useAppDispatch();
+  const bannerData = useAppSelector((state) => state.studio.bannersData);
+  const [banner, setBanner] = useState(bannerData);
   const [errorDownload, serErrorDownload] = useState("");
   const [isValid, setIsValid] = useState(true);
+  //изменение состояния фотографии
+  const [file, setFile] = useState<File>();
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
@@ -23,37 +37,62 @@ const News = () => {
       setIsValid(false);
     } else {
       setIsValid(true);
+      setFile(selectFile);
     }
   };
   // Отправка банера на сервер
   useEffect(() => {
-    if (isValid) {
-      // dispatch(changeUserPhoto({ photoUser: file }))
-      //   .unwrap()
-      //   .then(() => {
-      //     dispatch(...);
-      //   });
+    if (isValid && file) {
+      dispatch(changeBanner({ PhotoBanner: file }))
+        .unwrap()
+        .then(() => {
+          dispatch(getBanners());
+        });
     }
-  }, [isValid]);
+  }, [isValid, file, dispatch]);
 
+  // Получение данных о баннерах из сервера
+  useEffect(() => {
+    dispatch(getBanners());
+  }, [dispatch]);
+
+  // Обновление состояния баннеров при изменении данных в хранилище
+  useEffect(() => {
+    setBanner(bannerData);
+  }, [bannerData]);
   //удаление банера
-  const deleteBanner = (id: number) => {
-    setBanner(banner.filter((item) => item.id !== id))
-    //добавить диспатч на удаление банера с бд
-  }
+  const deleteCurrentBanner = (IdBanner: number) => {
+    dispatch(deleteBanner({ IdBanner }))
+      .unwrap()
+      .then(() => dispatch(getBanners()));
+  };
+
   return (
     <>
       <div className={css.container}>
-        {banner.map((card) => {
-          return (
-            <div className={css.card} key={card.id} id="cards">
-              <div className={css.controlGroup}>
-                <ControlButton id="delete" onClick={() => deleteBanner(card.id)}/>
-              </div>
-              <img src={card.url} alt="banner" />
-            </div>
-          );
-        })}
+        {banner ? (
+          <>
+            {banner.map((card) => {
+              return (
+                <div className={css.card} key={card.IdBanner} id="cards">
+                  <div className={css.controlGroup}>
+                    <ControlButton
+                      id="delete"
+                      onClick={() => deleteCurrentBanner(card.IdBanner)}
+                    />
+                  </div>
+                  <img src={`${API_URL}${card.PhotoBanner}`} alt="banner" />
+                </div>
+              );
+            })}
+          </>
+        ) : (
+          <>
+            <p>
+              У вас еще нет банеров. Вы можете добавить нажав кнопку "Добавить"
+            </p>
+          </>
+        )}
       </div>
       <form className={css.add}>
         <label htmlFor="banner" className={css.download}>
