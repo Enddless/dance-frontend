@@ -1,10 +1,11 @@
 @import "../../styles//variables.scss";
+@import "../../styles/mixins.scss";
 
 .title {
-  
+  white-space: nowrap;
+  @include fluidFontSize(32px, 36px, 1280px, 1920px);
 }
 .container {
-
   grid-column: span 12;
   display: flex;
   flex-direction: row;
@@ -12,9 +13,9 @@
   justify-content: space-around;
 }
 .line {
-  width:650px;
-  height:1px;
-  background: linear-gradient(90deg, #563E0E 0%, rgba(86, 62, 14, 0.00) 100%);
+  width: 650px;
+  height: 1px;
+  background: linear-gradient(90deg, #563e0e 0%, rgba(86, 62, 14, 0) 100%);
 }
 .lineLeft {
   transform: rotate(180deg);
@@ -23,4 +24,3 @@
   -ms-transform: rotate(180deg);
   -o-transform: rotate(180deg);
 }
-

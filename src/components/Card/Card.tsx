@@ -50,7 +50,7 @@ const Card = ({ price, review, cls, id, children }: ICardProps) => {
               ).map((star) => {
                 return (
                   <div key={star}>
-                    <svg width="20" height="20" viewBox="0 0 20 20">
+                    <svg viewBox="0 0 20 20" className={css.stars}>
                       <use xlinkHref={`${sprite}#star`}></use>
                     </svg>
                   </div>
@@ -60,7 +60,7 @@ const Card = ({ price, review, cls, id, children }: ICardProps) => {
           </div>
 
           <p className={css.date}>{review.data.date}</p>
-          <p>{review.data.description}</p>
+          <p className={css.description}>{review.data.description}</p>
         </>
       )}
     </div>

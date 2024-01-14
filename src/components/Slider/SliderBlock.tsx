@@ -50,7 +50,7 @@ const SliderBlock = ({ cards, staffInfo }: ICardsProps) => {
           {cards.map((card) => {
             return (
               <div className={css.card} key={card.id} id="cards">
-                <img src={card.url} alt="banner" />
+                <img src={card.url} alt="banner" className={css.banner} />
               </div>
             );
           })}
@@ -63,7 +63,7 @@ const SliderBlock = ({ cards, staffInfo }: ICardsProps) => {
             {staffInfo.map(({ name, img, description, id }) => (
               <div key={id} className={css.staffInfo}>
                 <div className={css.avatar}>
-                  <img src={img} alt="staffPhoto" />
+                  <img src={img} alt="staffPhoto" className={css.staffPhoto} />
                 </div>
 
                 <div className={css.staffDescr}>

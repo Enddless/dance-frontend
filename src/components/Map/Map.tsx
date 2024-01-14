@@ -35,7 +35,7 @@ const MapBlock = () => {
   }, [map, POINTS]);
 
   return (
-    <div className={css.wrapper} style={{ height: "600px" }} ref={mapRef}></div>
+    <div className={css.wrapper} ref={mapRef}></div>
   );
 };
 
