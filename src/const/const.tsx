@@ -55,3 +55,13 @@ export const DEFAULT_BUTTON_AREA_ADMIN = {
 
 
 
+export enum halls {
+  First = "Зал 1",
+  Secondary = "Зал 2",
+  Third = "Зал 3",
+}
+export const ResourceHalls = [
+  { id: "a", title: "Зал 1" },
+  { id: "b", title: "Зал 2" },
+  { id: "c", title: "Зал 3" },
+];
