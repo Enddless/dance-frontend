@@ -4,7 +4,8 @@ import hallThree from "../assets/images/hall-three.png";
 export enum NameSpace {
   User = "user",
   Auth = "auth",
-  Admin = "admin"
+  Admin = "admin",
+  Ticket = "ticket",
 }
 export const enum LoadingStatus {
   Idle = "idle",
@@ -18,21 +19,21 @@ export const enum AuthorizationStatus {
   Unknown = "UNKNOWN",
 }
 
-export const AUTH_TOKEN_NAME = "token";
+export const AUTH_TOKEN_NAME = "justToken";
+export const AUTH_REFRESH_TOKEN_NAME = "session";
 
 export const menuAreaPersonal = [
   { id: 1, title: "Основные настройки", path: "settings" },
-  { id: 2, title: "Мои абонементы", path: "tickets" },
+  { id: 2, title: "Абонементы", path: "tickets" },
   { id: 3, title: "Уведомления", path: "notifications" },
-  { id: 4, title: "История посещений", path: "history" },
-  { id: 5, title: "Онлайн запись", path: "online-record" },
-  { id: 6, title: "Смена пароля", path: "change-pass" },
-  { id: 7, title: "Написать отзыв", path: "review" },
+  { id: 4, title: "Записи", path: "record" },
+  { id: 5, title: "Смена пароля", path: "changepass" },
+  { id: 6, title: "Написать отзыв", path: "review" },
 ];
 export const DEFAULT_BUTTON_AREA_PERSONAL = {
   id: 1,
   title: "Основные настройки",
-  path: "primary-settings",
+  path: "settings",
 };
 
 export const menuAreaAdministrator = [
@@ -84,3 +85,13 @@ export const hallsData: THalls[] = [
   },
 ];
 
+export enum halls {
+  First = "Зал 1",
+  Secondary = "Зал 2",
+  Third = "Зал 3",
+}
+export const ResourceHalls = [
+  { id: "a", title: "Зал 1" },
+  { id: "b", title: "Зал 2" },
+  { id: "c", title: "Зал 3" },
+];

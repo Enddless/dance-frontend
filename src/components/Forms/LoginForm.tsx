@@ -1,25 +1,26 @@
 import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import css from "./forms.module.scss";
 import RecoveryForm from "./RecoveryForm";
 import RegistrationForm from "./RegistrationForm";
 import classNames from "classnames";
 import Close from "../Close/Close";
-// import useLogin from "../../hooks/useLogin";
 import { useAppDispatch } from "../../services/type-service";
 import {
   getCurrentUserData,
   getCurrentUserRole,
   login,
 } from "../../services/thunk/auth";
+import EyeIcon from "../EyeIcon";
 
 type IModalFormProps = {
   openModalForm?: () => void;
 };
 
 const LoginForm = ({ openModalForm }: IModalFormProps) => {
+  const [errorMessage, setErrorMessage] = useState("");
+  const [agreement, setAgreement] = useState(false);
   const dispatch = useAppDispatch();
+
   //состояния форм
   const [isLoginForm, setIsLoginForm] = useState(true);
   const [isRecovery, setIsRecovery] = useState(false);
@@ -33,6 +34,7 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
 
   const handleChange = (e: { target: { name: string; value: string } }) => {
     setItem({ ...item, [e.target.name]: e.target.value });
+    setErrorMessage("");
   };
 
   //вход пользователя
@@ -51,10 +53,14 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
       })
       .then(() => {
         dispatch(getCurrentUserData());
+      })
+      .then(() => {
+        setIsLoginForm(!isLoginForm);
+        if (openModalForm) openModalForm();
+      })
+      .catch(() => {
+        setErrorMessage("Неправильный логин или пароль");
       });
-
-    setIsLoginForm(!isLoginForm);
-    if (openModalForm) openModalForm();
   };
 
   //состояние переключения "глазика"
@@ -82,31 +88,44 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
                   value={item.email}
                   onChange={handleChange}
                   name="email"
+                  className={
+                    errorMessage && errorMessage !== ""
+                      ? `${css.errorInput}`
+                      : ""
+                  }
                   placeholder="example@gmail.com"
                 />
               </label>
 
-              <label htmlFor="password">
-                Пароль
-                <input
-                  value={item.password}
-                  onChange={handleChange}
-                  name="password"
-                  type={showPassword ? "text" : "password"}
-                />
-                <FontAwesomeIcon
-                  icon={showPassword ? faEyeSlash : faEye}
-                  onClick={togglePasswordVisibility}
-                  style={{
-                    position: "absolute",
-                    right: "110px",
-                    top: "56%",
-                    transform: "translateY(-56%)",
-                    cursor: "pointer",
-                  }}
-                />
-              </label>
-              <button type="submit">Войти</button>
+              <fieldset>
+                <label htmlFor="password">
+                  Пароль
+                  <input
+                    value={item.password}
+                    onChange={handleChange}
+                    name="password"
+                    type={showPassword ? "text" : "password"}
+                    className={
+                      errorMessage && errorMessage !== ""
+                        ? `${css.errorInput}`
+                        : ""
+                    }
+                  />
+                  <div className={css.eyeIcon}>
+                    <EyeIcon
+                      showPassword={showPassword}
+                      togglePasswordVisibility={togglePasswordVisibility}
+                    />
+                  </div>
+                </label>
+              </fieldset>
+
+              {errorMessage && errorMessage !== "" && (
+                <span className={css.error}>Неправильный логин или пароль</span>
+              )}
+              <button type="submit" className={css.submit}>
+                Войти
+              </button>
             </form>
 
             <div className={css.link}>
@@ -117,6 +136,19 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
                 Забыли пароль?
               </button>
             </div>
+          </div>
+
+          <div>
+            <input
+              type="checkbox"
+              id="agreement"
+              name="agreement"
+              onChange={() => setAgreement(!agreement)}
+            />
+            <label htmlFor="agreement" className={css.agreement}>
+              Регистрируясь, я соглашаюсь с Условиями пользования и Политикой
+              конфиденциалности
+            </label>
           </div>
         </div>
       )}

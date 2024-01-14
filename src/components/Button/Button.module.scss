@@ -12,6 +12,8 @@
   font-weight: 600;
   letter-spacing: 0.96px;
   @include fluidFontSize(16px, 24px, 1280px, 1920px);
+  width: 100%;
+  max-width: 190px;
 }
 
 .btn:hover {
@@ -29,6 +31,7 @@
 .menuAreaButton {
   background: transparent;
   width: 100%;
+  min-width: 240px;
   outline: 1px solid $btn-border-default;
   box-shadow: 2px 2px 15px 0px $btn-boxshadow;
 }
@@ -37,4 +40,21 @@
   background: $btn-menuArea-background-active;
   color: $white;
   outline: none;
+<<<<<<< HEAD
+=======
+}
+.saveButton {
+  background: $btn-saveButton-background;
+  color: $btn-saveButton-color;
+  padding: 15px 5px;
+  font-size: 16px;
+  letter-spacing: 0.32px;
+}
+.deleteButton {
+  color: inherit;
+  text-decoration: underline;
+  padding: 15px 5px;
+  font-size: 20px;
+  width: 100%;
+>>>>>>> 9f54ef07c53df62fdca2b900b482f9c8f3a0a18a
 }

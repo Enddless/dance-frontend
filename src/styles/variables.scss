@@ -9,7 +9,7 @@ $table-shadow: rgba(0, 0, 0, 0.05);
 //PRIMARY SETTINGS
 $body-background-primary: #fdf8f0;
 $body-color-primary: #13340a;
-$body-family-primary: "Helvetica, sans-serif";
+$body-family-primary: "Helvetica";
 $body-family-secondary-regular: "Gotham Pro regular";
 $body-family-secondary-bold: "Gotham Pro bold";
 $body-family-secondary-medium: "Gotham Pro medium";
@@ -36,6 +36,8 @@ $btn-border-default: #13340a;
 $btn-boxshadow: #0000004d;
 $btn-areaForm-color: #3aa31e;
 $btn-menuArea-background-active: #3aa31e;
+$btn-saveButton-color: #fdf8f0;
+$btn-saveButton-background: #3aa31e;
 
 @mixin ButtonPrimary {
   display: flex;
@@ -78,7 +80,7 @@ $form-enter-color: #13340a;
 
 //PERSONAL AREA: NOTIFICATION SETTINGS
 $notification-background: #c4ccc1;
-
+$form-enter-background: #fdf8f0;
 
 //SIDEBAR IN ADMIN SETTINGS
 $sidebar-background: #13340a;

@@ -1,0 +1,13 @@
+@import "../../../styles/variables.scss";
+
+.ticketsEmpty {
+  grid-column: 4 / 10;
+  margin-top: 115px;
+  padding: 70px 140px;
+  border-radius: 4px;
+  background: #fdf8f0;
+  box-shadow: 2px 6px 10px 0px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  line-height: 165%;
+  letter-spacing: 0.4px;
+}

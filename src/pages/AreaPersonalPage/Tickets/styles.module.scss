@@ -1,5 +1,8 @@
 @import "../../../styles/variables.scss";
 
+.wrapper {
+  @include Grid;
+}
 .ticketsTable {
   border: none;
   border-spacing: 20px;
