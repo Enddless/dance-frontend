@@ -6,10 +6,20 @@ import "react-big-calendar/lib/addons/dragAndDrop/styles.scss";
 import "./custom.css";
 import css from "./styles.module.scss";
 import { useCallback, useMemo, useState } from "react";
-import { TEvent, dataEvents, localizer, messagesData, minTime } from "./settingsEvent";
+import {
+  TEvent,
+  dataEvents,
+  localizer,
+  messagesData,
+  minTime,
+} from "./settingsEvent";
 import CalendarItemDetail from "../CalendarItemDetail";
+import { useAppSelector } from "../../../../services/type-service";
 
 const BigCalendar = () => {
+  //определим роль,чтобы добавить возможность дранг энд дроп
+  const userRoleData = (useAppSelector((state) => state.auth.userRole))?.role;
+  const isAdministrator = userRoleData === "administrator";
   const [events, setEvents] = useState(dataEvents);
 
   //стили для конкретного зала
@@ -113,10 +123,11 @@ const BigCalendar = () => {
             : {}
         }
         onSelectEvent={handleSelectEvent}
-        resizableAccessor={"isResizable"}
-        onEventDrop={moveEvent}
-        onEventResize={resizeEvent}
-        resizable
+        resizableAccessor={isAdministrator? "isResizable": undefined}
+        //drag and drop
+        onEventDrop={isAdministrator ? moveEvent : undefined}
+        onEventResize={isAdministrator ? resizeEvent : undefined}
+        resizable={isAdministrator}
       />
       {showDetail && (
         <CalendarItemDetail

@@ -1,10 +1,9 @@
-
-import DashboardPage from "../../../../../DashboardPage/DashboardPage";
+import BigCalendar from "../../../../../DashboardPage/components/Calendar";
 import css from "./styles.module.scss";
 
 const DashboardSettings = () => {
   return <div className={css.container}>
-    <DashboardPage />
+    <BigCalendar />
   </div>;
 };
 
