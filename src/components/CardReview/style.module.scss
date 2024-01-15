@@ -47,5 +47,13 @@
 .control {
   position:absolute;
   right:20px;
-  bottom:20px;
+  top: 20px;
+}
+
+.starRedisign {
+  justify-content: flex-start;
+
+  .star {
+    margin-left:20px;
+  }
 }

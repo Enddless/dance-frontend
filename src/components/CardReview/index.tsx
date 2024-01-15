@@ -2,6 +2,7 @@ import css from "./style.module.scss";
 import sprite from "../../assets/sprite.svg";
 import { IReviewsInfo } from "../../interfaces/interfaces";
 import ControlButton from "../controls-button";
+import classNames from "classnames";
 
 interface ICardProps {
   review: IReviewsInfo;
@@ -10,6 +11,10 @@ interface ICardProps {
 
 const CardReview = ({ review, id }: ICardProps) => {
   const isAdminSettings = id === "adminSettings";
+
+  const classNamesList = classNames(css.userInfo, {
+    [css.starRedisign]: isAdminSettings,
+  });
   return (
     <div className={css.card}>
       {review && (
@@ -19,7 +24,7 @@ const CardReview = ({ review, id }: ICardProps) => {
               <ControlButton id="delete" />
             </div>
           )}
-          <div className={css.userInfo}>
+          <div className={classNamesList}>
             <p className={css.title}>{review.data.user}</p>
             <div className={css.star}>
               {Array.from(

@@ -37,6 +37,11 @@ const BigCalendar = () => {
 
     return {
       className,
+      // children: (
+      //   <div className={css.control}>
+      //     <ControlButton id="delete" />
+      //   </div>
+      // )
     };
   };
 
@@ -55,7 +60,7 @@ const BigCalendar = () => {
     setSelectedEvent(event);
     setShowDetail(true);
   };
-  const closeMenu = () => {
+  const toggleMenu = () => {
     setShowDetail(!showDetail);
   };
 
@@ -108,11 +113,11 @@ const BigCalendar = () => {
         events={events}
         eventPropGetter={eventStyleGetter}
         min={minTime}
-        step={15}
+        step={30}
         style={{ height: 1350 }}
         dayLayoutAlgorithm="no-overlap"
-        popup={true}
-        popupOffset={{ x: 20, y: 20 }}
+        popup
+        // popupOffset={{ x: 20, y: 20 }}
         dayPropGetter={(date: Date) =>
           date.getDay() === new Date().getDay()
             ? {
@@ -132,7 +137,7 @@ const BigCalendar = () => {
       {showDetail && (
         <CalendarItemDetail
           selectedEvent={selectedEvent}
-          closeMenu={closeMenu}
+          onClick={toggleMenu}
         />
       )}
     </>

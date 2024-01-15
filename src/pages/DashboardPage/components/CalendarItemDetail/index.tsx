@@ -1,16 +1,19 @@
-import Close from "../../../../components/Close/Close";
+import ControlButton from "../../../../components/controls-button";
 import { TEvent } from "../Calendar/settingsEvent";
 import css from "./styles.module.scss";
 
 type TselectedEventProps = {
   selectedEvent: TEvent;
-  closeMenu: () => void;
+  onClick?: () => void;
 };
 
-function CalendarItemDetail({ selectedEvent, closeMenu }: TselectedEventProps) {
+function CalendarItemDetail({ selectedEvent, onClick }: TselectedEventProps) {
   return (
     <div className={css.detailEvent}>
-      <Close openModalForm={closeMenu} />
+      <div className={css.control}>
+        <ControlButton id="delete" />
+        <ControlButton id="close" onClick={onClick}/>
+      </div>
       <p>{selectedEvent.title}</p>
       <p>
         {selectedEvent.start.toLocaleString()}-
