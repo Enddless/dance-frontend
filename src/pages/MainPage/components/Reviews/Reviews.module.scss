@@ -2,13 +2,13 @@
 
 // если это блок отзывов на главной странице
 .reviews {
-  margin:0 100px 100px;
-  position:relative;
+  margin: 0 100px 100px;
+  position: relative;
 }
 .container {
   display: grid;
-  grid-template-columns: repeat(12,1fr);
-  column-gap:20px;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 20px;
 }
 .blur {
   position: absolute;
@@ -16,8 +16,8 @@
   right: 104px;
 }
 .blur:after {
-  content:"\2192";
-  font-size:100px;
+  content: "\2192";
+  font-size: 100px;
 }
 // если это именно страница отзывов, то меняем разметку
 .containerReviewsPage {
