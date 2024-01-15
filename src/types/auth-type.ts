@@ -39,23 +39,41 @@ export type UserCurrentPhoto = {
 export type Banner = {
   PhotoBanner: File;
 };
+
 export type StateStudio = {
   message: string;
-  isStudioDataLoading:LoadingStatus;
+  isStudioDataLoading: LoadingStatus;
   isBannerLoading: LoadingStatus;
+  isHallsLoading:LoadingStatus;
   aboutStudioData: AboutStudioData | null;
   bannersData: BannersData[] | null;
+  hallsData:HallData[] | null;
+  currentHallData: HallData | null;
 };
 export type AboutStudioData = {
   idAtelier?: number;
   description: string;
 };
+export type HallData = {
+  IdHall: number;
+  PhotoHall?: string;
+  Title: string;
+  Description: string;
+};
+
+export type PhotoHall = {
+  PhotoHall: File;
+};
+
 export type BannersData = {
   IdBanner: number;
   PhotoBanner?: string;
 };
 export type CurrentBannerId = {
   IdBanner: number;
+};
+export type CurrentHallId = {
+  IdHall: number;
 };
 export type AuthData = {
   emailUser: string;
@@ -68,3 +86,13 @@ export type AuthWithCodeData = {
 };
 
 export type ReturnData = string;
+
+export type MainPageData = {
+  Banners: BannersData[],
+  Atelie: AboutStudioData,
+  Halls:HallData[],
+};
+export type MainPageState = {
+  isMainPageDataLoading: LoadingStatus;
+  mainPage: MainPageData | null,
+};

@@ -2,10 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 import { LoadingStatus, NameSpace } from "../../const/const";
 import {
   aboutStudio,
+  addHall,
+  addHallPhoto,
   changeAboutStudio,
   changeBanner,
   deleteBanner,
+  deleteHall,
   getBanners,
+  getHalls,
 } from "../../services/thunk/studio";
 import { StateStudio } from "../../types/auth-type";
 
@@ -13,8 +17,11 @@ const initialState: StateStudio = {
   message: "",
   isStudioDataLoading: LoadingStatus.Idle,
   isBannerLoading: LoadingStatus.Idle,
+  isHallsLoading: LoadingStatus.Idle,
   aboutStudioData: null,
   bannersData: [],
+  hallsData: [],
+  currentHallData: null,
 };
 
 export const studioSlice = createSlice({
@@ -78,6 +85,45 @@ export const studioSlice = createSlice({
       })
       .addCase(deleteBanner.rejected, (state) => {
         state.isBannerLoading = LoadingStatus.Rejected;
-      });
+      })
+      // ***** halls *****
+      .addCase(getHalls.pending, (state) => {
+        state.isHallsLoading = LoadingStatus.Pending;
+      })
+      .addCase(getHalls.fulfilled, (state, action) => {
+        state.hallsData = action.payload;
+        state.isHallsLoading = LoadingStatus.Fulfilled;
+      })
+      .addCase(getHalls.rejected, (state) => {
+        state.isHallsLoading = LoadingStatus.Rejected;
+      })
+      // ***** add hall photo *****
+      .addCase(addHallPhoto.fulfilled, (state, action) => {
+        state.currentHallData = action.payload;
+      })
+      // ***** change hall *****
+      .addCase(addHall.pending, (state) => {
+        state.isHallsLoading = LoadingStatus.Pending;
+      })
+      .addCase(addHall.fulfilled, (state) => {
+        state.currentHallData = null;
+        state.isHallsLoading = LoadingStatus.Fulfilled;
+      })
+      .addCase(addHall.rejected, (state) => {
+        state.isHallsLoading = LoadingStatus.Rejected;
+      })
+      // ***** delete hall *****
+      .addCase(deleteHall.pending, (state) => {
+        state.isHallsLoading = LoadingStatus.Pending;
+      })
+      .addCase(deleteHall.fulfilled, (state, action) => {
+        state.message = action.payload;
+        state.bannersData = [];
+        state.isHallsLoading = LoadingStatus.Fulfilled;
+      })
+      .addCase(deleteHall.rejected, (state) => {
+        state.isHallsLoading = LoadingStatus.Rejected;
+      })
+      ;
   },
 });

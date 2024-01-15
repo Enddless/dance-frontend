@@ -1,18 +1,20 @@
+import { API_URL } from "../../services/api";
+import { HallData } from "../../types/auth-type";
 import css from "./style.module.scss";
-import { IHalls } from "../../interfaces/interfaces";
+
 
 interface ICardProps {
-  hall: IHalls;
+  hall: HallData;
 }
 
 const CardHalls = ({ hall }: ICardProps) => {
   return (
-    <div key={hall.id} className={css.container}>
+    <div key={hall.IdHall} className={css.container}>
       <div className={css.photoContainer}>
-        <img src={hall.url} alt="Galerry" className={css.photo} />
-        <h2 className={css.caption}>{hall.name}</h2>
+        <img src={`${API_URL}${hall.PhotoHall}`} alt="Galerry" className={css.photo} />
+        <h2 className={css.caption}>{hall.Title}</h2>
       </div>
-      <p>{hall.description}</p>
+      <p>{hall.Description}</p>
     </div>
   );
 };

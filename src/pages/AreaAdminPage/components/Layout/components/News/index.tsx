@@ -81,7 +81,7 @@ const News = () => {
                       onClick={() => deleteCurrentBanner(card.IdBanner)}
                     />
                   </div>
-                  <img src={`${API_URL}${card.PhotoBanner}`} alt="banner" />
+                  <img src={`${API_URL}${card.PhotoBanner}?v=1`} alt="sdfdfsd" />
                 </div>
               );
             })}

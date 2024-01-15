@@ -28,4 +28,8 @@ export enum APIRoute {
   //admin-settings
   Banner = "/basicBanners",
   AboutStudio = "/studioSettings",
+  AddHallPhoto = "/hallsSettingsPhoto",
+  Halls = "/hallsSettings",
+  //main page
+  MainPage = "/page",
 }

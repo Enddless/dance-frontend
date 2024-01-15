@@ -5,6 +5,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { adminSlice } from "./slices/admin";
 import { ticketSlice } from "./slices/tickets";
 import { studioSlice } from "./slices/studio";
+import { mainPageSlice } from "./slices/mainPage";
 
 export const api = createAPI();
 
@@ -13,6 +14,7 @@ export const reducer = combineReducers({
   [NameSpace.Admin]: adminSlice.reducer,
   [NameSpace.Ticket]: ticketSlice.reducer,
   [NameSpace.Studio]: studioSlice.reducer,
+  [NameSpace.MainPage]: mainPageSlice.reducer,
 });
 
 export const store = configureStore({

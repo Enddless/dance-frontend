@@ -4,6 +4,7 @@ export enum NameSpace {
   Admin = "admin",
   Ticket = "ticket",
   Studio = "studio",
+  MainPage = "main",
 }
 export const enum LoadingStatus {
   Idle = "idle",

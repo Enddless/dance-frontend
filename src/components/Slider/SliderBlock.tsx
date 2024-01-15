@@ -3,7 +3,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import "./sliderCustomSettings.scss";
-import { IBannerUrl, IStaffInfo } from "../../interfaces/interfaces";
+import { IStaffInfo } from "../../interfaces/interfaces";
+import { BannersData } from "../../types/auth-type";
+import { API_URL } from "../../services/api";
 
 interface ISettings {
   dots?: boolean;
@@ -38,7 +40,7 @@ const settingsForStaff: ISettings = {
 };
 
 type ICardsProps = {
-  cards?: IBannerUrl[];
+  cards?: BannersData[];
   staffInfo?: IStaffInfo[];
 };
 
@@ -49,8 +51,12 @@ const SliderBlock = ({ cards, staffInfo }: ICardsProps) => {
         <Slider {...settings} className={css.slider}>
           {cards.map((card) => {
             return (
-              <div className={css.card} key={card.id} id="cards">
-                <img src={card.url} alt="banner" className={css.banner} />
+              <div className={css.card} key={card.IdBanner} id="cards">
+                <img
+                  src={`${API_URL}${card.PhotoBanner}`}
+                  alt="banner"
+                  className={css.banner}
+                />
               </div>
             );
           })}
