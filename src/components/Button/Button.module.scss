@@ -11,7 +11,7 @@
   font-family: $body-family-secondary-regular;
   font-weight: 600;
   letter-spacing: 0.96px;
-  @include fluidFontSize(16px, 24px, 1280px, 1920px);
+  @include fluidFontSize(16px, 18px, 1280px, 1920px);
 }
 
 .btn:hover {

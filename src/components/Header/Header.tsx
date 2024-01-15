@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import AreaForm from "../Forms/AreaForm";
 import { useAppSelector } from "../../services/type-service";
+import sprite from "../../assets/sprite.svg";
 
 const Header = () => {
   const { isDark, setIsDark } = useTheme();
@@ -53,11 +54,14 @@ const Header = () => {
       </nav>
       {authorizationStatus === "AUTH" && userRole === "customers" && (
         <>
+          <svg width="30" height="30" viewBox="0 0 30 30">
+            <use xlinkHref={`${sprite}#notification`}></use>
+          </svg>
           <Button
             text={
               userData?.userName !== ""
                 ? `${userData.userName}`
-                : `${(userData.emailUser)?.split("@")[0]}`
+                : `${userData.emailUser?.split("@")[0]}`
             }
             cls="btn-enter"
             openModalForm={openModalForm}
@@ -76,16 +80,18 @@ const Header = () => {
           {isOpenModal && <AreaForm openModalForm={openModalForm} />}
         </>
       )}
-      {(authorizationStatus === "NO_AUTH" || authorizationStatus === "UNKNOWN" || userRole === "") && (
-          <>
-            <Button
-              text="Вход"
-              cls="btn-enter"
-              openModalForm={openModalForm}
-            ></Button>
-            {isOpenModal && <LoginForm openModalForm={openModalForm} />}
-          </>
-        )}
+      {(authorizationStatus === "NO_AUTH" ||
+        authorizationStatus === "UNKNOWN" ||
+        userRole === "") && (
+        <>
+          <Button
+            text="Вход"
+            cls="btn-enter"
+            openModalForm={openModalForm}
+          ></Button>
+          {isOpenModal && <LoginForm openModalForm={openModalForm} />}
+        </>
+      )}
     </div>
   );
 };
