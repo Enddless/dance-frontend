@@ -1,4 +1,5 @@
 @import "../../styles//variables.scss";
+@import "../../styles/mixins.scss";
 
 .header {
   width: 100%;
@@ -9,7 +10,7 @@
   padding: 40px 80px 30px;
   background: $header-background;
   color: $header-color;
-  position:relative;
+  position: relative;
 }
 .navigation {
   display: flex;
@@ -20,11 +21,12 @@
   padding: 10px 0;
   margin: 0 20px;
   cursor: pointer;
-  font-size: 24px;
+  @include fluidFontSize(16px, 24px, 1280px, 1920px);
   line-height: normal;
   letter-spacing: 0.96px;
   font-family: $body-family-secondary-regular;
   position: relative;
+  white-space: nowrap;
 }
 .menuItem:hover {
   font-weight: 600;
@@ -39,4 +41,21 @@
   top:0;
   left:0;
   width:100%
+}
+@media screen and (max-width: 1540px) {
+  .menuItem {
+    margin: 0 20px;
+  }
+  .header {
+    height: 110px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .menuItem {
+    margin: 0 15px;
+  }
+  .header {
+    height: 100px;
+  }
 }
