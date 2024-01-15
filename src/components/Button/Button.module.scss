@@ -38,3 +38,18 @@
   color: $white;
   outline: none;
 }
+
+.saveButton {
+  background: $btn-saveButton-background;
+  color: $btn-saveButton-color;
+  padding: 15px 5px;
+  font-size: 16px;
+  letter-spacing: 0.32px;
+}
+.deleteButton {
+  color: inherit;
+  text-decoration: underline;
+  padding: 15px 5px;
+  font-size: 20px;
+  width: 100%;
+}
