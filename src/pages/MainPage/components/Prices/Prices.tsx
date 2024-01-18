@@ -2,14 +2,20 @@ import { pricesInfo } from "../../../../mocks/mocks";
 import css from "./Prices.module.scss";
 import TitleSection from "../../../../components/Title/Title";
 import CardPrice from "../../../../components/CardPrice";
+import classNames from "classnames";
 
 const Prices = () => {
+  const lengthMoreDefault = pricesInfo && pricesInfo?.length > 4;
+  const classNameList = classNames(css.container, {
+    [css.tile]: lengthMoreDefault,
+  });
+
   return (
     <section className={css.services} id="pricesBlock">
       <TitleSection title="Услуги и цены" />
-      <div className={css.container}>
+      <div className={classNameList}>
         {pricesInfo.map((price) => {
-          return <CardPrice key={price.id} price={price} />;
+          return <CardPrice key={price.id} price={price} isMainPage={lengthMoreDefault} />;
         })}
       </div>
       <div className={css.text}>

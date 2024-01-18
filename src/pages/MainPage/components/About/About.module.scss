@@ -4,7 +4,7 @@
 .about {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  margin: 0 100px;
+  margin: 0 100px 100px;
 }
 
 .text,
@@ -35,4 +35,9 @@
   left: 50%;
   transform: translate(-50%, -20px);
   margin: 0 auto;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
 }

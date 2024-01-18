@@ -11,8 +11,10 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+  margin-bottom: 30px;
 }
 .line {
+  margin:0 40px;
   width: 650px;
   height: 1px;
   background: linear-gradient(90deg, #563e0e 0%, rgba(86, 62, 14, 0) 100%);
