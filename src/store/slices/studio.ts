@@ -4,12 +4,16 @@ import {
   aboutStudio,
   addHall,
   addHallPhoto,
+  addTeacher,
+  addTeacherPhoto,
   changeAboutStudio,
   changeBanner,
   deleteBanner,
   deleteHall,
+  deleteTeacher,
   getBanners,
   getHalls,
+  getTeachers,
 } from "../../services/thunk/studio";
 import { StateStudio } from "../../types/auth-type";
 
@@ -18,10 +22,13 @@ const initialState: StateStudio = {
   isStudioDataLoading: LoadingStatus.Idle,
   isBannerLoading: LoadingStatus.Idle,
   isHallsLoading: LoadingStatus.Idle,
+  isTeachersLoading: LoadingStatus.Idle,
   aboutStudioData: null,
   bannersData: [],
   hallsData: [],
   currentHallData: null,
+  techersData: [],
+  currentTeacherData: null,
 };
 
 export const studioSlice = createSlice({
@@ -123,6 +130,44 @@ export const studioSlice = createSlice({
       })
       .addCase(deleteHall.rejected, (state) => {
         state.isHallsLoading = LoadingStatus.Rejected;
+      })
+      // ***** get teachers *****
+      .addCase(getTeachers.pending, (state) => {
+        state.isTeachersLoading = LoadingStatus.Pending;
+      })
+      .addCase(getTeachers.fulfilled, (state, action) => {
+        state.techersData = action.payload;
+        state.isTeachersLoading = LoadingStatus.Fulfilled;
+      })
+      .addCase(getTeachers.rejected, (state) => {
+        state.isTeachersLoading = LoadingStatus.Rejected;
+      })
+      // ***** add teacher photo *****
+      .addCase(addTeacherPhoto.fulfilled, (state, action) => {
+        state.currentTeacherData = action.payload;
+      })
+      // ***** add teacher data *****
+      .addCase(addTeacher.pending, (state) => {
+        state.isTeachersLoading = LoadingStatus.Pending;
+      })
+      .addCase(addTeacher.fulfilled, (state) => {
+        state.currentTeacherData = null;
+        state.isTeachersLoading = LoadingStatus.Fulfilled;
+      })
+      .addCase(addTeacher.rejected, (state) => {
+        state.isTeachersLoading = LoadingStatus.Rejected;
+      })
+      // ***** delete teacher *****
+      .addCase(deleteTeacher.pending, (state) => {
+        state.isTeachersLoading = LoadingStatus.Pending;
+      })
+      .addCase(deleteTeacher.fulfilled, (state, action) => {
+        state.message = action.payload;
+        state.techersData = [];
+        state.isTeachersLoading = LoadingStatus.Fulfilled;
+      })
+      .addCase(deleteTeacher.rejected, (state) => {
+        state.isTeachersLoading = LoadingStatus.Rejected;
       })
       ;
   },

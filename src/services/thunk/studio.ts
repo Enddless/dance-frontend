@@ -6,8 +6,11 @@ import {
   BannersData,
   CurrentBannerId,
   CurrentHallId,
+  CurrentTeacherId,
   HallData,
   PhotoHall,
+  PhotoTeacher,
+  TeacherData,
 } from "../../types/auth-type";
 import { Extra } from "../type-service";
 
@@ -92,7 +95,7 @@ export const addHallPhoto = createAsyncThunk<HallData, PhotoHall, Extra>(
   }
 );
 
-// ********** change hall data **********
+// ********** add hall data **********
 export const addHall = createAsyncThunk<HallData, HallData, Extra>(
   "admin/addHall",
   async ({ IdHall, Title, Description }, { extra: api }) => {
@@ -112,6 +115,56 @@ export const deleteHall = createAsyncThunk<string, CurrentHallId, Extra>(
   async ({ IdHall }, { extra: api }) => {
     const { data } = await api.delete(APIRoute.Halls, {
       data: { IdHall: IdHall },
+    });
+
+    return data;
+  }
+);
+
+// ********** get teachers data **********
+export const getTeachers = createAsyncThunk<TeacherData[], undefined, Extra>(
+  "admin/getTeachers",
+  async (_arg, { extra: api }) => {
+    const { data } = await api.get<TeacherData[]>(APIRoute.Teachers);
+
+    return data;
+  }
+);
+
+// ********** add new teacher **********
+export const addTeacherPhoto = createAsyncThunk<TeacherData, PhotoTeacher, Extra>(
+  "admin/addTeacherPhoto",
+  async ({ photoTeachers }, { extra: api }) => {
+    const { data } = await api.post(APIRoute.AddTeacherPhoto, photoTeachers, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
+
+    return data;
+  }
+);
+
+// ********** add teacher data **********
+export const addTeacher = createAsyncThunk<TeacherData, TeacherData, Extra>(
+  "admin/addTeacher",
+  async ({ idTeachers, teachersName, description }, { extra: api }) => {
+    const { data } = await api.post(APIRoute.Teachers, {
+      idTeachers: idTeachers,
+      teachersName: teachersName,
+      description: description,
+    });
+
+    return data;
+  }
+);
+
+// ********** delete hall **********
+export const deleteTeacher = createAsyncThunk<string, CurrentTeacherId, Extra>(
+  "admin/deleteTeacher",
+  async ({ idTeachers }, { extra: api }) => {
+    const { data } = await api.delete(APIRoute.Teachers, {
+      data: { idTeachers: idTeachers },
     });
 
     return data;
