@@ -6,10 +6,20 @@ import "react-big-calendar/lib/addons/dragAndDrop/styles.scss";
 import "./custom.css";
 import css from "./styles.module.scss";
 import { useCallback, useMemo, useState } from "react";
-import { TEvent, dataEvents, localizer, messagesData, minTime } from "./settingsEvent";
+import {
+  TEvent,
+  dataEvents,
+  localizer,
+  messagesData,
+  minTime,
+} from "./settingsEvent";
 import CalendarItemDetail from "../CalendarItemDetail";
+import { useAppSelector } from "../../../../services/type-service";
 
 const BigCalendar = () => {
+  //определим роль,чтобы добавить возможность дранг энд дроп
+  const userRoleData = (useAppSelector((state) => state.auth.userRole))?.role;
+  const isAdministrator = userRoleData === "administrator";
   const [events, setEvents] = useState(dataEvents);
 
   //стили для конкретного зала
@@ -27,6 +37,11 @@ const BigCalendar = () => {
 
     return {
       className,
+      // children: (
+      //   <div className={css.control}>
+      //     <ControlButton id="delete" />
+      //   </div>
+      // )
     };
   };
 
@@ -45,7 +60,7 @@ const BigCalendar = () => {
     setSelectedEvent(event);
     setShowDetail(true);
   };
-  const closeMenu = () => {
+  const toggleMenu = () => {
     setShowDetail(!showDetail);
   };
 
@@ -98,11 +113,11 @@ const BigCalendar = () => {
         events={events}
         eventPropGetter={eventStyleGetter}
         min={minTime}
-        step={15}
+        step={30}
         style={{ height: 1350 }}
         dayLayoutAlgorithm="no-overlap"
-        popup={true}
-        popupOffset={{ x: 20, y: 20 }}
+        popup
+        // popupOffset={{ x: 20, y: 20 }}
         dayPropGetter={(date: Date) =>
           date.getDay() === new Date().getDay()
             ? {
@@ -113,15 +128,16 @@ const BigCalendar = () => {
             : {}
         }
         onSelectEvent={handleSelectEvent}
-        resizableAccessor={"isResizable"}
-        onEventDrop={moveEvent}
-        onEventResize={resizeEvent}
-        resizable
+        resizableAccessor={isAdministrator? "isResizable": undefined}
+        //drag and drop
+        onEventDrop={isAdministrator ? moveEvent : undefined}
+        onEventResize={isAdministrator ? resizeEvent : undefined}
+        resizable={isAdministrator}
       />
       {showDetail && (
         <CalendarItemDetail
           selectedEvent={selectedEvent}
-          closeMenu={closeMenu}
+          onClick={toggleMenu}
         />
       )}
     </>

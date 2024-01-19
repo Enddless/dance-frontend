@@ -24,5 +24,14 @@ export enum APIRoute {
   //others-data
   UpdateToken = '/loginRefresh',
   Tickets = '/seasonTickets',
-  AddPhoto = '/addUsersPhoto'
+  AddPhoto = '/addUsersPhoto',
+  //admin-settings
+  Banner = "/basicBanners",
+  AboutStudio = "/studioSettings",
+  AddHallPhoto = "/hallsSettingsPhoto",
+  AddTeacherPhoto = "/teacherSettingsPhoto",
+  Halls = "/hallsSettings",
+  Teachers = "/teachersSettings",
+  //main page
+  MainPage = "/page",
 }

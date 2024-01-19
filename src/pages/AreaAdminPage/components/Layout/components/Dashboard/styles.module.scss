@@ -1,0 +1,15 @@
+@import "../../../../../../styles/variables.scss";
+
+.container {
+  width: 100%;
+}
+.buttonGroup {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 30px;
+  button {
+    margin: 0;
+    min-width: 120px;
+  }
+}

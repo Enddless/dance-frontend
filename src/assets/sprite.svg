@@ -101,24 +101,27 @@
 			<path d="M11.25 7.5L18.75 15L11.25 22.5" stroke="#13340A" stroke-width="2" />
 		</g>
 	</symbol>
-	<!-- CONTROL BUTTONS -->
-	<symbol id="pencilControls" width="24" height="24" viewBox="0 0 24 24" fill="none">
+	<!-- controls-button -->
+	<symbol id="pencilControls" width="30" height="30" viewBox="0 0 30 30" fill="none">
 		<g>
-			<path fill-rule="evenodd" clip-rule="evenodd" d="M17.204 10.796L19 9C19.5453 8.45475 19.8179 8.18213 19.9636 7.88803C20.2409 7.32848 20.2409 6.67152 19.9636 6.11197C19.8179 5.81788 19.5453 5.54525 19 5C18.4548 4.45475 18.1821 4.18213 17.888 4.03639C17.3285 3.75911 16.6715 3.75911 16.112 4.03639C15.8179 4.18213 15.5453 4.45475 15 5L13.1814 6.81866C14.1452 8.46926 15.5314 9.84482 17.204 10.796ZM11.7269 8.27311L4.8564 15.1436C4.43134 15.5687 4.21881 15.7812 4.07907 16.0423C3.93934 16.3034 3.88039 16.5981 3.7625 17.1876L3.1471 20.2646C3.08058 20.5972 3.04732 20.7635 3.14193 20.8581C3.23654 20.9527 3.40284 20.9194 3.73545 20.8529L6.81243 20.2375C7.40189 20.1196 7.69661 20.0607 7.95771 19.9209C8.21881 19.7812 8.43134 19.5687 8.8564 19.1436L15.7458 12.2542C14.1241 11.2386 12.7524 9.87627 11.7269 8.27311Z" fill="#222222" />
+			<path d="M16.5752 4.50003L6.31268 15.3625C5.92518 15.775 5.55018 16.5875 5.47518 17.15L5.01268 21.2C4.85018 22.6625 5.90018 23.6625 7.35018 23.4125L11.3752 22.725C11.9377 22.625 12.7252 22.2125 13.1127 21.7875L23.3752 10.925C25.1502 9.05003 25.9502 6.91253 23.1877 4.30003C20.4377 1.71253 18.3502 2.62503 16.5752 4.50003Z" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+			<path d="M14.8633 6.3125C15.4008 9.7625 18.2008 12.4 21.6758 12.75" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+			<path d="M3.75 27.5H26.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
 		</g>
 	</symbol>
-	<symbol id="deleteControls" width="24" height="24" viewBox="0 0 24 24" fill="none">
+	<symbol id="deleteControls" width="30" height="30" viewBox="0 0 30 30" fill="none">
 		<g>
-			<path d="M9.5 14.5L9.5 11.5" stroke="#222222" stroke-linecap="round" />
-			<path d="M14.5 14.5L14.5 11.5" stroke="#222222" stroke-linecap="round" />
-			<path d="M3 6.5H21V6.5C19.5955 6.5 18.8933 6.5 18.3889 6.83706C18.1705 6.98298 17.983 7.17048 17.8371 7.38886C17.5 7.89331 17.5 8.59554 17.5 10V15.5C17.5 17.3856 17.5 18.3284 16.9142 18.9142C16.3284 19.5 15.3856 19.5 13.5 19.5H10.5C8.61438 19.5 7.67157 19.5 7.08579 18.9142C6.5 18.3284 6.5 17.3856 6.5 15.5V10C6.5 8.59554 6.5 7.89331 6.16294 7.38886C6.01702 7.17048 5.82952 6.98298 5.61114 6.83706C5.10669 6.5 4.40446 6.5 3 6.5V6.5Z" stroke="#222222" stroke-linecap="round" />
-			<path d="M9.5 3.50024C9.5 3.50024 10 2.5 12 2.5C14 2.5 14.5 3.5 14.5 3.5" stroke="#222222" stroke-linecap="round" />
+			<path d="M26.25 7.47461C22.0875 7.06211 17.9 6.84961 13.725 6.84961C11.25 6.84961 8.775 6.97461 6.3 7.22461L3.75 7.47461" stroke-linecap="round" stroke-linejoin="round" />
+			<path d="M10.625 6.2125L10.9 4.575C11.1 3.3875 11.25 2.5 13.3625 2.5H16.6375C18.75 2.5 18.9125 3.4375 19.1 4.5875L19.375 6.2125" stroke-linecap="round" stroke-linejoin="round" />
+			<path d="M23.5625 11.4238L22.75 24.0113C22.6125 25.9738 22.5 27.4988 19.0125 27.4988H10.9875C7.5 27.4988 7.3875 25.9738 7.25 24.0113L6.4375 11.4238" stroke-linecap="round" stroke-linejoin="round" />
+			<path d="M12.9141 20.625H17.0766" stroke-linecap="round" stroke-linejoin="round" />
+			<path d="M11.875 15.625H18.125" stroke-linecap="round" stroke-linejoin="round" />
 		</g>
 	</symbol>
-	<symbol id="closeControls">
-		<g width="24" height="24" viewBox="0 0 24 24" fill="none">
-			<path d="M18 6L6 18" stroke="#222222" stroke-linecap="round" stroke-linejoin="round" />
-			<path d="M6 6L18 18" stroke="#222222" stroke-linecap="round" stroke-linejoin="round" />
+	<symbol id="closeControls" width="30" height="30" viewBox="0 0 30 30" fill="none">
+		<g>
+			<path d="M3.75 3.75L25.8471 25.8471" stroke-linecap="round" />
+			<path d="M25.8477 3.75L3.75057 25.8471" stroke-linecap="round" />
 		</g>
 	</symbol>
 	<!--  -->
@@ -134,6 +137,18 @@
 					<rect width="25" height="25" fill="white" />
 				</clipPath>
 			</defs>
+		</g>
+	</symbol>
+	<symbol id="bookmark" width="25" height="25" viewBox="0 0 25 25" fill="none">
+		<g>
+			<path d="M1.28389 16.7695L8.23032 23.716C8.48144 23.9667 8.82184 24.1076 9.17675 24.1076C9.53166 24.1076 9.87207 23.9667 10.1232 23.716L23.9089 9.93025C23.9782 9.86404 24.0317 9.78316 24.0657 9.69355C24.0998 9.60397 24.1132 9.50789 24.1053 9.41239L23.0517 2.57311C23.0432 2.41013 22.9746 2.25611 22.8592 2.14072C22.7437 2.02531 22.5898 1.9567 22.4267 1.94811L15.5875 0.894537C15.492 0.88661 15.3959 0.900134 15.3063 0.934121C15.2167 0.968107 15.1358 1.0217 15.0696 1.09097L1.28389 14.8767C1.03309 15.1278 0.892212 15.4682 0.892212 15.8231C0.892212 16.178 1.03309 16.5184 1.28389 16.7695Z" stroke="#13340A" stroke-linecap="round" stroke-linejoin="round" />
+			<path d="M17.659 8.23371C17.1659 8.23371 16.7661 7.83396 16.7661 7.34086C16.7661 6.84775 17.1659 6.448 17.659 6.448C18.1521 6.448 18.5518 6.84775 18.5518 7.34086C18.5518 7.83396 18.1521 8.23371 17.659 8.23371Z" stroke="#13340A" stroke-linecap="round" stroke-linejoin="round" />
+		</g>
+	</symbol>
+	<symbol id="return" width="25" height="25" viewBox="0 0 25 25" fill="none">
+		<g>
+			<path d="M6.25 4.46423L0.892857 9.82138L6.25 15.1785" stroke="#FDF8F0" stroke-linecap="round" stroke-linejoin="round" />
+			<path d="M24.1072 20.5357V16.9643C24.1072 15.0699 23.3546 13.2531 22.0151 11.9135C20.6755 10.574 18.8587 9.82141 16.9643 9.82141L0.892892 9.82141" stroke="#FDF8F0" stroke-linecap="round" stroke-linejoin="round" />
 		</g>
 	</symbol>
 </svg>

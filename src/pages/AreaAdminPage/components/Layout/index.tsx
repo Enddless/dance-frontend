@@ -1,14 +1,16 @@
-import AboutSettings from "../About";
-import ContactsSettings from "../Contacts";
-import ControlUsers from "../Control-users";
-import DashboardSettings from "../Dashboard";
-import Halls from "../Halls";
-import LegalInformation from "../Information";
-import News from "../News";
-import Personal from "../Personal";
-import PriceSettings from "../Price";
-import ReviewSettings from "../Review";
-import SettingsAll from "../SettingsAll";
+import AboutSettings from "./components/About";
+import ContactsSettings from "./components/Contacts";
+import ControlUsers from "./components/Control-users";
+import DashboardSettings from "./components/Dashboard";
+import Halls from "./components/Halls";
+
+import LegalInformation from "./components/Information";
+import News from "./components/News";
+import Personal from "./components/Personal";
+import PriceSettings from "./components/Price";
+import ReviewSettings from "./components/Review";
+import SettingsAll from "./components/SettingsAll";
+
 import css from "./styles.module.scss";
 interface IActiveButtonProps {
   isActiveButton: string;

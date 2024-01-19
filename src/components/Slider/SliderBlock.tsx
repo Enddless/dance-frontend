@@ -3,7 +3,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import "./sliderCustomSettings.scss";
-import { IBannerUrl, IStaffInfo } from "../../interfaces/interfaces";
+import { BannersData, TeacherData } from "../../types/auth-type";
+import { API_URL } from "../../services/api";
 
 interface ISettings {
   dots?: boolean;
@@ -38,8 +39,8 @@ const settingsForStaff: ISettings = {
 };
 
 type ICardsProps = {
-  cards?: IBannerUrl[];
-  staffInfo?: IStaffInfo[];
+  cards?: BannersData[];
+  staffInfo?: TeacherData[];
 };
 
 const SliderBlock = ({ cards, staffInfo }: ICardsProps) => {
@@ -49,8 +50,12 @@ const SliderBlock = ({ cards, staffInfo }: ICardsProps) => {
         <Slider {...settings} className={css.slider}>
           {cards.map((card) => {
             return (
-              <div className={css.card} key={card.id} id="cards">
-                <img src={card.url} alt="banner" className={css.banner} />
+              <div className={css.card} key={card.IdBanner} id="cards">
+                <img
+                  src={`${API_URL}${card.PhotoBanner}`}
+                  alt="banner"
+                  className={css.banner}
+                />
               </div>
             );
           })}
@@ -60,15 +65,15 @@ const SliderBlock = ({ cards, staffInfo }: ICardsProps) => {
       {staffInfo && (
         <div id="staff">
           <Slider {...settingsForStaff} className={css.sliderStaff}>
-            {staffInfo.map(({ name, img, description, id }) => (
-              <div key={id} className={css.staffInfo}>
+            {staffInfo.map((teacher) => (
+              <div key={teacher.idTeachers} className={css.staffInfo}>
                 <div className={css.avatar}>
-                  <img src={img} alt="staffPhoto" className={css.staffPhoto} />
+                  <img src={`${API_URL}${teacher.photoTeachers}`} alt="staffPhoto" className={css.staffPhoto} />
                 </div>
 
                 <div className={css.staffDescr}>
-                  <h6>{name}</h6>
-                  <p>{description}</p>
+                  <h6>{teacher.teachersName}</h6>
+                  <p>{teacher.description}</p>
                 </div>
               </div>
             ))}

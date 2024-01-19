@@ -1,11 +1,10 @@
-import hallOne from "../assets/images/hall-one.png";
-import hallTwo from "../assets/images/hall-two.png";
-import hallThree from "../assets/images/hall-three.png";
 export enum NameSpace {
   User = "user",
   Auth = "auth",
   Admin = "admin",
   Ticket = "ticket",
+  Studio = "studio",
+  MainPage = "main",
 }
 export const enum LoadingStatus {
   Idle = "idle",
@@ -55,35 +54,7 @@ export const DEFAULT_BUTTON_AREA_ADMIN = {
   path: "about",
 };
 
-export type THalls = {
-  id: number;
-  name: string;
-  url: string;
-  description: string;
-};
-export const hallsData: THalls[] = [
-  {
-    id: 1,
-    name: "Зал 1",
-    url: `${hallOne}`,
-    description:
-      "Lorem ipsum dolor sit amet consectetur. Urna cras nibh nullam ornare facilisis euismod massa venenatis vel. Tempor ut imperdiet scelerisque dictumst. Pellentesque accumsan adipiscing quis pulvinar fusce pharetra. ",
-  },
-  {
-    id: 2,
-    name: "Зал 2",
-    url: `${hallTwo}`,
-    description:
-      "Lorem ipsum dolor sit amet consectetur. Urna cras nibh nullam ornare facilisis euismod massa venenatis vel. Tempor ut imperdiet scelerisque dictumst. Pellentesque accumsan adipiscing quis pulvinar fusce pharetra. ",
-  },
-  {
-    id: 3,
-    name: "Зал 3",
-    url: `${hallThree}`,
-    description:
-      "Lorem ipsum dolor sit amet consectetur. Urna cras nibh nullam ornare facilisis euismod massa venenatis vel. Tempor ut imperdiet scelerisque dictumst. Pellentesque accumsan adipiscing quis pulvinar fusce pharetra. ",
-  },
-];
+
 
 export enum halls {
   First = "Зал 1",

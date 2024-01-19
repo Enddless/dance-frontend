@@ -1,10 +1,15 @@
 @import "../../../../styles/variables.scss";
 
-
 .primaryEvent {
   background: inherit;
   color: inherit;
   box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.18);
+  position: relative;
+}
+.control {
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 .firstEvent {
   background: rgba(19, 52, 10, 0.1);
@@ -26,4 +31,3 @@
   width: 100%;
   position: relative;
 }
-

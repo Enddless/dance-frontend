@@ -25,6 +25,7 @@
   line-height: normal;
   letter-spacing: 0.96px;
   font-family: $body-family-secondary-regular;
+  position: relative;
   white-space: nowrap;
 }
 .menuItem:hover {
@@ -35,6 +36,12 @@
   border-bottom: 1px solid $header-color;
 }
 
+.submenu {
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%
+}
 @media screen and (max-width: 1540px) {
   .menuItem {
     margin: 0 20px;
