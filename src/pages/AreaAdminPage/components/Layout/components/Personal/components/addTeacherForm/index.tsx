@@ -132,6 +132,7 @@ const AddTeacherForm = ({ onClick }: TAddFormProps) => {
             <div className={css.buttonGroup}>
               <Button
                 text="Сохранить"
+                disabled={!isValidForm}
                 cls={!isValidForm ? "btn-dis" : "btn-save"}
                 openModalForm={sendTeacherData}
               />
