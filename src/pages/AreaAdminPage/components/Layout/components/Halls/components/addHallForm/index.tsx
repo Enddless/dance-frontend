@@ -75,7 +75,15 @@ const AddHallForm = ({ onClick }: TAddFormProps) => {
         .then(() => dispatch(getHalls()));
     }
   };
-
+ //проверка все ли поля заполнены
+ const [isValidForm, setIsValidForm] = useState(false);
+ useEffect(() => {
+   if (isPhotoLoad && titleHall && descriptionHall) {
+     setIsValidForm(true);
+   } else {
+     setIsValidForm(false);
+   }
+ }, [isPhotoLoad, titleHall, descriptionHall]);
   return (
     <div className={css.container}>
       <div className={css.control}>
@@ -116,7 +124,7 @@ const AddHallForm = ({ onClick }: TAddFormProps) => {
               <div className={css.buttonGroup}>
                 <Button
                   text="Сохранить"
-                  cls={!isPhotoLoad ? "btn-dis" : "btn-save"}
+                  cls={!isValidForm ? "btn-dis" : "btn-save"}
                   openModalForm={sendHallData}
                 />
                 <Button text="Отменить" />
