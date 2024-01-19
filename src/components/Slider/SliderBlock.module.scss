@@ -20,7 +20,9 @@
 }
 
 .staffInfo {
-  display: flex !important;
+  display: grid !important;
+  grid-template-columns: 200px 1fr;
+  column-gap: 20px;
   justify-content: center;
   align-items: center;
 
@@ -37,6 +39,8 @@
   }
   .staffPhoto {
     height: 100%;
+    width: 100%;
+    object-fit: cover;
   }
 }
 .avatar {
@@ -44,6 +48,7 @@
   height: 200px;
   margin-left: 30px;
   border-radius: 50%;
+  overflow: hidden;
   display: flex;
   text-align: center;
   background-color: $body-background-primary;

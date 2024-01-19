@@ -44,11 +44,14 @@ export type StateStudio = {
   message: string;
   isStudioDataLoading: LoadingStatus;
   isBannerLoading: LoadingStatus;
-  isHallsLoading:LoadingStatus;
+  isHallsLoading: LoadingStatus;
+  isTeachersLoading:LoadingStatus;
   aboutStudioData: AboutStudioData | null;
   bannersData: BannersData[] | null;
-  hallsData:HallData[] | null;
+  hallsData: HallData[] | null;
   currentHallData: HallData | null;
+  techersData: TeacherData[] | null;
+  currentTeacherData:TeacherData | null;
 };
 export type AboutStudioData = {
   idAtelier?: number;
@@ -88,11 +91,24 @@ export type AuthWithCodeData = {
 export type ReturnData = string;
 
 export type MainPageData = {
-  Banners: BannersData[],
-  Atelie: AboutStudioData,
-  Halls:HallData[],
+  Banners: BannersData[];
+  Atelie: AboutStudioData;
+  Halls: HallData[];
+  Teachers: TeacherData[];
 };
 export type MainPageState = {
   isMainPageDataLoading: LoadingStatus;
-  mainPage: MainPageData | null,
+  mainPage: MainPageData | null;
+};
+export type TeacherData = {
+  idTeachers: number;
+  photoTeachers?: string;
+  teachersName: string;
+  description: string;
+};
+export type PhotoTeacher = {
+  photoTeachers: File;
+};
+export type CurrentTeacherId = {
+  idTeachers: number;
 };

@@ -69,3 +69,9 @@
 .add:hover {
   background: $btn-background-default;
 }
+
+.btnDisabled, .btnDisabled:hover {
+  cursor: not-allowed;
+  background: rgb(182, 182, 182);
+  color: white;
+}

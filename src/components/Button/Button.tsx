@@ -11,6 +11,7 @@ interface ButtonProps {
     | ((e: React.MouseEvent<HTMLButtonElement>) => void);
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
+  disabled?: boolean,
 }
 
 const Button = ({
@@ -20,7 +21,7 @@ const Button = ({
   children,
   openModalForm,
   onMouseEnter,
-  onMouseLeave,
+  onMouseLeave, disabled,
 }: ButtonProps) => {
   //классы для нажатых кнопок, переделать в switch/case
   const enterButton = cls === "btn-enter";
@@ -29,6 +30,7 @@ const Button = ({
   const add = cls === "add";
   const saveButton = cls === "btn-save";
   const deleteButton = cls === "btn-del";
+  const disabledButton = cls === "btn-dis";
   const classNamesList = classNames(css.btn, {
     [css.btnEnter]: enterButton,
     [css.btnMore]: more,
@@ -37,6 +39,7 @@ const Button = ({
     [css.saveButton]: saveButton,
     [css.deleteButton]: deleteButton,
     [css.add]: add,
+    [css.btnDisabled]: disabledButton,
   });
 
   return (
@@ -45,6 +48,7 @@ const Button = ({
       onClick={openModalForm}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      disabled={disabled}
     >
       {children}
       {text}

@@ -2,7 +2,6 @@ import { ChangeEvent, useEffect, useState } from "react";
 import Button from "../../../../../../../../components/Button/Button";
 import ControlButton from "../../../../../../../../components/controls-button";
 import css from "./styles.module.scss";
-import Spinner from "../../../../../../../../components/Spinner";
 import { useAppDispatch, useAppSelector} from "../../../../../../../../services/type-service";
 import { API_URL } from "../../../../../../../../services/api";
 import { addHall, addHallPhoto, getHalls,} from "../../../../../../../../services/thunk/studio";
@@ -76,7 +75,15 @@ const AddHallForm = ({ onClick }: TAddFormProps) => {
         .then(() => dispatch(getHalls()));
     }
   };
-
+ //проверка все ли поля заполнены
+ const [isValidForm, setIsValidForm] = useState(false);
+ useEffect(() => {
+   if (isPhotoLoad && titleHall && descriptionHall) {
+     setIsValidForm(true);
+   } else {
+     setIsValidForm(false);
+   }
+ }, [isPhotoLoad, titleHall, descriptionHall]);
   return (
     <div className={css.container}>
       <div className={css.control}>
@@ -97,7 +104,6 @@ const AddHallForm = ({ onClick }: TAddFormProps) => {
         </label>
         {errorDownload && <p className={css.errorMessage}>{errorDownload}</p>}
         <div className={css.content}>
-          {isPhotoLoad ? (
             <>
               <textarea
                 name="title"
@@ -118,21 +124,13 @@ const AddHallForm = ({ onClick }: TAddFormProps) => {
               <div className={css.buttonGroup}>
                 <Button
                   text="Сохранить"
-                  cls="btn-save"
+                  disabled={!isValidForm}
+                  cls={!isValidForm ? "btn-dis" : "btn-save"}
                   openModalForm={sendHallData}
                 />
                 <Button text="Отменить" />
               </div>
             </>
-          ) : (
-            <>
-              {previewImage === "" && (
-                <div className={css.spinnerContainer}>
-                  <Spinner />
-                </div>
-              )}
-            </>
-          )}
         </div>
       </form>
     </div>
