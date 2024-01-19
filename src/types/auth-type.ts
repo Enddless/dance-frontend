@@ -94,6 +94,7 @@ export type MainPageData = {
   Banners: BannersData[];
   Atelie: AboutStudioData;
   Halls: HallData[];
+  Teachers: TeacherData[];
 };
 export type MainPageState = {
   isMainPageDataLoading: LoadingStatus;

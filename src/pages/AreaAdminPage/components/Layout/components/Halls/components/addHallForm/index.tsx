@@ -2,7 +2,6 @@ import { ChangeEvent, useEffect, useState } from "react";
 import Button from "../../../../../../../../components/Button/Button";
 import ControlButton from "../../../../../../../../components/controls-button";
 import css from "./styles.module.scss";
-import Spinner from "../../../../../../../../components/Spinner";
 import { useAppDispatch, useAppSelector} from "../../../../../../../../services/type-service";
 import { API_URL } from "../../../../../../../../services/api";
 import { addHall, addHallPhoto, getHalls,} from "../../../../../../../../services/thunk/studio";
@@ -97,7 +96,6 @@ const AddHallForm = ({ onClick }: TAddFormProps) => {
         </label>
         {errorDownload && <p className={css.errorMessage}>{errorDownload}</p>}
         <div className={css.content}>
-          {isPhotoLoad ? (
             <>
               <textarea
                 name="title"
@@ -118,21 +116,12 @@ const AddHallForm = ({ onClick }: TAddFormProps) => {
               <div className={css.buttonGroup}>
                 <Button
                   text="Сохранить"
-                  cls="btn-save"
+                  cls={!isPhotoLoad ? "btn-dis" : "btn-save"}
                   openModalForm={sendHallData}
                 />
                 <Button text="Отменить" />
               </div>
             </>
-          ) : (
-            <>
-              {previewImage === "" && (
-                <div className={css.spinnerContainer}>
-                  <Spinner />
-                </div>
-              )}
-            </>
-          )}
         </div>
       </form>
     </div>

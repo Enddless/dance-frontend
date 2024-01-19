@@ -29,6 +29,7 @@ const Button = ({
   const add = cls === "add";
   const saveButton = cls === "btn-save";
   const deleteButton = cls === "btn-del";
+  const disabledButton = cls === "btn-dis";
   const classNamesList = classNames(css.btn, {
     [css.btnEnter]: enterButton,
     [css.btnMore]: more,
@@ -37,6 +38,7 @@ const Button = ({
     [css.saveButton]: saveButton,
     [css.deleteButton]: deleteButton,
     [css.add]: add,
+    [css.btnDisabled]: disabledButton,
   });
 
   return (

@@ -2,10 +2,16 @@ import { ChangeEvent, useEffect, useState } from "react";
 import Button from "../../../../../../../../components/Button/Button";
 import ControlButton from "../../../../../../../../components/controls-button";
 import css from "./styles.module.scss";
-import Spinner from "../../../../../../../../components/Spinner";
-import { useAppDispatch, useAppSelector} from "../../../../../../../../services/type-service";
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "../../../../../../../../services/type-service";
 import { API_URL } from "../../../../../../../../services/api";
-import { addTeacher, addTeacherPhoto, getTeachers,} from "../../../../../../../../services/thunk/studio";
+import {
+  addTeacher,
+  addTeacherPhoto,
+  getTeachers,
+} from "../../../../../../../../services/thunk/studio";
 
 type TAddFormProps = {
   onClick?: () => void;
@@ -13,7 +19,9 @@ type TAddFormProps = {
 
 const AddTeacherForm = ({ onClick }: TAddFormProps) => {
   const dispatch = useAppDispatch();
-  const currentTeacherData = useAppSelector((state) => state.studio.currentTeacherData);
+  const currentTeacherData = useAppSelector(
+    (state) => state.studio.currentTeacherData
+  );
   const [isPhotoLoad, setIsPhotoLoad] = useState(false);
 
   //начальные данные
@@ -65,7 +73,7 @@ const AddTeacherForm = ({ onClick }: TAddFormProps) => {
   //отправка данных о преподавателе на сервер
   const sendTeacherData = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    if (currentTeacherData) {
+    if (currentTeacherData && isPhotoLoad) {
       const idTeachers = currentTeacherData.idTeachers;
       const teachersName = nameTeacher;
       const description = descriptionTeacher;
@@ -74,6 +82,15 @@ const AddTeacherForm = ({ onClick }: TAddFormProps) => {
         .then(() => dispatch(getTeachers()));
     }
   };
+  //проверка все ли поля заполнены
+  const [isValidForm, setIsValidForm] = useState(false);
+  useEffect(() => {
+    if (isPhotoLoad && nameTeacher && descriptionTeacher) {
+      setIsValidForm(true);
+    } else {
+      setIsValidForm(false);
+    }
+  }, [isPhotoLoad, nameTeacher, descriptionTeacher]);
 
   return (
     <div className={css.container}>
@@ -81,7 +98,7 @@ const AddTeacherForm = ({ onClick }: TAddFormProps) => {
         <ControlButton id="close" onClick={onClick} />
       </div>
       <form className={css.form} encType="multipart/form-data">
-        <label htmlFor="photoTeacher" className={css.download} >
+        <label htmlFor="photoTeacher" className={css.download}>
           Добавить фото
           <input
             type="file"
@@ -95,42 +112,32 @@ const AddTeacherForm = ({ onClick }: TAddFormProps) => {
         </label>
         {errorDownload && <p className={css.errorMessage}>{errorDownload}</p>}
         <div className={css.content}>
-          {isPhotoLoad ? (
-            <>
-              <textarea
-                name="title"
-                id="title"
-                rows={1}
-                placeholder="Имя и фамилия"
-                value={nameTeacher}
-                onChange={(e) => setNameTeacher(e.target.value)}
+          <>
+            <textarea
+              name="title"
+              id="title"
+              rows={1}
+              placeholder="Имя и фамилия"
+              value={nameTeacher}
+              onChange={(e) => setNameTeacher(e.target.value)}
+            />
+            <textarea
+              name="description"
+              id="description"
+              rows={5}
+              placeholder="Добавить описание"
+              value={descriptionTeacher}
+              onChange={(e) => setDescriptionTeacher(e.target.value)}
+            />
+            <div className={css.buttonGroup}>
+              <Button
+                text="Сохранить"
+                cls={!isValidForm ? "btn-dis" : "btn-save"}
+                openModalForm={sendTeacherData}
               />
-              <textarea
-                name="description"
-                id="description"
-                rows={5}
-                placeholder="Добавить описание"
-                value={descriptionTeacher}
-                onChange={(e) => setDescriptionTeacher(e.target.value)}
-              />
-              <div className={css.buttonGroup}>
-                <Button
-                  text="Сохранить"
-                  cls="btn-save"
-                  openModalForm={sendTeacherData}
-                />
-                <Button text="Отменить" />
-              </div>
-            </>
-          ) : (
-            <>
-              {previewImage === "" && (
-                <div className={css.spinnerContainer}>
-                  <Spinner />
-                </div>
-              )}
-            </>
-          )}
+              <Button text="Отменить" cls="btn-delete" />
+            </div>
+          </>
         </div>
       </form>
     </div>
