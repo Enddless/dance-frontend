@@ -1,13 +1,29 @@
 @import "../../styles//variables.scss";
 
-.slick-prev:before, .slick-next:before {
-    color: $gray;
+.slick-prev:before,
+.slick-next:before {
+  color: $gray;
 }
 .slick-dots {
-    bottom:15px;
+  bottom: 15px;
 }
+.slick-dots li button:before {
+  background: black;
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+.slick-dots li.slick-active button:before {
+    border:5px solid black;
+    background: white;
+    top:-4px;
+  }
 
 #staff .slick-dots {
-    bottom:-20px;
+  bottom: -20px;
 }
-
