@@ -18,7 +18,6 @@ type IModalFormProps = {
 
 const LoginForm = ({ openModalForm }: IModalFormProps) => {
   const [errorMessage, setErrorMessage] = useState("");
-  const [agreement, setAgreement] = useState(false);
   const dispatch = useAppDispatch();
 
   //состояния форм
@@ -136,19 +135,6 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
                 Забыли пароль?
               </button>
             </div>
-          </div>
-
-          <div>
-            <input
-              type="checkbox"
-              id="agreement"
-              name="agreement"
-              onChange={() => setAgreement(!agreement)}
-            />
-            <label htmlFor="agreement" className={css.agreement}>
-              Регистрируясь, я соглашаюсь с Условиями пользования и Политикой
-              конфиденциалности
-            </label>
           </div>
         </div>
       )}

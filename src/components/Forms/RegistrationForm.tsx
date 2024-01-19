@@ -4,6 +4,7 @@ import ConfirmationForm from "./ConfirmationForm";
 import { useAppDispatch } from "../../services/type-service";
 import { registration } from "../../services/thunk/auth";
 import EyeIcon from "../EyeIcon";
+import InputCheckbox from "../Input-checkbox";
 
 const RegistrationForm = () => {
   const [checkPassword, setCheckPassword] = useState(false);
@@ -42,7 +43,13 @@ const RegistrationForm = () => {
   const toggleDoublePasswordVisibility = () => {
     setShowDoublePassword(!showDoublePassword);
   };
-  //проверка на совпадение паролей
+
+  const [agreement, setAgreement] = useState(false);
+  const handleAgree = () => {
+    setAgreement(!agreement);
+  };
+
+  //валидность на совпадение паролей
   useEffect(() => {
     if (formData.password === formData.dublPassword) {
       setCheckPassword(true);
@@ -51,65 +58,82 @@ const RegistrationForm = () => {
     }
   }, [formData.password, formData.dublPassword]);
 
+  const [isValidForm, setIsValidForm] = useState(false);
+  useEffect(() => {
+    if (agreement && checkPassword) {
+      setIsValidForm(true);
+    } else setIsValidForm(false);
+  }, [agreement, checkPassword]);
   return (
     <>
       {!successForm ? (
         <>
           <h3>Регистрация</h3>
           <form onSubmit={handleSubmit} className={css.form}>
-            <label htmlFor="email">
-              Email
+            <fieldset>
+              <label htmlFor="email">Email</label>
               <input
                 type="email"
                 value={formData.email}
                 onChange={handleChange}
                 name="email"
                 placeholder="example@mail.com"
+                // pattern="^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*$"
               />
-            </label>
+            </fieldset>
             <fieldset>
-              <label htmlFor="password">
-                Пароль
-                <input
-                  value={formData.password}
-                  onChange={handleChange}
-                  name="password"
-                  type={showPassword ? "text" : "password"}
+              <label htmlFor="password">Пароль</label>
+              <input
+                value={formData.password}
+                onChange={handleChange}
+                name="password"
+                type={showPassword ? "text" : "password"}
+                className={!checkPassword ? `${css.errorInput}` : ""}
+              />
+              <div className={css.eyeIcon}>
+                <EyeIcon
+                  showPassword={showPassword}
+                  togglePasswordVisibility={togglePasswordVisibility}
                 />
-                <div className={css.eyeIcon}>
-                  <EyeIcon
-                    showPassword={showPassword}
-                    togglePasswordVisibility={togglePasswordVisibility}
-                  />
-                </div>
-              </label>
+              </div>
             </fieldset>
 
             <fieldset>
-              <label htmlFor="dublPassword">
-                Повторите пароль
-                <input
-                  value={formData.dublPassword}
-                  onChange={handleChange}
-                  name="dublPassword"
-                  type={showDoublePassword ? "text" : "password"}
+              <label htmlFor="dublPassword">Повторите пароль</label>
+              <input
+                value={formData.dublPassword}
+                onChange={handleChange}
+                name="dublPassword"
+                type={showDoublePassword ? "text" : "password"}
+                className={!checkPassword ? `${css.errorInput}` : ""}
+              />
+              <div className={css.eyeIcon}>
+                <EyeIcon
+                  showPassword={showDoublePassword}
+                  togglePasswordVisibility={toggleDoublePasswordVisibility}
                 />
-                <div className={css.eyeIcon}>
-                  <EyeIcon
-                    showPassword={showDoublePassword}
-                    togglePasswordVisibility={toggleDoublePasswordVisibility}
-                  />
-                </div>
-              </label>
+              </div>
+
+              {!checkPassword &&
+                (formData.password !== "" || formData.dublPassword !== "") && (
+                  <p className={css.errorMessage}>Пароли должны совпадать</p>
+                )}
             </fieldset>
 
             <button
               type="submit"
-              disabled={!checkPassword}
-              className={!checkPassword ? `${css.disabled}` : ""}
+              disabled={!isValidForm}
+              className={!isValidForm ? `${css.disabled}` : ""}
             >
               Зарегистрироваться
             </button>
+            <div className={css.agreement}>
+              <InputCheckbox onChange={handleAgree} agreement={(formData.password !== "" || formData.dublPassword !== "") ? agreement : ""}/>
+              <label htmlFor="agreement" >
+                Регистрируясь, я соглашаюсь с Условиями пользования и Политикой
+                конфиденциалности
+              </label>
+            </div>
           </form>
         </>
       ) : (

@@ -7,7 +7,7 @@
 .formWrapper {
   display: flex;
   flex-direction: column;
-  width: 551px;
+  max-width: 621px;
   padding: 60px 100px 81px 100px;
   justify-content: center;
   align-items: center;
@@ -58,6 +58,12 @@ h3 {
     position: relative;
     border: none;
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+
+    label {
+      display: block;
+    }
   }
   label {
     font-size: 16px;
@@ -80,10 +86,17 @@ h3 {
   .errorInput {
     border: 1px solid red;
   }
+  .errorMessage {
+    color: red;
+    font-size: 12px;
+    position: absolute;
+    top: 3px;
+    right: 0px;
+  }
 
   input {
     margin-top: 9px;
-    width: 351px;
+    width: 100%;
     height: 48px;
     border-radius: 4px;
     border: 1px solid $gray;
@@ -158,7 +171,16 @@ h3 {
 }
 
 .agreement {
-  font-size: 15px;
-  letter-spacing: 0.3px;
+  margin-top:15px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  column-gap:10px;
+  label {
+    margin:0;
+  }
 }
