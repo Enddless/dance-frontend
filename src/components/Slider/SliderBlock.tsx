@@ -81,7 +81,7 @@ const SliderBlock = ({ cards, staffInfo }: ICardsProps) => {
         </div>
       )}
     </>
-  );
+  )
 };
 
 export default SliderBlock;

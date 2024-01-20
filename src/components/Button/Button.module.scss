@@ -8,7 +8,6 @@
 .btnEnter {
   background: $btn-background-default;
   color: $body-color-primary;
-  font-family: $body-family-secondary-regular;
   font-weight: 600;
   letter-spacing: 0.96px;
   @include fluidFontSize(16px, 18px, 1280px, 1920px);
@@ -64,7 +63,7 @@
   letter-spacing: 0.72px;
   margin: 0 auto;
   border-radius: 12px;
-  font-family: $body-family-secondary-regular;
+  // font-family: $body-family-secondary-regular;
 }
 .add:hover {
   background: $btn-background-default;

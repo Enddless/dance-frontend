@@ -1,20 +1,4 @@
 @import "./styles/variables.scss";
-@font-face {
-  font-family: $body-family-secondary-regular;
-  src: url("./assets//fonts/gothampro.ttf");
-}
-@font-face {
-  font-family: $body-family-secondary-bold;
-  src: url("./assets//fonts/gothampro_bold.ttf");
-}
-@font-face {
-  font-family: $body-family-secondary-medium;
-  src: url("./assets//fonts/gothampro_medium.ttf");
-}
-@font-face {
-  font-family: $body-family-secondary-black;
-  src: url("./assets//fonts/gothampro_black.ttf");
-}
 * {
   margin: 0;
   padding: 0;
@@ -69,18 +53,15 @@ h1 {
   line-height: normal;
   letter-spacing: 1.44px;
   color: $title-color-default;
-  font-family: $body-family-secondary-black;
 }
 h2 {
   color: $subtitle-color-default;
-  font-family: $body-family-secondary-bold;
   font-size: 24px;
   font-weight: 700;
   line-height: normal;
   letter-spacing: 0.96px;
 }
 h6 {
-  font-family: $body-family-secondary-regular;
   font-size: 18px;
   font-weight: 700;
   line-height: normal;

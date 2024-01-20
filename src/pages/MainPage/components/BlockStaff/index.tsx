@@ -11,7 +11,7 @@ const StaffPage = () => {
   return (
     <section className={css.personal}>
       <TitleSection title="Персонал" />
-      <SliderBlock staffInfo={StaffInfo} />;
+      <SliderBlock staffInfo={StaffInfo} />
     </section>
   );
 };

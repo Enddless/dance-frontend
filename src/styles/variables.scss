@@ -9,11 +9,7 @@ $table-shadow: rgba(0, 0, 0, 0.05);
 //PRIMARY SETTINGS
 $body-background-primary: #FFFCF8;
 $body-color-primary: #13340a;
-$body-family-primary: "Helvetica";
-$body-family-secondary-regular: "Gotham Pro regular";
-$body-family-secondary-bold: "Gotham Pro bold";
-$body-family-secondary-medium: "Gotham Pro medium";
-$body-family-secondary-black: "Gotham Pro black";
+$body-family-primary: "Manrope";
 @mixin Grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
