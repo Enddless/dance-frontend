@@ -57,28 +57,30 @@ const Header = () => {
           <svg width="30" height="30" viewBox="0 0 30 30">
             <use xlinkHref={`${sprite}#notification`}></use>
           </svg>
-          <Button
-            text={
-              userData?.userName !== ""
-                ? `${userData.userName}`
-                : `${userData.emailUser?.split("@")[0]}`
-            }
-            cls="btn-enter"
-            openModalForm={openModalForm}
-          ></Button>
-          {isOpenModal && <AreaForm openModalForm={openModalForm} />}
+          <div className={css.subMenu}>
+            <Button
+              text={
+                userData?.userName !== ""
+                  ? `${userData.userName}`
+                  : `${userData.emailUser?.split("@")[0]}`
+              }
+              cls="btn-enter"
+              openModalForm={openModalForm}
+            ></Button>
+            {isOpenModal && <AreaForm openModalForm={openModalForm} />}
+          </div>
         </>
       )}
 
       {authorizationStatus === "AUTH" && userRole === "administrator" && (
-        <>
+        <div className={css.subMenu}>
           <Button
             text="Admin"
             cls="btn-enter"
             openModalForm={openModalForm}
           ></Button>
           {isOpenModal && <AreaForm openModalForm={openModalForm} />}
-        </>
+        </div>
       )}
       {(authorizationStatus === "NO_AUTH" ||
         authorizationStatus === "UNKNOWN" ||

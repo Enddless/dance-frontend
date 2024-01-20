@@ -12,7 +12,7 @@ type IModalFormProps = {
 };
 
 const AreaForm = ({ openModalForm }: IModalFormProps) => {
-  const classNamesList = classNames(css.formWrapper, css.area);
+  const classNamesList = classNames(css.area);
   //выход из аккаунта
   const dispatch = useAppDispatch();
   const handleClick = () => {
@@ -36,7 +36,10 @@ const AreaForm = ({ openModalForm }: IModalFormProps) => {
 
   return (
     <div className={classNamesList}>
-      <Close openModalForm={openModalForm} />
+      <div className={css.decoration}></div>
+      <div className={css.closeContainer}>
+        <Close openModalForm={openModalForm} />
+      </div>
 
       {role === "customers" && (
         <button onClick={openModalForm}>
@@ -49,7 +52,7 @@ const AreaForm = ({ openModalForm }: IModalFormProps) => {
         </button>
       )}
 
-      <button onClick={handleClick}>Выход из аккаунта</button>
+      <button onClick={handleClick}>Выход</button>
     </div>
   );
 };
