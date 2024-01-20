@@ -11,6 +11,7 @@ import {
   login,
 } from "../../services/thunk/auth";
 import EyeIcon from "../EyeIcon";
+import Button from "../Button/Button";
 
 type IModalFormProps = {
   openModalForm?: () => void;
@@ -80,21 +81,28 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
           <h3>Вход</h3>
           <div className={css.container}>
             <form onSubmit={handleSubmit} className={css.form}>
-              <label htmlFor="tel">
-                Адрес электронной почты
-                <input
-                  type="email"
-                  value={item.email}
-                  onChange={handleChange}
-                  name="email"
-                  className={
-                    errorMessage && errorMessage !== ""
-                      ? `${css.errorInput}`
-                      : ""
-                  }
-                  placeholder="example@gmail.com"
-                />
-              </label>
+              <fieldset>
+                <label htmlFor="tel">
+                  Адрес электронной почты
+                  <input
+                    type="email"
+                    value={item.email}
+                    onChange={handleChange}
+                    name="email"
+                    className={
+                      errorMessage && errorMessage !== ""
+                        ? `${css.errorInput}`
+                        : ""
+                    }
+                    placeholder="example@gmail.com"
+                  />
+                </label>
+                {errorMessage && errorMessage !== "" && (
+                  <span className={css.errorMessage}>
+                    Неправильный логин или пароль
+                  </span>
+                )}
+              </fieldset>
 
               <fieldset>
                 <label htmlFor="password">
@@ -119,22 +127,16 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
                 </label>
               </fieldset>
 
-              {errorMessage && errorMessage !== "" && (
-                <span className={css.error}>Неправильный логин или пароль</span>
-              )}
-              <button type="submit" className={css.submit}>
-                Войти
-              </button>
+              <div className={css.link}>
+                <button onClick={() => setIsRegistration(!isRegistration)}>
+                  Зарегистрироваться
+                </button>
+                <button onClick={() => setIsRecovery(!isRecovery)}>
+                  Забыли пароль?
+                </button>
+              </div>
+              <Button text="Войти" cls="btn-reg"/>
             </form>
-
-            <div className={css.link}>
-              <button onClick={() => setIsRegistration(!isRegistration)}>
-                Зарегистрироваться
-              </button>
-              <button onClick={() => setIsRecovery(!isRecovery)}>
-                Забыли пароль?
-              </button>
-            </div>
           </div>
         </div>
       )}

@@ -8,19 +8,5 @@
   gap: 30px;
   margin: 30px 0;
 
-  .menuAreaButton {
-    @include ButtonPrimary();
-    text-decoration: none;
-    background: transparent;
-    width: 100%;
-    min-width: 240px;
-    outline: 1px solid $btn-border-default;
-    box-shadow: 2px 2px 15px 0px $btn-boxshadow;
-  }
-  .menuAreaButton:hover,
-  .active {
-    background: $btn-menuArea-background-active;
-    color: $white;
-    outline: none;
-  }
+  
 }

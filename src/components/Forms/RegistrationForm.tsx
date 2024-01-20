@@ -5,8 +5,10 @@ import { useAppDispatch } from "../../services/type-service";
 import { registration } from "../../services/thunk/auth";
 import EyeIcon from "../EyeIcon";
 import InputCheckbox from "../Input-checkbox";
+import Button from "../Button/Button";
 
 const RegistrationForm = () => {
+  const [errorMessage, setErrorMessage] = useState("");
   const [checkPassword, setCheckPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
@@ -15,6 +17,7 @@ const RegistrationForm = () => {
   });
 
   const handleChange = (e: { target: { name: string; value: string } }) => {
+    setErrorMessage("");
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   //регистрация пользователя
@@ -32,6 +35,9 @@ const RegistrationForm = () => {
       .unwrap()
       .then(() => {
         setSuccessForm(!successForm);
+      })
+      .catch(() => {
+        setErrorMessage("Такой логин уже существует");
       });
   };
 
@@ -79,7 +85,17 @@ const RegistrationForm = () => {
                 name="email"
                 placeholder="example@mail.com"
                 // pattern="^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*$"
+                className={
+                  errorMessage && errorMessage !== ""
+                    ? `${css.errorInput}`
+                    : ""
+                }
               />
+              {errorMessage && errorMessage !== "" && (
+                  <span className={css.errorMessage}>
+                    Пользователь с таким email уже зарегистрирован
+                  </span>
+                )}
             </fieldset>
             <fieldset>
               <label htmlFor="password">Пароль</label>
@@ -120,13 +136,14 @@ const RegistrationForm = () => {
                 )}
             </fieldset>
 
-            <button
+            {/* <button
               type="submit"
               disabled={!isValidForm}
               className={!isValidForm ? `${css.disabled}` : ""}
             >
-              Зарегистрироваться
-            </button>
+              
+            </button> */}
+            <Button text="Зарегистрироваться" cls="btn-reg" disabled={!isValidForm}/>
             <div className={css.agreement}>
               <InputCheckbox onChange={handleAgree} agreement={(formData.password !== "" || formData.dublPassword !== "") ? agreement : ""}/>
               <label htmlFor="agreement" >

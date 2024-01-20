@@ -7,11 +7,11 @@ type IInputCheckboxProps = {
   agreement?: boolean | string;
 };
 const InputCheckbox = ({ onChange, agreement }: IInputCheckboxProps) => {
-  const check =  !agreement || agreement !== "" && "error";
+  const check =  agreement || agreement !== "" && "error";
   const classNameList = classNames(css.fake, {
     [css.errorInput] : check =="error",
   })
-  console.log(agreement)
+
   return (
     <>
       <input

@@ -25,20 +25,15 @@
   margin-top: 60px;
   label {
     display: block;
-    width: 160px;
-    padding: 18px 32px;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: normal;
-    letter-spacing: 0.72px;
-    margin: 0 auto;
-    cursor: pointer;
-    border-radius: 12px;
-    background: $btn-saveButton-background;
-    color: $white;
+    width:160px;
+    margin:0 auto;
+    @include ButtonPrimary();
+    background: $btn-background-three;
+    color: $btn-color-one;
+    @include fluidFontSize(14px, 16px, 1280px, 1920px);
   }
   label:hover {
-    background: $btn-background-hover;
+    background: $btn-background-four;
   }
   input[type="file"] {
     height: 100%;

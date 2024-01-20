@@ -32,7 +32,7 @@
 
 .subMenu {
   position: relative;
-  width: 130px;
+  width: 230px;
   display: flex;
   flex-direction: column;
 
@@ -42,17 +42,21 @@
   }
 }
 @media screen and (max-width: 1600px) {
-  // .header {
-  //   height: 110px;
-  // }
   .navigation {
     column-gap: 40px;
     margin: 0 15px;
   }
 }
 
+@media screen and (max-width: 1400px) {
+  .subMenu {
+    width: 180px;
+  }
+}
+
 @media screen and (max-width: 1280px) {
-  // .header {
-  //   height: 100px;
-  // }
+  .navigation {
+    column-gap: 15px;
+    margin: 0 15px;
+  }
 }

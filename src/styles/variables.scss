@@ -91,20 +91,36 @@ $footer-background: #13340a;
 $footer-color: #fdf8f0;
 
 //BUTTON SETTINGS
-$btn-background-default: #ffa800;
-$btn-background-hover: #ffc700;
-$btn-color-secondary: #fdf8f0;
-$btn-background-secondary: #13340a;
-$btn-border-default: #13340a;
+$btn-background-one: #ffa800;
+$btn-background-two: #FFFCF8;
+$btn-background-three: #3AA31E;
+$btn-background-four: #13340A;
+$btn-background-five: #FFC700;
+$btn-background-six: #71856C;
+$btn-background-seven: #C4CCC1;
+
+$btn-color-one: #FFFCF8;
+$btn-color-two: #13340A;
+
 $btn-boxshadow: #0000004d;
-$btn-areaForm-color: #3aa31e;
-$btn-menuArea-background-active: #3aa31e;
-$btn-saveButton-color: #fdf8f0;
-$btn-saveButton-background: #3aa31e;
+$btn-border: #13340a;
+$input-border: #ffa800;
+
+
+// $btn-background-default: #ffa800;
+// $btn-background-hover: #ffc700;
+// $btn-color-secondary: #fdf8f0;
+// $btn-background-secondary: #13340a;
+
+
+// $btn-areaForm-color: #3aa31e;
+// $btn-menuArea-background-active: #3aa31e;
+// $btn-saveButton-color: #fdf8f0;
+// $btn-saveButton-background: #3aa31e;
 
 @mixin ButtonPrimary {
   display: flex;
-  width: 119px;
+  // width: 119px;
   padding: 16px 32px;
   justify-content: center;
   align-items: center;
@@ -113,7 +129,7 @@ $btn-saveButton-background: #3aa31e;
   border-radius: 10px;
   cursor: pointer;
   font-family: $body-family-primary;
-  @include fluidFontSize(18px, 20px, 1280px, 1920px);
+  @include fluidFontSize(14px, 20px, 1280px, 1920px);
   font-weight: 400;
   line-height: 24px;
   background: transparent;

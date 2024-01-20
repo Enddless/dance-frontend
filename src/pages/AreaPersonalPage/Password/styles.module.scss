@@ -28,23 +28,18 @@
     cursor: pointer;
   }
   input:focus {
-    outline: 3px solid $btn-background-default;
+    outline: 3px solid $input-border;
   }
   label {
     font-size: 16px;
     margin-bottom: 6px;
   }
-  button {
-    width: 100%;
-    max-width: 260px;
-    margin: 30px auto 0;
-    color: $btn-color-secondary;
-  }
+
 
   .eyeIcon {
     position: absolute;
     right: 18px;
-    top: 50px;
+    top: 32px;
     cursor: pointer;
   }
 }

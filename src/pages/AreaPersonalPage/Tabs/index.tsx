@@ -1,16 +1,16 @@
 import { NavLink } from "react-router-dom";
 import css from "./styles.module.scss";
 import { memo } from "react";
-import { useAppDispatch } from "../../../services/type-service";
+import { useAppDispatch, useAppSelector } from "../../../services/type-service";
 import { menuAreaPersonal } from "../../../const/const";
 import { AppRoute } from "../../../const/route";
 import { getTickets } from "../../../services/thunk/tickets";
 import { authSlice } from "../../../store/slices/auth";
+import Button from "../../../components/Button/Button";
 
 function TabsPersonalMemo() {
   const dispatch = useAppDispatch();
-  const LINK_CLASS = `${css.menuAreaButton}`;
-  const ACTIVE_CLASS = `${LINK_CLASS} ${css.active}`;
+  const buttonActiveData = useAppSelector((state) => state.auth.buttonActive);
 
   const handleClick = (path: string) => {
     dispatch(authSlice.actions.changeActiveButtonMenuPersonal(path));
@@ -24,21 +24,27 @@ function TabsPersonalMemo() {
         break;
     }
   };
+ 
   return (
     <>
       <ul className={css.btnGroup}>
         {menuAreaPersonal.map((button) => {
+          const isActive = button.path === buttonActiveData;
           return (
             <li key={button.id}>
               <NavLink
                 to={`${AppRoute.PersonalArea}/${button.path}`}
                 key={button.id}
-                className={({ isActive }) =>
-                  isActive ? ACTIVE_CLASS : LINK_CLASS
-                }
+                // className={({ isActive }) =>
+                //   isActive ? ACTIVE_CLASS : LINK_CLASS
+                // }
                 onClick={() => handleClick(button.path)}
               >
-                {button.title}
+                <Button
+                  text={button.title}
+                  cls="menuAreaUser"
+                  activeMenuUser={isActive}
+                />
               </NavLink>
             </li>
           );

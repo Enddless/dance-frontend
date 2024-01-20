@@ -4,71 +4,81 @@
 .btn {
   @include ButtonPrimary();
   text-decoration: none;
+  color: $btn-color-one;
 }
+
+// ***** кнопка входа ******
 .btnEnter {
-  background: $btn-background-default;
-  color: $btn-color-secondary;
-  @include fluidFontSize(14px, 16px, 1280px, 1920px);
+  background: $btn-background-one;
+}
+.btnEnter:hover {
+  background: $btn-background-two;
+  color: $btn-color-two;
 }
 
-.btn:hover {
-  background: $btn-background-hover;
-}
-
+// ***** кнопка подгрузки отзывов ******
 .btnMore {
-  width: 750px;
-  margin: 30px auto 0;
-  background: $btn-background-default;
-  color: $btn-color-secondary;
-  padding: 15px 20px;
-  font-size: 24px;
+  background: $btn-background-one;
 }
-.menuAreaButton {
-  background: transparent;
-  width: 100%;
-  outline: 1px solid $btn-border-default;
+.btnMore:hover {
+  background: $btn-background-three;
+}
+
+// ***** кнопка войти или зарегистрироваться в формах входа ******
+.btnRegistration {
+  background: $btn-background-four;
+}
+.btnRegistration:hover {
+  background: $btn-background-one;
+}
+
+// ***** кнопки меню в ЛК пользователя ******
+.btnMenuUser {
+  color: $btn-color-two;
+  outline: 1px solid $btn-border;
   box-shadow: 2px 2px 15px 0px $btn-boxshadow;
 }
-.menuAreaButton:hover,
-.active,
-.add {
-  background: $btn-menuArea-background-active;
-  color: $white;
+.btnMenuUser:hover,
+.activeMenuUser {
+  background: $btn-background-three;
+  color: $btn-color-one;
   outline: none;
 }
 
-.saveButton {
-  background: $btn-saveButton-background;
-  color: $btn-saveButton-color;
-  padding: 15px 5px;
-  font-size: 16px;
-  letter-spacing: 0.32px;
+// ***** кнопки сохранения, удаления в ЛК пользователя ******
+.btnSave {
+  background: $btn-background-three;
+  color: $btn-color-one;
+  @include fluidFontSize(14px, 16px, 1280px, 1920px);
 }
-.deleteButton {
-  color: inherit;
+.btnSave:hover {
+  background: $btn-background-four;
+}
+.btnDelete {
+  color: $btn-color-two;
+  background: $btn-background-two;
   text-decoration: underline;
-  padding: 15px 5px;
-  font-size: 20px;
   width: 100%;
+  @include fluidFontSize(14px, 16px, 1280px, 1920px);
+}
+.btnDelete:hover {
+  color: $btn-color-one;
+  background: $btn-background-five;
 }
 
-.add {
-  width: 160px;
-  padding: 18px 32px;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: normal;
-  letter-spacing: 0.72px;
-  margin: 0 auto;
-  border-radius: 12px;
-  // font-family: $body-family-secondary-regular;
-}
-.add:hover {
-  background: $btn-background-default;
-}
-
+// ***** заблокированные кнопки******
 .btnDisabled, .btnDisabled:hover {
   cursor: not-allowed;
   background: rgb(182, 182, 182);
   color: white;
 }
+// ***** кнопки сохранения, удаления в ЛК пользователя ******
+.btnAdd {
+  background: $btn-background-three;
+  color: $btn-color-one;
+}
+.btnAdd:hover {
+  background: $btn-background-four;
+}
+
+//добавить кнопки для отзыва и записи для пользователя

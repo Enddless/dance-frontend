@@ -74,7 +74,7 @@ const ChangePassword = () => {
 
         <Button
           text="Сменить пароль"
-          cls="btn-enter"
+          cls="btn-save"
           openModalForm={changePassword}
         />
       </div>
