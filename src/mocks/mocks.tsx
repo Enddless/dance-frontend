@@ -171,11 +171,6 @@ export const pagesFooter: IPagesFooter[] = [
     title: "Контакты",
     url: "/#contactsBlock",
   },
-  {
-    id: 6,
-    title: "Юридическая информация",
-    url: "/policy",
-  },
 ];
 
 export const pagesHeader: IPagesHeader[] = [

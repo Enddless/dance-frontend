@@ -18,7 +18,7 @@ const CardHalls = ({ hall, isMainPage }: ICardProps) => {
     <div key={hall.IdHall} className={classNameList}>
       <div className={css.photoContainer}>
         <img src={`${API_URL}${hall.PhotoHall}`} alt="Galerry" className={css.photo} />
-        <h2 className={css.caption}>{hall.Title}</h2>
+        <h3 className={css.caption}>{hall.Title}</h3>
       </div>
       <p>{hall.Description}</p>
     </div>

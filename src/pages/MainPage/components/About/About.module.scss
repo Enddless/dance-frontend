@@ -10,7 +10,7 @@
 .text,
 .galerry {
   grid-column: span 12;
-  @include fluidFontSize(16px, 20px, 1280px, 1920px);
+  
 }
 .text {
   margin-bottom: 30px;

@@ -21,11 +21,11 @@
   filter: blur(6px);
   -webkit-filter: blur(6px);
 }
-.title {
-  font-weight: bold;
-  line-height: normal;
-  text-align: center;
-}
+// .title {
+//   font-weight: bold;
+//   line-height: normal;
+//   text-align: center;
+// }
 
 .userInfo,
 .star {
@@ -35,14 +35,15 @@
 }
 .star {
   gap: 10px;
+  margin-right:12px;
 }
-
 
 .date {
   color: $date-color;
-  font-size: 16px;
-  line-height: normal;
-  letter-spacing: 0.32px;
+  @include TextSecondary;
+}
+.description {
+  @include TextSecondary;
 }
 .control {
   position:absolute;

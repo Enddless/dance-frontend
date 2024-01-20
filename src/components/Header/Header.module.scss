@@ -16,44 +16,34 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  column-gap: 60px;
+  margin:0 15px;
 }
 .menuItem {
-  padding: 10px 0;
-  margin: 0 20px;
+
   cursor: pointer;
-  @include fluidFontSize(16px, 24px, 1280px, 1920px);
-  line-height: normal;
-  letter-spacing: 0.96px;
+  @include H5;
   position: relative;
   white-space: nowrap;
+  border-radius: 10px;
 }
 .menuItem:hover {
-  font-weight: 600;
-}
-.menuItem:last-child {
-  font-weight: 700;
-  border-bottom: 1px solid $header-color;
+  color: #ffa800;
 }
 
 .submenu {
   position: absolute;
-  top:0;
-  left:0;
-  width:100%
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 @media screen and (max-width: 1540px) {
-  .menuItem {
-    margin: 0 20px;
-  }
   .header {
     height: 110px;
   }
 }
 
 @media screen and (max-width: 1280px) {
-  .menuItem {
-    margin: 0 15px;
-  }
   .header {
     height: 100px;
   }

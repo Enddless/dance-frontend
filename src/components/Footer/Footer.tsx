@@ -13,26 +13,37 @@ const Footer = () => {
         <Logo />
       </div>
 
-      <ul className={css.menuItem}>
-        {pagesFooter.map((page) => {
-          const check =
-            page.title === "Услуги и цены" || page.title === "Контакты";
-          return (
-            <li key={page.id} className={css.menuItem}>
-              {check ? (
-                <HashLink smooth to={page.url}>
-                  {page.title}
-                </HashLink>
-              ) : (
-                <Link to={page.url}>{page.title}</Link>
-              )}
-            </li>
-          );
-        })}
+      <ul className={css.footerNav}>
+        <li className={css.menuItem}>
+          <Link to="/">Скачать приложение</Link>
+        </li>
+        <li>
+          <ul className={css.centerMenu}>
+            {pagesFooter.map((page) => {
+              const check =
+                page.title === "Услуги и цены" || page.title === "Контакты";
+              return (
+                <li key={page.id} className={css.menuItem}>
+                  {check ? (
+                    <HashLink smooth to={page.url}>
+                      {page.title}
+                    </HashLink>
+                  ) : (
+                    <Link to={page.url}>{page.title}</Link>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </li>
+        <li className={css.menuItem}>
+          <Link to="/">Юридическая информация</Link>
+        </li>
       </ul>
+
       <div className={css.contacts}>
         <div className={css.location}>
-          <div style={{width:"24"}}>
+          <div style={{ width: "24" }}>
             <svg width="25" height="25" viewBox="0 0 25 25">
               <use xlinkHref={`${sprite}#location`}></use>
             </svg>
@@ -56,8 +67,6 @@ const Footer = () => {
           <p>Мы в социальных сетях:</p>
           <SocialLinks />
         </div>
-
-        <p className={css.download}>Скачать приложение</p>
       </div>
     </div>
   );

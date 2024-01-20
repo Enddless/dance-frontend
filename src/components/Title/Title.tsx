@@ -9,7 +9,7 @@ const TitleSection = ({ title }: ITitleSectionProps) => {
   return (
     <div className={css.container}>
       <div className={` ${css.line} ${css.lineLeft}`}></div>
-      <h1 className={css.title}>{title}</h1>
+      <h3 className={css.title}>{title}</h3>
       <div className={` ${css.line} ${css.lineRight}`}></div>
     </div>
   );

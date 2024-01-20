@@ -3,15 +3,17 @@
 
 .title {
   white-space: nowrap;
-  @include fluidFontSize(32px, 36px, 1280px, 1920px);
+  width:217px;
+  color: $title-color-default;
 }
 .container {
   grid-column: span 12;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   margin-bottom: 30px;
+
 }
 .line {
   margin:0 40px;

@@ -25,7 +25,7 @@ const CardReview = ({ review, id }: ICardProps) => {
             </div>
           )}
           <div className={classNamesList}>
-            <p className={css.title}>{review.data.user}</p>
+            <h5 className={css.title}>{review.data.user}</h5>
             <div className={css.star}>
               {Array.from(
                 { length: review?.data.stars },
@@ -39,11 +39,13 @@ const CardReview = ({ review, id }: ICardProps) => {
                   </div>
                 );
               })}
+               <p>4.8</p>
             </div>
+           
           </div>
 
           <p className={css.date}>{review.data.date}</p>
-          <p>{review.data.description}</p>
+          <p className={css.description}>{review.data.description}</p>
         </>
       )}
     </div>

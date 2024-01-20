@@ -6,6 +6,7 @@
 }
 .photoContainer {
   position: relative;
+  box-shadow: 6px 6px 20px 0px rgba(0, 0, 0, 0.15);
 }
 .caption {
   position: absolute;
@@ -13,6 +14,7 @@
   left: 50%;
   transform: translate(-50%, -20px);
   margin: 0 auto;
+  color: $card-title-color;
 }
 .photo {
   width: 100%;
@@ -25,12 +27,11 @@
   column-gap: 20px;
   align-items: center;
 
+  .photoContainer {
+    height: 439px;
+  }
   .photoContainer, p {
     width: 50%;
-  }
-
-  img {
-    height: 439px;
   }
   /* Стили для четных элементов */
   &:nth-child(even) {

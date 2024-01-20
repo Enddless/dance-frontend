@@ -16,9 +16,7 @@
   border: none;
   box-shadow: none;
 }
-.title {
-  font-weight: bold;
-  line-height: normal;
+.subtitle {
   text-align: center;
 }
 .checkbox {
@@ -29,9 +27,7 @@
   justify-content: flex-start;
 }
 .textCheck {
-  font-size: 16px;
-  line-height: normal;
-  letter-spacing: 0.32px;
+  @include TextSecondary;
   margin-left: 10px;
 }
 .checkbox svg {
@@ -39,18 +35,24 @@
   fill: #3aa31e;
 }
 
+//если карточек больше 4
 .redisignBlock {
   height: 210px;
 
-  .title {
+  .subtitle {
     text-align: left;
   }
 }
 .redisignCheckboxGroup {
   display: flex;
-  flex-direction: row;
-  column-gap:20px;
+  justify-content: space-between;
   .checkbox {
-    width:20%;
+    width: 30%;
   }
+}
+.checkboxGroup {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  justify-content: space-between;
 }
