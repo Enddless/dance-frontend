@@ -1,5 +1,6 @@
 // import Spinner from "../../../components/Spinner";
-import { useAppSelector } from "../../../../../services/type-service";
+// import { useAppSelector } from "../../../../../services/type-service";
+import classNames from "classnames";
 import EmptyTemplate from "../EmptyTemplate";
 
 import css from "./styles.module.scss";
@@ -54,8 +55,8 @@ const ticketsData: ITicketsData[] = [
 ];
 
 const Tickets = () => {
-  const tickets = useAppSelector((state) => state.ticket.userTickets);
-
+  // const tickets = useAppSelector((state) => state.ticket.userTickets);
+  const tickets = ticketsData;
   return (
     <div className={css.wrapper}>
       {tickets ? (
@@ -77,18 +78,25 @@ const Tickets = () => {
                 usedClasses,
                 totalClasses,
                 status,
-              }) => (
-                <tr className={css.tableRow} key={id}>
-                  <td>{id}</td>
-                  <td>{dateOfPurchase}</td>
-                  <td>{startDate}</td>
-                  <td>{endDate}</td>
-                  <td>
-                    {usedClasses}/{totalClasses}
-                  </td>
-                  <td>{status}</td>
-                </tr>
-              )
+              }) => {
+                const classNamesList = classNames(css.tableRow, {
+                  [css.completed] : status === "Завершенный",
+                  [css.nonActive] : status === "Неактивный",
+                })
+
+                return (
+                  <tr className={classNamesList} key={id}>
+                    <td>{id}</td>
+                    <td>{dateOfPurchase}</td>
+                    <td>{startDate}</td>
+                    <td>{endDate}</td>
+                    <td>
+                      {usedClasses}/{totalClasses}
+                    </td>
+                    <td>{status}</td>
+                  </tr>
+                )
+              }
             )}
           </tbody>
         </table>
