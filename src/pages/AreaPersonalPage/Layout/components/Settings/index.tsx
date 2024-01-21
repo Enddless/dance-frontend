@@ -1,10 +1,16 @@
 import { useState } from "react";
 import css from "./styles.module.scss";
 import ProfileImg from "./ProfileImg";
-import { useAppDispatch, useAppSelector } from "../../../../../services/type-service";
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "../../../../../services/type-service";
 import Spinner from "../../../../../components/Spinner";
 import Button from "../../../../../components/Button/Button";
-import { changeUserData, getCurrentUserData } from "../../../../../services/thunk/auth";
+import {
+  changeUserData,
+  getCurrentUserData,
+} from "../../../../../services/thunk/auth";
 
 const Settings = () => {
   const dispatch = useAppDispatch();
@@ -64,104 +70,106 @@ const Settings = () => {
   }
 
   return (
-    <div className={css.container}>
-      <ProfileImg />
+    <>
+      <div className={css.container}>
+        <ProfileImg />
 
-      <form className={css.form}>
-        <div className={css.info}>
-          <fieldset>
-            <label>Имя</label>
-            <input
-              type="text"
-              name="userName"
-              id="name"
-              placeholder="Введите имя"
-              className={css.input}
-              value={userInput.userName}
-              onChange={handleChange}
-            />
-          </fieldset>
-
-          <fieldset>
-            <p>Пол</p>
-            <div className={css.inputGroup}>
+        <form className={css.form}>
+          <div className={css.info}>
+            <fieldset>
+              <label>Имя</label>
               <input
-                type="radio"
-                id="female"
-                name="genders"
-                className={css.radio}
-                value="female"
-                onChange={handleRadioChange}
-                checked={userInput.genders === "female"}
+                type="text"
+                name="userName"
+                id="name"
+                placeholder="Введите имя"
+                className={css.input}
+                value={userInput.userName}
+                onChange={handleChange}
               />
-              <label htmlFor="female" className={css.radioLabel}>
-                Ж
-              </label>
+            </fieldset>
 
+            <fieldset>
+              <label>Пол</label>
+              <div className={css.inputGroup}>
+                <input
+                  type="radio"
+                  id="female"
+                  name="genders"
+                  className={css.radio}
+                  value="female"
+                  onChange={handleRadioChange}
+                  checked={userInput.genders === "female"}
+                />
+                <label htmlFor="female" className={css.radioLabel}>
+                  Ж
+                </label>
+
+                <input
+                  type="radio"
+                  id="male"
+                  name="genders"
+                  className={css.radio}
+                  value="male"
+                  onChange={handleRadioChange}
+                  checked={userInput.genders === "male"}
+                />
+                <label htmlFor="male" className={css.radioLabel}>
+                  М
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <label>Номер телефона</label>
               <input
-                type="radio"
-                id="male"
-                name="genders"
-                className={css.radio}
-                value="male"
-                onChange={handleRadioChange}
-                checked={userInput.genders === "male"}
+                type="text"
+                name="phoneNumber"
+                id="tel"
+                placeholder="+71111111111"
+                className={css.input}
+                value={userInput.phoneNumber}
+                onChange={handleChange}
               />
-              <label htmlFor="male" className={css.radioLabel}>
-                М
-              </label>
+            </fieldset>
+
+            <fieldset>
+              <label>E-mail</label>
+              <input
+                type="email"
+                name="emailUser"
+                id="email"
+                className={css.input}
+                value={userData.emailUser}
+                // onChange={handleChange}
+                disabled
+              />
+            </fieldset>
+
+            <fieldset>
+              <label>Дата рождения</label>
+              <input
+                type="date"
+                name="dateOfBirth"
+                id="date"
+                className={css.input}
+                value={userInput.dateOfBirth}
+                onChange={handleChange}
+              />
+            </fieldset>
+
+            <div className={css.saveSettings}>
+              <Button
+                text="Сохранить"
+                cls="btn-save"
+                openModalForm={(e: React.MouseEvent<HTMLButtonElement>) =>
+                  saveSettings(e)
+                }
+              />
             </div>
-          </fieldset>
-
-          <fieldset>
-            <p>Номер телефона</p>
-            <input
-              type="text"
-              name="phoneNumber"
-              id="tel"
-              placeholder="+71111111111"
-              className={css.input}
-              value={userInput.phoneNumber}
-              onChange={handleChange}
-            />
-          </fieldset>
-
-          <fieldset>
-            <p>E-mail</p>
-            <input
-              type="email"
-              name="emailUser"
-              id="email"
-              className={css.input}
-              value={userData.emailUser}
-              // onChange={handleChange}
-              disabled
-            />
-          </fieldset>
-
-          <fieldset>
-            <p>Дата рождения</p>
-            <input
-              type="date"
-              name="dateOfBirth"
-              id="date"
-              className={css.input}
-              value={userInput.dateOfBirth}
-              onChange={handleChange}
-            />
-          </fieldset>
-
-          <div className={css.saveSettings}>
-            <Button
-              text="Сохранить"
-              cls="btn-save"
-              openModalForm={(e: React.MouseEvent<HTMLButtonElement>) =>
-                saveSettings(e)
-              }
-            />
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
       <div className={css.deleteAccount}>
         <Button
           text="Удалить профиль"
@@ -171,7 +179,7 @@ const Settings = () => {
           // }
         />
       </div>
-    </div>
+    </>
   );
 };
 

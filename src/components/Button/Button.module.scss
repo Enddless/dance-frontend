@@ -61,7 +61,7 @@
 .btnDelete {
   color: $btn-color-two;
   background: $btn-background-two;
-  text-decoration: underline;
+  text-decoration: none;
   width: 100%;
   @include fluidFontSize(14px, 16px, 1280px, 1920px);
 }

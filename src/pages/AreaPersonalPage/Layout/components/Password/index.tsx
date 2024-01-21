@@ -32,6 +32,7 @@ const ChangePassword = () => {
             name="currentPassword"
             id="currentPassword"
             className={css.checkbox}
+            placeholder="*****"
           />
           <div className={css.eyeIcon}>
             <EyeIcon
@@ -48,6 +49,7 @@ const ChangePassword = () => {
             name="newPassword"
             id="newPassword"
             className={css.checkbox}
+            placeholder="*****"
           />
           <div className={css.eyeIcon}>
             <EyeIcon
@@ -64,6 +66,7 @@ const ChangePassword = () => {
             name="doubleNewPassword"
             id="doubleNewPassword"
             className={css.checkbox}
+            placeholder="*****"
           />
           <div className={css.eyeIcon}>
             <EyeIcon
