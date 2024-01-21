@@ -1,4 +1,5 @@
-import { notificationData } from "../../../../../mocks/mocks";
+
+import { notificationData } from "../../../../../../../mocks/mocks";
 import css from "../../styles.module.scss";
 
 const NotificationItem = () => {

@@ -1,16 +1,9 @@
 import css from "./styles.module.scss";
-import sprite from "../../../../assets/sprite.svg";
 import { ChangeEvent, useEffect, useState } from "react";
-import {
-  useAppDispatch,
-  useAppSelector,
-} from "../../../../services/type-service";
-import {
-  changeUserData,
-  changeUserPhoto,
-  getCurrentUserData,
-} from "../../../../services/thunk/auth";
-import { API_URL } from "../../../../services/api";
+import { useAppDispatch, useAppSelector } from "../../../../../../services/type-service";
+import { API_URL } from "../../../../../../services/api";
+import { changeUserData, changeUserPhoto, getCurrentUserData } from "../../../../../../services/thunk/auth";
+import sprite from '../../../../../../assets/sprite.svg';
 
 function ProfileImg() {
   const dispatch = useAppDispatch();

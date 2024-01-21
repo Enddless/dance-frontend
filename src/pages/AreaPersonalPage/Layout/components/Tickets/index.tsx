@@ -1,6 +1,7 @@
 // import Spinner from "../../../components/Spinner";
-import { useAppSelector } from "../../../services/type-service";
+import { useAppSelector } from "../../../../../services/type-service";
 import EmptyTemplate from "../EmptyTemplate";
+
 import css from "./styles.module.scss";
 
 const titles = [

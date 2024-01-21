@@ -1,9 +1,10 @@
-import Notifications from "../Notifications/index";
-import ChangePassword from "../Password/index";
-import OnlineRecovery from "../Recovery/index";
-import WriteReview from "../Review/index";
-import Settings from "../Settings";
-import Tickets from "../Tickets/index";
+
+import Notifications from "./components/Notifications";
+import ChangePassword from "./components/Password";
+import OnlineRecovery from "./components/Recovery";
+import WriteReview from "./components/Review";
+import Settings from "./components/Settings";
+import Tickets from "./components/Tickets/index";
 
 
 interface IActiveButtonProps {

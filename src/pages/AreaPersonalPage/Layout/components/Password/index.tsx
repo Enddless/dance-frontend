@@ -1,7 +1,8 @@
 import { useState } from "react";
-import Button from "../../../components/Button/Button";
 import css from "./styles.module.scss";
-import EyeIcon from "../../../components/EyeIcon";
+import EyeIcon from "../../../../../components/EyeIcon";
+import Button from "../../../../../components/Button/Button";
+
 
 const ChangePassword = () => {
   //состояние переключения "глазика"

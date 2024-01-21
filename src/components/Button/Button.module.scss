@@ -37,6 +37,7 @@
 
 // ***** кнопки меню в ЛК пользователя ******
 .btnMenuUser {
+  @include H5;
   color: $btn-color-two;
   outline: 1px solid $btn-border;
   box-shadow: 2px 2px 15px 0px $btn-boxshadow;

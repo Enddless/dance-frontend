@@ -1,13 +1,10 @@
 import { useState } from "react";
 import css from "./styles.module.scss";
-import { useAppDispatch, useAppSelector } from "../../../services/type-service";
-import Spinner from "../../../components/Spinner";
 import ProfileImg from "./ProfileImg";
-import Button from "../../../components/Button/Button";
-import {
-  changeUserData,
-  getCurrentUserData,
-} from "../../../services/thunk/auth";
+import { useAppDispatch, useAppSelector } from "../../../../../services/type-service";
+import Spinner from "../../../../../components/Spinner";
+import Button from "../../../../../components/Button/Button";
+import { changeUserData, getCurrentUserData } from "../../../../../services/thunk/auth";
 
 const Settings = () => {
   const dispatch = useAppDispatch();
@@ -73,7 +70,7 @@ const Settings = () => {
       <form className={css.form}>
         <div className={css.info}>
           <fieldset>
-            <p>Имя</p>
+            <label>Имя</label>
             <input
               type="text"
               name="userName"
