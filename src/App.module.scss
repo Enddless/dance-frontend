@@ -27,6 +27,12 @@ h4 {
 h5 {
   @include H5;
 }
+input:hover {
+  outline: 1px solid #ffa800;
+}
+input:focus {
+  outline: 1px solid #3AA31E;
+}
 //scrollbar
 body::-webkit-scrollbar {
   width: 10px;

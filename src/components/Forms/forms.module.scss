@@ -1,10 +1,6 @@
 @import "../../styles/variables.scss";
 
-.container {
-  display: flex;
-  flex-direction: column;
-}
-.formWrapper {
+.wrapper {
   display: flex;
   flex-direction: column;
   max-width: 621px;
@@ -21,68 +17,24 @@
   transform: translate(-50%, 0);
   z-index: 402;
 }
-.area {
-  position: absolute;
-  z-index: 402;
-  width: 230px;
-  padding: 25px 20px 20px;
-  right: 0px;
-  top: 79px;
-  background: white;
-  transform: none;
-  -webkit-transform: none;
-  -moz-transform: none;
-  -ms-transform: none;
-  -o-transform: none;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  border-radius: 10px;
-  .closeContainer {
-    position: absolute;
-    right: -11px;
-    top: -17px;
-    cursor: pointer;
-  }
-  & button {
-    width: 100%;
-    @include TextPrimary;
-    background: transparent;
-    color: $btn-areaForm-color;
-    border: none;
-    justify-content: left;
-    cursor: pointer;
-  }
-  & button:hover {
-    font-weight: 600;
-  }
-  .decoration {
-    position: absolute;
-    top: -12px;
-    right: 20%;
-    transform: translate(-20%, 0);
-    z-index: -1;
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 20px solid white;
-  }
-}
-
 h3 {
   text-align: center;
-  font-size: 32px;
-  font-weight: 400;
+  margin-bottom: 20px;
 }
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
 .form {
   display: flex;
   flex-direction: column;
+  row-gap: 10px;
 
   fieldset {
     position: relative;
     border: none;
-    margin-top: 20px;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
 
@@ -91,15 +43,52 @@ h3 {
     }
   }
   label {
+    @include TextPlaceholder;
+  }
+  input {
+    margin-top: 9px;
+    width: 100%;
+    height: 48px;
+    border-radius: 4px;
+    border: 1px solid $gray;
+    background: $white;
     font-size: 16px;
     font-weight: 400;
+    padding: 14px 0 15px 10px;
+    position: relative;
   }
 
   .eyeIcon {
     position: absolute;
     right: 18px;
-    top: 50px;
+    top: 46px;
     cursor: pointer;
+  }
+  /* удаление иконки отображения пароля в IE */
+  input[type="password"]::-ms-reveal {
+    display: none;
+  }
+  /* удаление иконки стрелок */
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .linkGroup {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    @include TextPlaceholder;
+    label {
+      cursor: pointer;
+    }
+    label:hover {
+      color: $btn-background-one;
+      transition: all 150ms ease-in;
+    }
   }
 
   .errorInput {
@@ -113,45 +102,32 @@ h3 {
     right: 0px;
   }
 
-  input {
-    margin-top: 9px;
-    width: 100%;
-    height: 48px;
-    border-radius: 4px;
-    border: 1px solid $gray;
-    background: $white;
-    font-size: 16px;
-    font-weight: 400;
-    padding: 14px 0 15px 10px;
-    position: relative;
-  }
-  /* удаление иконки отображения пароля в IE */
-  input[type="password"]::-ms-reveal {
-    display: none;
-  }
-  /* удаление иконки стрелок */
-  input[type="number"]::-webkit-outer-spin-button,
-  input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  a {
-    margin-top: 20px;
-    font-size: 16px;
-    font-weight: 400;
-    display: flex;
-    justify-content: end;
-  }
+  // a {
+  //   margin-top: 20px;
+  //   font-size: 16px;
+  //   font-weight: 400;
+  //   display: flex;
+  //   justify-content: end;
+  // }
 
   button {
-
-    margin: 20px auto 0;
+    margin: 10px auto 0;
   }
   .disabled {
     @include ButtonDisabled();
   }
+}
 
+.agreement {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+
+  .agreeCheckbox {
+    @include TextFieldTitle;
+    cursor: pointer;
+  }
 }
 .modalForm {
   display: block;
@@ -160,47 +136,4 @@ h3 {
   display: none;
 }
 
-.link {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin-top:10px;
-  // position: relative;
-  // bottom: 90px;
-  // width: 100%;
 
-  & button {
-    cursor: pointer;
-    background: $body-background-primary;
-    box-shadow: none;
-    color: inherit;
-    font-size: 16px;
-    padding: 0;
-    border: none;
-    background: transparent;
-  }
-}
-
-.agreement {
-  margin-top: 15px;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 16px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  column-gap: 10px;
-  
-  label {
-    margin: 0;
-    cursor:pointer;
-  }
-}
-
-@media screen and (max-width: 1400px) {
-  .area {
-    width: 180px;
-  }
-}

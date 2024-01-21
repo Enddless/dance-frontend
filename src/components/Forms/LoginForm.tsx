@@ -74,12 +74,12 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
   });
 
   return (
-    <div className={css.formWrapper}>
+    <div className={css.wrapper}>
       <Close openModalForm={openModalForm} />
       {isLoginForm && (
         <div className={classNamesList}>
           <h3>Вход</h3>
-          <div className={css.container}>
+          <div className={css.content}>
             <form onSubmit={handleSubmit} className={css.form}>
               <fieldset>
                 <label htmlFor="tel">
@@ -117,6 +117,7 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
                         ? `${css.errorInput}`
                         : ""
                     }
+                    placeholder="*****"
                   />
                   <div className={css.eyeIcon}>
                     <EyeIcon
@@ -127,13 +128,13 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
                 </label>
               </fieldset>
 
-              <div className={css.link}>
-                <button onClick={() => setIsRegistration(!isRegistration)}>
+              <div className={css.linkGroup}>
+                <label onClick={() => setIsRegistration(!isRegistration)}>
                   Зарегистрироваться
-                </button>
-                <button onClick={() => setIsRecovery(!isRecovery)}>
+                </label>
+                <label onClick={() => setIsRecovery(!isRecovery)}>
                   Забыли пароль?
-                </button>
+                </label>
               </div>
               <Button text="Войти" cls="btn-reg"/>
             </form>

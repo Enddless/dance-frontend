@@ -43,12 +43,6 @@ const RegistrationForm = () => {
 
   const [showPassword, setShowPassword] = useState(false);
   const [showDoublePassword, setShowDoublePassword] = useState(false);
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
-  const toggleDoublePasswordVisibility = () => {
-    setShowDoublePassword(!showDoublePassword);
-  };
 
   const [agreement, setAgreement] = useState(false);
   const handleAgree = () => {
@@ -66,10 +60,22 @@ const RegistrationForm = () => {
 
   const [isValidForm, setIsValidForm] = useState(false);
   useEffect(() => {
-    if (agreement && checkPassword) {
+    if (
+      agreement &&
+      checkPassword &&
+      formData.email !== "" &&
+      formData.password !== "" &&
+      formData.dublPassword !== ""
+    ) {
       setIsValidForm(true);
     } else setIsValidForm(false);
-  }, [agreement, checkPassword]);
+  }, [
+    agreement,
+    checkPassword,
+    formData.password,
+    formData.dublPassword,
+    formData.email,
+  ]);
   return (
     <>
       {!successForm ? (
@@ -86,14 +92,19 @@ const RegistrationForm = () => {
                 placeholder="example@mail.com"
                 // pattern="^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*$"
                 className={
-                  errorMessage && errorMessage !== ""
-                    ? `${css.errorInput}`
-                    : ""
+                  errorMessage && errorMessage !== "" ? `${css.errorInput}` : ""
                 }
               />
               {errorMessage && errorMessage !== "" && (
+                <span className={css.errorMessage}>
+                  Пользователь с таким email уже зарегистрирован
+                </span>
+              )}
+              {formData.email === "" &&
+                formData.password !== "" &&
+                formData.dublPassword !== "" && (
                   <span className={css.errorMessage}>
-                    Пользователь с таким email уже зарегистрирован
+                    Нужно заполнить email
                   </span>
                 )}
             </fieldset>
@@ -105,11 +116,12 @@ const RegistrationForm = () => {
                 name="password"
                 type={showPassword ? "text" : "password"}
                 className={!checkPassword ? `${css.errorInput}` : ""}
+                placeholder="*****"
               />
               <div className={css.eyeIcon}>
                 <EyeIcon
                   showPassword={showPassword}
-                  togglePasswordVisibility={togglePasswordVisibility}
+                  togglePasswordVisibility={() => setShowPassword(!showPassword)}
                 />
               </div>
             </fieldset>
@@ -122,11 +134,12 @@ const RegistrationForm = () => {
                 name="dublPassword"
                 type={showDoublePassword ? "text" : "password"}
                 className={!checkPassword ? `${css.errorInput}` : ""}
+                placeholder="*****"
               />
               <div className={css.eyeIcon}>
                 <EyeIcon
                   showPassword={showDoublePassword}
-                  togglePasswordVisibility={toggleDoublePasswordVisibility}
+                  togglePasswordVisibility={() => setShowDoublePassword(!showDoublePassword)}
                 />
               </div>
 
@@ -143,10 +156,21 @@ const RegistrationForm = () => {
             >
               
             </button> */}
-            <Button text="Зарегистрироваться" cls="btn-reg" disabled={!isValidForm}/>
+            <Button
+              text="Зарегистрироваться"
+              cls="btn-reg"
+              disabled={!isValidForm}
+            />
             <div className={css.agreement}>
-              <InputCheckbox onChange={handleAgree} agreement={(formData.password !== "" || formData.dublPassword !== "") ? agreement : ""}/>
-              <label htmlFor="agreement" >
+              <InputCheckbox
+                onChange={handleAgree}
+                agreement={
+                  formData.password !== "" || formData.dublPassword !== ""
+                    ? agreement
+                    : ""
+                }
+              />
+              <label htmlFor="agreement" className={css.agreeCheckbox}>
                 Регистрируясь, я соглашаюсь с Условиями пользования и Политикой
                 конфиденциалности
               </label>

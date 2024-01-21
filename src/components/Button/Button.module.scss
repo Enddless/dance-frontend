@@ -6,6 +6,9 @@
   text-decoration: none;
   color: $btn-color-one;
 }
+.btn:hover {
+  transition: all 150ms ease-in;
+}
 
 // ***** кнопка входа ******
 .btnEnter {

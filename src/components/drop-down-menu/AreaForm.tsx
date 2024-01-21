@@ -1,4 +1,4 @@
-import css from "./forms.module.scss";
+import css from "./styles.module.scss";
 import Close from "../Close/Close";
 import classNames from "classnames";
 import { Link, Navigate } from "react-router-dom";

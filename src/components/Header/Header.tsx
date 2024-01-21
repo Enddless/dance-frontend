@@ -7,7 +7,7 @@ import LoginForm from "../Forms/LoginForm";
 import useTheme from "../../hooks/useTheme";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
-import AreaForm from "../Forms/AreaForm";
+import AreaForm from "../drop-down-menu/AreaForm";
 import { useAppSelector } from "../../services/type-service";
 import sprite from "../../assets/sprite.svg";
 

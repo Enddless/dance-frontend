@@ -27,7 +27,7 @@
     cursor: pointer;
   }
   input:focus {
-    outline: 3px solid $btn-background-default;
+    outline: 3px solid $btn-background-one;
   }
   label {
     font-size: 16px;
@@ -41,7 +41,7 @@
   grid-column: 6/8;
   margin-top: 60px;
   button {
-    color: $btn-background-secondary;
+    color: $btn-background-four;
     font-size: 16px;
     border: none;
     background: none;
