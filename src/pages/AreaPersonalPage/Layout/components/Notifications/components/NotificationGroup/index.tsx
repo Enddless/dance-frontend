@@ -1,11 +1,27 @@
 
+import { useState } from "react";
 import { notificationData } from "../../../../../../../mocks/mocks";
 import css from "../../styles.module.scss";
 
-const NotificationItem = () => {
+const NotificationGroup = () => {
+  const [checkedItems, setCheckedItems] = useState(new Set());
+
+  const handleCheckboxChange = (id: string) => {
+    const newCheckedItems = new Set(checkedItems);
+    if (checkedItems.has(id)) {
+      newCheckedItems.delete(id);
+    } else {
+      newCheckedItems.add(id);
+    }
+    setCheckedItems(newCheckedItems);
+  };
+
   return (
     <>
       {notificationData.map((item) => {
+         const id = `notification${item.id}`;
+         const isChecked = checkedItems.has(id);
+
         const day =
           item.date.getDate() +
           "." +
@@ -16,12 +32,14 @@ const NotificationItem = () => {
         return (
           <div className={css.notificationContainer} key={item.id}>
             <div className={css.notificationItem}>
-              <label htmlFor={`notification${item.id}`}>
+              <label htmlFor={id}>
                 <input
                   type="checkbox"
-                  name={`notification${item.id}`}
-                  id={`notification${item.id}`}
+                  name={id}
+                  id={id}
                   className={css.checkbox}
+                  checked={isChecked}
+                  onChange={() => handleCheckboxChange(id)}
                 />
                 <span className={css.fake}></span>
                 <span className={css.text}>{item.text}</span>
@@ -37,4 +55,4 @@ const NotificationItem = () => {
   );
 };
 
-export default NotificationItem;
+export default NotificationGroup;
