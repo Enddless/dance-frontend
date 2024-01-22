@@ -34,7 +34,7 @@ const settingsForStaff: ISettings = {
   speed: 500,
   slidesToShow: 4,
   slidesToScroll: 1,
-  // autoplay: true,
+  autoplay: true,
   autoplaySpeed: 4000,
 };
 

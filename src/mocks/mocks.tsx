@@ -55,7 +55,7 @@ export const bannerUrl: IBannerUrl[] = [
   },
 ];
 
-export const hallsData: THalls[] = [
+export const hallsData  = [
   {
     id: 1,
     name: "Зал 1",
