@@ -5,6 +5,7 @@
   white-space: nowrap;
   width:217px;
   color: $title-color-default;
+  text-align: center;
 }
 .container {
   grid-column: span 12;
@@ -22,6 +23,7 @@
   background: linear-gradient(90deg, #563e0e 0%, rgba(86, 62, 14, 0) 100%);
 }
 .lineLeft {
+  height: 1px;
   transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
