@@ -34,6 +34,7 @@ const Button = ({
   const activeMenu = activeMenuUser;
   const saveButton = cls === "btn-save";
   const deleteButton = cls === "btn-del";
+  const recordButton = cls === "btn-rec"
   //admin
   const add = cls === "add";
 
@@ -47,6 +48,7 @@ const Button = ({
     [css.btnSave]: saveButton,
     [css.btnDelete]: deleteButton,
     [css.btnAdd]: add,
+    [css.btnRecord] : recordButton,
   });
 
   return (

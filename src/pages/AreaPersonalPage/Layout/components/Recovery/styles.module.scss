@@ -1,5 +1,12 @@
 @import "../../../../../styles/variables.scss";
 
 .wrapper {
-    @include Grid;
+  @include Grid;
+
+}
+.filters {
+  grid-column: span 9;
+  @include Grid;
+  column-gap:20px;
+  grid-template-rows: 48px auto;
 }

@@ -49,7 +49,7 @@
   outline: none;
 }
 
-// ***** кнопки сохранения, удаления в ЛК пользователя ******
+// ***** кнопки сохранения, удаления, записи в ЛК пользователя ******
 .btnSave {
   background: $btn-background-three;
   color: $btn-color-one;
@@ -68,6 +68,13 @@
 .btnDelete:hover {
   color: $btn-color-one;
   background: $btn-background-five;
+}
+.btnRecord {
+  background: $btn-background-one;
+  @include fluidFontSize(14px, 16px, 1280px, 1920px);
+}
+.btnRecord:hover {
+  background: $btn-background-three;
 }
 
 // ***** заблокированные кнопки******
