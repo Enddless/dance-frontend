@@ -13,6 +13,7 @@ import AreaAdminPage from "./pages/AreaAdminPage";
 import { RedirectPersonalArea } from "./components/redirect-personal-area";
 import { menuAreaAdministrator, menuAreaPersonal } from "./const/const";
 import React from "react";
+import LoginForm from "./components/Forms/LoginForm";
 
 const App = () => {
   const { isDark } = useTheme();
@@ -25,9 +26,11 @@ const App = () => {
           <Route path={AppRoute.Root} element={<MainPage />} />
           <Route path={AppRoute.Dashboard} element={<DashboardPage />} />
           <Route path={AppRoute.Reviews} element={<ReviewsPage />} />
-          <Route path={AppRoute.NotFound} element={<NFPage />} />
+         
+          <Route path={AppRoute.Login} element={<LoginForm />} />
           <Route path={AppRoute.Registration} element={<RegistrationForm />} />
           <Route path={AppRoute.Recovery} element={<RecoveryForm />} />
+          <Route path={AppRoute.NotFound} element={<NFPage />} />
 
           <Route
             path={AppRoute.PersonalArea}
