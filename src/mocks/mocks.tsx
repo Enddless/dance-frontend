@@ -55,7 +55,7 @@ export const bannerUrl: IBannerUrl[] = [
   },
 ];
 
-export const hallsData: THalls[] = [
+export const hallsData  = [
   {
     id: 1,
     name: "Зал 1",
@@ -170,11 +170,6 @@ export const pagesFooter: IPagesFooter[] = [
     id: 5,
     title: "Контакты",
     url: "/#contactsBlock",
-  },
-  {
-    id: 6,
-    title: "Юридическая информация",
-    url: "/policy",
   },
 ];
 
@@ -541,3 +536,7 @@ export const aboutStudio: IStudio = {
     "Наша студия  - это не просто место уроков, а место, где рождается страсть к танцу, спорту и искусству. Присоединяйтесь к нашей семье и вместе с нами откройте мир красоты, элегантности и гармонии.",
   ],
 };
+
+export const lessons = ["бокс", "балет", "танцы"];
+export const times = ["09:00", "12:00", "15:00"];
+export const halls = ["Зал 1", "Зал 2", "Зал 3"];

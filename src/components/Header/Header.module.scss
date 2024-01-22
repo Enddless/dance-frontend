@@ -6,7 +6,7 @@
   height: 139px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   padding: 40px 80px 30px;
   background: $header-background;
   color: $header-color;
@@ -16,46 +16,47 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  column-gap: 60px;
+  margin: 0 15px;
 }
 .menuItem {
-  padding: 10px 0;
-  margin: 0 20px;
   cursor: pointer;
-  @include fluidFontSize(16px, 24px, 1280px, 1920px);
-  line-height: normal;
-  letter-spacing: 0.96px;
-  font-family: $body-family-secondary-regular;
+  @include H5;
   position: relative;
   white-space: nowrap;
+  border-radius: 10px;
 }
 .menuItem:hover {
-  font-weight: 600;
-}
-.menuItem:last-child {
-  font-weight: 700;
-  border-bottom: 1px solid $header-color;
+  color: #ffa800;
 }
 
-.submenu {
-  position: absolute;
-  top:0;
-  left:0;
-  width:100%
-}
-@media screen and (max-width: 1540px) {
-  .menuItem {
-    margin: 0 20px;
+.subMenu {
+  position: relative;
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+
+  & button {
+    width: 100%;
+    text-align: left;
   }
-  .header {
-    height: 110px;
+}
+@media screen and (max-width: 1600px) {
+  .navigation {
+    column-gap: 40px;
+    margin: 0 15px;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .subMenu {
+    width: 180px;
   }
 }
 
 @media screen and (max-width: 1280px) {
-  .menuItem {
+  .navigation {
+    column-gap: 15px;
     margin: 0 15px;
-  }
-  .header {
-    height: 100px;
   }
 }

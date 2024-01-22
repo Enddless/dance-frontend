@@ -6,10 +6,10 @@ const DashboardSettings = () => {
   return (
     <div className={css.container}>
       <div className={css.buttonGroup}>
-        <Button text="Все" cls="menuAreaButton" />
-        <Button text="Зал 1" cls="menuAreaButton" />
-        <Button text="Зал 2" cls="menuAreaButton" />
-        <Button text="Зал 3" cls="menuAreaButton" />
+        <Button text="Все" cls="dashboardMenuAdmin" />
+        <Button text="Зал 1" cls="dashboardMenuAdmin" />
+        <Button text="Зал 2" cls="dashboardMenuAdmin" />
+        <Button text="Зал 3" cls="dashboardMenuAdmin" />
       </div>
       <BigCalendar />
     </div>

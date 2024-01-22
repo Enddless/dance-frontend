@@ -1,13 +1,9 @@
 @import "../../styles/variables.scss";
 
-.container {
+.wrapper {
   display: flex;
   flex-direction: column;
-}
-.formWrapper {
-  display: flex;
-  flex-direction: column;
-  width: 551px;
+  max-width: 621px;
   padding: 60px 100px 81px 100px;
   justify-content: center;
   align-items: center;
@@ -17,81 +13,50 @@
   color: $form-enter-color;
   position: absolute;
   top: 40%;
-  left: 40%;
-  // transform: translate(-50%, -50%);
+  left: 50%;
+  transform: translate(-50%, 0);
   z-index: 402;
-}
-.area {
-  position: absolute;
-  width: 300px;
-  padding: 40px 20px;
-  left: 80%;
-  top: 121px;
-  transform: none;
-  -webkit-transform: none;
-  -moz-transform: none;
-  -ms-transform: none;
-  -o-transform: none;
-  background: $btn-background-hover;
-  align-items: flex-start;
-  & button {
-    @include ButtonPrimary();
-    width: 100%;
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 0.72px;
-    color: $btn-areaForm-color;
-    border: none;
-    justify-content: left;
+  h3 {
+    text-align: center;
+    margin-bottom: 20px;
   }
 }
-h3 {
-  text-align: center;
-  font-size: 32px;
-  font-weight: 400;
+
+.content {
+  display: flex;
+  flex-direction: column;
 }
+
 .form {
   display: flex;
   flex-direction: column;
+  row-gap: 10px;
 
   fieldset {
     position: relative;
     border: none;
-    margin-top: 20px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+
+    label {
+      display: block;
+    }
   }
   label {
-    font-size: 16px;
-    font-weight: 400;
+    @include TextPlaceholder;
+  }
+  input {
+    margin-top: 9px;
+    border: 1px solid $gray;
+    position: relative;
   }
 
   .eyeIcon {
     position: absolute;
     right: 18px;
-    top: 50px;
+    top: 46px;
     cursor: pointer;
-  }
-
-  .error {
-    color: red;
-    font-size: 12px;
-    position: absolute;
-    bottom: 262px;
-  }
-  .errorInput {
-    border: 1px solid red;
-  }
-
-  input {
-    margin-top: 9px;
-    width: 351px;
-    height: 48px;
-    border-radius: 4px;
-    border: 1px solid $gray;
-    background: $white;
-    font-size: 16px;
-    font-weight: 400;
-    padding: 14px 0 15px 10px;
-    position: relative;
   }
   /* удаление иконки отображения пароля в IE */
   input[type="password"]::-ms-reveal {
@@ -104,29 +69,58 @@ h3 {
     margin: 0;
   }
 
-  a {
-    margin-top: 20px;
-    font-size: 16px;
-    font-weight: 400;
+  .linkGroup {
     display: flex;
-    justify-content: end;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    @include TextPlaceholder;
+    label {
+      cursor: pointer;
+    }
+    label:hover {
+      color: $btn-background-one;
+      transition: all 150ms ease-in;
+    }
   }
 
+  .errorInput {
+    border: 1px solid red;
+  }
+  .errorMessage {
+    color: red;
+    font-size: 12px;
+    position: absolute;
+    top: 2px;
+    right: 0px;
+  }
+
+  // a {
+  //   margin-top: 20px;
+  //   font-size: 16px;
+  //   font-weight: 400;
+  //   display: flex;
+  //   justify-content: end;
+  // }
+
   button {
-    @include ButtonPrimary();
-    margin: 62px auto 0;
-    width: 100%;
-    padding: 15px 10px;
-    background: $btn-background-secondary;
-    box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.05);
-    font-size: 20px;
-    color: $btn-color-secondary;
+    margin: 10px auto 0;
   }
   .disabled {
     @include ButtonDisabled();
   }
-  .submit {
-    margin: 90px auto 0;
+}
+
+.agreement {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+
+  .agreeCheckbox {
+    @include TextFieldTitle;
+    cursor: pointer;
   }
 }
 .modalForm {
@@ -136,29 +130,4 @@ h3 {
   display: none;
 }
 
-.link {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  bottom: 90px;
-  width: 100%;
 
-  & button {
-    cursor: pointer;
-    background: $body-background-primary;
-    box-shadow: none;
-    color: inherit;
-    font-size: 16px;
-    padding: 0;
-    border: none;
-    background: transparent;
-  }
-}
-
-.agreement {
-  font-size: 15px;
-  letter-spacing: 0.3px;
-  cursor: pointer;
-}

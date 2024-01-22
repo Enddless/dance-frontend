@@ -11,6 +11,7 @@ import {
   login,
 } from "../../services/thunk/auth";
 import EyeIcon from "../EyeIcon";
+import Button from "../Button/Button";
 
 type IModalFormProps = {
   openModalForm?: () => void;
@@ -18,7 +19,6 @@ type IModalFormProps = {
 
 const LoginForm = ({ openModalForm }: IModalFormProps) => {
   const [errorMessage, setErrorMessage] = useState("");
-  const [agreement, setAgreement] = useState(false);
   const dispatch = useAppDispatch();
 
   //состояния форм
@@ -74,28 +74,35 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
   });
 
   return (
-    <div className={css.formWrapper}>
+    <div className={css.wrapper}>
       <Close openModalForm={openModalForm} />
       {isLoginForm && (
         <div className={classNamesList}>
           <h3>Вход</h3>
-          <div className={css.container}>
+          <div className={css.content}>
             <form onSubmit={handleSubmit} className={css.form}>
-              <label htmlFor="tel">
-                Адрес электронной почты
-                <input
-                  type="email"
-                  value={item.email}
-                  onChange={handleChange}
-                  name="email"
-                  className={
-                    errorMessage && errorMessage !== ""
-                      ? `${css.errorInput}`
-                      : ""
-                  }
-                  placeholder="example@gmail.com"
-                />
-              </label>
+              <fieldset>
+                <label htmlFor="tel">
+                  Адрес электронной почты
+                  <input
+                    type="email"
+                    value={item.email}
+                    onChange={handleChange}
+                    name="email"
+                    className={
+                      errorMessage && errorMessage !== ""
+                        ? `${css.errorInput}`
+                        : ""
+                    }
+                    placeholder="example@gmail.com"
+                  />
+                </label>
+                {errorMessage && errorMessage !== "" && (
+                  <span className={css.errorMessage}>
+                    Неправильный логин или пароль
+                  </span>
+                )}
+              </fieldset>
 
               <fieldset>
                 <label htmlFor="password">
@@ -110,6 +117,7 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
                         ? `${css.errorInput}`
                         : ""
                     }
+                    placeholder="*****"
                   />
                   <div className={css.eyeIcon}>
                     <EyeIcon
@@ -120,35 +128,16 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
                 </label>
               </fieldset>
 
-              {errorMessage && errorMessage !== "" && (
-                <span className={css.error}>Неправильный логин или пароль</span>
-              )}
-              <button type="submit" className={css.submit}>
-                Войти
-              </button>
+              <div className={css.linkGroup}>
+                <label onClick={() => setIsRegistration(!isRegistration)}>
+                  Зарегистрироваться
+                </label>
+                <label onClick={() => setIsRecovery(!isRecovery)}>
+                  Забыли пароль?
+                </label>
+              </div>
+              <Button text="Войти" cls="btn-reg"/>
             </form>
-
-            <div className={css.link}>
-              <button onClick={() => setIsRegistration(!isRegistration)}>
-                Зарегистрироваться
-              </button>
-              <button onClick={() => setIsRecovery(!isRecovery)}>
-                Забыли пароль?
-              </button>
-            </div>
-          </div>
-
-          <div>
-            <input
-              type="checkbox"
-              id="agreement"
-              name="agreement"
-              onChange={() => setAgreement(!agreement)}
-            />
-            <label htmlFor="agreement" className={css.agreement}>
-              Регистрируясь, я соглашаюсь с Условиями пользования и Политикой
-              конфиденциалности
-            </label>
           </div>
         </div>
       )}

@@ -1,5 +1,7 @@
 import css from "./Logo.module.scss";
-import logo from "../../assets/logo.png";
+// import logo from "../../assets/logo.png";
+import logo from "../../assets/Logotest.png";
+
 import { AppRoute } from "../../const/route";
 import { Link } from "react-router-dom";
 const Logo = () => {

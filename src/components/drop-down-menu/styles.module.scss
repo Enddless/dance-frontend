@@ -1,0 +1,54 @@
+@import '../../styles/variables.scss';
+.area {
+  position: absolute;
+  z-index: 402;
+  width: 180px;
+  padding: 25px 20px 20px;
+  right: 0px;
+  top: 79px;
+  background: white;
+  transform: none;
+  -webkit-transform: none;
+  -moz-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  border-radius: 10px;
+  .closeContainer {
+    position: absolute;
+    right: -11px;
+    top: -17px;
+    cursor: pointer;
+  }
+  & button {
+    width: 100%;
+    @include TextPrimary;
+    background: transparent;
+    color: $btn-background-three;
+    border: none;
+    justify-content: left;
+    cursor: pointer;
+  }
+  & button:hover {
+    font-weight: 600;
+  }
+  .decoration {
+    position: absolute;
+    top: -12px;
+    right: 20%;
+    transform: translate(-20%, 0);
+    z-index: -1;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid white;
+  }
+}
+@media screen and (max-width: 1400px) {
+  .area {
+    width: 180px;
+  }
+}

@@ -3,10 +3,11 @@
 }
 .rbc-calendar {
   height: auto;
+  font-size:16px;
 }
 .rbc-toolbar .rbc-btn-group button {
   margin:1px;
-  background: green;
+  background: #3AA31E;
   color: white;
   cursor: pointer;
   border-radius:5px;
@@ -17,7 +18,7 @@
 }
 .rbc-toolbar .rbc-toolbar-label {
   margin:5px;
-  background: green;
+  background: #3AA31E;
   color: white;
   border-radius:5px;
   -webkit-border-radius:5px;

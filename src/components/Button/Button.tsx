@@ -4,42 +4,58 @@ import classNames from "classnames";
 interface ButtonProps {
   text: string;
   cls?: string;
-  activeClass?: string;
   children?: React.ReactNode;
   openModalForm?:
     | (() => void)
     | ((e: React.MouseEvent<HTMLButtonElement>) => void);
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
-  disabled?: boolean,
+  disabled?: boolean;
+  activeMenuUser?: boolean;
+  activeDashboardMenu?: boolean;
 }
 
 const Button = ({
   text,
   cls,
-  activeClass,
   children,
   openModalForm,
   onMouseEnter,
-  onMouseLeave, disabled,
+  onMouseLeave,
+  disabled,
+  activeMenuUser,
+  activeDashboardMenu,
 }: ButtonProps) => {
   //классы для нажатых кнопок, переделать в switch/case
   const enterButton = cls === "btn-enter";
   const more = cls === "btn-more";
-  const menuAreaButton = cls === "menuAreaButton";
-  const add = cls === "add";
+  const regButton = cls === "btn-reg";
+  const disabledButton = cls === "btn-dis" || disabled;
+  // user
+  const menuAreaUser = cls === "menuAreaUser";
+  const activeMenu = activeMenuUser;
   const saveButton = cls === "btn-save";
   const deleteButton = cls === "btn-del";
-  const disabledButton = cls === "btn-dis";
+  const recordButton = cls === "btn-rec"
+  //admin
+  const add = cls === "add";
+  const dashboardMenuAdmin = cls === "dashboardMenuAdmin";
+  const activeDashboardMenuAdmin = activeDashboardMenu;
+
+
   const classNamesList = classNames(css.btn, {
     [css.btnEnter]: enterButton,
     [css.btnMore]: more,
-    [css.menuAreaButton]: menuAreaButton,
-    [css.active]: activeClass,
-    [css.saveButton]: saveButton,
-    [css.deleteButton]: deleteButton,
-    [css.add]: add,
+    [css.btnRegistration]: regButton,
     [css.btnDisabled]: disabledButton,
+    [css.btnMenuUser]: menuAreaUser,
+    [css.activeMenuUser]: activeMenu,
+    [css.btnSave]: saveButton,
+    [css.btnDelete]: deleteButton,
+    [css.btnAdd]: add,
+    [css.btnRecord] : recordButton,
+    [css.btnDashboardAdmin] : dashboardMenuAdmin,
+    [css.activeDashboardMenu] : activeDashboardMenuAdmin,
   });
 
   return (

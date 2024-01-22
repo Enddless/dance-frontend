@@ -6,31 +6,40 @@ import classNames from "classnames";
 interface ICardProps {
   price: IPricesInfo;
   cls?: string;
+  isMainPage?: boolean;
 }
 
-const CardPrice = ({ price, cls }: ICardProps) => {
-  const isNoneShadow = cls === "noneShadow"
+const CardPrice = ({ price, cls, isMainPage }: ICardProps) => {
+  const isNoneShadow = cls === "noneShadow";
   const classNameList = classNames(css.card, {
     [css.noneShadow]: isNoneShadow,
-  })
+    [css.redisignBlock]: isMainPage,
+  });
+  const contentGroup = classNames({
+    [css.redisignCheckboxGroup]: isMainPage,
+  });
   return (
     <div className={classNameList}>
       {price && (
         <>
-          <p className={css.title}>{price.title}</p>
-          {price.data.map((text) => {
-            return (
-              <div key={text} className={css.checkbox}>
-                <div>
-                  <svg width="35" height="35" viewBox="0 0 35 35">
-                    <use xlinkHref={`${sprite}#check`}></use>
-                  </svg>
-                </div>
-                <p className={css.textCheck}>{text}</p>
-              </div>
-            );
-          })}
-          <p className={css.title}>{price.price} P</p>
+          <h4 className={css.subtitle}>{price.title}</h4>
+          <div className={contentGroup}>
+            <div className={css.checkboxGroup}>
+              {price.data.map((text) => {
+                return (
+                  <div key={text} className={css.checkbox}>
+                    <div>
+                      <svg width="24" height="24" viewBox="0 0 24 24" >
+                        <use xlinkHref={`${sprite}#checkForPrice`}></use>
+                      </svg>
+                    </div>
+                    <p className={css.textCheck}>{text}</p>
+                  </div>
+                );
+              })}
+            </div>
+            <h4 className={css.subtitle}>{price.price} P</h4>
+          </div>
         </>
       )}
     </div>

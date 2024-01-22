@@ -10,15 +10,13 @@
   border-radius: 10px;
   background: $card-price-background;
   box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.05);
-  margin:10px 0;
+  margin: 10px 0;
 }
 .noneShadow {
-  border:none;
-  box-shadow:none;
+  border: none;
+  box-shadow: none;
 }
-.title {
-  font-weight: bold;
-  line-height: normal;
+.subtitle {
   text-align: center;
 }
 .checkbox {
@@ -29,12 +27,32 @@
   justify-content: flex-start;
 }
 .textCheck {
-  font-size: 16px;
-  line-height: normal;
-  letter-spacing: 0.32px;
+  @include TextSecondary;
   margin-left: 10px;
 }
 .checkbox svg {
   stroke: #3aa31e;
   fill: #3aa31e;
+}
+
+//если карточек больше 4
+.redisignBlock {
+  height: 210px;
+
+  .subtitle {
+    text-align: left;
+  }
+  .checkboxGroup {
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    justify-content: space-between;
+  }
+}
+.redisignCheckboxGroup {
+  display: flex;
+  justify-content: space-between;
+  .checkbox {
+    width: 30%;
+  }
 }

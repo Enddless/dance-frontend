@@ -4,13 +4,13 @@
 .about {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  margin: 0 100px;
+  margin: 0 100px 100px;
 }
 
 .text,
 .galerry {
   grid-column: span 12;
-  @include fluidFontSize(16px, 20px, 1280px, 1920px);
+  
 }
 .text {
   margin-bottom: 30px;
@@ -35,4 +35,9 @@
   left: 50%;
   transform: translate(-50%, -20px);
   margin: 0 auto;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
 }

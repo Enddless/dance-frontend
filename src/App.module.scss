@@ -1,20 +1,4 @@
 @import "./styles/variables.scss";
-@font-face {
-  font-family: $body-family-secondary-regular;
-  src: url("./assets//fonts/gothampro.ttf");
-}
-@font-face {
-  font-family: $body-family-secondary-bold;
-  src: url("./assets//fonts/gothampro_bold.ttf");
-}
-@font-face {
-  font-family: $body-family-secondary-medium;
-  src: url("./assets//fonts/gothampro_medium.ttf");
-}
-@font-face {
-  font-family: $body-family-secondary-black;
-  src: url("./assets//fonts/gothampro_black.ttf");
-}
 * {
   margin: 0;
   padding: 0;
@@ -26,13 +10,43 @@ body {
   margin: 0 auto;
   text-align: justify;
   background: $body-background-primary;
-  color: $body-color-primary;
-  font-family: $body-family-primary;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 33px;
-  letter-spacing: 0.4px;
+  @include TextPrimary;
+}
+h1 {
+  @include H1;
+}
+h2 {
+  @include H2;
+}
+h3 {
+  @include H3;
+}
+h4 {
+  @include H4;
+}
+h5 {
+  @include H5;
+}
+input,
+textarea {
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: 4px;
+  background: $white;
+  box-shadow: 2px 6px 10px 0px rgba(0, 0, 0, 0.1);
+  padding: 13px 10px;
+  cursor: pointer;
+  @include TextFieldPlaceholder;
+}
+input:hover,
+textarea:hover {
+  outline: 1px solid #ffa800;
+}
+
+input:focus,
+textarea:focus {
+  outline: 1px solid #3aa31e;
 }
 //scrollbar
 body::-webkit-scrollbar {
@@ -42,13 +56,13 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-  background: #71856C;
+  background: #71856c;
   border-radius: 10px 10px 10px 10px;
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: #FDF8F0;
-  border:1px solid #71856C;
+  background-color: #fdf8f0;
+  border: 1px solid #71856c;
   border-radius: 10px 10px 10px 10px;
 }
 .app {
@@ -62,31 +76,27 @@ li {
   list-style-type: none;
 }
 
-h1 {
-  text-align: center;
-  font-size: 36px;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: 1.44px;
-  margin-bottom: 30px;
-  color: $title-color-default;
-  font-family: $body-family-secondary-black;
-}
-h2 {
-  color: $subtitle-color-default;
-  font-family: $body-family-secondary-bold;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: normal;
-  letter-spacing: 0.96px;
-}
-h6 {
-  font-family: $body-family-secondary-regular;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: normal;
-  letter-spacing: 0.72px;
-}
+// h1 {
+//   text-align: center;
+//   font-size: 36px;
+//   font-weight: 400;
+//   line-height: normal;
+//   letter-spacing: 1.44px;
+//   color: $title-color-default;
+// }
+// h2 {
+//   color: $subtitle-color-default;
+//   font-size: 24px;
+//   font-weight: 700;
+//   line-height: normal;
+//   letter-spacing: 0.96px;
+// }
+// h6 {
+//   font-size: 18px;
+//   font-weight: 700;
+//   line-height: normal;
+//   letter-spacing: 0.72px;
+// }
 .blurContent {
   filter: blur(15px);
   background: $blur-background;

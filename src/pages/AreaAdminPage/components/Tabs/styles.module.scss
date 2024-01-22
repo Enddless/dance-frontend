@@ -1,19 +1,23 @@
 @import "../../../../styles/variables.scss";
 
+.logoContainer {
+  padding: 10px 40px 10px;
+}
 .menu {
     margin-top: 10px;
+    @include TextLink;
   }
   .menuItem {
     display: block;
     width:100%;
-    padding:15px 0 15px 30px;
+    padding:13px 0 13px 20px;
     
   }
   .menuItem:hover {
-    background: $btn-background-hover;
+    background: $btn-background-five;
   }
   .active {
-    background: $btn-background-default;
+    background: $btn-background-one;
   }
   
   .logout {
@@ -25,4 +29,8 @@
     & svg {
       margin-right:20px;
     }
+  }
+  .controls {
+    position:relative;
+    bottom:0;
   }
