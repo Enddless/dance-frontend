@@ -1,11 +1,15 @@
 @import "../../../../../../styles/variables.scss";
 
+.container {
+  @include TextSecondary;
+}
 .controlGroup {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   column-gap: 20px;
   margin-bottom: 20px;
+
 }
 .editText {
   width: 100%;

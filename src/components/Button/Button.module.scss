@@ -92,4 +92,21 @@
   background: $btn-background-four;
 }
 
+// ***** кнопки меню в ЛК пользователя ******
+.btnDashboardAdmin {
+  @include H5;
+  color: $btn-color-two;
+  outline: 1px solid $btn-border;
+  background: transparent;
+
+}
+.btnDashboardAdmin:hover,
+.activeDashboardMenu {
+  background: $btn-background-three;
+  color: $btn-color-one;
+  outline: 1px solid $btn-background-three;
+}
+
+
+
 //добавить кнопки для отзыва и записи для пользователя

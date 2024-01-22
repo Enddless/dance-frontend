@@ -54,7 +54,7 @@ const Personal = () => {
                   </div>
 
                   <div className={css.staffDescr}>
-                    <h6>{teacher.teachersName}</h6>
+                    <h5>{teacher.teachersName}</h5>
                     <p>{teacher.description}</p>
                   </div>
                 </div>

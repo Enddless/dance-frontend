@@ -12,6 +12,7 @@ interface ButtonProps {
   onMouseLeave?: () => void;
   disabled?: boolean;
   activeMenuUser?: boolean;
+  activeDashboardMenu?: boolean;
 }
 
 const Button = ({
@@ -23,6 +24,7 @@ const Button = ({
   onMouseLeave,
   disabled,
   activeMenuUser,
+  activeDashboardMenu,
 }: ButtonProps) => {
   //классы для нажатых кнопок, переделать в switch/case
   const enterButton = cls === "btn-enter";
@@ -37,6 +39,9 @@ const Button = ({
   const recordButton = cls === "btn-rec"
   //admin
   const add = cls === "add";
+  const dashboardMenuAdmin = cls === "dashboardMenuAdmin";
+  const activeDashboardMenuAdmin = activeDashboardMenu;
+
 
   const classNamesList = classNames(css.btn, {
     [css.btnEnter]: enterButton,
@@ -49,6 +54,8 @@ const Button = ({
     [css.btnDelete]: deleteButton,
     [css.btnAdd]: add,
     [css.btnRecord] : recordButton,
+    [css.btnDashboardAdmin] : dashboardMenuAdmin,
+    [css.activeDashboardMenu] : activeDashboardMenuAdmin,
   });
 
   return (

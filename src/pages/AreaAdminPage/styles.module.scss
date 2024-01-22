@@ -2,20 +2,16 @@
 
 .container {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: 320px 1fr;
   background: #fdf8f0;
   column-gap: 20px;
   min-height: 100vh;
 }
 .sidebar {
-  display: fixed;
-  left: 0;
-  top: 0;
   background: $sidebar-background;
   color: $sidebar-color;
-  grid-column: span 2;
-  // padding-bottom: 40px;
-}
-.logoContainer {
-  padding: 10px 40px 10px;
+  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

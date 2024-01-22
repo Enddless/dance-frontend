@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import Layout from "./components/Layout";
 import css from "./styles.module.scss";
-import Logo from "../../components/Logo/Logo";
 import {
   AuthorizationStatus,
   DEFAULT_BUTTON_AREA_ADMIN,
@@ -39,10 +38,6 @@ const AreaAdminPage = () => {
   return (
     <div className={css.container}>
       <aside className={css.sidebar}>
-        <div className={css.logoContainer}>
-          <Logo />
-        </div>
-
         <TabsAdmin />
       </aside>
 

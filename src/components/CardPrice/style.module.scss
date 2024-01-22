@@ -42,6 +42,12 @@
   .subtitle {
     text-align: left;
   }
+  .checkboxGroup {
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    justify-content: space-between;
+  }
 }
 .redisignCheckboxGroup {
   display: flex;
@@ -49,10 +55,4 @@
   .checkbox {
     width: 30%;
   }
-}
-.checkboxGroup {
-  display: flex;
-  flex-direction: row;
-  width: 70%;
-  justify-content: space-between;
 }
