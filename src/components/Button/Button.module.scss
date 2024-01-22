@@ -46,7 +46,7 @@
 .activeMenuUser {
   background: $btn-background-three;
   color: $btn-color-one;
-  outline: none;
+  outline: 1px solid $btn-background-three;
 }
 
 // ***** кнопки сохранения, удаления, записи в ЛК пользователя ******
