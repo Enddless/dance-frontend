@@ -41,6 +41,7 @@ const Button = ({
   const add = cls === "add";
   const dashboardMenuAdmin = cls === "dashboardMenuAdmin";
   const activeDashboardMenuAdmin = activeDashboardMenu;
+  const cancelButton = cls === "btn-cancel"
 
 
   const classNamesList = classNames(css.btn, {
@@ -56,6 +57,7 @@ const Button = ({
     [css.btnRecord] : recordButton,
     [css.btnDashboardAdmin] : dashboardMenuAdmin,
     [css.activeDashboardMenu] : activeDashboardMenuAdmin,
+    [css.btnCancel] : cancelButton,
   });
 
   return (

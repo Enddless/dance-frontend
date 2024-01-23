@@ -14,7 +14,7 @@ const MainPage = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(mainPageData());
-  }, []);
+  }, [dispatch]);
   return (
     <>
       <Header />

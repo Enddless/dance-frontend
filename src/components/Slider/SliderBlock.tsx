@@ -29,7 +29,6 @@ const settings: ISettings = {
 };
 const settingsForStaff: ISettings = {
   dots: true,
-  // arrow: true,
   infinite: true,
   speed: 500,
   slidesToShow: 4,

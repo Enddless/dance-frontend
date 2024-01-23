@@ -92,7 +92,7 @@
   background: $btn-background-four;
 }
 
-// ***** кнопки меню в ЛК пользователя ******
+// ***** кнопки  в ЛК администратора ******
 .btnDashboardAdmin {
   @include H5;
   color: $btn-color-two;
@@ -107,6 +107,12 @@
   outline: 1px solid $btn-background-three;
 }
 
-
+.btnCancel {
+  background: $btn-background-five;
+  color: $btn-color-one;
+}
+.btnCancel:hover {
+  background: $btn-background-four;
+}
 
 //добавить кнопки для отзыва и записи для пользователя
