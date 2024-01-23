@@ -1,8 +1,9 @@
 export enum AppRoute {
   Root = "/",
+  Modal = "/modal",
   Login = "/login",
-  Registration = "/login/registration",
-  Recovery = "/login/recovery",
+  Registration = "/registration",
+  Recovery = "/recovery",
   Dashboard = "/dashboard",
   Reviews = "/reviews",
   PersonalArea = "/inbox",

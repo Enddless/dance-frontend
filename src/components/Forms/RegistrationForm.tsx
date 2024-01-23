@@ -6,6 +6,8 @@ import { registration } from "../../services/thunk/auth";
 import EyeIcon from "../EyeIcon";
 import InputCheckbox from "../Input-checkbox";
 import Button from "../Button/Button";
+import { Link } from "react-router-dom";
+import { AppRoute } from "../../const/route";
 
 const RegistrationForm = () => {
   const [errorMessage, setErrorMessage] = useState("");
@@ -78,8 +80,8 @@ const RegistrationForm = () => {
   ]);
   return (
     <>
-      {!successForm ? (
-        <>
+      {/* {!successForm ? (
+        <> */}
           <h3>Регистрация</h3>
           <form onSubmit={handleSubmit} className={css.form}>
             <fieldset>
@@ -176,11 +178,14 @@ const RegistrationForm = () => {
               </label>
             </div>
           </form>
+          <Link to={`${AppRoute.Modal}${AppRoute.Login}`} state={{ previousLocation: location }}>
+            <label>Назад</label>
+          </Link>
         </>
-      ) : (
-        <ConfirmationForm email={formData.email} password={formData.password} />
-      )}
-    </>
+      // ) : (
+      //   <ConfirmationForm email={formData.email} password={formData.password} />
+      // )}
+    // </>
   );
 };
 

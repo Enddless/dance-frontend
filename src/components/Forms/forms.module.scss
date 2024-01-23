@@ -1,27 +1,5 @@
 @import "../../styles/variables.scss";
 
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  max-width: 621px;
-  padding: 60px 100px 81px 100px;
-  justify-content: center;
-  align-items: center;
-  text-align: left;
-  border-radius: 30px;
-  background: $form-enter-background;
-  color: $form-enter-color;
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, 0);
-  z-index: 402;
-  h3 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-}
-
 .content {
   display: flex;
   flex-direction: column;

@@ -1,9 +1,5 @@
 import { useState } from "react";
 import css from "./forms.module.scss";
-import RecoveryForm from "./RecoveryForm";
-import RegistrationForm from "./RegistrationForm";
-import classNames from "classnames";
-import Close from "../Close/Close";
 import { useAppDispatch } from "../../services/type-service";
 import {
   getCurrentUserData,
@@ -12,19 +8,14 @@ import {
 } from "../../services/thunk/auth";
 import EyeIcon from "../EyeIcon";
 import Button from "../Button/Button";
+import { Link, useLocation } from "react-router-dom";
+import { AppRoute } from "../../const/route";
 
-type IModalFormProps = {
-  openModalForm?: () => void;
-};
 
-const LoginForm = ({ openModalForm }: IModalFormProps) => {
+const LoginForm = () => {
+  const location = useLocation();
   const [errorMessage, setErrorMessage] = useState("");
   const dispatch = useAppDispatch();
-
-  //состояния форм
-  const [isLoginForm, setIsLoginForm] = useState(true);
-  const [isRecovery, setIsRecovery] = useState(false);
-  const [isRegistration, setIsRegistration] = useState(false);
 
   //состояние инпутов главной формы
   const [item, setItem] = useState({
@@ -54,10 +45,6 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
       .then(() => {
         dispatch(getCurrentUserData());
       })
-      .then(() => {
-        setIsLoginForm(!isLoginForm);
-        if (openModalForm) openModalForm();
-      })
       .catch(() => {
         setErrorMessage("Неправильный логин или пароль");
       });
@@ -69,81 +56,72 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
     setShowPassword(!showPassword);
   };
 
-  const classNamesList = classNames(css.modalForm, {
-    [css.modalFormDisabled]: isRecovery || isRegistration,
-  });
-
   return (
-    <div className={css.wrapper}>
-      <Close openModalForm={openModalForm} />
-      {isLoginForm && (
-        <div className={classNamesList}>
-          <h3>Вход</h3>
-          <div className={css.content}>
-            <form onSubmit={handleSubmit} className={css.form}>
-              <fieldset>
-                <label htmlFor="tel">
-                  Адрес электронной почты
-                  <input
-                    type="email"
-                    value={item.email}
-                    onChange={handleChange}
-                    name="email"
-                    className={
-                      errorMessage && errorMessage !== ""
-                        ? `${css.errorInput}`
-                        : ""
-                    }
-                    placeholder="example@gmail.com"
-                  />
-                </label>
-                {errorMessage && errorMessage !== "" && (
-                  <span className={css.errorMessage}>
-                    Неправильный логин или пароль
-                  </span>
-                )}
-              </fieldset>
+    <>
+      <h3>Вход</h3>
+      <div className={css.content}>
+        <form onSubmit={handleSubmit} className={css.form}>
+          <fieldset>
+            <label htmlFor="tel">
+              Адрес электронной почты
+              <input
+                type="email"
+                value={item.email}
+                onChange={handleChange}
+                name="email"
+                className={
+                  errorMessage && errorMessage !== "" ? `${css.errorInput}` : ""
+                }
+                placeholder="example@gmail.com"
+              />
+            </label>
+            {errorMessage && errorMessage !== "" && (
+              <span className={css.errorMessage}>
+                Неправильный логин или пароль
+              </span>
+            )}
+          </fieldset>
 
-              <fieldset>
-                <label htmlFor="password">
-                  Пароль
-                  <input
-                    value={item.password}
-                    onChange={handleChange}
-                    name="password"
-                    type={showPassword ? "text" : "password"}
-                    className={
-                      errorMessage && errorMessage !== ""
-                        ? `${css.errorInput}`
-                        : ""
-                    }
-                    placeholder="*****"
-                  />
-                  <div className={css.eyeIcon}>
-                    <EyeIcon
-                      showPassword={showPassword}
-                      togglePasswordVisibility={togglePasswordVisibility}
-                    />
-                  </div>
-                </label>
-              </fieldset>
-
-              <div className={css.linkGroup}>
-                <label onClick={() => setIsRegistration(!isRegistration)}>
-                  Зарегистрироваться
-                </label>
-                <label onClick={() => setIsRecovery(!isRecovery)}>
-                  Забыли пароль?
-                </label>
+          <fieldset>
+            <label htmlFor="password">
+              Пароль
+              <input
+                value={item.password}
+                onChange={handleChange}
+                name="password"
+                type={showPassword ? "text" : "password"}
+                className={
+                  errorMessage && errorMessage !== "" ? `${css.errorInput}` : ""
+                }
+                placeholder="*****"
+              />
+              <div className={css.eyeIcon}>
+                <EyeIcon
+                  showPassword={showPassword}
+                  togglePasswordVisibility={togglePasswordVisibility}
+                />
               </div>
-              <Button text="Войти" cls="btn-reg"/>
-            </form>
+            </label>
+          </fieldset>
+
+          <div className={css.linkGroup}>
+            <Link
+              to={`${AppRoute.Modal}${AppRoute.Registration}`}
+              state={{ previousLocation: location }}
+            >
+              <label>Зарегистрироваться</label>
+            </Link>
+            <Link
+              to={`${AppRoute.Modal}${AppRoute.Recovery}`} 
+              state={{ previousLocation: location }}
+            >
+              <label>Забыли пароль?</label>
+            </Link>
           </div>
-        </div>
-      )}
-      {isRecovery && <RecoveryForm />}
-      {isRegistration && <RegistrationForm />}
-    </div>
+          <Button text="Войти" cls="btn-reg" />
+        </form>
+      </div>
+    </>
   );
 };
 

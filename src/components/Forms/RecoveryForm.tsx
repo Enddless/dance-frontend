@@ -1,6 +1,8 @@
 import { useState } from "react";
 import css from "./forms.module.scss";
 import Button from "../Button/Button";
+import { Link } from "react-router-dom";
+import { AppRoute } from "../../const/route";
 
 const RecoveryForm = () => {
   const [inputData, setInputData] = useState("");
@@ -22,8 +24,14 @@ const RecoveryForm = () => {
           />
         </label>
 
-        <Button text="Отправить пароль на email" cls="btn-reg"/>
+        <Button text="Отправить пароль на email" cls="btn-reg" />
       </form>
+      <Link
+        to={`${AppRoute.Modal}${AppRoute.Login}`}
+        state={{ previousLocation: location }}
+      >
+        <label>Назад</label>
+      </Link>
     </>
   );
 };

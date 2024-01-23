@@ -3,21 +3,23 @@ import Logo from "../Logo/Logo";
 import Button from "../Button/Button";
 import { useEffect, useState } from "react";
 import { pagesHeader } from "../../mocks/mocks";
-import LoginForm from "../Forms/LoginForm";
-import useTheme from "../../hooks/useTheme";
-import { Link } from "react-router-dom";
+// import LoginForm from "../Forms/LoginForm";
+import { Link, useLocation } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import AreaForm from "../drop-down-menu/AreaForm";
 import { useAppSelector } from "../../services/type-service";
 import sprite from "../../assets/sprite.svg";
+import { AppRoute } from "../../const/route";
+
 
 const Header = () => {
-  const { isDark, setIsDark } = useTheme();
+  const location = useLocation();
   //  открытие модалки регистрации или входа
   const [isOpenModal, setIsModal] = useState(false);
   const openModalForm = () => {
+    
     setIsModal(!isOpenModal);
-    setIsDark(!isDark);
+    // setIsDark(!isDark);
   };
 
   //проверка авторизации пользователя
@@ -85,14 +87,14 @@ const Header = () => {
       {(authorizationStatus === "NO_AUTH" ||
         authorizationStatus === "UNKNOWN" ||
         userRole === "") && (
-        <>
+        <Link to={`${AppRoute.Modal}${AppRoute.Login}`} state={{ previousLocation: location }}>
           <Button
             text="Вход"
             cls="btn-enter"
-            openModalForm={openModalForm}
+            // openModalForm={openModalForm}
           ></Button>
-          {isOpenModal && <LoginForm openModalForm={openModalForm} />}
-        </>
+          {/* {isOpenModal && <LoginForm openModalForm={openModalForm} />} */}
+        </Link>
       )}
     </div>
   );
