@@ -7,10 +7,8 @@ import EyeIcon from "../EyeIcon";
 import InputCheckbox from "../Input-checkbox";
 import Button from "../Button/Button";
 import { authSlice } from "../../store/slices/auth";
-import { useNavigate } from "react-router";
 
 const RegistrationForm = () => {
-  const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
   const [checkPassword, setCheckPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -39,7 +37,6 @@ const RegistrationForm = () => {
       .then(() => {
         setSuccessForm(!successForm);
       })
-      .then(() => navigate("/"))
       .catch(() => {
         setErrorMessage("Такой логин уже существует");
       });
@@ -181,7 +178,7 @@ const RegistrationForm = () => {
             </div>
           </form>
 
-          <label onClick={handleBack}> Назад </label>
+          <label className={css.backButton} onClick={handleBack}> Назад </label>
         </>
       ) : (
         <ConfirmationForm email={formData.email} password={formData.password} />

@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import LoginForm from "../LoginForm";
-import Close from "../../Close/Close";
 import css from "./styles.module.scss";
 import RegistrationForm from "../RegistrationForm";
 import { useAppDispatch, useAppSelector } from "../../../services/type-service";
 import RecoveryForm from "../RecoveryForm";
 import { authSlice } from "../../../store/slices/auth";
+import ControlButton from "../../controls-button";
 
 export function Modal() {
   const navigate = useNavigate();
@@ -17,12 +17,19 @@ export function Modal() {
       <div className={css.noModalWrapper}>
         <div className={css.modal}>
           <div className={css.closeContainer}>
-            <Close
-              openModalForm={() => {
+            <ControlButton
+              id="close"
+              onClick={() => {
                 navigate("/");
                 dispatch(authSlice.actions.changeFormActive("login"));
               }}
             />
+            {/* <Close
+              openModalForm={() => {
+                navigate("/");
+                dispatch(authSlice.actions.changeFormActive("login"));
+              }}
+            /> */}
           </div>
           <div className={css.modalForm}>
             {idData === "login" && <LoginForm />}

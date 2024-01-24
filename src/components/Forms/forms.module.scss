@@ -108,4 +108,13 @@
   display: none;
 }
 
-
+.backButton {
+  cursor: pointer;
+  position: absolute;
+  bottom: 30px;
+  @include TextFieldTitle;
+}
+.backButton:hover {
+  color: $btn-background-one;
+  transition: all 150ms ease-in;
+}
