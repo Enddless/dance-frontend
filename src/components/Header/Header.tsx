@@ -30,6 +30,7 @@ const Header = () => {
   }, [user]);
 
   const userRole = useAppSelector((state) => state.auth.userRole)?.role;
+
   return (
     <div className={css.header}>
       <Logo />

@@ -8,6 +8,7 @@ import {
   addTeacherPhoto,
   changeAboutStudio,
   changeBanner,
+  changeLogotype,
   deleteBanner,
   deleteHall,
   deleteTeacher,
@@ -23,6 +24,7 @@ const initialState: StateStudio = {
   isBannerLoading: LoadingStatus.Idle,
   isHallsLoading: LoadingStatus.Idle,
   isTeachersLoading: LoadingStatus.Idle,
+  isLogotypeLoading: LoadingStatus.Idle, 
   aboutStudioData: null,
   bannersData: [],
   hallsData: [],
@@ -92,6 +94,17 @@ export const studioSlice = createSlice({
       })
       .addCase(deleteBanner.rejected, (state) => {
         state.isBannerLoading = LoadingStatus.Rejected;
+      })
+      // ***** change logotype*****
+      .addCase(changeLogotype.pending, (state) => {
+        state.isLogotypeLoading = LoadingStatus.Pending;
+      })
+      .addCase(changeLogotype.fulfilled, (state, action) => {
+        state.message = action.payload;
+        state.isLogotypeLoading = LoadingStatus.Fulfilled;
+      })
+      .addCase(changeLogotype.rejected, (state) => {
+        state.isLogotypeLoading = LoadingStatus.Rejected;
       })
       // ***** halls *****
       .addCase(getHalls.pending, (state) => {

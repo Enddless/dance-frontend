@@ -9,7 +9,6 @@ import { Provider } from "react-redux";
 import { getCurrentUserData, getCurrentUserRole } from "./services/thunk/auth.ts";
 
 
-
 store.dispatch(getCurrentUserData());
 store.dispatch(getCurrentUserRole());
 

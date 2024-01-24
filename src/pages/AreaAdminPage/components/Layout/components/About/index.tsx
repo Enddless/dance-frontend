@@ -10,6 +10,7 @@ import {
   aboutStudio,
   changeAboutStudio,
 } from "../../../../../../services/thunk/studio";
+import LogotypeSettings from "../Logotype";
 
 const AboutSettings = () => {
   const dispatch = useAppDispatch();
@@ -26,9 +27,9 @@ const AboutSettings = () => {
   const [isEditing, setIsEditing] = useState(false);
 
   //получить описание с сервера
-  useEffect(() => {
-    dispatch(aboutStudio());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(aboutStudio());
+  // }, [dispatch]);
 
   // Отправка описания на сервер
   const handleBlur = () => {
@@ -50,32 +51,35 @@ const AboutSettings = () => {
     setIsEditing(false);
   };
   return (
-    <div className={css.container}>
-      <div className={css.controlGroup}>
-        <ControlButton
-          id="edit"
-          onClick={() => {
-            setIsEditing(true);
-            setIsActive(true);
-          }}
-          isActive={isActive}
-        />
-        <ControlButton id="delete" onClick={deleteData} />
+    <>
+      <div className={css.container}>
+        <div className={css.controlGroup}>
+          <ControlButton
+            id="edit"
+            onClick={() => {
+              setIsEditing(true);
+              setIsActive(true);
+            }}
+            isActive={isActive}
+          />
+          <ControlButton id="delete" onClick={deleteData} />
+        </div>
+        {isEditing ? (
+          <textarea
+            rows={25}
+            value={description}
+            onBlur={handleBlur}
+            onChange={(e) => setDescription(e.target.value)}
+            className={css.editText}
+          />
+        ) : (
+          <>
+            <p style={{ whiteSpace: "pre-line" }}>{description}</p>
+          </>
+        )}
       </div>
-      {isEditing ? (
-        <textarea
-          rows={25}
-          value={description}
-          onBlur={handleBlur}
-          onChange={(e) => setDescription(e.target.value)}
-          className={css.editText}
-        />
-      ) : (
-        <>
-          <p style={{ whiteSpace: "pre-line" }}>{description}</p>
-        </>
-      )}
-    </div>
+      <LogotypeSettings />
+    </>
   );
 };
 

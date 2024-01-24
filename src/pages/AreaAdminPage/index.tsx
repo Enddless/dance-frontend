@@ -35,6 +35,7 @@ const AreaAdminPage = () => {
       navigate(`${DEFAULT_BUTTON_AREA_ADMIN.path}`);
     }
   }, [navigate, location]);
+
   return (
     <div className={css.container}>
       <aside className={css.sidebar}>

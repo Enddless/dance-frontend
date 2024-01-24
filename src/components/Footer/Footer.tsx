@@ -7,6 +7,7 @@ import { HashLink } from "react-router-hash-link";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
+
   return (
     <div className={css.footer}>
       <div className={css.logo}>
