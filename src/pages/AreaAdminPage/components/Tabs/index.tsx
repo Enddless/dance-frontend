@@ -5,13 +5,10 @@ import { useAppDispatch } from "../../../../services/type-service";
 import css from "./styles.module.scss";
 import { adminSlice } from "../../../../store/slices/admin";
 import sprite from "../../../../assets/sprite.svg";
-import { memo, useEffect } from "react";
+import { memo } from "react";
 import { logout } from "../../../../services/thunk/auth";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../../../components/Logo/Logo";
-import { aboutStudio } from "../../../../services/thunk/studio";
-
-
 
 function TabsAdminMemo() {
   const navigate = useNavigate();
@@ -27,9 +24,7 @@ function TabsAdminMemo() {
   const returnHome = () => {
     navigate(AppRoute.Root);
   };
-  useEffect(() => {
-    dispatch(aboutStudio());
-  }, [dispatch]);
+
   return (
     <>
       <div className={css.content}>

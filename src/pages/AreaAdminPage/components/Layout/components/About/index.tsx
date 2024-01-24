@@ -10,7 +10,7 @@ import {
   aboutStudio,
   changeAboutStudio,
 } from "../../../../../../services/thunk/studio";
-import LogotypeSettings from "../Logotype";
+import LogotypeSettings from "../LogotypeSettings";
 
 const AboutSettings = () => {
   const dispatch = useAppDispatch();
