@@ -7,18 +7,20 @@ import classNames from "classnames";
 
 const About = () => {
   const main = useAppSelector((state) => state.main.mainPage);
-  const description = main?.Atelie.description;
+  const atelieData = main?.Atelie;
+  const description = atelieData?.description;
   const hallsData = main?.Halls;
 
   const lengthMoreDefault = hallsData && hallsData?.length > 3;
   const classNameList = classNames(css.galerry, {
     [css.tile]: lengthMoreDefault,
   });
+
   return (
     <section className={css.about}>
       <TitleSection title="О студии" />
       <div className={css.text}>
-        <p>{description}</p>
+      <p>{atelieData !==null ? `${description}` : 'Здесь еще нет описания' }</p>
       </div>
       <div className={classNameList}>
         {hallsData &&

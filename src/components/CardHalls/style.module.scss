@@ -6,11 +6,13 @@
 }
 .photoContainer {
   position: relative;
+  display: flex;
   box-shadow: 6px 6px 20px 0px rgba(0, 0, 0, 0.15);
+  margin-bottom:10px;
 }
 .caption {
   position: absolute;
-  bottom: 20px;
+  bottom: 0px;
   left: 50%;
   transform: translate(-50%, -20px);
   margin: 0 auto;

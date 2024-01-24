@@ -128,7 +128,7 @@ const EditHallForm = ({ onClick, id }: TEditFormProps) => {
               cls="btn-save"
               openModalForm={sendHallData}
             />
-            <Button text="Отменить" />
+            <Button text="Отменить" cls="btn-cancel"/>
           </div>
         </div>
       </form>

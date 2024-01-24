@@ -45,16 +45,17 @@ export type StateStudio = {
   isStudioDataLoading: LoadingStatus;
   isBannerLoading: LoadingStatus;
   isHallsLoading: LoadingStatus;
-  isTeachersLoading:LoadingStatus;
+  isTeachersLoading: LoadingStatus;
   aboutStudioData: AboutStudioData | null;
   bannersData: BannersData[] | null;
   hallsData: HallData[] | null;
   currentHallData: HallData | null;
   techersData: TeacherData[] | null;
-  currentTeacherData:TeacherData | null;
+  currentTeacherData: TeacherData | null;
 };
 export type AboutStudioData = {
   idAtelier?: number;
+  photoLogo: string;
   description: string;
 };
 export type HallData = {
@@ -111,4 +112,8 @@ export type PhotoTeacher = {
 };
 export type CurrentTeacherId = {
   idTeachers: number;
+};
+
+export type Logotype = {
+  photoLogo: File;
 };
