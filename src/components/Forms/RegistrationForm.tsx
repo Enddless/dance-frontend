@@ -6,10 +6,11 @@ import { registration } from "../../services/thunk/auth";
 import EyeIcon from "../EyeIcon";
 import InputCheckbox from "../Input-checkbox";
 import Button from "../Button/Button";
-import { Link } from "react-router-dom";
-import { AppRoute } from "../../const/route";
+import { authSlice } from "../../store/slices/auth";
+import { useNavigate } from "react-router";
 
 const RegistrationForm = () => {
+  const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
   const [checkPassword, setCheckPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -38,6 +39,7 @@ const RegistrationForm = () => {
       .then(() => {
         setSuccessForm(!successForm);
       })
+      .then(() => navigate("/"))
       .catch(() => {
         setErrorMessage("Такой логин уже существует");
       });
@@ -78,10 +80,13 @@ const RegistrationForm = () => {
     formData.dublPassword,
     formData.email,
   ]);
+  const handleBack = () => {
+    dispatch(authSlice.actions.changeFormActive("login"));
+  };
   return (
     <>
-      {/* {!successForm ? (
-        <> */}
+      {!successForm ? (
+        <>
           <h3>Регистрация</h3>
           <form onSubmit={handleSubmit} className={css.form}>
             <fieldset>
@@ -123,7 +128,9 @@ const RegistrationForm = () => {
               <div className={css.eyeIcon}>
                 <EyeIcon
                   showPassword={showPassword}
-                  togglePasswordVisibility={() => setShowPassword(!showPassword)}
+                  togglePasswordVisibility={() =>
+                    setShowPassword(!showPassword)
+                  }
                 />
               </div>
             </fieldset>
@@ -141,7 +148,9 @@ const RegistrationForm = () => {
               <div className={css.eyeIcon}>
                 <EyeIcon
                   showPassword={showDoublePassword}
-                  togglePasswordVisibility={() => setShowDoublePassword(!showDoublePassword)}
+                  togglePasswordVisibility={() =>
+                    setShowDoublePassword(!showDoublePassword)
+                  }
                 />
               </div>
 
@@ -151,13 +160,6 @@ const RegistrationForm = () => {
                 )}
             </fieldset>
 
-            {/* <button
-              type="submit"
-              disabled={!isValidForm}
-              className={!isValidForm ? `${css.disabled}` : ""}
-            >
-              
-            </button> */}
             <Button
               text="Зарегистрироваться"
               cls="btn-reg"
@@ -178,14 +180,13 @@ const RegistrationForm = () => {
               </label>
             </div>
           </form>
-          <Link to={`${AppRoute.Modal}${AppRoute.Login}`} state={{ previousLocation: location }}>
-            <label>Назад</label>
-          </Link>
+
+          <label onClick={handleBack}> Назад </label>
         </>
-      // ) : (
-      //   <ConfirmationForm email={formData.email} password={formData.password} />
-      // )}
-    // </>
+      ) : (
+        <ConfirmationForm email={formData.email} password={formData.password} />
+      )}
+    </>
   );
 };
 

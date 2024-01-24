@@ -1,44 +1,33 @@
-import { useEffect, useRef } from "react";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import LoginForm from "../LoginForm";
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import Close from "../../Close/Close";
 import css from "./styles.module.scss";
-
-
+import RegistrationForm from "../RegistrationForm";
+import { useAppDispatch, useAppSelector } from "../../../services/type-service";
+import RecoveryForm from "../RecoveryForm";
+import { authSlice } from "../../../store/slices/auth";
 
 export function Modal() {
-  const location = useLocation();
-  const modalRef = useRef();
-  const { id } = useParams();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const observerRefValue = modalRef.current;
-    disableBodyScroll(observerRefValue);
-
-    return () => {
-      if (observerRefValue) {
-        enableBodyScroll(observerRefValue);
-      }
-    };
-  }, []);
-
+  const dispatch = useAppDispatch();
+  const idData = useAppSelector((state) => state.auth.formAuthActiveId);
 
   return (
-    <div ref={modalRef} className={css.modalWrapper}>
+    <div className={css.modalWrapper}>
       <div className={css.noModalWrapper}>
         <div className={css.modal}>
           <div className={css.closeContainer}>
-            <Close openModalForm={() => navigate("/")} />
+            <Close
+              openModalForm={() => {
+                navigate("/");
+                dispatch(authSlice.actions.changeFormActive("login"));
+              }}
+            />
           </div>
           <div className={css.modalForm}>
-            {id === "login" && <LoginForm />}
-            {/* ЗДЕСЬ ДОЛЖНЫ БЫТЬ РОУТЫ НЕ ВЛОЖЕННЫЕ В ФОРМУ ВХОДА */}
-            
-            {/* {id === "registration" && <RegistrationForm />} */}
-            {/* {id === "recovery" && <RecoveryForm />} */}
-            {/* {children} */}
+            {idData === "login" && <LoginForm />}
+            {idData === "registration" && <RegistrationForm />}
+            {idData === "recovery" && <RecoveryForm />}
           </div>
         </div>
       </div>

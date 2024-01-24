@@ -1,11 +1,15 @@
 import { useState } from "react";
 import css from "./forms.module.scss";
 import Button from "../Button/Button";
-import { Link } from "react-router-dom";
-import { AppRoute } from "../../const/route";
+import { useAppDispatch } from "../../services/type-service";
+import { authSlice } from "../../store/slices/auth";
 
 const RecoveryForm = () => {
+  const dispatch = useAppDispatch();
   const [inputData, setInputData] = useState("");
+  const handleBack = () => {
+    dispatch(authSlice.actions.changeFormActive("login"));
+  };
 
   return (
     <>
@@ -26,12 +30,7 @@ const RecoveryForm = () => {
 
         <Button text="Отправить пароль на email" cls="btn-reg" />
       </form>
-      <Link
-        to={`${AppRoute.Modal}${AppRoute.Login}`}
-        state={{ previousLocation: location }}
-      >
-        <label>Назад</label>
-      </Link>
+      <label onClick={handleBack}> Назад </label>
     </>
   );
 };

@@ -66,3 +66,9 @@ export const ResourceHalls = [
   { id: "b", title: "Зал 2" },
   { id: "c", title: "Зал 3" },
 ];
+
+export const formName = [
+  { id: 1, path: "login" },
+  { id: 2, path: "registration" },
+  { id: 3, path: "recovery" },
+];

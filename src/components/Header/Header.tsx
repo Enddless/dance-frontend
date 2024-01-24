@@ -7,17 +7,17 @@ import { pagesHeader } from "../../mocks/mocks";
 import { Link, useLocation } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import AreaForm from "../drop-down-menu/AreaForm";
-import { useAppSelector } from "../../services/type-service";
+import { useAppDispatch, useAppSelector } from "../../services/type-service";
 import sprite from "../../assets/sprite.svg";
 import { AppRoute } from "../../const/route";
-
+import { authSlice } from "../../store/slices/auth";
 
 const Header = () => {
+  const dispatch = useAppDispatch();
   const location = useLocation();
   //  открытие модалки регистрации или входа
   const [isOpenModal, setIsModal] = useState(false);
   const openModalForm = () => {
-    
     setIsModal(!isOpenModal);
     // setIsDark(!isDark);
   };
@@ -87,7 +87,11 @@ const Header = () => {
       {(authorizationStatus === "NO_AUTH" ||
         authorizationStatus === "UNKNOWN" ||
         userRole === "") && (
-        <Link to={`${AppRoute.Modal}${AppRoute.Login}`} state={{ previousLocation: location }}>
+        <Link
+          to={`${AppRoute.Modal}${AppRoute.Login}`}
+          state={{ previousLocation: location }}
+          onClick={() => dispatch(authSlice.actions.changeFormActive("login"))}
+        >
           <Button
             text="Вход"
             cls="btn-enter"

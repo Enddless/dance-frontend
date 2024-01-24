@@ -11,6 +11,7 @@ export type StateAuth = {
   isUserRoleLoading: LoadingStatus;
   isUserPhotoLoading: LoadingStatus;
   buttonActive: string;
+  formAuthActiveId: string;
 };
 
 export type UserCurrentData = {

@@ -29,6 +29,7 @@ const initialState: StateAuth = {
   isUserRoleLoading: LoadingStatus.Idle,
   isUserPhotoLoading: LoadingStatus.Idle,
   buttonActive: DEFAULT_BUTTON_AREA_PERSONAL.title,
+  formAuthActiveId: "",
 };
 
 export const authSlice = createSlice({
@@ -37,6 +38,9 @@ export const authSlice = createSlice({
   reducers: {
     changeActiveButtonMenuPersonal(state, action: PayloadAction<string>) {
       state.buttonActive = action.payload;
+    },
+    changeFormActive(state, action: PayloadAction<string>) {
+      state.formAuthActiveId = action.payload;
     },
   },
   extraReducers(builder) {

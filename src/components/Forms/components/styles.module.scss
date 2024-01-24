@@ -6,29 +6,19 @@
   top: 0;
   width: 100%;
   height: 100%;
-  // filter: blur(15px);
   background: $blur-background;
   display: flex;
   justify-content: center;
   padding: 100px 20px;
-  overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
-
+  backdrop-filter: blur(5px);
+  z-index: 401;
 }
 
-.noModalWrapper {
-  // max-width: 500px;
-  // font-size: 16px;
-  // line-height: 30px;
-  // background-color: #a4d1c8;
-  // padding: 20px;
-  // margin-top: 50px;
-  // border-radius: 10px;
-}
 .closeContainer {
   position: absolute;
-  top:10px;
-  right:10px;
+  top: 10px;
+  right: 10px;
 }
 .modal {
   display: flex;
@@ -43,7 +33,8 @@
   box-shadow: 6px 6px 20px 0px rgba(0, 0, 0, 0.15);
   color: $form-enter-color;
   z-index: 402;
-  position:relative;
+  position: relative;
+  filter: none;
   h3 {
     text-align: center;
     margin-bottom: 20px;

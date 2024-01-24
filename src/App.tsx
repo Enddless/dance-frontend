@@ -23,9 +23,6 @@ const App = () => {
         <Route path={AppRoute.Dashboard} element={<DashboardPage />} />
         <Route path={AppRoute.Reviews} element={<ReviewsPage />} />
 
-        {/* <Route path={`${AppRoute.Modal}${AppRoute.Login}`} element={<LoginForm />} />
-        <Route path={`${AppRoute.Modal}${AppRoute.Registration}`} element={<RegistrationForm />} />
-        <Route path={AppRoute.Recovery} element={<RecoveryForm />} /> */}
         <Route path={AppRoute.NotFound} element={<NFPage />} />
 
         <Route
@@ -65,11 +62,6 @@ const App = () => {
           ))}
         </Route>
 
-        {/* <Route
-          path={`${AppRoute.Modal}${AppRoute.Login}${AppRoute.Registration}`}
-          element={<RegistrationForm />}
-          element={<Modal />}
-        /> */}
       </Routes>
       {previousLocation && (
         <Routes>

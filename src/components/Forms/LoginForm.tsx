@@ -8,12 +8,11 @@ import {
 } from "../../services/thunk/auth";
 import EyeIcon from "../EyeIcon";
 import Button from "../Button/Button";
-import { Link, useLocation } from "react-router-dom";
-import { AppRoute } from "../../const/route";
-
+import { authSlice } from "../../store/slices/auth";
+import { useNavigate } from "react-router";
 
 const LoginForm = () => {
-  const location = useLocation();
+  const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
   const dispatch = useAppDispatch();
 
@@ -45,6 +44,7 @@ const LoginForm = () => {
       .then(() => {
         dispatch(getCurrentUserData());
       })
+      .then(() => navigate("/"))
       .catch(() => {
         setErrorMessage("Неправильный логин или пароль");
       });
@@ -103,21 +103,23 @@ const LoginForm = () => {
               </div>
             </label>
           </fieldset>
-
           <div className={css.linkGroup}>
-            <Link
-              to={`${AppRoute.Modal}${AppRoute.Registration}`}
-              state={{ previousLocation: location }}
+            <label
+              onClick={() => {
+                dispatch(authSlice.actions.changeFormActive("registration"));
+              }}
             >
-              <label>Зарегистрироваться</label>
-            </Link>
-            <Link
-              to={`${AppRoute.Modal}${AppRoute.Recovery}`} 
-              state={{ previousLocation: location }}
+              Зарегистрироваться
+            </label>
+            <label
+              onClick={() => {
+                dispatch(authSlice.actions.changeFormActive("recovery"));
+              }}
             >
-              <label>Забыли пароль?</label>
-            </Link>
+              Забыли пароль?
+            </label>
           </div>
+
           <Button text="Войти" cls="btn-reg" />
         </form>
       </div>
