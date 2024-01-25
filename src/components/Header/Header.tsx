@@ -19,7 +19,6 @@ const Header = () => {
   const [isOpenModal, setIsModal] = useState(false);
   const openModalForm = () => {
     setIsModal(!isOpenModal);
-    // setIsDark(!isDark);
   };
 
   //проверка авторизации пользователя

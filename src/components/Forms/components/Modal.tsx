@@ -24,12 +24,6 @@ export function Modal() {
                 dispatch(authSlice.actions.changeFormActive("login"));
               }}
             />
-            {/* <Close
-              openModalForm={() => {
-                navigate("/");
-                dispatch(authSlice.actions.changeFormActive("login"));
-              }}
-            /> */}
           </div>
           <div className={css.modalForm}>
             {idData === "login" && <LoginForm />}
