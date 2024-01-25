@@ -1,34 +1,37 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
 .area {
   position: absolute;
   z-index: 402;
   width: 180px;
-  padding: 25px 20px 20px;
+  padding: 45px 15px 30px;
   right: 0px;
-  top: 79px;
+  top: 0px;
   background: white;
-  transform: none;
-  -webkit-transform: none;
-  -moz-transform: none;
-  -ms-transform: none;
-  -o-transform: none;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   border-radius: 10px;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 500ms ease-in-out;
+  -webkit-transition: all 500ms ease-in-out;
+  -moz-transition: all 500ms ease-in-out;
+  -ms-transition: all 500ms ease-in-out;
+  -o-transition: all 500ms ease-in-out;
+
   .closeContainer {
     position: absolute;
-    right: -11px;
-    top: -17px;
+    right: 15px;
+    top: 15px;
     cursor: pointer;
   }
   & button {
-    width: 100%;
     @include TextPrimary;
     background: transparent;
     color: $btn-background-three;
     border: none;
-    justify-content: left;
+    display: flex;
+    justify-content: center;
     cursor: pointer;
   }
   & button:hover {
@@ -47,6 +50,21 @@
     border-bottom: 20px solid white;
   }
 }
+
+.active {
+  opacity: 1;
+  right: 0px;
+  top: 79px;
+  transform: scale(1);
+  transition: all 500ms ease-in-out;
+  -webkit-transition: all 500ms ease-in-out;
+  -moz-transition: all 500ms ease-in-out;
+  -ms-transition: all 500ms ease-in-out;
+  -o-transition: all 500ms ease-in-out;
+}
+
+
+
 @media screen and (max-width: 1400px) {
   .area {
     width: 180px;
