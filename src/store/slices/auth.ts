@@ -1,6 +1,7 @@
 import {
   AuthorizationStatus,
   DEFAULT_BUTTON_AREA_PERSONAL,
+  DEFAULT_FORM_AUTH,
   LoadingStatus,
   NameSpace,
 } from "../../const/const";
@@ -29,7 +30,7 @@ const initialState: StateAuth = {
   isUserRoleLoading: LoadingStatus.Idle,
   isUserPhotoLoading: LoadingStatus.Idle,
   buttonActive: DEFAULT_BUTTON_AREA_PERSONAL.title,
-  formAuthActiveId: "",
+  formAuthActiveId: DEFAULT_FORM_AUTH,
 };
 
 export const authSlice = createSlice({

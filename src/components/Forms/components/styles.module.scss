@@ -13,6 +13,9 @@
   -webkit-overflow-scrolling: touch;
   backdrop-filter: blur(10px);
   z-index: 401;
+
+
+
 }
 
 .closeContainer {
@@ -37,8 +40,11 @@
   top: 50%;
   transform: translate(0, -50%);
   filter: none;
-  h3 {
+  transition: all 3s ease-in-out;
+  h3
+{
     text-align: center;
     margin-bottom: 20px;
   }
 }
+

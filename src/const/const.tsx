@@ -72,3 +72,5 @@ export const formName = [
   { id: 2, path: "registration" },
   { id: 3, path: "recovery" },
 ];
+
+export const DEFAULT_FORM_AUTH = "login";
