@@ -15,7 +15,7 @@ const Banners = () => {
       ) : (
         <p className={css.atention}>
           Здесь еще нет баннеров. Добавить их можно в личном кабинете
-          <Link to={`${AppRoute.AdministratorArea}/news`}>администратора</Link>
+          <Link to={`${AppRoute.AdministratorArea}/news`}> администратора</Link>
         </p>
       )}
     </section>

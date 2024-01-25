@@ -27,10 +27,8 @@ const About = () => {
             `${description}`
           ) : (
             <p className={css.atention}>
-              Здесь еще нет залов. Добавить их можно в личном кабинете
-              <Link to={`${AppRoute.AdministratorArea}/about`}>
-                администратора
-              </Link>
+              Здесь еще нет описания. Добавить его можно в личном кабинете
+              <Link to={`${AppRoute.AdministratorArea}/about`}> администратора</Link>
             </p>
           )}
         </p>
