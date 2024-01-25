@@ -41,6 +41,7 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
+
   }
 }
 .avatar {
@@ -51,8 +52,36 @@
   display: flex;
   text-align: center;
   background-color: $body-background-primary;
+  position: relative;
   // box-shadow: 6px 6px 20px 0px rgba(0, 0, 0, 0.15);
 }
+.circle {
+  position: relative;
+}
+.shadow {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  display: flex;
+  text-align: center;
+  background-color: transparent;
+  position: absolute;
+  box-shadow: 3px 3px 20px 0px rgba(0, 0, 0, 0.15);
+  z-index: -1;
+  top: 0px;
+  left: -1px;
+}
+// .shadow {
+//   content: '';
+//   position: absolute;
+//   top: -3px;
+//   left: -3px;
+//   width: 100%;
+//   
+//   border-radius: 50%;
+//   box-shadow: 6px 6px 20px 0px rgba(0, 0, 0, 0.15);
+//   z-index: -1;
+// }
 
 @media screen and (max-width: 1540px) {
   .slider {
@@ -61,7 +90,7 @@
   .card {
     height: 350px;
   }
-  .avatar {
+  .avatar, .shadow {
     width: 180px;
     height: 180px;
   }
@@ -74,7 +103,7 @@
   .card {
     height: 293px;
   }
-  .avatar {
+  .avatar, .shadow {
     width: 160px;
     height: 160px;
   }
