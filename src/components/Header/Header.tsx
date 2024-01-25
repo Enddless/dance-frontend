@@ -55,7 +55,7 @@ const Header = () => {
         </ul>
       </nav>
       {authorizationStatus === "AUTH" && userRole === "customers" && (
-        <>
+        <div className={css.userControl}>
           <svg width="30" height="30" viewBox="0 0 30 30">
             <use xlinkHref={`${sprite}#notification`}></use>
           </svg>
@@ -71,7 +71,7 @@ const Header = () => {
             ></Button>
             {isOpenModal && <AreaForm openModalForm={openModalForm} />}
           </div>
-        </>
+        </div>
       )}
 
       {authorizationStatus === "AUTH" && userRole === "administrator" && (
@@ -84,6 +84,7 @@ const Header = () => {
           {isOpenModal && <AreaForm openModalForm={openModalForm} />}
         </div>
       )}
+
       {(authorizationStatus === "NO_AUTH" ||
         authorizationStatus === "UNKNOWN" ||
         userRole === "") && (
@@ -92,11 +93,13 @@ const Header = () => {
           state={{ previousLocation: location }}
           onClick={() => dispatch(authSlice.actions.changeFormActive("login"))}
         >
-          <Button
-            text="Вход"
-            cls="btn-enter"
-            // openModalForm={openModalForm}
-          ></Button>
+          <div className={css.buttonContainer}>
+            <Button
+              text="Вход"
+              cls="btn-enter"
+              // openModalForm={openModalForm}
+            ></Button>
+          </div>
           {/* {isOpenModal && <LoginForm openModalForm={openModalForm} />} */}
         </Link>
       )}

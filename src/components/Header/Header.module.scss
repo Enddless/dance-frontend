@@ -41,6 +41,21 @@
     text-align: left;
   }
 }
+.buttonContainer {
+  width: 180px;
+  button {
+    width: 100%;
+  }
+}
+.userControl {
+  position: relative;
+
+  svg {
+    position: absolute;
+    top: 9px;
+    left: -43px;
+  }
+}
 @media screen and (max-width: 1600px) {
   .navigation {
     column-gap: 40px;
