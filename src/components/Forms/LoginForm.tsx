@@ -3,7 +3,6 @@ import css from "./forms.module.scss";
 import RecoveryForm from "./RecoveryForm";
 import RegistrationForm from "./RegistrationForm";
 import classNames from "classnames";
-import Close from "../Close/Close";
 import { useAppDispatch } from "../../services/type-service";
 import {
   getCurrentUserData,
@@ -12,6 +11,7 @@ import {
 } from "../../services/thunk/auth";
 import EyeIcon from "../EyeIcon";
 import Button from "../Button/Button";
+import ControlButton from "../controls-button";
 
 type IModalFormProps = {
   openModalForm?: () => void;
@@ -75,7 +75,7 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
 
   return (
     <div className={css.wrapper}>
-      <Close openModalForm={openModalForm} />
+      <ControlButton id="close" onClick={openModalForm}/>
       {isLoginForm && (
         <div className={classNamesList}>
           <h3>Вход</h3>
