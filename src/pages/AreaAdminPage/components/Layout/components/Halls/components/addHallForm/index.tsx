@@ -128,7 +128,7 @@ const AddHallForm = ({ onClick }: TAddFormProps) => {
                   cls={!isValidForm ? "btn-dis" : "btn-save"}
                   openModalForm={sendHallData}
                 />
-                <Button text="Отменить" />
+                <Button text="Отменить" cls="btn-cancel"/>
               </div>
             </>
         </div>

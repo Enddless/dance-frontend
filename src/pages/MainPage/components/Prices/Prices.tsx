@@ -3,6 +3,8 @@ import css from "./Prices.module.scss";
 import TitleSection from "../../../../components/Title/Title";
 import CardPrice from "../../../../components/CardPrice";
 import classNames from "classnames";
+import { Link } from "react-router-dom";
+import { AppRoute } from "../../../../const/route";
 
 const Prices = () => {
   const lengthMoreDefault = pricesInfo && pricesInfo?.length > 4;
@@ -14,9 +16,26 @@ const Prices = () => {
     <section className={css.services} id="pricesBlock">
       <TitleSection title="Услуги и цены" />
       <div className={classNameList}>
-        {pricesInfo.map((price) => {
-          return <CardPrice key={price.id} price={price} isMainPage={lengthMoreDefault} />;
-        })}
+        {pricesInfo ? (
+          <>
+            {pricesInfo.map((price) => {
+              return (
+                <CardPrice
+                  key={price.id}
+                  price={price}
+                  isMainPage={lengthMoreDefault}
+                />
+              );
+            })}
+          </>
+        ) : (
+          <p className={css.atention}>
+            Здесь еще нет абонементов. Добавить их можно в личном кабинете
+            <Link to={`${AppRoute.AdministratorArea}/price`}>
+              администратора
+            </Link>
+          </p>
+        )}
       </div>
       <div className={css.text}>
         <p>

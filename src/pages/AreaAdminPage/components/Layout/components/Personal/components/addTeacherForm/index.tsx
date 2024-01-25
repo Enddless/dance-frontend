@@ -106,7 +106,7 @@ const AddTeacherForm = ({ onClick }: TAddFormProps) => {
             id="photoTeacher"
             onChange={handleFileChange}
           />
-          {previewImage && previewImage !== null && (
+          {previewImage && previewImage !== null &&  previewImage !== "" && (
             <img src={previewImage} alt="Preview" />
           )}
         </label>
@@ -136,7 +136,7 @@ const AddTeacherForm = ({ onClick }: TAddFormProps) => {
                 cls={!isValidForm ? "btn-dis" : "btn-save"}
                 openModalForm={sendTeacherData}
               />
-              <Button text="Отменить" cls="btn-delete" />
+              <Button text="Отменить" cls="btn-cancel" />
             </div>
           </>
         </div>
