@@ -85,7 +85,8 @@ const EditTeacherForm = ({ onClick, id }: TEditFormProps) => {
       const description = descriptionTeacher;
       dispatch(addTeacher({ idTeachers, teachersName, description }))
         .unwrap()
-        .then(() => dispatch(getTeachers()));
+        .then(() => dispatch(getTeachers()))
+        .then(() => {if (onClick) onClick()});
     }
   };
   return (
@@ -95,7 +96,7 @@ const EditTeacherForm = ({ onClick, id }: TEditFormProps) => {
       </div>
       <form className={css.form} encType="multipart/form-data">
         <label htmlFor="PhotoHall" className={css.download}>
-          Добавить фото
+
           <input
             type="file"
             name="PhotoHall"
@@ -103,7 +104,19 @@ const EditTeacherForm = ({ onClick, id }: TEditFormProps) => {
             onChange={handleFileChange}
           />
           {previewImage && previewImage !== "" && (
-            <img src={previewImage} alt="Preview" />
+            // <img src={previewImage} alt="Preview" />
+
+            <div className={css.photoContainer}>
+              <div className={css.photoItem}>
+                <div className={css.photoBody}>
+                  <img
+                    src={previewImage}
+                    alt="Preview"
+                    className={css.staffPhoto}
+                  />
+                </div>
+              </div>
+            </div>
           )}
         </label>
         {errorDownload && <p className={css.errorMessage}>{errorDownload}</p>}
@@ -111,7 +124,7 @@ const EditTeacherForm = ({ onClick, id }: TEditFormProps) => {
           <textarea
             name="title"
             id="title"
-            rows={1}
+            rows={2}
             placeholder="Добавить название"
             value={nameTeacher}
             onChange={(e) => setNameTeacher(e.target.value)}

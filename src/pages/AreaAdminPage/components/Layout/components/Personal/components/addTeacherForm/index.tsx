@@ -79,7 +79,8 @@ const AddTeacherForm = ({ onClick }: TAddFormProps) => {
       const description = descriptionTeacher;
       dispatch(addTeacher({ idTeachers, teachersName, description }))
         .unwrap()
-        .then(() => dispatch(getTeachers()));
+        .then(() => dispatch(getTeachers()))
+        .then(() => {if (onClick) onClick()});
     }
   };
   //проверка все ли поля заполнены
