@@ -47,12 +47,14 @@ export type StateStudio = {
   isBannerLoading: LoadingStatus;
   isHallsLoading: LoadingStatus;
   isTeachersLoading: LoadingStatus;
+  isPriceLoading: LoadingStatus;
   aboutStudioData: AboutStudioData | null;
   bannersData: BannersData[] | null;
   hallsData: HallData[] | null;
   currentHallData: HallData | null;
   techersData: TeacherData[] | null;
   currentTeacherData: TeacherData | null;
+  priceData: PriceData[] | null;
 };
 export type AboutStudioData = {
   idAtelier?: number;
@@ -97,6 +99,7 @@ export type MainPageData = {
   Atelie: AboutStudioData;
   Halls: HallData[];
   Teachers: TeacherData[];
+  Price: PriceData[];
 };
 export type MainPageState = {
   isMainPageDataLoading: LoadingStatus;
@@ -117,4 +120,14 @@ export type CurrentTeacherId = {
 
 export type Logotype = {
   photoLogo: File;
+};
+
+
+export type PriceData =  {
+  idPrice?: number,
+  title: string;
+  descriptionOne: string;
+  descriptionTwo: string;
+  descriptionThree: string;
+  price: number,
 };

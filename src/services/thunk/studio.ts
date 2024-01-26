@@ -10,6 +10,7 @@ import {
   HallData,
   PhotoHall,
   PhotoTeacher,
+  PriceData,
   TeacherData,
 } from "../../types/auth-type";
 import { Extra } from "../type-service";
@@ -132,18 +133,19 @@ export const getTeachers = createAsyncThunk<TeacherData[], undefined, Extra>(
 );
 
 // ********** add new teacher **********
-export const addTeacherPhoto = createAsyncThunk<TeacherData, PhotoTeacher, Extra>(
-  "admin/addTeacherPhoto",
-  async ({ photoTeachers }, { extra: api }) => {
-    const { data } = await api.post(APIRoute.AddTeacherPhoto, photoTeachers, {
-      headers: {
-        "content-type": "multipart/form-data",
-      },
-    });
+export const addTeacherPhoto = createAsyncThunk<
+  TeacherData,
+  PhotoTeacher,
+  Extra
+>("admin/addTeacherPhoto", async ({ photoTeachers }, { extra: api }) => {
+  const { data } = await api.post(APIRoute.AddTeacherPhoto, photoTeachers, {
+    headers: {
+      "content-type": "multipart/form-data",
+    },
+  });
 
-    return data;
-  }
-);
+  return data;
+});
 
 // ********** add teacher data **********
 export const addTeacher = createAsyncThunk<TeacherData, TeacherData, Extra>(
@@ -159,12 +161,40 @@ export const addTeacher = createAsyncThunk<TeacherData, TeacherData, Extra>(
   }
 );
 
-// ********** delete hall **********
+// ********** delete teacher **********
 export const deleteTeacher = createAsyncThunk<string, CurrentTeacherId, Extra>(
   "admin/deleteTeacher",
   async ({ idTeachers }, { extra: api }) => {
     const { data } = await api.delete(APIRoute.Teachers, {
       data: { idTeachers: idTeachers },
+    });
+
+    return data;
+  }
+);
+
+// ********** get price data **********
+export const getPrice = createAsyncThunk<PriceData[], undefined, Extra>(
+  "admin/getTickets",
+  async (_arg, { extra: api }) => {
+    const { data } = await api.get<PriceData[]>(APIRoute.Price);
+
+    return data;
+  }
+);
+// ********** add price data **********
+export const addPrice = createAsyncThunk<void, PriceData, Extra>(
+  "admin/addPrice",
+  async (
+    { title, descriptionOne, descriptionTwo, descriptionThree, price },
+    { extra: api }
+  ) => {
+    const { data } = await api.post(APIRoute.AddPrice, {
+      title,
+      descriptionOne,
+      descriptionTwo,
+      descriptionThree,
+      price,
     });
 
     return data;

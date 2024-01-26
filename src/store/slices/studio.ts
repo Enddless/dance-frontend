@@ -13,6 +13,7 @@ import {
   deleteTeacher,
   getBanners,
   getHalls,
+  getPrice,
   getTeachers,
 } from "../../services/thunk/studio";
 import { StateStudio } from "../../types/auth-type";
@@ -23,12 +24,14 @@ const initialState: StateStudio = {
   isBannerLoading: LoadingStatus.Idle,
   isHallsLoading: LoadingStatus.Idle,
   isTeachersLoading: LoadingStatus.Idle,
+  isPriceLoading:LoadingStatus.Idle,
   aboutStudioData: null,
   bannersData: [],
   hallsData: [],
   currentHallData: null,
   techersData: [],
   currentTeacherData: null,
+  priceData: [],
 };
 
 export const studioSlice = createSlice({
@@ -168,6 +171,17 @@ export const studioSlice = createSlice({
       })
       .addCase(deleteTeacher.rejected, (state) => {
         state.isTeachersLoading = LoadingStatus.Rejected;
+      })
+      // ***** get price *****
+      .addCase(getPrice.pending, (state) => {
+        state.isPriceLoading = LoadingStatus.Pending;
+      })
+      .addCase(getPrice.fulfilled, (state, action) => {
+        state.priceData = action.payload;
+        state.isPriceLoading = LoadingStatus.Fulfilled;
+      })
+      .addCase(getPrice.rejected, (state) => {
+        state.isPriceLoading = LoadingStatus.Rejected;
       })
       ;
   },

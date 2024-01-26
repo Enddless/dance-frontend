@@ -1,31 +1,51 @@
+import { useEffect, useState } from "react";
 import Button from "../../../../../../components/Button/Button";
 import CardPrice from "../../../../../../components/CardPrice";
 import ControlButton from "../../../../../../components/controls-button";
-import { pricesInfo } from "../../../../../../mocks/mocks";
-import DescriptionPrice from "./component/Description";
+import { useAppDispatch, useAppSelector } from "../../../../../../services/type-service";
 import css from "./styles.module.scss";
+import { getPrice } from "../../../../../../services/thunk/studio";
+import AddPriceForm from "./component/addPriceForm";
 
 const PriceSettings = () => {
+  const dispatch = useAppDispatch();
+  const priceData = useAppSelector((state) => state.studio.priceData);
+  // Получение данных об абонементах из сервера
+  useEffect(() => {
+    dispatch(getPrice());
+  }, [dispatch]);
+
+  const [addPriceForm, setAddPriceForm] = useState(false);
   return (
     <>
       <div className={css.container}>
-        {pricesInfo.map((item) => {
-          return (
-            <div className={css.card} key={item.title}>
-              <div className={css.controlGroup}>
-                <ControlButton id="edit" />
-                <ControlButton id="delete" />
+        {priceData ? (
+          priceData.map((item) => {
+            return (
+              <div className={css.card} key={item.title}>
+                <div className={css.controlGroup}>
+                  <ControlButton id="edit" />
+                  <ControlButton id="delete" />
+                </div>
+                <CardPrice price={item} cls="noneShadow" />
               </div>
-              <CardPrice price={item} cls="noneShadow"/>
-            </div>
-          );
-        })}
+            );
+          })
+        ) : (
+          <p className={css.text}>
+            У вас еще нет абонементов. Вы можете добавить их нажав кнопку
+            "Добавить"
+          </p>
+        )}
       </div>
 
       <div className={css.add}>
-        <Button text="Добавить" cls="add" />
+        <Button text="Добавить" cls="add" openModalForm={() => setAddPriceForm(!addPriceForm)}/>
       </div>
-      <DescriptionPrice />
+      {addPriceForm && (
+        <AddPriceForm onClick={() => setAddPriceForm(!addPriceForm)} />
+      )}
+
     </>
   );
 };
