@@ -6,6 +6,7 @@ import { registration } from "../../services/thunk/auth";
 import EyeIcon from "../EyeIcon";
 import InputCheckbox from "../Input-checkbox";
 import Button from "../Button/Button";
+import { authSlice } from "../../store/slices/auth";
 
 const RegistrationForm = () => {
   const [errorMessage, setErrorMessage] = useState("");
@@ -76,6 +77,9 @@ const RegistrationForm = () => {
     formData.dublPassword,
     formData.email,
   ]);
+  const handleBack = () => {
+    dispatch(authSlice.actions.changeFormActive("login"));
+  };
   return (
     <>
       {!successForm ? (
@@ -121,7 +125,9 @@ const RegistrationForm = () => {
               <div className={css.eyeIcon}>
                 <EyeIcon
                   showPassword={showPassword}
-                  togglePasswordVisibility={() => setShowPassword(!showPassword)}
+                  togglePasswordVisibility={() =>
+                    setShowPassword(!showPassword)
+                  }
                 />
               </div>
             </fieldset>
@@ -139,7 +145,9 @@ const RegistrationForm = () => {
               <div className={css.eyeIcon}>
                 <EyeIcon
                   showPassword={showDoublePassword}
-                  togglePasswordVisibility={() => setShowDoublePassword(!showDoublePassword)}
+                  togglePasswordVisibility={() =>
+                    setShowDoublePassword(!showDoublePassword)
+                  }
                 />
               </div>
 
@@ -149,13 +157,6 @@ const RegistrationForm = () => {
                 )}
             </fieldset>
 
-            {/* <button
-              type="submit"
-              disabled={!isValidForm}
-              className={!isValidForm ? `${css.disabled}` : ""}
-            >
-              
-            </button> */}
             <Button
               text="Зарегистрироваться"
               cls="btn-reg"
@@ -176,6 +177,8 @@ const RegistrationForm = () => {
               </label>
             </div>
           </form>
+
+          <label className={css.backButton} onClick={handleBack}> Назад </label>
         </>
       ) : (
         <ConfirmationForm email={formData.email} password={formData.password} />

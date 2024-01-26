@@ -25,7 +25,7 @@ const settings: ISettings = {
   slidesToShow: 1,
   slidesToScroll: 1,
   autoplay: true,
-  autoplaySpeed: 4000, //скорость воспроизведения слайдов
+  autoplaySpeed: 4000, 
 };
 const settingsForStaff: ISettings = {
   dots: true,
@@ -33,7 +33,7 @@ const settingsForStaff: ISettings = {
   speed: 500,
   slidesToShow: 4,
   slidesToScroll: 1,
-  // autoplay: true,
+  autoplay: true,
   autoplaySpeed: 4000,
 };
 
@@ -88,7 +88,7 @@ const SliderBlock = ({ cards, staffInfo }: ICardsProps) => {
         </div>
       )}
     </>
-  )
+  );
 };
 
 export default SliderBlock;

@@ -3,10 +3,10 @@
   position: absolute;
   z-index: 402;
   width: 180px;
-  padding: 45px 15px 30px;
+  padding: 60px 15px 30px;
   right: 0px;
   top: 0px;
-  background: white;
+  background: rgb(214, 212, 212);
   display: flex;
   align-items: flex-start;
   flex-direction: column;
@@ -18,6 +18,7 @@
   -moz-transition: all 500ms ease-in-out;
   -ms-transition: all 500ms ease-in-out;
   -o-transition: all 500ms ease-in-out;
+  box-shadow: 6px 6px 20px 0px rgba(19, 52, 10, .7);
 
   .closeContainer {
     position: absolute;
@@ -26,16 +27,17 @@
     cursor: pointer;
   }
   & button {
-    @include TextPrimary;
+    @include TextLink;
     background: transparent;
-    color: $btn-background-three;
+    color: $btn-color-two;
     border: none;
     display: flex;
     justify-content: center;
     cursor: pointer;
   }
   & button:hover {
-    font-weight: 600;
+    font-weight: 500;
+    color: #ffa800;
   }
   .decoration {
     position: absolute;
@@ -47,7 +49,7 @@
     height: 0;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-bottom: 20px solid white;
+    border-bottom: 20px solid rgb(214, 212, 212);
   }
 }
 

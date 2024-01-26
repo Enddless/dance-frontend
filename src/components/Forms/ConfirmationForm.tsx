@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import css from "./forms.module.scss";
 import { useAppDispatch } from "../../services/type-service";
 import { confirmation } from "../../services/thunk/auth";
+import Button from "../Button/Button";
 
 type ICodeProps = {
   email: string;
@@ -26,6 +27,12 @@ const ConfirmationForm = ({ email, password }: ICodeProps) => {
         setSuccess(!success);
       });
   };
+  const [isValidForm, setIsValidForm] = useState(false);
+  useEffect(() => {
+    if (codeData !== "") {
+      setIsValidForm(true);
+    } else setIsValidForm(false);
+  }, [codeData]);
 
   return !success ? (
     <>
@@ -42,7 +49,7 @@ const ConfirmationForm = ({ email, password }: ICodeProps) => {
           />
         </label>
 
-        <button type="submit">Подтвердить</button>
+        <Button text="Подтвердить" cls="btn-reg" disabled={!isValidForm} />
       </form>
     </>
   ) : (

@@ -1,6 +1,7 @@
 import {
   AuthorizationStatus,
   DEFAULT_BUTTON_AREA_PERSONAL,
+  DEFAULT_FORM_AUTH,
   LoadingStatus,
   NameSpace,
 } from "../../const/const";
@@ -29,6 +30,7 @@ const initialState: StateAuth = {
   isUserRoleLoading: LoadingStatus.Idle,
   isUserPhotoLoading: LoadingStatus.Idle,
   buttonActive: DEFAULT_BUTTON_AREA_PERSONAL.title,
+  formAuthActiveId: DEFAULT_FORM_AUTH,
 };
 
 export const authSlice = createSlice({
@@ -37,6 +39,9 @@ export const authSlice = createSlice({
   reducers: {
     changeActiveButtonMenuPersonal(state, action: PayloadAction<string>) {
       state.buttonActive = action.payload;
+    },
+    changeFormActive(state, action: PayloadAction<string>) {
+      state.formAuthActiveId = action.payload;
     },
   },
   extraReducers(builder) {

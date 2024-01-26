@@ -1,9 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import css from "./forms.module.scss";
 import Button from "../Button/Button";
+import { useAppDispatch } from "../../services/type-service";
+import { authSlice } from "../../store/slices/auth";
 
 const RecoveryForm = () => {
+  const dispatch = useAppDispatch();
   const [inputData, setInputData] = useState("");
+  const handleBack = () => {
+    dispatch(authSlice.actions.changeFormActive("login"));
+  };
+  const [isValidForm, setIsValidForm] = useState(false);
+  useEffect(() => {
+    if (inputData !== "") {
+      setIsValidForm(true);
+    } else setIsValidForm(false);
+  }, [inputData]);
 
   return (
     <>
@@ -22,8 +34,15 @@ const RecoveryForm = () => {
           />
         </label>
 
-        <Button text="Отправить пароль на email" cls="btn-reg"/>
+        <Button
+          text="Отправить пароль на email"
+          cls="btn-reg"
+          disabled={!isValidForm}
+        />
       </form>
+      <label className={css.backButton} onClick={handleBack}>
+        Назад
+      </label>
     </>
   );
 };

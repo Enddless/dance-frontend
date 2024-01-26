@@ -3,21 +3,22 @@ import Logo from "../Logo/Logo";
 import Button from "../Button/Button";
 import { useEffect, useState } from "react";
 import { pagesHeader } from "../../mocks/mocks";
-import LoginForm from "../Forms/LoginForm";
-import useTheme from "../../hooks/useTheme";
-import { Link } from "react-router-dom";
+// import LoginForm from "../Forms/LoginForm";
+import { Link, useLocation } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import AreaForm from "../drop-down-menu/AreaForm";
-import { useAppSelector } from "../../services/type-service";
+import { useAppDispatch, useAppSelector } from "../../services/type-service";
 import sprite from "../../assets/sprite.svg";
+import { AppRoute } from "../../const/route";
+import { authSlice } from "../../store/slices/auth";
 
 const Header = () => {
-  const { isDark, setIsDark } = useTheme();
+  const dispatch = useAppDispatch();
+  const location = useLocation();
   //  открытие модалки регистрации или входа
   const [isOpenModal, setIsModal] = useState(false);
   const openModalForm = () => {
     setIsModal(!isOpenModal);
-    setIsDark(!isDark);
   };
 
   //проверка авторизации пользователя
@@ -53,7 +54,7 @@ const Header = () => {
         </ul>
       </nav>
       {authorizationStatus === "AUTH" && userRole === "customers" && (
-        <>
+        <div className={css.userControl}>
           <svg width="30" height="30" viewBox="0 0 30 30">
             <use xlinkHref={`${sprite}#notification`}></use>
           </svg>
@@ -69,7 +70,7 @@ const Header = () => {
             ></Button>
             {isOpenModal && <AreaForm openModalForm={openModalForm} />}
           </div>
-        </>
+        </div>
       )}
 
       {authorizationStatus === "AUTH" && userRole === "administrator" && (
@@ -82,17 +83,24 @@ const Header = () => {
           {isOpenModal && <AreaForm openModalForm={openModalForm} />}
         </div>
       )}
+
       {(authorizationStatus === "NO_AUTH" ||
         authorizationStatus === "UNKNOWN" ||
         userRole === "") && (
-        <>
-          <Button
-            text="Вход"
-            cls="btn-enter"
-            openModalForm={openModalForm}
-          ></Button>
-          {isOpenModal && <LoginForm openModalForm={openModalForm} />}
-        </>
+        <Link
+          to={`${AppRoute.Modal}${AppRoute.Login}`}
+          state={{ previousLocation: location }}
+          onClick={() => dispatch(authSlice.actions.changeFormActive("login"))}
+        >
+          <div className={css.buttonContainer}>
+            <Button
+              text="Вход"
+              cls="btn-enter"
+              // openModalForm={openModalForm}
+            ></Button>
+          </div>
+          {/* {isOpenModal && <LoginForm openModalForm={openModalForm} />} */}
+        </Link>
       )}
     </div>
   );

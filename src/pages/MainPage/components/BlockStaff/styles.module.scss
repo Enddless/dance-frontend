@@ -11,13 +11,14 @@
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 15px;
+  margin:0 100px;
 }
 .block {
   grid-column: span 6;
   display: grid;
   grid-template-columns: 2fr 3fr;
   align-items: center;
-  margin:0 100px;
+
 
   .staffDescr {
     margin-left: 15px;
