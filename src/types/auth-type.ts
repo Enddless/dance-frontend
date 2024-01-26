@@ -124,10 +124,21 @@ export type Logotype = {
 
 
 export type PriceData =  {
+  idPrice: number,
+  title: string;
+  descriptionOne: string;
+  descriptionTwo: string;
+  descriptionThree: string;
+  price: number,
+};
+export type CurrentPriceData =  {
   idPrice?: number,
   title: string;
   descriptionOne: string;
   descriptionTwo: string;
   descriptionThree: string;
   price: number,
+};
+export type CurrentPriceId = {
+  idPrice: number;
 };

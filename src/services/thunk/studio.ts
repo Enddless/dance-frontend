@@ -6,6 +6,8 @@ import {
   BannersData,
   CurrentBannerId,
   CurrentHallId,
+  CurrentPriceData,
+  CurrentPriceId,
   CurrentTeacherId,
   HallData,
   PhotoHall,
@@ -183,7 +185,7 @@ export const getPrice = createAsyncThunk<PriceData[], undefined, Extra>(
   }
 );
 // ********** add price data **********
-export const addPrice = createAsyncThunk<void, PriceData, Extra>(
+export const addPrice = createAsyncThunk<void, CurrentPriceData, Extra>(
   "admin/addPrice",
   async (
     { title, descriptionOne, descriptionTwo, descriptionThree, price },
@@ -195,6 +197,18 @@ export const addPrice = createAsyncThunk<void, PriceData, Extra>(
       descriptionTwo,
       descriptionThree,
       price,
+    });
+
+    return data;
+  }
+);
+
+// ********** delete price **********
+export const deletePrice = createAsyncThunk<string, CurrentPriceId, Extra>(
+  "admin/deletePrice",
+  async ({ idPrice }, { extra: api }) => {
+    const { data } = await api.delete(APIRoute.DelPrice, {
+      data: { idPrice: idPrice },
     });
 
     return data;

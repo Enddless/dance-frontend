@@ -36,6 +36,7 @@ export enum APIRoute {
   Teachers = "/teachersSettings",
   Price = "/ServicePrice",
   AddPrice = "/addServicePrice",
+  DelPrice = "/deleteServicePrice",
   //main page
   MainPage = "/page",
 }
