@@ -25,7 +25,7 @@ const settings: ISettings = {
   slidesToShow: 1,
   slidesToScroll: 1,
   autoplay: true,
-  autoplaySpeed: 4000, //скорость воспроизведения слайдов
+  autoplaySpeed: 4000, 
 };
 const settingsForStaff: ISettings = {
   dots: true,
