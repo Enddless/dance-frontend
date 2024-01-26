@@ -20,12 +20,7 @@
   height: 100%;
   font-size: 20px;
   resize: none;
-  font-family: $body-family-primary;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 33px;
-  letter-spacing: 0.4px;
+  @include TextSecondary;
   border:1px solid #3AA31E;
 }
 .editText:focus {

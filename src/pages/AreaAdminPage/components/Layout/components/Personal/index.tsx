@@ -13,12 +13,15 @@ import {
 } from "../../../../../../services/thunk/studio";
 import { API_URL } from "../../../../../../services/api";
 import AddTeacherForm from "./components/addTeacherForm";
+import EditTeacherForm from "./components/editTeacherForm";
 
 const Personal = () => {
   const dispatch = useAppDispatch();
   const teachersData = useAppSelector((state) => state.studio.techersData);
   const [teachers, setTeachers] = useState(teachersData);
   const [addTecherForm, setAddTeacherForm] = useState(false);
+  const [editTeacherForm, setEditTeacherForm] = useState(false);
+  const [currentEditTeacher, setCurrentEditTeacher] = useState(0);
   // Получение данных о преподавателях из сервера
   useEffect(() => {
     dispatch(getTeachers());
@@ -35,6 +38,12 @@ const Personal = () => {
     setTeachers(teachersData);
   }, [teachersData]);
 
+   //редактирование конкретной карточки
+   const handleEditCard = (id: number) => {
+    setEditTeacherForm(!editTeacherForm);
+    setCurrentEditTeacher(id);
+  };
+
   return (
     <>
       <p>Редактирование карточки пока не работает</p>
@@ -44,7 +53,7 @@ const Personal = () => {
             {teachers.map((teacher) => (
               <div key={teacher.idTeachers} className={css.staffContainer}>
                 <div className={css.controlGroup}>
-                  <ControlButton id="edit" />
+                  <ControlButton id="edit" onClick={() => handleEditCard(teacher.idTeachers)} />
                   <ControlButton
                     id="delete"
                     onClick={() => deleteCurrenTeacher(teacher.idTeachers)}
@@ -87,6 +96,12 @@ const Personal = () => {
       </div>
       {addTecherForm && (
         <AddTeacherForm onClick={() => setAddTeacherForm(!addTecherForm)} />
+      )}
+      {editTeacherForm && (
+        <EditTeacherForm
+          onClick={() => setEditTeacherForm(!editTeacherForm)}
+          id={currentEditTeacher}
+        />
       )}
     </>
   );
