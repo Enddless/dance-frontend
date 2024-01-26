@@ -8,8 +8,8 @@ import {
 import css from "./styles.module.scss";
 import { API_URL } from "../../../../../../../../services/api";
 import {
-  addHall,
-  getHalls,
+  addTeacher,
+  getTeachers,
 } from "../../../../../../../../services/thunk/studio";
 
 type TEditFormProps = {
@@ -17,22 +17,24 @@ type TEditFormProps = {
   id: number;
 };
 
-const EditHallForm = ({ onClick, id }: TEditFormProps) => {
+const EditTeacherForm = ({ onClick, id }: TEditFormProps) => {
   const dispatch = useAppDispatch();
-  const hallsData = useAppSelector((state) => state.studio.hallsData);
-  const currentHallData = hallsData?.filter((item) => item.IdHall === id)[0];
+  const teachersData = useAppSelector((state) => state.studio.techersData);
+  const currentTeacherData = teachersData?.filter(
+    (item) => item.idTeachers === id
+  )[0];
 
   //начальные данные
   const [previewImage, setPreviewImage] = useState("");
-  const [titleHall, setTitleHall] = useState("");
-  const [descriptionHall, setDescriptionHall] = useState("");
+  const [nameTeacher, setNameTeacher] = useState("");
+  const [descriptionTeacher, setDescriptionTeacher] = useState("");
   useEffect(() => {
-    if (currentHallData) {
-      setPreviewImage(`${API_URL}${currentHallData?.PhotoHall}`);
-      setTitleHall(currentHallData.Title);
-      setDescriptionHall(currentHallData.Description);
+    if (currentTeacherData) {
+      setPreviewImage(`${API_URL}${currentTeacherData?.photoTeachers}`);
+      setNameTeacher(currentTeacherData.teachersName);
+      setDescriptionTeacher(currentTeacherData.description);
     }
-  }, [currentHallData]);
+  }, [currentTeacherData]);
 
   //проверяем фотографию, если изменилась
   const [errorDownload, serErrorDownload] = useState("");
@@ -76,14 +78,14 @@ const EditHallForm = ({ onClick, id }: TEditFormProps) => {
   //отправка измененных данных о зале на сервер
   const sendHallData = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    if (currentHallData) {
-      const IdHall = currentHallData.IdHall;
+    if (currentTeacherData) {
+      const idTeachers = currentTeacherData.idTeachers;
       // const PhotoHall = currentHallData.PhotoHall;
-      const Title = titleHall;
-      const Description = descriptionHall;
-      dispatch(addHall({ IdHall, Title, Description }))
+      const teachersName = nameTeacher;
+      const description = descriptionTeacher;
+      dispatch(addTeacher({ idTeachers, teachersName, description }))
         .unwrap()
-        .then(() => dispatch(getHalls()))
+        .then(() => dispatch(getTeachers()))
         .then(() => {if (onClick) onClick()});
     }
   };
@@ -94,7 +96,7 @@ const EditHallForm = ({ onClick, id }: TEditFormProps) => {
       </div>
       <form className={css.form} encType="multipart/form-data">
         <label htmlFor="PhotoHall" className={css.download}>
-          Добавить фото
+
           <input
             type="file"
             name="PhotoHall"
@@ -102,7 +104,19 @@ const EditHallForm = ({ onClick, id }: TEditFormProps) => {
             onChange={handleFileChange}
           />
           {previewImage && previewImage !== "" && (
-            <img src={previewImage} alt="Preview" />
+            // <img src={previewImage} alt="Preview" />
+
+            <div className={css.photoContainer}>
+              <div className={css.photoItem}>
+                <div className={css.photoBody}>
+                  <img
+                    src={previewImage}
+                    alt="Preview"
+                    className={css.staffPhoto}
+                  />
+                </div>
+              </div>
+            </div>
           )}
         </label>
         {errorDownload && <p className={css.errorMessage}>{errorDownload}</p>}
@@ -110,18 +124,18 @@ const EditHallForm = ({ onClick, id }: TEditFormProps) => {
           <textarea
             name="title"
             id="title"
-            rows={1}
+            rows={2}
             placeholder="Добавить название"
-            value={titleHall}
-            onChange={(e) => setTitleHall(e.target.value)}
+            value={nameTeacher}
+            onChange={(e) => setNameTeacher(e.target.value)}
           />
           <textarea
             name="description"
             id="description"
-            rows={5}
+            rows={8}
             placeholder="Добавить описание"
-            value={descriptionHall}
-            onChange={(e) => setDescriptionHall(e.target.value)}
+            value={descriptionTeacher}
+            onChange={(e) => setDescriptionTeacher(e.target.value)}
           />
           <div className={css.buttonGroup}>
             <Button
@@ -129,7 +143,7 @@ const EditHallForm = ({ onClick, id }: TEditFormProps) => {
               cls="btn-save"
               openModalForm={sendHallData}
             />
-            <Button text="Отменить" cls="btn-cancel"/>
+            <Button text="Отменить" cls="btn-cancel" />
           </div>
         </div>
       </form>
@@ -137,4 +151,4 @@ const EditHallForm = ({ onClick, id }: TEditFormProps) => {
   );
 };
 
-export default EditHallForm;
+export default EditTeacherForm;

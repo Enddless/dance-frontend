@@ -22,7 +22,7 @@ const About = () => {
     <section className={css.about}>
       <TitleSection title="О студии" />
       <div className={css.text}>
-        <p>
+        <p style={{ whiteSpace: "pre-line" }}>
           {atelieData !== null ? (
             `${description}`
           ) : (
