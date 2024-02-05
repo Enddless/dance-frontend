@@ -16,6 +16,9 @@
   justify-content: flex-end;
   column-gap:20px;
 }
+.text {
+  grid-column: span 12; 
+}
 .add {
   display: flex;
   justify-content: center;
