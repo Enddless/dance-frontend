@@ -75,11 +75,6 @@ const LoginForm = () => {
                 placeholder="example@gmail.com"
               />
             </label>
-            {errorMessage && errorMessage !== "" && (
-              <span className={css.errorMessage}>
-                Неправильный логин или пароль
-              </span>
-            )}
           </fieldset>
 
           <fieldset>
@@ -93,7 +88,7 @@ const LoginForm = () => {
                 className={
                   errorMessage && errorMessage !== "" ? `${css.errorInput}` : ""
                 }
-                placeholder="*****"
+                placeholder="exampLe_56q"
               />
               <div className={css.eyeIcon}>
                 <EyeIcon
@@ -102,7 +97,11 @@ const LoginForm = () => {
                 />
               </div>
             </label>
+            {errorMessage && errorMessage !== "" && (
+              <span className={css.errorMessage}>{errorMessage}</span>
+            )}
           </fieldset>
+
           <div className={css.linkGroup}>
             <label
               onClick={() => {

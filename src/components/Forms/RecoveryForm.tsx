@@ -3,18 +3,25 @@ import css from "./forms.module.scss";
 import Button from "../Button/Button";
 import { useAppDispatch } from "../../services/type-service";
 import { authSlice } from "../../store/slices/auth";
+import { validMail } from "../../services/validate";
 
 const RecoveryForm = () => {
   const dispatch = useAppDispatch();
   const [inputData, setInputData] = useState("");
+  const [errorMail, setErrorMail] = useState("");
   const handleBack = () => {
     dispatch(authSlice.actions.changeFormActive("login"));
   };
   const [isValidForm, setIsValidForm] = useState(false);
   useEffect(() => {
-    if (inputData !== "") {
+    const isValidateMail = validMail(inputData);
+    if (isValidateMail) {
       setIsValidForm(true);
-    } else setIsValidForm(false);
+      setErrorMail("");
+    } else {
+      setIsValidForm(false);
+      setErrorMail("Введите корректный email");
+    }
   }, [inputData]);
 
   return (
@@ -23,16 +30,24 @@ const RecoveryForm = () => {
       <form //onSubmit={""}
         className={css.form}
       >
-        <label>
-          Email
-          <input
-            type="email"
-            value={inputData}
-            onChange={(e) => setInputData(e.target.value)}
-            name="email"
-            placeholder="example@mail.com"
-          />
-        </label>
+        <fieldset>
+          <label>
+            Email
+            <input
+              type="email"
+              value={inputData}
+              onChange={(e) => setInputData(e.target.value)}
+              name="email"
+              placeholder="example@mail.com"
+              className={
+                errorMail && inputData !== "" ? `${css.errorInput}` : ""
+              }
+            />
+          </label>
+          {errorMail && inputData !== "" && (
+            <span className={css.errorMessage}>{errorMail}</span>
+          )}
+        </fieldset>
 
         <Button
           text="Отправить пароль на email"
