@@ -38,7 +38,7 @@ const RegistrationForm = () => {
         setSuccessForm(!successForm);
       })
       .catch(() => {
-        setErrorMessage("Такой логин уже существует");
+        setErrorMessage("Что-то пошло не так");
       });
   };
 
