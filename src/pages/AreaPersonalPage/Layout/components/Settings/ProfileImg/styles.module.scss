@@ -6,9 +6,9 @@
   cursor: pointer;
 }
 .profileImg {
-  width:50%;
+  width: 50%;
   max-width: 512px;
-  background: #C4CCC1; //будет удалено
+  background: #c4ccc1; //будет удалено
   display: flex;
   flex-direction: column;
   align-items: end;
@@ -36,7 +36,7 @@
     align-items: flex-end;
     position: relative;
     z-index: 10;
-    background: rgba(255, 255, 255, .8);
+    background: rgba(255, 255, 255, 0.8);
     border-radius: 50%;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
@@ -53,5 +53,13 @@
     left: 10px;
     color: red;
     font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .profileImg {
+    width: 100%;
+    max-width: 100%;
+    height:400px;
   }
 }

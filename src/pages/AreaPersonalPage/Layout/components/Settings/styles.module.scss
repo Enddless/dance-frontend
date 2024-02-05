@@ -7,7 +7,7 @@
   justify-content: center;
 }
 .form {
-  width:100%;
+  width: 100%;
   max-width: 350px;
   .info {
     display: flex;
@@ -30,7 +30,7 @@
     justify-content: flex-start;
     column-gap: 24px;
     & label {
-      margin:0;
+      margin: 0;
     }
   }
 
@@ -72,14 +72,14 @@
   margin-top: 20px;
 
   button {
-    max-width:190px;
-    margin:0 auto;
+    max-width: 190px;
+    margin: 0 auto;
   }
 }
 .deleteModal {
   width: 250px;
-  height:150px;
-  padding:20px;
+  height: 150px;
+  padding: 20px;
   text-align: center;
   position: absolute;
   top: 50%;
@@ -99,6 +99,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  column-gap:10px;
-  margin-top:20px;
+  column-gap: 10px;
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+  .form {
+    max-width: 100%;
+  }
 }
