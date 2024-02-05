@@ -9,8 +9,12 @@ import Spinner from "../../../../../components/Spinner";
 import Button from "../../../../../components/Button/Button";
 import {
   changeUserData,
+  deleteUserData,
   getCurrentUserData,
 } from "../../../../../services/thunk/auth";
+import { Modal } from "../../../../../components/Forms/components/Modal";
+import { Navigate } from "react-router-dom";
+import { AppRoute } from "../../../../../const/route";
 
 const Settings = () => {
   const dispatch = useAppDispatch();
@@ -53,17 +57,13 @@ const Settings = () => {
         dispatch(getCurrentUserData());
       });
   };
-  // в процессе
-  // const deleteAccount = (e: { preventDefault: () => void }) => {
-  //   e.preventDefault();
-  //   if (!userInput) return false;
-  //   dispatch(
-  //     deleteUserData({
-  //       emailUser: userInput.emailUser,
-  //       password: userInput.password,
-  //     })
-  //   );
-  // };
+  // удаление аккаунта
+  const [isDeleteAcc, setIsDeleteAcc] = useState(false);
+  const deleteAccount = () => {
+    dispatch(deleteUserData())
+      .unwrap()
+      .then(() => <Navigate to={`${AppRoute.Root}`} />);
+  };
 
   if (!userData) {
     <Spinner />;
@@ -141,7 +141,6 @@ const Settings = () => {
                 id="email"
                 className={css.input}
                 value={userData.emailUser}
-                // onChange={handleChange}
                 disabled
               />
             </fieldset>
@@ -174,10 +173,29 @@ const Settings = () => {
         <Button
           text="Удалить профиль"
           cls="btn-del"
-          // openModalForm={(e: React.MouseEvent<HTMLButtonElement>) =>
-          //   deleteAccount(e)
-          // }
+          openModalForm={() => setIsDeleteAcc(!isDeleteAcc)}
         />
+        {isDeleteAcc && (
+          <Modal>
+            <div className={css.deleteModal}>
+              <p>
+                Вы уверены?
+                <div className={css.buttonGroup}>
+                  <Button
+                    text="Да"
+                    cls="btn-save"
+                    openModalForm={deleteAccount}
+                  />
+                  <Button
+                    text="Нет"
+                    cls="btn-cancel"
+                    openModalForm={() => setIsDeleteAcc(!isDeleteAcc)}
+                  />
+                </div>
+              </p>
+            </div>
+          </Modal>
+        )}
       </div>
     </>
   );

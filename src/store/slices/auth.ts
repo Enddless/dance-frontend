@@ -11,6 +11,7 @@ import {
   changeUserData,
   changeUserPhoto,
   confirmation,
+  deleteUserData,
   deleteUserPhoto,
   getCurrentUserData,
   getCurrentUserRole,
@@ -142,11 +143,13 @@ export const authSlice = createSlice({
       })
       .addCase(getCurrentUserRole.rejected, (state) => {
         state.isUserRoleLoading = LoadingStatus.Rejected;
+      })
+      // ***** delete account *****
+      .addCase(deleteUserData.fulfilled, (state, action) => {
+        state.authStatus = AuthorizationStatus.NoAuth;
+        state.message = action.payload;
+        state.userData = {};
+        state.userRole = null;
       });
-    // ***** delete account *****
-    // .addCase(deleteUserData.fulfilled, (state, action) => {
-    //   state.authStatus = AuthorizationStatus.NoAuth;
-    //   state.message = action.payload;
-    // });
   },
 });

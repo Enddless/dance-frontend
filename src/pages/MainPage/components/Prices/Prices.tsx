@@ -15,7 +15,6 @@ const Prices = () => {
     [css.tile]: lengthMoreDefault,
   });
 
-  console.log(pricesData)
   return (
     <section className={css.services} id="pricesBlock">
       <TitleSection title="Услуги и цены" />

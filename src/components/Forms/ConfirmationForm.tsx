@@ -12,6 +12,7 @@ const ConfirmationForm = ({ email, password }: ICodeProps) => {
   const dispatch = useAppDispatch();
   const [codeData, setCodeData] = useState("");
   const [success, setSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const confirmSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -25,6 +26,9 @@ const ConfirmationForm = ({ email, password }: ICodeProps) => {
       .unwrap()
       .then(() => {
         setSuccess(!success);
+      })
+      .catch(() => {
+        setErrorMessage("Неверный код. Попробуйте еще");
       });
   };
   const [isValidForm, setIsValidForm] = useState(false);
@@ -38,16 +42,23 @@ const ConfirmationForm = ({ email, password }: ICodeProps) => {
     <>
       <h3>Подтверждение регистрации</h3>
       <form onSubmit={confirmSubmit} className={css.form}>
-        <label>
-          Код
-          <input
-            type="number"
-            value={codeData}
-            onChange={(e) => setCodeData((e.target as HTMLInputElement).value)}
-            name="code"
-            placeholder="****"
-          />
-        </label>
+        <fieldset>
+          <label>
+            Код
+            <input
+              type="number"
+              value={codeData}
+              onChange={(e) =>
+                setCodeData((e.target as HTMLInputElement).value)
+              }
+              name="code"
+              placeholder="****"
+            />
+          </label>
+          {errorMessage && errorMessage !== "" && (
+            <span className={css.errorMessage}>{errorMessage}</span>
+          )}
+        </fieldset>
 
         <Button text="Подтвердить" cls="btn-reg" disabled={!isValidForm} />
       </form>

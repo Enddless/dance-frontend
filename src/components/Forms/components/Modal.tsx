@@ -7,7 +7,10 @@ import RecoveryForm from "../RecoveryForm";
 import { authSlice } from "../../../store/slices/auth";
 import ControlButton from "../../controls-button";
 
-export function Modal() {
+type TModalMiniProps = {
+  children?: React.ReactNode;
+};
+export function Modal({ children }: TModalMiniProps) {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const idData = useAppSelector((state) => state.auth.formAuthActiveId);
@@ -26,9 +29,15 @@ export function Modal() {
             />
           </div>
           <div className={css.modalForm}>
-            {idData === "login" && <LoginForm />}
-            {idData === "registration" && <RegistrationForm />}
-            {idData === "recovery" && <RecoveryForm />}
+            {children ? (
+              children
+            ) : (
+              <>
+                {idData === "login" && <LoginForm />}
+                {idData === "registration" && <RegistrationForm />}
+                {idData === "recovery" && <RecoveryForm />}
+              </>
+            )}
           </div>
         </div>
       </div>
