@@ -9,6 +9,7 @@ import {
 import css from "./styles.module.scss";
 import { deletePrice, getPrice } from "../../../../../../services/thunk/studio";
 import AddPriceForm from "./component/addPriceForm";
+// import EditPriceForm from "./component/editPriceForm";
 
 const PriceSettings = () => {
   const dispatch = useAppDispatch();
@@ -25,6 +26,14 @@ const PriceSettings = () => {
       .unwrap()
       .then(() => dispatch(getPrice()));
   };
+
+  //редактирование конкретной карточки
+  // const [editPriceForm, setEditPriceForm] = useState(false);
+  // const [currentEditPrice, setCurrentEditPrice] = useState(0);
+  // const handleEditCard = (id: number) => {
+  //   setEditPriceForm(!editPriceForm);
+  //   setCurrentEditPrice(id);
+  // };
   return (
     <>
       <div className={css.container}>
@@ -33,7 +42,7 @@ const PriceSettings = () => {
             return (
               <div className={css.card} key={item.title}>
                 <div className={css.controlGroup}>
-                  <ControlButton id="edit" />
+                  {/* <ControlButton id="edit" onClick={() => handleEditCard(item.idPrice)} /> */}
                   <ControlButton
                     id="delete"
                     onClick={() =>
@@ -63,6 +72,12 @@ const PriceSettings = () => {
       {addPriceForm && (
         <AddPriceForm onClick={() => setAddPriceForm(!addPriceForm)} />
       )}
+      {/* {editPriceForm && (
+        <EditPriceForm
+          onClick={() => setEditPriceForm(!editPriceForm)}
+          id={currentEditPrice}
+        />
+      )} */}
     </>
   );
 };

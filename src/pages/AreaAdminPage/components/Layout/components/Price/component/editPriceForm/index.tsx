@@ -1,29 +1,41 @@
 import { useEffect, useState } from "react";
 import Button from "../../../../../../../../components/Button/Button";
 import ControlButton from "../../../../../../../../components/controls-button";
-import css from "./styles.module.scss";
 import {
   useAppDispatch,
-  // useAppSelector,
+  useAppSelector,
 } from "../../../../../../../../services/type-service";
-import {
-  addPrice,
-  getPrice,
-} from "../../../../../../../../services/thunk/studio";
+import css from "./styles.module.scss";
+import { addPrice, getPrice } from "../../../../../../../../services/thunk/studio";
 
-type TAddFormProps = {
+type TEditFormProps = {
   onClick?: () => void;
+  id: number;
 };
 
-const AddPriceForm = ({ onClick }: TAddFormProps) => {
+const EditPriceForm = ({ onClick, id }: TEditFormProps) => {
   const dispatch = useAppDispatch();
-  // const pricesData = useAppSelector((state) => state.studio.priceData);
+  const priceData = useAppSelector((state) => state.studio.priceData);
+  const currentPriceData = priceData?.filter((item) => item.idPrice === id)[0];
+
+  //начальные данные
   const [titleTicket, setTitleTicket] = useState("");
   const [descriptionOne, setDescriptionOne] = useState("");
   const [descriptionTwo, setDescriptionTwo] = useState("");
   const [descriptionThree, setDescriptionThree] = useState("");
   const [priceTictket, setPriceTicket] = useState(0);
-  //отправка данных об абонементе на сервер
+
+  useEffect(() => {
+    if (currentPriceData) {
+      setTitleTicket(currentPriceData.title);
+      setDescriptionOne(currentPriceData.descriptionOne);
+      setDescriptionTwo(currentPriceData.descriptionTwo);
+      setDescriptionThree(currentPriceData.descriptionThree);
+      setPriceTicket(currentPriceData.price);
+    }
+  }, [currentPriceData]);
+
+  //отправка измененных данных о зале на сервер
   const sendTicketData = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     const title = titleTicket;
@@ -126,4 +138,4 @@ const AddPriceForm = ({ onClick }: TAddFormProps) => {
   );
 };
 
-export default AddPriceForm;
+export default EditPriceForm;
