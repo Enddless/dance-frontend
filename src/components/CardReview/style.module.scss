@@ -1,4 +1,4 @@
-@import "../../styles//variables.scss";
+@import "../../main.module.scss";
 .card {
   grid-column: span 3;
   display: flex;
@@ -10,22 +10,14 @@
   border-radius: 10px;
   background: $card-review-background;
   box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.05);
-  margin:10px 0;
-  position:relative;
+  margin: 10px 0;
+  position: relative;
 }
-// .card:first-child {
-//   margin-top:0;
-// }
-.card:last-child {
-  margin-bottom:0;
+
+ .card.blurContent {
+  margin-bottom: 0;
   filter: blur(6px);
-  -webkit-filter: blur(6px);
 }
-// .title {
-//   font-weight: bold;
-//   line-height: normal;
-//   text-align: center;
-// }
 
 .userInfo,
 .star {
@@ -33,9 +25,12 @@
   align-items: center;
   justify-content: space-between;
 }
+.userInfo {
+  flex-direction: column;
+}
 .star {
   gap: 10px;
-  margin-right:12px;
+  margin-right: 12px;
 }
 
 .date {
@@ -46,8 +41,8 @@
   @include TextSecondary;
 }
 .control {
-  position:absolute;
-  right:20px;
+  position: absolute;
+  right: 20px;
   top: 20px;
 }
 
@@ -55,6 +50,31 @@
   justify-content: flex-start;
 
   .star {
-    margin-left:20px;
+    margin-left: 20px;
+  }
+}
+.more {
+  position: absolute;
+  z-index:10;
+  bottom: 10%;
+  right: 10px;
+}
+.more:after {
+  content: "\2192";
+  font-size: 100px;
+}
+@media screen and (max-width: 900px) {
+  .star {
+    gap: 4px;
+  }
+}
+
+
+@media screen and (max-width: 700px) {
+  .userInfo {
+    flex-direction: column;
+  }
+  .card {
+    grid-column: span 6;
   }
 }

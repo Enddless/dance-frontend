@@ -25,7 +25,7 @@ const settings: ISettings = {
   slidesToShow: 1,
   slidesToScroll: 1,
   autoplay: true,
-  autoplaySpeed: 4000, //скорость воспроизведения слайдов
+  autoplaySpeed: 4000, 
 };
 const settingsForStaff: ISettings = {
   dots: true,
@@ -66,8 +66,16 @@ const SliderBlock = ({ cards, staffInfo }: ICardsProps) => {
           <Slider {...settingsForStaff} className={css.sliderStaff}>
             {staffInfo.map((teacher) => (
               <div key={teacher.idTeachers} className={css.staffInfo}>
-                <div className={css.avatar}>
-                  <img src={`${API_URL}${teacher.photoTeachers}`} alt="staffPhoto" className={css.staffPhoto} />
+                <div className={css.photoContainer}>
+                  <div className={css.photoItem}>
+                    <div className={css.photoBody}>
+                      <img
+                        src={`${API_URL}${teacher.photoTeachers}`}
+                        alt="staffPhoto"
+                        className={css.staffPhoto}
+                      />
+                    </div>
+                  </div>
                 </div>
 
                 <div className={css.staffDescr}>
@@ -80,7 +88,7 @@ const SliderBlock = ({ cards, staffInfo }: ICardsProps) => {
         </div>
       )}
     </>
-  )
+  );
 };
 
 export default SliderBlock;

@@ -1,9 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import css from "./forms.module.scss";
-import RecoveryForm from "./RecoveryForm";
-import RegistrationForm from "./RegistrationForm";
-import classNames from "classnames";
-import Close from "../Close/Close";
 import { useAppDispatch } from "../../services/type-service";
 import {
   getCurrentUserData,
@@ -12,19 +8,16 @@ import {
 } from "../../services/thunk/auth";
 import EyeIcon from "../EyeIcon";
 import Button from "../Button/Button";
+import { authSlice } from "../../store/slices/auth";
+import { useNavigate } from "react-router";
+import { validMail } from "../../services/validate";
 
-type IModalFormProps = {
-  openModalForm?: () => void;
-};
-
-const LoginForm = ({ openModalForm }: IModalFormProps) => {
+const LoginForm = () => {
+  const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
   const dispatch = useAppDispatch();
-
-  //состояния форм
-  const [isLoginForm, setIsLoginForm] = useState(true);
-  const [isRecovery, setIsRecovery] = useState(false);
-  const [isRegistration, setIsRegistration] = useState(false);
+  const [isValidForm, setIsValidForm] = useState(false);
+  const [errorMail, setErrorMail] = useState("");
 
   //состояние инпутов главной формы
   const [item, setItem] = useState({
@@ -34,8 +27,24 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
 
   const handleChange = (e: { target: { name: string; value: string } }) => {
     setItem({ ...item, [e.target.name]: e.target.value });
-    setErrorMessage("");
+    setErrorMail("");
   };
+
+  //сообщение ошибки, если не заполнена почта
+  useEffect(() => {
+    setErrorMessage("");
+    const isValidateMail = validMail(item.email);
+    if (!isValidateMail && item.email !== "") {
+      setErrorMail("Введите корректный email");
+    } else {
+      setErrorMail("");
+    }
+    if (isValidateMail && item.password !== "") {
+      setIsValidForm(true);
+    } else {
+      setIsValidForm(false);
+    }
+  }, [item]);
 
   //вход пользователя
   const handleSubmit = (e: { preventDefault: () => void }) => {
@@ -54,10 +63,7 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
       .then(() => {
         dispatch(getCurrentUserData());
       })
-      .then(() => {
-        setIsLoginForm(!isLoginForm);
-        if (openModalForm) openModalForm();
-      })
+      .then(() => navigate("/"))
       .catch(() => {
         setErrorMessage("Неправильный логин или пароль");
       });
@@ -69,81 +75,79 @@ const LoginForm = ({ openModalForm }: IModalFormProps) => {
     setShowPassword(!showPassword);
   };
 
-  const classNamesList = classNames(css.modalForm, {
-    [css.modalFormDisabled]: isRecovery || isRegistration,
-  });
-
   return (
-    <div className={css.wrapper}>
-      <Close openModalForm={openModalForm} />
-      {isLoginForm && (
-        <div className={classNamesList}>
-          <h3>Вход</h3>
-          <div className={css.content}>
-            <form onSubmit={handleSubmit} className={css.form}>
-              <fieldset>
-                <label htmlFor="tel">
-                  Адрес электронной почты
-                  <input
-                    type="email"
-                    value={item.email}
-                    onChange={handleChange}
-                    name="email"
-                    className={
-                      errorMessage && errorMessage !== ""
-                        ? `${css.errorInput}`
-                        : ""
-                    }
-                    placeholder="example@gmail.com"
-                  />
-                </label>
-                {errorMessage && errorMessage !== "" && (
-                  <span className={css.errorMessage}>
-                    Неправильный логин или пароль
-                  </span>
-                )}
-              </fieldset>
+    <>
+      <h3>Вход</h3>
+      <div className={css.content}>
+        <form onSubmit={handleSubmit} className={css.form}>
+          <fieldset>
+            <label htmlFor="tel">
+              Адрес электронной почты
+              <input
+                type="email"
+                value={item.email}
+                onChange={handleChange}
+                name="email"
+                className={
+                  (errorMail && errorMail !== "") ||
+                  (errorMessage && errorMessage !== "")
+                    ? `${css.errorInput}`
+                    : ""
+                }
+                placeholder="example@gmail.com"
+              />
+            </label>
+            {(errorMail && errorMail !== "") ||
+              (errorMessage && errorMessage !== "" && (
+                <span className={css.errorMessage}>
+                  {errorMail || errorMessage}
+                </span>
+              ))}
+          </fieldset>
 
-              <fieldset>
-                <label htmlFor="password">
-                  Пароль
-                  <input
-                    value={item.password}
-                    onChange={handleChange}
-                    name="password"
-                    type={showPassword ? "text" : "password"}
-                    className={
-                      errorMessage && errorMessage !== ""
-                        ? `${css.errorInput}`
-                        : ""
-                    }
-                    placeholder="*****"
-                  />
-                  <div className={css.eyeIcon}>
-                    <EyeIcon
-                      showPassword={showPassword}
-                      togglePasswordVisibility={togglePasswordVisibility}
-                    />
-                  </div>
-                </label>
-              </fieldset>
-
-              <div className={css.linkGroup}>
-                <label onClick={() => setIsRegistration(!isRegistration)}>
-                  Зарегистрироваться
-                </label>
-                <label onClick={() => setIsRecovery(!isRecovery)}>
-                  Забыли пароль?
-                </label>
+          <fieldset>
+            <label htmlFor="password">
+              Пароль
+              <input
+                value={item.password}
+                onChange={handleChange}
+                name="password"
+                type={showPassword ? "text" : "password"}
+                className={
+                  errorMessage && errorMessage !== "" ? `${css.errorInput}` : ""
+                }
+                placeholder="exampLe_56q"
+              />
+              <div className={css.eyeIcon}>
+                <EyeIcon
+                  showPassword={showPassword}
+                  togglePasswordVisibility={togglePasswordVisibility}
+                />
               </div>
-              <Button text="Войти" cls="btn-reg"/>
-            </form>
+            </label>
+          </fieldset>
+
+          <div className={css.linkGroup}>
+            <label
+              onClick={() => {
+                dispatch(authSlice.actions.changeFormActive("registration"));
+              }}
+            >
+              Зарегистрироваться
+            </label>
+            <label
+              onClick={() => {
+                dispatch(authSlice.actions.changeFormActive("recovery"));
+              }}
+            >
+              Забыли пароль?
+            </label>
           </div>
-        </div>
-      )}
-      {isRecovery && <RecoveryForm />}
-      {isRegistration && <RegistrationForm />}
-    </div>
+
+          <Button text="Войти" cls="btn-reg" disabled={!isValidForm}/>
+        </form>
+      </div>
+    </>
   );
 };
 

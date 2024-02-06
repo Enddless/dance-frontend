@@ -1,8 +1,8 @@
-@import "../../../../../../../../styles/variables.scss";
+@import "../../../../../../../../main.module.scss";
 
 .container {
   width: 785px;
-  height: 412px;
+  min-height: 450px;
   padding: 60px;
   position: absolute;
   top: 50%;
@@ -28,10 +28,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  button {
-    margin: 0;
-    padding: 18px 32px;
-  }
+  column-gap: 10px;
 }
 .form {
   display: grid;
@@ -83,6 +80,7 @@
     width: 200px;
     height: 200px;
     border-radius: 50%;
+    overflow: hidden;
     display: flex;
     text-align: center;
     grid-row: 1;
@@ -90,6 +88,7 @@
       position: absolute;
       width: 100%;
       object-fit: cover;
+      // border-radius: 50%;
     }
   }
 }
@@ -98,11 +97,32 @@
   position: relative;
   height: 150px;
   grid-row: 1 / 3;
-  
+
   .spinnerContainer {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+}
+@media screen and (max-width: 900px) {
+  .container {
+    width: 600px;
+    padding: 50px 30px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .container {
+    height: 483px;
+    width: 375px;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    .download {
+      position: relative;
+      width: 100px;
+      height: 100px;
+    }
   }
 }

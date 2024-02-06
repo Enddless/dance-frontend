@@ -1,8 +1,9 @@
 export enum AppRoute {
   Root = "/",
+  Modal = "/modal",
   Login = "/login",
-  Registration = "/login/registration",
-  Recovery = "/login/recovery",
+  Registration = "/registration",
+  Recovery = "/recovery",
   Dashboard = "/dashboard",
   Reviews = "/reviews",
   PersonalArea = "/inbox",
@@ -25,6 +26,7 @@ export enum APIRoute {
   UpdateToken = '/loginRefresh',
   Tickets = '/seasonTickets',
   AddPhoto = '/addUsersPhoto',
+  DeletePhotoUser = "/deleteUsersPhoto",
   //admin-settings
   Banner = "/basicBanners",
   AboutStudio = "/studioSettings",
@@ -33,6 +35,9 @@ export enum APIRoute {
   AddTeacherPhoto = "/teacherSettingsPhoto",
   Halls = "/hallsSettings",
   Teachers = "/teachersSettings",
+  Price = "/ServicePrice",
+  AddPrice = "/addServicePrice",
+  DelPrice = "/deleteServicePrice",
   //main page
   MainPage = "/page",
 }

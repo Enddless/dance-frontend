@@ -57,7 +57,7 @@ export const localizer = momentLocalizer(moment);
 
 //"начало рабочего дня"
 export const minTime = new Date();
-minTime.setHours(9, 0, 0);
+minTime.setHours(6, 0, 0);
 
 //доступные кнопки для отражения у пользователя
 export const messagesData = {
@@ -80,13 +80,15 @@ export type TEvent = {
   isDraggable?: boolean;
   isResizable?: boolean;
 };
-
+export const currentTime = new Date();
+export const newTime = new Date(currentTime.getTime() + 1 * 60 * 60 * 1000);
+export const newDate = new Date(currentTime.getTime() + (1 * 24 + 4) * 60 * 60 * 1000);
 export const dataEvents: TEvent[] = [
   {
     id: 0,
     title: "Занятие 1",
-    start: moment("2024-01-08T10:45:00").toDate(),
-    end: moment("2024-01-08T11:45:00").toDate(),
+    start: moment(currentTime).toDate(),
+    end: moment(new Date(currentTime.getTime() + 1 * 60 * 60 * 1000)).toDate(),
     halls: halls.First,
     desc: "meeting",
     isDraggable: true,
@@ -95,8 +97,8 @@ export const dataEvents: TEvent[] = [
   {
     id: 1,
     title: "Занятие 2",
-    start: moment("2024-01-08T09:30:00").toDate(),
-    end: moment("2024-01-08T12:30:00").toDate(),
+    start: moment(new Date(currentTime.getTime() - 6 * 60 * 60 * 1000)).toDate(),
+    end: moment(new Date(currentTime.getTime() - 5 * 60 * 60 * 1000)).toDate(),
     halls: halls.Secondary,
     desc: "meeting",
     isDraggable: true,
@@ -105,8 +107,8 @@ export const dataEvents: TEvent[] = [
   {
     id: 3,
     title: "Занятие 3",
-    start: moment("2024-01-09T09:00:00").toDate(),
-    end: moment("2024-01-09T10:00:00").toDate(),
+    start: moment(new Date(currentTime.getTime() + (1 * 24 + 3) * 60 * 60 * 1000)).toDate(),
+    end: moment(new Date(currentTime.getTime() + (1 * 24 + 4) * 60 * 60 * 1000)).toDate(),
     halls: halls.Third,
     desc: "meeting",
     isDraggable: true,
@@ -115,8 +117,8 @@ export const dataEvents: TEvent[] = [
   {
     id: 4,
     title: "Занятие 4",
-    start: moment("2024-01-09T13:30:00").toDate(),
-    end: moment("2024-01-09T14:30:00").toDate(),
+    start: moment(new Date(currentTime.getTime() + (1 * 24 + 4) * 60 * 60 * 1000)).toDate(),
+    end: moment(new Date(currentTime.getTime() + (1 * 24 + 6) * 60 * 60 * 1000)).toDate(),
     halls: halls.First,
     desc: "meeting",
     isDraggable: true,
@@ -125,8 +127,8 @@ export const dataEvents: TEvent[] = [
   {
     id: 5,
     title: "Аренда Балетного зала",
-    start: moment("2024-01-09T09:00:00").toDate(),
-    end: moment("2024-01-09T20:00:00").toDate(),
+    start: moment(new Date(currentTime.getTime() - 4 * 60 * 60 * 1000)).toDate(),
+    end: moment(new Date(currentTime.getTime() - 3 * 60 * 60 * 1000)).toDate(),
     halls: halls.Secondary,
     desc: "meeting",
     isDraggable: true,
@@ -135,8 +137,8 @@ export const dataEvents: TEvent[] = [
   {
     id: 6,
     title: "Занятие 6",
-    start: moment("2024-01-09T17:30:00").toDate(),
-    end: moment("2024-01-09T18:30:00").toDate(),
+    start: moment(new Date(currentTime.getTime() + 1 * 24 * 60 * 60 * 1000)).toDate(),
+    end: moment(new Date(currentTime.getTime() + 4 * 24 * 60 * 60 * 1000)).toDate(),
     halls: halls.Third,
     desc: "meeting",
     isDraggable: true,
@@ -145,8 +147,8 @@ export const dataEvents: TEvent[] = [
   {
     id: 7,
     title: "Занятие 7",
-    start: moment("2024-01-10T17:30:00").toDate(),
-    end: moment("2024-01-10T18:30:00").toDate(),
+    start: moment(new Date(currentTime.getTime() + 0.5 * 60 * 60 * 1000)).toDate(),
+    end: moment(new Date(currentTime.getTime() + 1 * 60 * 60 * 1000)).toDate(),
     halls: halls.First,
     desc: "meeting",
     isDraggable: true,
@@ -155,8 +157,8 @@ export const dataEvents: TEvent[] = [
   {
     id: 8,
     title: "Занятие 8",
-    start: moment("2024-01-10T09:30:00").toDate(),
-    end: moment("2024-01-10T11:30:00").toDate(),
+    start: moment(new Date(currentTime.getTime() + 3 * 60 * 60 * 1000)).toDate(),
+    end: moment(new Date(currentTime.getTime() + 4 * 60 * 60 * 1000)).toDate(),
     halls: halls.First,
     desc: "meeting",
     isDraggable: true,
@@ -165,8 +167,8 @@ export const dataEvents: TEvent[] = [
   {
     id: 9,
     title: "Занятие 9",
-    start: moment("2024-01-15T09:30:00").toDate(),
-    end: moment("2024-01-15T11:30:00").toDate(),
+    start: moment(new Date(currentTime.getTime() + 1 * 24 * 60 * 60 * 1000)).toDate(),
+    end: moment(new Date(currentTime.getTime() + 3 * 24 * 60 * 60 * 1000)).toDate(),
     halls: halls.First,
     desc: "meeting",
     isDraggable: true,

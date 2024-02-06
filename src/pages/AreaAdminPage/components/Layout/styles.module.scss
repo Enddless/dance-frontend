@@ -1,9 +1,15 @@
-@import "../../../../styles/variables.scss";
+@import "../../../../main.module.scss";
 .layout {
-  // grid-column: span 10;
   margin: 40px 20px 40px 0;
   padding:30px;
   background: white;
   border: 1px solid $btn-border;
-  position: relative;
+}
+
+@media screen and (max-width: 600px) {
+  .layout {
+    grid-column: span 12;
+    grid-row: 2;
+    margin:0;
+  }
 }

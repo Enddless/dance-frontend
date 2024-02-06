@@ -1,5 +1,4 @@
-@import "../../styles//variables.scss";
-@import "../../styles/mixins.scss";
+@import "../../main.module.scss";
 
 .header {
   width: 100%;
@@ -41,6 +40,22 @@
     text-align: left;
   }
 }
+.buttonContainer {
+  width: 180px;
+  button {
+    width: 100%;
+  }
+}
+.userControl {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 10px;
+}
+.burgerMenu {
+  position: relative;
+  display: none;
+}
 @media screen and (max-width: 1600px) {
   .navigation {
     column-gap: 40px;
@@ -58,5 +73,28 @@
   .navigation {
     column-gap: 15px;
     margin: 0 15px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .subMenu {
+    width: 100px;
+  }
+  .buttonContainer {
+    width: 100px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .burgerMenu {
+    display: block;
+    position: relative;
+  }
+  .navigation {
+    display: none;
+  }
+}
+@media screen and (max-width: 600px) {
+  .header {
+    padding: 20px;
   }
 }

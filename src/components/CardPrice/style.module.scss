@@ -1,4 +1,4 @@
-@import "../../styles//variables.scss";
+@import "../../main.module.scss";
 .card {
   grid-column: span 3;
   display: flex;
@@ -11,6 +11,7 @@
   background: $card-price-background;
   box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.05);
   margin: 10px 0;
+  position: relative;
 }
 .noneShadow {
   border: none;
@@ -18,6 +19,12 @@
 }
 .subtitle {
   text-align: center;
+}
+.subtitle:last-child {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 .checkbox {
   height: 75px;
@@ -52,7 +59,26 @@
 .redisignCheckboxGroup {
   display: flex;
   justify-content: space-between;
+  position: relative;
   .checkbox {
     width: 30%;
   }
+  .subtitle:last-child {
+    position: absolute;
+    left: 90%;
+  }
+}
+
+
+@media screen and (max-width: 1000px) {
+  .card {
+    grid-column: span 6;
+  }
+}
+@media screen and (max-width: 550px) {
+  .card {
+    grid-column: span 12;
+  }
+  .redisignBlock .checkbox {
+    height: 122px; }
 }

@@ -1,6 +1,7 @@
 import {
   AuthorizationStatus,
   DEFAULT_BUTTON_AREA_PERSONAL,
+  DEFAULT_FORM_AUTH,
   LoadingStatus,
   NameSpace,
 } from "../../const/const";
@@ -10,6 +11,7 @@ import {
   changeUserData,
   changeUserPhoto,
   confirmation,
+  deleteUserData,
   deleteUserPhoto,
   getCurrentUserData,
   getCurrentUserRole,
@@ -29,6 +31,7 @@ const initialState: StateAuth = {
   isUserRoleLoading: LoadingStatus.Idle,
   isUserPhotoLoading: LoadingStatus.Idle,
   buttonActive: DEFAULT_BUTTON_AREA_PERSONAL.title,
+  formAuthActiveId: DEFAULT_FORM_AUTH,
 };
 
 export const authSlice = createSlice({
@@ -37,6 +40,9 @@ export const authSlice = createSlice({
   reducers: {
     changeActiveButtonMenuPersonal(state, action: PayloadAction<string>) {
       state.buttonActive = action.payload;
+    },
+    changeFormActive(state, action: PayloadAction<string>) {
+      state.formAuthActiveId = action.payload;
     },
   },
   extraReducers(builder) {
@@ -137,11 +143,13 @@ export const authSlice = createSlice({
       })
       .addCase(getCurrentUserRole.rejected, (state) => {
         state.isUserRoleLoading = LoadingStatus.Rejected;
+      })
+      // ***** delete account *****
+      .addCase(deleteUserData.fulfilled, (state, action) => {
+        state.authStatus = AuthorizationStatus.NoAuth;
+        state.message = action.payload;
+        state.userData = {};
+        state.userRole = null;
       });
-    // ***** delete account *****
-    // .addCase(deleteUserData.fulfilled, (state, action) => {
-    //   state.authStatus = AuthorizationStatus.NoAuth;
-    //   state.message = action.payload;
-    // });
   },
 });

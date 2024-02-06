@@ -1,16 +1,19 @@
 import css from "./Footer.module.scss";
 import Logo from "../Logo/Logo";
-import { pagesFooter } from "../../mocks/mocks";
 import sprite from "../../assets/sprite.svg";
 import SocialLinks from "../SocialLinks/SocialLinks";
 import { HashLink } from "react-router-hash-link";
 import { Link } from "react-router-dom";
+import { AppRoute } from "../../const/route";
+import { pagesFooter } from "../../const/const";
 
 const Footer = () => {
-
+  const scrollHandler = () => {
+    window.scrollTo(0,0);
+  }
   return (
     <div className={css.footer}>
-      <div className={css.logo}>
+      <div className={css.logo} onClick={scrollHandler}>
         <Logo />
       </div>
 
@@ -38,7 +41,14 @@ const Footer = () => {
           </ul>
         </li>
         <li className={css.menuItem}>
-          <Link to="/">Юридическая информация</Link>
+          <span>
+            <a
+              href={`${AppRoute.Root}./src/assets/Политика.pdf`}
+              target="_blank"
+            >
+              Юридическая информация
+            </a>
+          </span>
         </li>
       </ul>
 

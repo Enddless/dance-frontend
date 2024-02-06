@@ -35,14 +35,21 @@
 		</g>
 	</symbol>
 	<symbol id="bottomArrow" width="13" height="8" viewBox="0 0 13 8" fill="none">
-		<g >
+		<g>
 			<path d="M6.5 8L0.00480938 0.5L12.9952 0.5L6.5 8Z" fill="#13340A" />
 		</g>
 	</symbol>
 	<symbol id="topArrow" width="13" height="8" viewBox="0 0 13 8" fill="none">
-		<g  >
-			<path d="M6.5 0L0.00480938 7.5L12.9952 7.5L6.5 0Z" fill="#13340A"/>
-		  </g>
+		<g>
+			<path d="M6.5 0L0.00480938 7.5L12.9952 7.5L6.5 0Z" fill="#13340A" />
+		</g>
+	</symbol>
+	<symbol id="menu" width="30" height="18" viewBox="0 0 30 18" fill="none">
+		<g>
+			<line x1="8.74228e-08" y1="1" x2="25" y2="1" stroke="white" stroke-width="2" />
+			<line x1="8.74228e-08" y1="9" x2="13" y2="9" stroke="white" stroke-width="2" />
+			<line x1="8.74228e-08" y1="17" x2="30" y2="17" stroke="white" stroke-width="2" />
+		</g>
 	</symbol>
 	<!-- SOCIAL LINKS -->
 	<symbol id="ok" width="40" height="40" viewBox="0 0 40 40" fill="none">
@@ -115,6 +122,12 @@
 			<path d="M11.25 7.5L18.75 15L11.25 22.5" stroke="#13340A" stroke-width="2" />
 		</g>
 	</symbol>
+	<symbol id="user" width="24" height="24" viewBox="0 0 24 24" fill="none">
+		<g>
+			<path d="M19.7274 20.4471C19.2716 19.1713 18.2672 18.0439 16.8701 17.2399C15.4729 16.4358 13.7611 16 12 16C10.2389 16 8.52706 16.4358 7.12991 17.2399C5.73276 18.0439 4.72839 19.1713 4.27259 20.4471"  stroke-linecap="round" />
+			<circle cx="12" cy="8" r="4" stroke-linecap="round" />
+		</g>
+	</symbol>
 	<!-- controls-button -->
 	<symbol id="pencilControls" width="30" height="30" viewBox="0 0 30 30" fill="none">
 		<g>
@@ -141,16 +154,9 @@
 	<!--  -->
 	<symbol id="logout" width="25" height="25" viewBox="0 0 25 25" fill="none">
 		<g>
-			<g clip-path="url(#clip0_1222_37453)">
-				<path d="M16.9643 18.75V22.3214C16.9643 22.795 16.7761 23.2493 16.4412 23.5841C16.1063 23.9189 15.6521 24.1071 15.1785 24.1071H2.67854C2.20493 24.1071 1.75073 23.9189 1.41585 23.5841C1.08096 23.2493 0.892822 22.795 0.892822 22.3214V2.67854C0.892822 2.20493 1.08096 1.75073 1.41585 1.41585C1.75073 1.08096 2.20493 0.892822 2.67854 0.892822H15.1785C15.6521 0.892822 16.1063 1.08096 16.4412 1.41585C16.7761 1.75073 16.9643 2.20493 16.9643 2.67854V6.24997" stroke="#FDF8F0" stroke-linecap="round" stroke-linejoin="round" />
-				<path d="M11.6071 12.5H24.1071" stroke="#FDF8F0" stroke-linecap="round" stroke-linejoin="round" />
-				<path d="M20.5356 8.92847L24.1071 12.4999L20.5356 16.0713" stroke="#FDF8F0" stroke-linecap="round" stroke-linejoin="round" />
-			</g>
-			<defs>
-				<clipPath id="clip0_1222_37453">
-					<rect width="25" height="25" fill="white" />
-				</clipPath>
-			</defs>
+			<path d="M16.9643 18.75V22.3214C16.9643 22.795 16.7761 23.2493 16.4412 23.5841C16.1063 23.9189 15.6521 24.1071 15.1785 24.1071H2.67854C2.20493 24.1071 1.75073 23.9189 1.41585 23.5841C1.08096 23.2493 0.892822 22.795 0.892822 22.3214V2.67854C0.892822 2.20493 1.08096 1.75073 1.41585 1.41585C1.75073 1.08096 2.20493 0.892822 2.67854 0.892822H15.1785C15.6521 0.892822 16.1063 1.08096 16.4412 1.41585C16.7761 1.75073 16.9643 2.20493 16.9643 2.67854V6.24997" stroke-linecap="round" stroke-linejoin="round" />
+			<path d="M11.6071 12.5H24.1071" stroke-linecap="round" stroke-linejoin="round" />
+			<path d="M20.5356 8.92847L24.1071 12.4999L20.5356 16.0713" stroke-linecap="round" stroke-linejoin="round" />
 		</g>
 	</symbol>
 	<symbol id="bookmark" width="25" height="25" viewBox="0 0 25 25" fill="none">

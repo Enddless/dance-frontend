@@ -1,9 +1,7 @@
-@import "../../styles//variables.scss";
-@import "../../styles/mixins.scss";
+@import "../../main.module.scss";
 
 .footer {
   width: 100%;
-  // height: 259px;
   padding: 30px 100px;
   background: $footer-background;
   color: $footer-color;
@@ -21,19 +19,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap:35px;
+  row-gap: 35px;
 }
 .centerMenu {
   column-gap: 60px;
   display: flex;
   flex-direction: row;
   white-space: nowrap;
-  @include H5;
 }
 .menuItem {
-  // padding: 10px 10px;
   border-radius: 10px;
   cursor: pointer;
+  @include H5;
 }
 .menuItem:hover {
   color: #ffa800;
@@ -60,4 +57,32 @@
 }
 .socialBlock {
   text-align: center;
+}
+
+@media screen and (max-width: 1100px) {
+  .footer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+    .logo {
+      order: 2;
+      top: 0;
+    }
+  }
+  .footerNav {
+    order: 1;
+    width: 100%;
+  }
+  .contacts {
+    order: 3;
+  }
+}
+@media screen and (max-width: 750px) {
+  .footer {
+    padding: 30px;
+    justify-content: center;
+  }
+  .centerMenu {
+    column-gap: 5px;
+  }
 }

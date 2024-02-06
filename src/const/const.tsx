@@ -1,3 +1,5 @@
+import { ICity, IPagesFooter, IPagesHeader, IPoints } from "../interfaces/interfaces";
+
 export enum NameSpace {
   User = "user",
   Auth = "auth",
@@ -66,3 +68,84 @@ export const ResourceHalls = [
   { id: "b", title: "Зал 2" },
   { id: "c", title: "Зал 3" },
 ];
+
+export const formName = [
+  { id: 1, path: "login" },
+  { id: 2, path: "registration" },
+  { id: 3, path: "recovery" },
+];
+
+export const DEFAULT_FORM_AUTH = "login";
+
+export const pagesHeader: IPagesHeader[] = [
+  {
+    id: 1,
+    title: "О студии",
+    url: "/",
+  },
+  {
+    id: 2,
+    title: "Услуги и цены",
+    url: "/#pricesBlock",
+  },
+  {
+    id: 3,
+    title: "Расписание",
+    url: "/dashboard",
+  },
+  {
+    id: 4,
+    title: "Отзывы",
+    url: "/reviews",
+  },
+  {
+    id: 5,
+    title: "Контакты",
+    url: "/#contactsBlock",
+  },
+  {
+    id: 6,
+    title: "Скачать приложение",
+    url: "/download",
+  },
+];
+export const pagesFooter: IPagesFooter[] = [
+  {
+    id: 1,
+    title: "О студии",
+    url: "/",
+  },
+  {
+    id: 2,
+    title: "Услуги и цены",
+    url: "/#pricesBlock",
+  },
+  {
+    id: 3,
+    title: "Расписание",
+    url: "/dashboard",
+  },
+  {
+    id: 4,
+    title: "Отзывы",
+    url: "/reviews",
+  },
+  {
+    id: 5,
+    title: "Контакты",
+    url: "/#contactsBlock",
+  },
+];
+export const POINTS: IPoints[] = [
+  {
+    title: "Южно-Сахалинск",
+    lat: 46.960791,
+    lng: 142.746179,
+  },
+];
+export const CITY:ICity = {
+  title: "Южно-Сахалинск",
+  lat: 46.960791,
+  lng: 142.746179,
+  zoom: 17,
+};

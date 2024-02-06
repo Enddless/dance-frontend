@@ -1,38 +1,28 @@
-@import '../../styles/variables.scss';
+@import "../../main.module.scss";
 .area {
   position: absolute;
   z-index: 402;
   width: 180px;
-  padding: 25px 20px 20px;
+  padding: 50px 15px 40px;
   right: 0px;
-  top: 79px;
+  top: 0px;
   background: white;
-  transform: none;
-  -webkit-transform: none;
-  -moz-transform: none;
-  -ms-transform: none;
-  -o-transform: none;
+  color: #13340a;
+  @include TextLink;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   border-radius: 10px;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 500ms ease-in-out;
+  box-shadow: 6px 6px 20px 0px rgba(63, 63, 62, 0.7);
+
   .closeContainer {
     position: absolute;
-    right: -11px;
-    top: -17px;
+    right: 15px;
+    top: 15px;
     cursor: pointer;
-  }
-  & button {
-    width: 100%;
-    @include TextPrimary;
-    background: transparent;
-    color: $btn-background-three;
-    border: none;
-    justify-content: left;
-    cursor: pointer;
-  }
-  & button:hover {
-    font-weight: 600;
   }
   .decoration {
     position: absolute;
@@ -47,6 +37,36 @@
     border-bottom: 20px solid white;
   }
 }
+
+.active {
+  opacity: 1;
+  right: 0px;
+  top: 79px;
+  transform: scale(1);
+  transition: all 500ms ease-in-out;
+}
+.submenu {
+  cursor: pointer;
+  margin-bottom:10px;
+  width:100%;
+
+  & svg {
+    stroke: #13340a;
+  }
+  a {
+    display: flex;
+    align-items: center;
+    column-gap:10px;
+  }
+}
+.submenu:hover {
+  font-weight: 500;
+  color: #ffa800;
+}
+.submenu:hover svg {
+  stroke: #ffa800;
+}
+
 @media screen and (max-width: 1400px) {
   .area {
     width: 180px;

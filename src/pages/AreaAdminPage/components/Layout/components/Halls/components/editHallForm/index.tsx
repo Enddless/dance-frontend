@@ -83,7 +83,8 @@ const EditHallForm = ({ onClick, id }: TEditFormProps) => {
       const Description = descriptionHall;
       dispatch(addHall({ IdHall, Title, Description }))
         .unwrap()
-        .then(() => dispatch(getHalls()));
+        .then(() => dispatch(getHalls()))
+        .then(() => {if (onClick) onClick()});
     }
   };
   return (

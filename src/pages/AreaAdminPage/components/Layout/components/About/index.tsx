@@ -27,9 +27,9 @@ const AboutSettings = () => {
   const [isEditing, setIsEditing] = useState(false);
 
   //получить описание с сервера
-  // useEffect(() => {
-  //   dispatch(aboutStudio());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(aboutStudio());
+  }, [dispatch]);
 
   // Отправка описания на сервер
   const handleBlur = () => {

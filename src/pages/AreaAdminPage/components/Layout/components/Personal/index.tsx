@@ -7,22 +7,29 @@ import {
   useAppSelector,
 } from "../../../../../../services/type-service";
 import { useEffect, useState } from "react";
-import { deleteTeacher, getTeachers } from "../../../../../../services/thunk/studio";
+import {
+  deleteTeacher,
+  getTeachers,
+} from "../../../../../../services/thunk/studio";
 import { API_URL } from "../../../../../../services/api";
 import AddTeacherForm from "./components/addTeacherForm";
+import EditTeacherForm from "./components/editTeacherForm";
+import { Modal } from "../../../../../../components/modal-form/Modal";
 
 const Personal = () => {
   const dispatch = useAppDispatch();
   const teachersData = useAppSelector((state) => state.studio.techersData);
   const [teachers, setTeachers] = useState(teachersData);
   const [addTecherForm, setAddTeacherForm] = useState(false);
-// Получение данных о преподавателях из сервера
+  const [editTeacherForm, setEditTeacherForm] = useState(false);
+  const [currentEditTeacher, setCurrentEditTeacher] = useState(0);
+  // Получение данных о преподавателях из сервера
   useEffect(() => {
     dispatch(getTeachers());
   }, [dispatch]);
 
-   //удаление преподавателя
-   const deleteCurrenTeacher = (idTeachers: number) => {
+  //удаление преподавателя
+  const deleteCurrenTeacher = (idTeachers: number) => {
     dispatch(deleteTeacher({ idTeachers }))
       .unwrap()
       .then(() => dispatch(getTeachers()));
@@ -32,25 +39,41 @@ const Personal = () => {
     setTeachers(teachersData);
   }, [teachersData]);
 
+  //редактирование конкретной карточки
+  const handleEditCard = (id: number) => {
+    setEditTeacherForm(!editTeacherForm);
+    setCurrentEditTeacher(id);
+  };
+
   return (
     <>
-    <p>Редактирование карточки пока не работает</p>
+      {/* <p>Редактирование карточки пока работает без изменения фото</p> */}
       <div className={css.container}>
         {teachers !== null ? (
           <>
             {teachers.map((teacher) => (
               <div key={teacher.idTeachers} className={css.staffContainer}>
                 <div className={css.controlGroup}>
-                  <ControlButton id="edit" />
-                  <ControlButton id="delete" 
-                  onClick={() => deleteCurrenTeacher(teacher.idTeachers)}/>
+                  <ControlButton
+                    id="edit"
+                    onClick={() => handleEditCard(teacher.idTeachers)}
+                  />
+                  <ControlButton
+                    id="delete"
+                    onClick={() => deleteCurrenTeacher(teacher.idTeachers)}
+                  />
                 </div>
                 <div className={css.staffInfo}>
-                  <div className={css.avatar}>
-                    <img
-                      src={`${API_URL}${teacher.photoTeachers}`}
-                      alt="staffPhoto"
-                    />
+                  <div className={css.photoContainer}>
+                    <div className={css.photoItem}>
+                      <div className={css.photoBody}>
+                        <img
+                          src={`${API_URL}${teacher.photoTeachers}`}
+                          alt="staffPhoto"
+                          className={css.staffPhoto}
+                        />
+                      </div>
+                    </div>
                   </div>
 
                   <div className={css.staffDescr}>
@@ -63,15 +86,30 @@ const Personal = () => {
           </>
         ) : (
           <p className={css.text}>
-            У вас еще нет персонала. Вы можете добавить преподавателя нажав кнопку "Добавить"
+            У вас еще нет персонала. Вы можете добавить преподавателя нажав
+            кнопку "Добавить"
           </p>
         )}
       </div>
       <div className={css.add}>
-        <Button text="Добавить" cls="add" openModalForm={() => setAddTeacherForm(!addTecherForm)} />
+        <Button
+          text="Добавить"
+          cls="add"
+          openModalForm={() => setAddTeacherForm(!addTecherForm)}
+        />
       </div>
       {addTecherForm && (
-        <AddTeacherForm onClick={() => setAddTeacherForm(!addTecherForm)} />
+        <Modal>
+          <AddTeacherForm onClick={() => setAddTeacherForm(!addTecherForm)} />
+        </Modal>
+      )}
+      {editTeacherForm && (
+        <Modal>
+          <EditTeacherForm
+            onClick={() => setEditTeacherForm(!editTeacherForm)}
+            id={currentEditTeacher}
+          />
+        </Modal>
       )}
     </>
   );

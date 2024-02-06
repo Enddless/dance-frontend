@@ -1,4 +1,4 @@
-@import "../../styles//variables.scss";
+@import "../../main.module.scss";
 
 .container {
   grid-column: span 4;
@@ -13,9 +13,9 @@
 .caption {
   position: absolute;
   bottom: 0px;
-  left: 50%;
-  transform: translate(-50%, -20px);
-  margin: 0 auto;
+  color: #fffcf8;
+  width: 100%;
+  text-align: center;
   color: $card-title-color;
 }
 .photo {
@@ -40,3 +40,23 @@
     flex-direction: row-reverse; 
   }
 }
+@media screen and (max-width: 800px) {
+  .redisignBlock {
+    flex-direction: column;
+    .photoContainer {
+      width: 100%;
+    }
+    p {
+      width: 100%;
+    }
+    &:nth-child(even) {
+      flex-direction: inherit; 
+    }
+  }
+  .container {
+    grid-column: span 12;
+  }
+}
+
+
+

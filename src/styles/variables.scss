@@ -5,7 +5,7 @@ $white: #fff;
 $gray: #e4e3e3;
 $opacity-black: #00000099;
 $athens-gray: #d9d9d9;
-$blur-background: rgba(0, 0, 0, 0.3);
+$blur-background: rgba(0, 0, 0, .4);
 $table-shadow: rgba(0, 0, 0, 0.05);
 
 //PRIMARY SETTINGS
@@ -27,7 +27,7 @@ $body-family-primary: "Manrope";
   color: $body-color-primary;
 }
 @mixin TextSecondary {
-  @include fluidFontSize(14px, 16px, 1280px, 1920px);
+  @include fluidFontSize(12px, 16px, 1280px, 1920px);
   font-weight: 400;
   line-height: 140%;
 }
@@ -52,7 +52,7 @@ $body-family-primary: "Manrope";
   line-height: 16px;
 }
 @mixin TextLink {
-  @include fluidFontSize(18px, 20px, 1280px, 1920px);
+  @include fluidFontSize(14px, 20px, 1280px, 1920px);
   font-weight: 400;
   line-height: 24px;
 }
@@ -67,7 +67,7 @@ $body-family-primary: "Manrope";
   line-height: 120%;
 }
 @mixin H3 {
-  @include fluidFontSize(30px, 32px, 1280px, 1920px);
+  @include fluidFontSize(20px, 32px, 1280px, 1920px);
   font-weight: 500;
   line-height: 120%;
 }
@@ -105,18 +105,6 @@ $btn-color-two: #13340A;
 $btn-boxshadow: #0000004d;
 $btn-border: #13340a;
 $input-border: #ffa800;
-
-
-// $btn-background-default: #ffa800;
-// $btn-background-hover: #ffc700;
-// $btn-color-secondary: #fdf8f0;
-// $btn-background-secondary: #13340a;
-
-
-// $btn-areaForm-color: #3aa31e;
-// $btn-menuArea-background-active: #3aa31e;
-// $btn-saveButton-color: #fdf8f0;
-// $btn-saveButton-background: #3aa31e;
 
 @mixin ButtonPrimary {
   display: flex;

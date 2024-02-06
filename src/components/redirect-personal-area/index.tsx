@@ -9,7 +9,6 @@ type RedirectProps = {
 
 function RedirectPersonalArea({ children }: RedirectProps) {
   const authStatus = useAppSelector((state) => state.auth.authStatus);
-//как будут скорректированы адреса для форм регистрации, изменить здесь адрес
   return authStatus === AuthorizationStatus.Unknown ||
     authStatus === AuthorizationStatus.NoAuth ? (
     <Navigate to={`${AppRoute.Root}`} />

@@ -104,23 +104,20 @@ export const changeUserPhoto = createAsyncThunk<
 export const deleteUserPhoto = createAsyncThunk<string, undefined, Extra>(
   "user/deletePhoto",
   async (_arg, { extra: api }) => {
-    const { data } = await api.delete(APIRoute.AddPhoto);
+    const { data } = await api.post(APIRoute.DeletePhotoUser);
 
     return data;
   }
 );
 
-// export const deleteUserData = createAsyncThunk<string, UserCurrentData, Extra>(
-//   "user/deleteData",
-//   async ({ emailUser, password }, { extra: api }) => {
-//     const { data } = await api.delete(APIRoute.DeleteUser, {
-//       emailUser,
-//       password
-//     });
-
-//     return data;
-//   }
-// );
+export const deleteUserData = createAsyncThunk<string, undefined, Extra>(
+  "user/deleteData",
+  async (_arg, { extra: api }) => {
+    const { data } = await api.post(APIRoute.DeleteUser);
+    deleteToken();
+    return data;
+  }
+);
 
 // ********** USER-ROLE **********
 export const getCurrentUserRole = createAsyncThunk<
