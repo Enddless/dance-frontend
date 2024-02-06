@@ -10,6 +10,8 @@ import {
 } from "../../../../../../services/type-service";
 import { API_URL } from "../../../../../../services/api";
 import ControlButton from "../../../../../../components/controls-button";
+import { Link } from "react-router-dom";
+import { AppRoute } from "../../../../../../const/route";
 
 const LogotypeSettings = () => {
   const dispatch = useAppDispatch();
@@ -88,9 +90,10 @@ const LogotypeSettings = () => {
           </label>
 
           <div className={css.card} id="logotype">
-            {previewImage && previewImage !== "" && (
+            <Link to={AppRoute.Root}>{previewImage && previewImage !== "" && (
               <img src={previewImage} alt="logotype" />
             )}
+            </Link>
           </div>
         </form>
       ) : (

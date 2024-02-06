@@ -34,7 +34,7 @@
     @include fluidFontSize(14px, 16px, 1280px, 1920px);
   }
   label:hover {
-    background: $btn-background-four;
+    background: $btn-background-five;
   }
   input[type="file"] {
     height: 100%;
@@ -48,10 +48,14 @@
   .update {
     position: absolute;
     z-index: 15;
-    right: -20px;
+    right: -43px;
     top: 10px;
   }
-
+  img {
+    width:100%;
+    height:100%;
+    object-fit: cover;
+  }
   input[type="file"] {
     height: 100%;
     object-fit: cover;
