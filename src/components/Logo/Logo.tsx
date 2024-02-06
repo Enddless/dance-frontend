@@ -17,7 +17,6 @@ const Logo = () => {
     }
   }, [logotypeData]);
 
-  console.log("123")
   return (
     <div className={css.logo} key={logoUrl}>
       <Link to={AppRoute.Root}>

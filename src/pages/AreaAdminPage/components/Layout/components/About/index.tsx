@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import css from "./styles.module.scss";
 import ControlButton from "../../../../../../components/controls-button";
-// import { aboutStudio } from "../../../../../../mocks/mocks";
 import {
   useAppDispatch,
   useAppSelector,
@@ -10,7 +9,6 @@ import {
   aboutStudio,
   changeAboutStudio,
 } from "../../../../../../services/thunk/studio";
-import LogotypeSettings from "../LogotypeSettings";
 
 const AboutSettings = () => {
   const dispatch = useAppDispatch();
@@ -78,7 +76,6 @@ const AboutSettings = () => {
           </>
         )}
       </div>
-      <LogotypeSettings />
     </>
   );
 };

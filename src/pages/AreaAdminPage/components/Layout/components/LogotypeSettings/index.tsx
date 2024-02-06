@@ -9,6 +9,7 @@ import {
   useAppSelector,
 } from "../../../../../../services/type-service";
 import { API_URL } from "../../../../../../services/api";
+import ControlButton from "../../../../../../components/controls-button";
 
 const LogotypeSettings = () => {
   const dispatch = useAppDispatch();
@@ -16,6 +17,7 @@ const LogotypeSettings = () => {
     (state) => state.studio.aboutStudioData
   )?.photoLogo;
   const [logotype, setLogotype] = useState(logotypeData);
+  // const [logotype, setLogotype] = useState("");
   const [errorDownload, serErrorDownload] = useState("");
   const [isValid, setIsValid] = useState(true);
   const [file, setFile] = useState<File>();
@@ -73,27 +75,10 @@ const LogotypeSettings = () => {
 
   return (
     <>
-      <div className={css.container}>
-        {logotype ? (
-          <div className={css.card} id="logotype">
-            <p className={css.title}>Текущий логотип:</p>
-            {previewImage && previewImage !== "" && (
-              <img src={previewImage} alt="logotype" />
-            )}
-          </div>
-        ) : (
-          <>
-            <p>
-              У вас еще нет логотипа. Вы можете добавить его нажав кнопку
-              "Добавить"
-            </p>
-          </>
-        )}
-      </div>
-      <form className={css.add} encType="multipart/form-data">
-        {logotype ? (
-          <label htmlFor="reloadLogotype" className={css.download}>
-            Обновить
+      {logotype && logotype !== "" ? (
+        <form className={css.updateForm} encType="multipart/form-data">
+          <label htmlFor="reloadLogotype" className={css.update}>
+            <ControlButton id="edit" />
             <input
               type="file"
               name="reloadLogotype"
@@ -101,9 +86,17 @@ const LogotypeSettings = () => {
               onChange={handleFileChange}
             />
           </label>
-        ) : (
+
+          <div className={css.card} id="logotype">
+            {previewImage && previewImage !== "" && (
+              <img src={previewImage} alt="logotype" />
+            )}
+          </div>
+        </form>
+      ) : (
+        <form className={css.add} encType="multipart/form-data">
           <label htmlFor="logotype" className={css.download}>
-            Добавить
+            Добавить лого
             <input
               type="file"
               name="logotype"
@@ -112,9 +105,9 @@ const LogotypeSettings = () => {
               onChange={handleFileChange}
             />
           </label>
-        )}
-        {errorDownload && <p className={css.errorMessage}>{errorDownload}</p>}
-      </form>
+        </form>
+      )}
+      {errorDownload && <p className={css.errorMessage}>{errorDownload}</p>}
     </>
   );
 };
