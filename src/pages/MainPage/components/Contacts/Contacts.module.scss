@@ -1,11 +1,10 @@
-@import "../../../../styles/variables.scss";
+@import "../../../../main.module.scss";
 
 .contacts {
   position: relative;
 }
 .info {
   width: 305px;
-  // height: 204px;
   background: $body-background-primary;
   padding:30px 20px;
   position: absolute;

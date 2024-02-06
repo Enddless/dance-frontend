@@ -26,6 +26,7 @@ export enum APIRoute {
   UpdateToken = '/loginRefresh',
   Tickets = '/seasonTickets',
   AddPhoto = '/addUsersPhoto',
+  DeletePhotoUser = "/deleteUsersPhoto",
   //admin-settings
   Banner = "/basicBanners",
   AboutStudio = "/studioSettings",

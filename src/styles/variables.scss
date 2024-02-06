@@ -27,7 +27,7 @@ $body-family-primary: "Manrope";
   color: $body-color-primary;
 }
 @mixin TextSecondary {
-  @include fluidFontSize(14px, 16px, 1280px, 1920px);
+  @include fluidFontSize(12px, 16px, 1280px, 1920px);
   font-weight: 400;
   line-height: 140%;
 }
@@ -52,7 +52,7 @@ $body-family-primary: "Manrope";
   line-height: 16px;
 }
 @mixin TextLink {
-  @include fluidFontSize(18px, 20px, 1280px, 1920px);
+  @include fluidFontSize(14px, 20px, 1280px, 1920px);
   font-weight: 400;
   line-height: 24px;
 }
@@ -67,7 +67,7 @@ $body-family-primary: "Manrope";
   line-height: 120%;
 }
 @mixin H3 {
-  @include fluidFontSize(30px, 32px, 1280px, 1920px);
+  @include fluidFontSize(20px, 32px, 1280px, 1920px);
   font-weight: 500;
   line-height: 120%;
 }
@@ -77,7 +77,7 @@ $body-family-primary: "Manrope";
   line-height: 120%;
 }
 @mixin H5 {
-  @include fluidFontSize(10px, 18px, 1280px, 1920px);
+  @include fluidFontSize(14px, 18px, 1280px, 1920px);
   font-weight: 500;
   line-height: 120%;
 }

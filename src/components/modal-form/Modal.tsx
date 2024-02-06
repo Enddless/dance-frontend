@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import LoginForm from "../LoginForm";
+import LoginForm from "../Forms/LoginForm";
 import css from "./styles.module.scss";
-import RegistrationForm from "../RegistrationForm";
-import { useAppDispatch, useAppSelector } from "../../../services/type-service";
-import RecoveryForm from "../RecoveryForm";
-import { authSlice } from "../../../store/slices/auth";
-import ControlButton from "../../controls-button";
+import RegistrationForm from "../Forms/RegistrationForm";
+import { useAppDispatch, useAppSelector } from "../../services/type-service";
+import RecoveryForm from "../Forms/RecoveryForm";
+import { authSlice } from "../../store/slices/auth";
+import ControlButton from "../controls-button";
 
 type TModalMiniProps = {
   children?: React.ReactNode;

@@ -8,6 +8,7 @@ import InputCheckbox from "../Input-checkbox";
 import Button from "../Button/Button";
 import { authSlice } from "../../store/slices/auth";
 import { validMail, validPassword } from "../../services/validate";
+import { AppRoute } from "../../const/route";
 
 const RegistrationForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -44,7 +45,11 @@ const RegistrationForm = () => {
   useEffect(() => {
     const isValidatePassword = validPassword(formData.password);
     const isValidateDblPassword = validPassword(formData.dublPassword);
-    if (!isValidatePassword && !isValidateDblPassword && formData.password !== "") {
+    if (
+      !isValidatePassword &&
+      !isValidateDblPassword &&
+      formData.password !== ""
+    ) {
       setErrorPassword("Не менее 8 символов(англ.буквы,цифры,символы)");
     } else if (formData.password !== formData.dublPassword) {
       setErrorPassword("Пароли должны совпадать");
@@ -54,7 +59,7 @@ const RegistrationForm = () => {
   }, [formData.password, formData.dublPassword]);
   //валидность формы
   useEffect(() => {
-    if (agreement && !errorPassword && !errorMail) {
+    if (agreement && errorPassword === "" && errorMail === "" && formData.password !== "" && formData.email !== "") {
       setIsValidForm(true);
     } else setIsValidForm(false);
   }, [agreement, errorPassword, errorMail, formData]);
@@ -173,15 +178,21 @@ const RegistrationForm = () => {
                 }
               />
               <label htmlFor="agreement" className={css.agreeCheckbox}>
-                Регистрируясь, я соглашаюсь с Условиями пользования и Политикой
-                конфиденциалности
+                Регистрируясь, я соглашаюсь с{" "}
+                <span>
+                  <a
+                    href={`${AppRoute.Root}./src/assets/Политика.pdf`}
+                    target="_blank"
+                  >
+                    Условиями пользования и Политикой конфиденциальности
+                  </a>
+                </span>
               </label>
             </div>
           </form>
 
           <label className={css.backButton} onClick={handleBack}>
-            {" "}
-            Назад{" "}
+            Назад
           </label>
         </>
       ) : (

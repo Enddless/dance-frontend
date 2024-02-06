@@ -1,12 +1,17 @@
-@import "../../styles/variables.scss";
+@import "../../main.module.scss";
 
 .logo {
   background: inherit;
   position: relative;
   top: 3px;
-  // width: 231px;
-  // min-width:100px;
 }
 .logo img {
   width: 100%;
 }
+
+@media screen and (max-width: 600px) {
+  .logo{
+    display: none;
+  }
+}
+

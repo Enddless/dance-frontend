@@ -12,7 +12,7 @@ import {
   deleteUserData,
   getCurrentUserData,
 } from "../../../../../services/thunk/auth";
-import { Modal } from "../../../../../components/Forms/components/Modal";
+import { Modal } from "../../../../../components/modal-form/Modal";
 import { Navigate } from "react-router-dom";
 import { AppRoute } from "../../../../../const/route";
 

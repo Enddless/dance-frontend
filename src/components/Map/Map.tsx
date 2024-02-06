@@ -1,5 +1,3 @@
-import { POINTS } from "../../mocks/mocks";
-import { CITY } from "../../mocks/mocks";
 import css from "./Map.module.scss";
 import { useRef, useEffect } from "react";
 import leaflet from "leaflet";
@@ -7,6 +5,7 @@ import "leaflet/dist/leaflet.css";
 import useMap from "../../hooks/useMap";
 import { URL_MARKER_DEFAULT } from "./const";
 import { Marker, layerGroup } from "leaflet";
+import { CITY, POINTS } from "../../const/const";
 
 const defaultCustomIcon = leaflet.icon({
   iconUrl: URL_MARKER_DEFAULT,

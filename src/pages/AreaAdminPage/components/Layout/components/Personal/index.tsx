@@ -14,6 +14,7 @@ import {
 import { API_URL } from "../../../../../../services/api";
 import AddTeacherForm from "./components/addTeacherForm";
 import EditTeacherForm from "./components/editTeacherForm";
+import { Modal } from "../../../../../../components/modal-form/Modal";
 
 const Personal = () => {
   const dispatch = useAppDispatch();
@@ -38,8 +39,8 @@ const Personal = () => {
     setTeachers(teachersData);
   }, [teachersData]);
 
-   //редактирование конкретной карточки
-   const handleEditCard = (id: number) => {
+  //редактирование конкретной карточки
+  const handleEditCard = (id: number) => {
     setEditTeacherForm(!editTeacherForm);
     setCurrentEditTeacher(id);
   };
@@ -53,7 +54,10 @@ const Personal = () => {
             {teachers.map((teacher) => (
               <div key={teacher.idTeachers} className={css.staffContainer}>
                 <div className={css.controlGroup}>
-                  <ControlButton id="edit" onClick={() => handleEditCard(teacher.idTeachers)} />
+                  <ControlButton
+                    id="edit"
+                    onClick={() => handleEditCard(teacher.idTeachers)}
+                  />
                   <ControlButton
                     id="delete"
                     onClick={() => deleteCurrenTeacher(teacher.idTeachers)}
@@ -95,13 +99,17 @@ const Personal = () => {
         />
       </div>
       {addTecherForm && (
-        <AddTeacherForm onClick={() => setAddTeacherForm(!addTecherForm)} />
+        <Modal>
+          <AddTeacherForm onClick={() => setAddTeacherForm(!addTecherForm)} />
+        </Modal>
       )}
       {editTeacherForm && (
-        <EditTeacherForm
-          onClick={() => setEditTeacherForm(!editTeacherForm)}
-          id={currentEditTeacher}
-        />
+        <Modal>
+          <EditTeacherForm
+            onClick={() => setEditTeacherForm(!editTeacherForm)}
+            id={currentEditTeacher}
+          />
+        </Modal>
       )}
     </>
   );

@@ -9,6 +9,7 @@ import {
 import css from "./styles.module.scss";
 import { deletePrice, getPrice } from "../../../../../../services/thunk/studio";
 import AddPriceForm from "./component/addPriceForm";
+import { Modal } from "../../../../../../components/modal-form/Modal";
 // import EditPriceForm from "./component/editPriceForm";
 
 const PriceSettings = () => {
@@ -70,7 +71,7 @@ const PriceSettings = () => {
         />
       </div>
       {addPriceForm && (
-        <AddPriceForm onClick={() => setAddPriceForm(!addPriceForm)} />
+        <Modal><AddPriceForm onClick={() => setAddPriceForm(!addPriceForm)} /></Modal>
       )}
       {/* {editPriceForm && (
         <EditPriceForm

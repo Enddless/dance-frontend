@@ -1,5 +1,4 @@
 import css from "./styles.module.scss";
-// import classNames from "classnames";
 import { Link, Navigate } from "react-router-dom";
 import { AppRoute } from "../../const/route";
 import { useAppDispatch, useAppSelector } from "../../services/type-service";
@@ -7,6 +6,7 @@ import { AuthorizationStatus } from "../../const/const";
 import { logout } from "../../services/thunk/auth";
 import ControlButton from "../controls-button";
 import { useEffect } from "react";
+import sprite from "../../assets/sprite.svg";
 
 type IModalFormProps = {
   openModalForm?: () => void;
@@ -56,17 +56,34 @@ const AreaForm = ({ openModalForm }: IModalFormProps) => {
       </div>
 
       {role === "customers" && (
-        <button onClick={openModalForm}>
-          <Link to={AppRoute.PersonalArea}>Профиль</Link>
-        </button>
+        <p className={css.submenu} onClick={openModalForm}>
+          <Link to={AppRoute.PersonalArea}>
+            <svg width="24" height="24" viewBox="0 0 24 24">
+              <use xlinkHref={`${sprite}#user`}></use>
+            </svg>
+            Профиль
+          </Link>
+        </p>
       )}
       {role === "administrator" && (
-        <button onClick={openModalForm}>
-          <Link to={AppRoute.AdministratorArea}>Профиль</Link>
-        </button>
+        <p className={css.submenu} onClick={openModalForm}>
+          <Link to={AppRoute.AdministratorArea}>
+            <svg width="24" height="24" viewBox="0 0 24 24">
+              <use xlinkHref={`${sprite}#user`}></use>
+            </svg>
+            Профиль
+          </Link>
+        </p>
       )}
 
-      <button onClick={handleClick}>Выход</button>
+      <p className={css.submenu} onClick={handleClick}>
+        <Link to={AppRoute.Root}>
+          <svg width="24" height="24" viewBox="0 0 25 25">
+            <use xlinkHref={`${sprite}#logout`}></use>
+          </svg>
+          Выход
+        </Link>
+      </p>
     </div>
   );
 };

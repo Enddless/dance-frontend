@@ -1,4 +1,4 @@
-@import "../../../../../../../../styles/variables.scss";
+@import "../../../../../../../../main.module.scss";
 
 .container {
   width: 500px;
@@ -32,11 +32,6 @@
   margin-top:60px;
 }
 .form {
-  // display: grid;
-  // grid-template-columns: 200px 1fr;
-  // grid-template-rows: 200px 1fr;
-  // column-gap: 30px;
-
   label,
   textarea {
     width: 100%;
@@ -73,3 +68,8 @@
 
 }
 
+@media screen and (max-width: 650px) {
+  .container {
+    width: 375px;
+  }
+}

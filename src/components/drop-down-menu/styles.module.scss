@@ -1,12 +1,14 @@
-@import "../../styles/variables.scss";
+@import "../../main.module.scss";
 .area {
   position: absolute;
   z-index: 402;
   width: 180px;
-  padding: 60px 15px 30px;
+  padding: 50px 15px 40px;
   right: 0px;
   top: 0px;
-  background: rgb(214, 212, 212);
+  background: white;
+  color: #13340a;
+  @include TextLink;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
@@ -14,30 +16,13 @@
   opacity: 0;
   transform: scale(0.5);
   transition: all 500ms ease-in-out;
-  -webkit-transition: all 500ms ease-in-out;
-  -moz-transition: all 500ms ease-in-out;
-  -ms-transition: all 500ms ease-in-out;
-  -o-transition: all 500ms ease-in-out;
-  box-shadow: 6px 6px 20px 0px rgba(19, 52, 10, .7);
+  box-shadow: 6px 6px 20px 0px rgba(63, 63, 62, 0.7);
 
   .closeContainer {
     position: absolute;
     right: 15px;
     top: 15px;
     cursor: pointer;
-  }
-  & button {
-    @include TextLink;
-    background: transparent;
-    color: $btn-color-two;
-    border: none;
-    display: flex;
-    justify-content: center;
-    cursor: pointer;
-  }
-  & button:hover {
-    font-weight: 500;
-    color: #ffa800;
   }
   .decoration {
     position: absolute;
@@ -49,7 +34,7 @@
     height: 0;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-bottom: 20px solid rgb(214, 212, 212);
+    border-bottom: 20px solid white;
   }
 }
 
@@ -59,13 +44,28 @@
   top: 79px;
   transform: scale(1);
   transition: all 500ms ease-in-out;
-  -webkit-transition: all 500ms ease-in-out;
-  -moz-transition: all 500ms ease-in-out;
-  -ms-transition: all 500ms ease-in-out;
-  -o-transition: all 500ms ease-in-out;
 }
+.submenu {
+  cursor: pointer;
+  margin-bottom:10px;
+  width:100%;
 
-
+  & svg {
+    stroke: #13340a;
+  }
+  a {
+    display: flex;
+    align-items: center;
+    column-gap:10px;
+  }
+}
+.submenu:hover {
+  font-weight: 500;
+  color: #ffa800;
+}
+.submenu:hover svg {
+  stroke: #ffa800;
+}
 
 @media screen and (max-width: 1400px) {
   .area {

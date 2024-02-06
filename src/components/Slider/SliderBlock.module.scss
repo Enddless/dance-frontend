@@ -1,7 +1,6 @@
-@import "../../styles//variables.scss";
+@import "../../main.module.scss";
 
 .slider {
-  height: 439px;
   cursor: pointer;
   outline: none;
 }
@@ -16,10 +15,9 @@
 
 .card {
   background-color: white;
-  height: 439px;
 }
 .wrapper {
-  margin:0 15px;
+  margin: 0 15px;
 }
 .staffInfo {
   display: grid !important;
@@ -37,7 +35,6 @@
   p {
     @include TextSecondary;
   }
-
 }
 .photoContainer {
   padding: 8px 8px 12px 8px;
@@ -73,7 +70,6 @@
   text-align: center;
   background-color: $body-background-primary;
   position: relative;
-  // box-shadow: 6px 6px 20px 0px rgba(0, 0, 0, 0.15);
 }
 .circle {
   position: relative;
@@ -91,40 +87,27 @@
   top: 0px;
   left: -1px;
 }
-// .shadow {
-//   content: '';
-//   position: absolute;
-//   top: -3px;
-//   left: -3px;
-//   width: 100%;
-//   
-//   border-radius: 50%;
-//   box-shadow: 6px 6px 20px 0px rgba(0, 0, 0, 0.15);
-//   z-index: -1;
-// }
 
 @media screen and (max-width: 1540px) {
-  .slider {
-    height: 350px;
-  }
-  .card {
-    height: 350px;
-  }
-  .avatar, .shadow {
+  .avatar,
+  .shadow {
     width: 180px;
     height: 180px;
   }
 }
 
 @media screen and (max-width: 1280px) {
-  .slider {
-    height: 293px;
-  }
-  .card {
-    height: 293px;
-  }
-  .avatar, .shadow {
+  .avatar,
+  .shadow {
     width: 160px;
     height: 160px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .photoContainer {
+    padding: 0 8px 12px 8px;
+  }
+  .staffInfo {
+    align-items: start;
   }
 }

@@ -1,17 +1,17 @@
 import css from "./App.module.scss";
-import MainPage from "./pages/MainPage/MainPage";
+import MainPage from "../../pages/MainPage/MainPage";
 import { Routes, Route, useLocation } from "react-router-dom";
-import NFPage from "./pages/NotFoundPage/NFPage";
-import ReviewsPage from "./pages/ReviewsPage/ReviewsPage";
-import DashboardPage from "./pages/DashboardPage/DashboardPage";
-import { AppRoute } from "./const/route";
-import AreaPersonalPage from "./pages/AreaPersonalPage";
-import AreaAdminPage from "./pages/AreaAdminPage";
-import { RedirectPersonalArea } from "./components/redirect-personal-area";
-import { menuAreaAdministrator, menuAreaPersonal } from "./const/const";
+import NFPage from "../../pages/NotFoundPage/NFPage";
+import ReviewsPage from "../../pages/ReviewsPage/ReviewsPage";
+import DashboardPage from "../../pages/DashboardPage/DashboardPage";
+import { AppRoute } from "../../const/route";
+import AreaPersonalPage from "../../pages/AreaPersonalPage";
+import AreaAdminPage from "../../pages/AreaAdminPage";
+import { RedirectPersonalArea } from "../redirect-personal-area";
+import { menuAreaAdministrator, menuAreaPersonal } from "../../const/const";
 import React from "react";
-import { Modal } from "./components/Forms/components/Modal";
-import LoginForm from "./components/Forms/LoginForm";
+import { Modal } from "../modal-form/Modal";
+import LoginForm from "../Forms/LoginForm";
 
 const App = () => {
   const location = useLocation();

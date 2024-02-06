@@ -1,4 +1,4 @@
-@import "../../../../../styles/variables.scss";
+@import "../../../../../main.module.scss";
 
 .wrapper {
   @include Grid;
@@ -24,7 +24,6 @@
   @include Grid;
   padding: 20px;
   margin-top: 40px;
-  // overflow-y: scroll;
   box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.05),
     0px -3px 10px 0px rgba(0, 0, 0, 0.05);
   .title {

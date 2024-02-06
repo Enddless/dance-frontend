@@ -1,5 +1,4 @@
-@import "../../../../styles/variables.scss";
-@import "../../../../styles/mixins.scss";
+@import "../../../../main.module.scss";
 
 .about {
   display: grid;
@@ -45,4 +44,15 @@
 .atention {
   grid-column: span 12;
   color: #93650c;
+}
+
+@media screen and (max-width: 1280px) {
+  .about {
+    margin: 0 50px 100px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .about {
+    margin: 0 20px 30px;
+  }
 }

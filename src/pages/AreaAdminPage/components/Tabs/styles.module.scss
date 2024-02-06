@@ -1,36 +1,38 @@
-@import "../../../../styles/variables.scss";
+@import "../../../../main.module.scss";
 
 .logoContainer {
   padding: 10px 40px 10px;
 }
 .menu {
-    margin-top: 10px;
-    @include TextLink;
+  margin-top: 10px;
+  @include TextLink;
+}
+.menuItem {
+  display: block;
+  width: 100%;
+  padding: 13px 0 13px 20px;
+}
+.menuItem:hover {
+  background: $btn-background-five;
+}
+.active {
+  background: $btn-background-one;
+}
+
+.logout {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 15px 0 15px 30px;
+  cursor: pointer;
+  & svg {
+    margin-right: 20px;
+    stroke: #FDF8F0;
   }
-  .menuItem {
-    display: block;
-    width:100%;
-    padding:13px 0 13px 20px;
-    
-  }
-  .menuItem:hover {
-    background: $btn-background-five;
-  }
-  .active {
-    background: $btn-background-one;
-  }
-  
-  .logout {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding:15px 0 15px 30px;
-    cursor:pointer;
-    & svg {
-      margin-right:20px;
-    }
-  }
-  .controls {
-    position:relative;
-    bottom:0;
-  }
+}
+.controls {
+  position: relative;
+  bottom: 0;
+  @include TextLink;
+}
+

@@ -1,4 +1,4 @@
-@import "../../styles//variables.scss";
+@import "../../main.module.scss";
 .card {
   grid-column: span 3;
   display: flex;
@@ -64,7 +64,21 @@
     width: 30%;
   }
   .subtitle:last-child {
-    position: absolute;  
-    left:90%;
+    position: absolute;
+    left: 90%;
+  }
 }
+
+
+@media screen and (max-width: 1000px) {
+  .card {
+    grid-column: span 6;
+  }
+}
+@media screen and (max-width: 550px) {
+  .card {
+    grid-column: span 12;
+  }
+  .redisignBlock .checkbox {
+    height: 122px; }
 }

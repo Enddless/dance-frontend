@@ -104,7 +104,7 @@ export const changeUserPhoto = createAsyncThunk<
 export const deleteUserPhoto = createAsyncThunk<string, undefined, Extra>(
   "user/deletePhoto",
   async (_arg, { extra: api }) => {
-    const { data } = await api.delete(APIRoute.AddPhoto);
+    const { data } = await api.post(APIRoute.DeletePhotoUser);
 
     return data;
   }

@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { deleteHall, getHalls } from "../../../../../../services/thunk/studio";
 import AddHallForm from "./components/addHallForm";
 import EditHallForm from "./components/editHallForm";
+import { Modal } from "../../../../../../components/modal-form/Modal";
 
 const Halls = () => {
   const dispatch = useAppDispatch();
@@ -79,13 +80,17 @@ const Halls = () => {
         />
       </div>
       {addHallForm && (
-        <AddHallForm onClick={() => setAddHallForm(!addHallForm)} />
+        <Modal>
+          <AddHallForm onClick={() => setAddHallForm(!addHallForm)} />
+        </Modal>
       )}
       {editHallForm && (
-        <EditHallForm
-          onClick={() => setEditHallForm(!editHallForm)}
-          id={currentEditHall}
-        />
+        <Modal>
+          <EditHallForm
+            onClick={() => setEditHallForm(!editHallForm)}
+            id={currentEditHall}
+          />
+        </Modal>
       )}
     </>
   );

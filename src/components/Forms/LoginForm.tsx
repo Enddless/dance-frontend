@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import css from "./forms.module.scss";
 import { useAppDispatch } from "../../services/type-service";
 import {
@@ -10,11 +10,14 @@ import EyeIcon from "../EyeIcon";
 import Button from "../Button/Button";
 import { authSlice } from "../../store/slices/auth";
 import { useNavigate } from "react-router";
+import { validMail } from "../../services/validate";
 
 const LoginForm = () => {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
   const dispatch = useAppDispatch();
+  const [isValidForm, setIsValidForm] = useState(false);
+  const [errorMail, setErrorMail] = useState("");
 
   //состояние инпутов главной формы
   const [item, setItem] = useState({
@@ -24,8 +27,24 @@ const LoginForm = () => {
 
   const handleChange = (e: { target: { name: string; value: string } }) => {
     setItem({ ...item, [e.target.name]: e.target.value });
-    setErrorMessage("");
+    setErrorMail("");
   };
+
+  //сообщение ошибки, если не заполнена почта
+  useEffect(() => {
+    setErrorMessage("");
+    const isValidateMail = validMail(item.email);
+    if (!isValidateMail && item.email !== "") {
+      setErrorMail("Введите корректный email");
+    } else {
+      setErrorMail("");
+    }
+    if (isValidateMail && item.password !== "") {
+      setIsValidForm(true);
+    } else {
+      setIsValidForm(false);
+    }
+  }, [item]);
 
   //вход пользователя
   const handleSubmit = (e: { preventDefault: () => void }) => {
@@ -70,11 +89,20 @@ const LoginForm = () => {
                 onChange={handleChange}
                 name="email"
                 className={
-                  errorMessage && errorMessage !== "" ? `${css.errorInput}` : ""
+                  (errorMail && errorMail !== "") ||
+                  (errorMessage && errorMessage !== "")
+                    ? `${css.errorInput}`
+                    : ""
                 }
                 placeholder="example@gmail.com"
               />
             </label>
+            {(errorMail && errorMail !== "") ||
+              (errorMessage && errorMessage !== "" && (
+                <span className={css.errorMessage}>
+                  {errorMail || errorMessage}
+                </span>
+              ))}
           </fieldset>
 
           <fieldset>
@@ -97,9 +125,6 @@ const LoginForm = () => {
                 />
               </div>
             </label>
-            {errorMessage && errorMessage !== "" && (
-              <span className={css.errorMessage}>{errorMessage}</span>
-            )}
           </fieldset>
 
           <div className={css.linkGroup}>
@@ -119,7 +144,7 @@ const LoginForm = () => {
             </label>
           </div>
 
-          <Button text="Войти" cls="btn-reg" />
+          <Button text="Войти" cls="btn-reg" disabled={!isValidForm}/>
         </form>
       </div>
     </>

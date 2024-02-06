@@ -1,4 +1,4 @@
-@import "../../../../styles/variables.scss";
+@import "../../../../main.module.scss";
 
 .personal {
   margin-bottom: 100px;
@@ -6,6 +6,9 @@
 .atention {
   margin: 0 100px;
   color: #93650c;
+}
+.titleContainer {
+  margin: 0 100px;
 }
 .staffInfo {
   display: grid;
@@ -55,5 +58,26 @@
   width:100%;
   height:100%;
   object-fit:cover;
-
+}
+@media screen and (max-width: 1280px) {
+  .atention {
+    margin: 0 50px 100px;
+  }
+  .titleContainer {
+    margin: 0 50px;
+  }
+  .staffInfo {
+    margin:0 50px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .titleContainer {
+    margin: 0 20px ;
+  }
+  .atention {
+    margin: 0 20px 30px;
+  }
+  .staffInfo {
+    margin:0 20px;
+  }
 }

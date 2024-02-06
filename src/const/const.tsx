@@ -1,3 +1,5 @@
+import { ICity, IPagesFooter, IPagesHeader, IPoints } from "../interfaces/interfaces";
+
 export enum NameSpace {
   User = "user",
   Auth = "auth",
@@ -74,3 +76,76 @@ export const formName = [
 ];
 
 export const DEFAULT_FORM_AUTH = "login";
+
+export const pagesHeader: IPagesHeader[] = [
+  {
+    id: 1,
+    title: "О студии",
+    url: "/",
+  },
+  {
+    id: 2,
+    title: "Услуги и цены",
+    url: "/#pricesBlock",
+  },
+  {
+    id: 3,
+    title: "Расписание",
+    url: "/dashboard",
+  },
+  {
+    id: 4,
+    title: "Отзывы",
+    url: "/reviews",
+  },
+  {
+    id: 5,
+    title: "Контакты",
+    url: "/#contactsBlock",
+  },
+  {
+    id: 6,
+    title: "Скачать приложение",
+    url: "/download",
+  },
+];
+export const pagesFooter: IPagesFooter[] = [
+  {
+    id: 1,
+    title: "О студии",
+    url: "/",
+  },
+  {
+    id: 2,
+    title: "Услуги и цены",
+    url: "/#pricesBlock",
+  },
+  {
+    id: 3,
+    title: "Расписание",
+    url: "/dashboard",
+  },
+  {
+    id: 4,
+    title: "Отзывы",
+    url: "/reviews",
+  },
+  {
+    id: 5,
+    title: "Контакты",
+    url: "/#contactsBlock",
+  },
+];
+export const POINTS: IPoints[] = [
+  {
+    title: "Южно-Сахалинск",
+    lat: 46.960791,
+    lng: 142.746179,
+  },
+];
+export const CITY:ICity = {
+  title: "Южно-Сахалинск",
+  lat: 46.960791,
+  lng: 142.746179,
+  zoom: 17,
+};

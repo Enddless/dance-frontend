@@ -17,20 +17,24 @@ const ReviewsPage = () => {
   return (
     <div className={css.wrapper}>
       <Header />
-      <TitleSection title="Отзывы" />
-      <div className={css.filter}>
-        <p>Сортировать:</p>
-      </div>
-      <div className={css.container}>
-        {reviews.map((review) => {
-          return <CardReview review={review} key={review.id} />;
-        })}
-        <Button
-          text={more === reviews.length ? "Показать еще" : "Отзывов больше нет"}
-          cls="btn-more"
-          openModalForm={clickMore}
-        />
-      </div>
+      <section className={css.content}>
+        <TitleSection title="Отзывы" />
+        <div className={css.container}>
+          {reviews.map((review) => {
+            return <CardReview review={review} key={review.id} />;
+          })}
+          <div className={css.buttonGroup}>
+            <Button
+              text={
+                more === reviews.length ? "Показать еще" : "Отзывов больше нет"
+              }
+              cls="btn-more"
+              openModalForm={clickMore}
+            />
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );

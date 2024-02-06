@@ -14,7 +14,9 @@ const StaffPage = () => {
 
   return (
     <section className={css.personal}>
-      <TitleSection title="Персонал" />
+      <div className={css.titleContainer}>
+        <TitleSection title="Персонал" />
+      </div>
       {StaffInfo && length && length > 4 ? (
         <SliderBlock staffInfo={StaffInfo} />
       ) : (
@@ -45,7 +47,10 @@ const StaffPage = () => {
       {!StaffInfo && (
         <p className={css.atention}>
           Здесь еще нет персонала. Добавить его можно в личном кабинете
-          <Link to={`${AppRoute.AdministratorArea}/personal`}> администратора</Link>
+          <Link to={`${AppRoute.AdministratorArea}/personal`}>
+            {" "}
+            администратора
+          </Link>
         </p>
       )}
     </section>

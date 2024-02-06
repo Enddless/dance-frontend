@@ -2,8 +2,6 @@ import css from "./Header.module.scss";
 import Logo from "../Logo/Logo";
 import Button from "../Button/Button";
 import { useEffect, useState } from "react";
-import { pagesHeader } from "../../mocks/mocks";
-// import LoginForm from "../Forms/LoginForm";
 import { Link, useLocation } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import AreaForm from "../drop-down-menu/AreaForm";
@@ -11,6 +9,9 @@ import { useAppDispatch, useAppSelector } from "../../services/type-service";
 import sprite from "../../assets/sprite.svg";
 import { AppRoute } from "../../const/route";
 import { authSlice } from "../../store/slices/auth";
+import Burger from "../burger-menu/index";
+import BurgerIcon from "../burger-icon";
+import { pagesHeader } from "../../const/const";
 
 const Header = () => {
   const dispatch = useAppDispatch();
@@ -30,11 +31,13 @@ const Header = () => {
     setUserData(user);
   }, [user]);
 
+  const [isShowBurger, setIsShowBurger] = useState(false);
+
   const userRole = useAppSelector((state) => state.auth.userRole)?.role;
   return (
     <div className={css.header}>
       <Logo />
-      <nav>
+      <nav className={css.wrapper}>
         <ul className={css.navigation}>
           {pagesHeader.map((page) => {
             const check =
@@ -52,6 +55,10 @@ const Header = () => {
             );
           })}
         </ul>
+        <div className={css.burgerMenu}>
+          <BurgerIcon onClick={() => setIsShowBurger(!isShowBurger)}/>
+          {isShowBurger&& <Burger onClick={() => setIsShowBurger(!isShowBurger)}/>}
+        </div>
       </nav>
       {authorizationStatus === "AUTH" && userRole === "customers" && (
         <div className={css.userControl}>

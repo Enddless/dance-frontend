@@ -1,9 +1,16 @@
 import css from "./styles.module.scss";
 import { ChangeEvent, useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../../../../../services/type-service";
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "../../../../../../services/type-service";
 import { API_URL } from "../../../../../../services/api";
-import { changeUserData, changeUserPhoto, getCurrentUserData } from "../../../../../../services/thunk/auth";
-import sprite from '../../../../../../assets/sprite.svg';
+import {
+  changeUserPhoto,
+  deleteUserPhoto,
+  getCurrentUserData,
+} from "../../../../../../services/thunk/auth";
+import sprite from "../../../../../../assets/sprite.svg";
 
 function ProfileImg() {
   const dispatch = useAppDispatch();
@@ -12,14 +19,14 @@ function ProfileImg() {
   const [previewImage, setPreviewImage] = useState(
     userData.photoUser !== "" ? `${API_URL}${userData.photoUser}` : null
   );
-  const [errorDownload, serErrorDownload] = useState("");
+  const [errorDownload, setErrorDownload] = useState("");
   const [isValid, setIsValid] = useState(true);
   //изменение состояния фотографии
   const [file, setFile] = useState<File>();
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
-    serErrorDownload("");
+    setErrorDownload("");
 
     const selectFile = event.target.files && event.target.files[0];
     if (!selectFile) {
@@ -28,10 +35,11 @@ function ProfileImg() {
     // Проверяем формат файла
     const allowedExtensions = /(\.jpg)$/i;
     if (!allowedExtensions.exec(selectFile.name)) {
-      serErrorDownload("Допустимы файлы формата jpg, размер до 512х512");
+      setErrorDownload("Допустимы файлы формата jpg, размер до 512х512");
       setPreviewImage("");
       setIsValid(false);
     } else {
+      setErrorDownload("");
       setIsValid(true);
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -51,6 +59,11 @@ function ProfileImg() {
         .unwrap()
         .then(() => {
           dispatch(getCurrentUserData());
+          setErrorDownload("");
+        })
+        .catch(() => {
+          setErrorDownload("Размер превышает разрешенный до 512х512");
+          setPreviewImage("");
         });
     }
   }, [isValid, file, dispatch]);
@@ -63,10 +76,11 @@ function ProfileImg() {
   }, [userData.photoUser]);
 
   const deletePhoto = () => {
-    dispatch(changeUserData({ photoUser: "" }))
+    dispatch(deleteUserPhoto())
       .unwrap()
       .then(() => {
         dispatch(getCurrentUserData());
+        setPreviewImage("")
       });
   };
   return (

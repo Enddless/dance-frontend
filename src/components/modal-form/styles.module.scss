@@ -1,4 +1,4 @@
-@import "../../../styles/variables.scss";
+@import "../../main.module.scss";
 
 .modalWrapper {
   position: fixed;
@@ -9,7 +9,6 @@
   background: $blur-background;
   display: flex;
   justify-content: center;
-  // padding: 100px 20px;
   -webkit-overflow-scrolling: touch;
   backdrop-filter: blur(10px);
   z-index: 401;
@@ -24,7 +23,7 @@
   display: flex;
   flex-direction: column;
   max-width: 621px;
-  padding: 60px 100px 60px 100px;
+  padding: 60px 100px 70px 100px;
   justify-content: center;
   align-items: center;
   text-align: left;
@@ -37,9 +36,15 @@
   top: 50%;
   transform: translate(0, -50%);
   filter: none;
-  transition: all 3s ease-in-out;
+  transition: all 1s ease-in-out;
   h3 {
     text-align: center;
     margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .modal {
+    padding: 20px;
   }
 }

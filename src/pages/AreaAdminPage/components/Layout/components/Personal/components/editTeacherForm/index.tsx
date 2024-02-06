@@ -132,7 +132,7 @@ const EditTeacherForm = ({ onClick, id }: TEditFormProps) => {
           <textarea
             name="description"
             id="description"
-            rows={8}
+            rows={5}
             placeholder="Добавить описание"
             value={descriptionTeacher}
             onChange={(e) => setDescriptionTeacher(e.target.value)}
