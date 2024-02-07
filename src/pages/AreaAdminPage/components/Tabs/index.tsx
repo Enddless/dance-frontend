@@ -8,7 +8,7 @@ import sprite from "../../../../assets/sprite.svg";
 import { memo } from "react";
 import { logout } from "../../../../services/thunk/auth";
 import { useNavigate } from "react-router-dom";
-import Logo from "../../../../components/Logo/Logo";
+import LogotypeSettings from "../Layout/components/LogotypeSettings";
 
 function TabsAdminMemo() {
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ function TabsAdminMemo() {
     <>
       <div className={css.content}>
         <div className={css.logoContainer}>
-          <Logo />
+          <LogotypeSettings />
         </div>
         <ul className={css.menu}>
           {menuAreaAdministrator.map((button) => {

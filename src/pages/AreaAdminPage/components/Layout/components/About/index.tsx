@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import css from "./styles.module.scss";
 import ControlButton from "../../../../../../components/controls-button";
-// import { aboutStudio } from "../../../../../../mocks/mocks";
 import {
   useAppDispatch,
   useAppSelector,
@@ -50,32 +49,34 @@ const AboutSettings = () => {
     setIsEditing(false);
   };
   return (
-    <div className={css.container}>
-      <div className={css.controlGroup}>
-        <ControlButton
-          id="edit"
-          onClick={() => {
-            setIsEditing(true);
-            setIsActive(true);
-          }}
-          isActive={isActive}
-        />
-        <ControlButton id="delete" onClick={deleteData} />
+    <>
+      <div className={css.container}>
+        <div className={css.controlGroup}>
+          <ControlButton
+            id="edit"
+            onClick={() => {
+              setIsEditing(true);
+              setIsActive(true);
+            }}
+            isActive={isActive}
+          />
+          <ControlButton id="delete" onClick={deleteData} />
+        </div>
+        {isEditing ? (
+          <textarea
+            rows={25}
+            value={description}
+            onBlur={handleBlur}
+            onChange={(e) => setDescription(e.target.value)}
+            className={css.editText}
+          />
+        ) : (
+          <>
+            <p style={{ whiteSpace: "pre-line" }}>{description}</p>
+          </>
+        )}
       </div>
-      {isEditing ? (
-        <textarea
-          rows={25}
-          value={description}
-          onBlur={handleBlur}
-          onChange={(e) => setDescription(e.target.value)}
-          className={css.editText}
-        />
-      ) : (
-        <>
-          <p style={{ whiteSpace: "pre-line" }}>{description}</p>
-        </>
-      )}
-    </div>
+    </>
   );
 };
 

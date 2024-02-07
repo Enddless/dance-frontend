@@ -31,11 +31,7 @@ const RegistrationForm = () => {
   //сообщение ошибки, если не заполнена почта
   useEffect(() => {
     const isValidateMail = validMail(formData.email);
-    if (
-      !isValidateMail &&
-      formData.password !== "" &&
-      formData.dublPassword !== ""
-    ) {
+    if (!isValidateMail && formData.email !== "") {
       setErrorMail("Введите корректный email");
     } else {
       setErrorMail("");
@@ -59,7 +55,13 @@ const RegistrationForm = () => {
   }, [formData.password, formData.dublPassword]);
   //валидность формы
   useEffect(() => {
-    if (agreement && errorPassword === "" && errorMail === "" && formData.password !== "" && formData.email !== "") {
+    if (
+      agreement &&
+      errorPassword === "" &&
+      errorMail === "" &&
+      formData.password !== "" &&
+      formData.email !== ""
+    ) {
       setIsValidForm(true);
     } else setIsValidForm(false);
   }, [agreement, errorPassword, errorMail, formData]);
@@ -169,24 +171,26 @@ const RegistrationForm = () => {
               disabled={!isValidForm}
             />
             <div className={css.agreement}>
-              <InputCheckbox
-                onChange={() => setAgreement(!agreement)}
-                agreement={
-                  formData.password !== "" || formData.dublPassword !== ""
-                    ? agreement
-                    : ""
-                }
-              />
               <label htmlFor="agreement" className={css.agreeCheckbox}>
-                Регистрируясь, я соглашаюсь с{" "}
-                <span>
-                  <a
-                    href={`${AppRoute.Root}./src/assets/Политика.pdf`}
-                    target="_blank"
-                  >
-                    Условиями пользования и Политикой конфиденциальности
-                  </a>
-                </span>
+                <InputCheckbox
+                  onChange={() => setAgreement(!agreement)}
+                  agreement={
+                    formData.password !== "" || formData.dublPassword !== ""
+                      ? agreement
+                      : ""
+                  }
+                />
+                <p>
+                  регистрируясь, я соглашаюсь с{" "}
+                  <span className={css.conditions}>
+                    <a
+                      href={`${AppRoute.Root}./src/assets/Политика.pdf`}
+                      target="_blank"
+                    >
+                      условиями использования и Политикой конфиденциальности
+                    </a>
+                  </span>
+                </p>
               </label>
             </div>
           </form>

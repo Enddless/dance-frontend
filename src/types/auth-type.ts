@@ -47,6 +47,7 @@ export type StateStudio = {
   isBannerLoading: LoadingStatus;
   isHallsLoading: LoadingStatus;
   isTeachersLoading: LoadingStatus;
+  isLogotypeLoading: LoadingStatus;
   isPriceLoading: LoadingStatus;
   aboutStudioData: AboutStudioData | null;
   bannersData: BannersData[] | null;

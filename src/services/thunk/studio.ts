@@ -10,6 +10,7 @@ import {
   CurrentPriceId,
   CurrentTeacherId,
   HallData,
+  Logotype,
   PhotoHall,
   PhotoTeacher,
   PriceData,
@@ -68,6 +69,20 @@ export const deleteBanner = createAsyncThunk<string, CurrentBannerId, Extra>(
   async ({ IdBanner }, { extra: api }) => {
     const { data } = await api.delete(APIRoute.Banner, {
       data: { IdBanner: IdBanner },
+    });
+
+    return data;
+  }
+);
+
+// ********** change logotype **********
+export const changeLogotype = createAsyncThunk<string, Logotype, Extra>(
+  "admin/changeLogotype",
+  async ({photoLogo}, { extra: api }) => {
+    const { data } = await api.post(APIRoute.Logotype, photoLogo, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
     });
 
     return data;

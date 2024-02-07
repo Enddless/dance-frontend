@@ -65,7 +65,7 @@
 
   .errorInput {
     border: 1px solid red;
-    outline:none;
+    outline: none;
   }
   .errorMessage {
     color: red;
@@ -74,14 +74,6 @@
     top: 2px;
     right: 0px;
   }
-
-  // a {
-  //   margin-top: 20px;
-  //   font-size: 16px;
-  //   font-weight: 400;
-  //   display: flex;
-  //   justify-content: end;
-  // }
 
   button {
     margin: 10px auto 0;
@@ -93,14 +85,18 @@
 
 .agreement {
   margin-top: 15px;
-  display: flex;
-  align-items: center;
-  column-gap: 10px;
 
   .agreeCheckbox {
     @include TextFieldTitle;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    text-align:justify;
+    column-gap: 10px;
   }
+}
+.conditions:hover {
+  color: $btn-color-three;
 }
 .modalForm {
   display: block;
@@ -119,4 +115,3 @@
   color: $btn-background-one;
   transition: all 150ms ease-in;
 }
-

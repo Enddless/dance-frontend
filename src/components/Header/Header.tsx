@@ -34,6 +34,7 @@ const Header = () => {
   const [isShowBurger, setIsShowBurger] = useState(false);
 
   const userRole = useAppSelector((state) => state.auth.userRole)?.role;
+
   return (
     <div className={css.header}>
       <Logo />
