@@ -1,3 +1,4 @@
+import Button from "../../../../../../components/Button/Button";
 import ControlButton from "../../../../../../components/controls-button";
 import { AppRoute } from "../../../../../../const/route";
 import css from "./styles.module.scss";
@@ -36,6 +37,9 @@ const LegalInformation = () => {
             <ControlButton id="delete" />
           </div>
         </div>
+      </div>
+      <div className={css.buttonContainer}>
+        <Button text="Добавить" cls="btn-save" />
       </div>
     </>
   );
