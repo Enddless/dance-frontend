@@ -97,12 +97,16 @@ const LoginForm = () => {
                 placeholder="example@gmail.com"
               />
             </label>
-            {(errorMail && errorMail !== "") ||
-              (errorMessage && errorMessage !== "" && (
+            {(errorMail && errorMail !== "")  && (
                 <span className={css.errorMessage}>
-                  {errorMail || errorMessage}
+                  {errorMail}
                 </span>
-              ))}
+              )}
+              {(errorMessage && errorMessage !== "")  && (
+                <span className={css.errorMessage}>
+                  {errorMessage}
+                </span>
+              )}
           </fieldset>
 
           <fieldset>

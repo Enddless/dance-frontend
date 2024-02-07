@@ -13,6 +13,9 @@
   -o-border-radius: 5px;
   border:1px solid #C4CCC1;
 }
+.fake:hover {
+  border:1px solid $btn-color-three;
+}
 
 .fake svg {
   opacity: 0;
