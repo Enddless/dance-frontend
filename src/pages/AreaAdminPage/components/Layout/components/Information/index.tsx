@@ -1,4 +1,5 @@
 import ControlButton from "../../../../../../components/controls-button";
+import { AppRoute } from "../../../../../../const/route";
 import css from "./styles.module.scss";
 
 const LegalInformation = () => {
@@ -11,16 +12,27 @@ const LegalInformation = () => {
             Условия использования и Политика конфиденциальности
           </div>
           <div className={css.controlGroup}>
-            <ControlButton id="delete" />
+            <a
+              href={`${AppRoute.Root}./src/assets/Политика.pdf`}
+              target="_blank"
+            >
+              <ControlButton id="view" />
+            </a>
             <ControlButton id="delete" />
           </div>
         </div>
         <div className={css.document}>
           <div className={css.file}>
-            Условия использования и Политика конфиденциальности Условия использования и Политика конфиденциальности
+            Условия использования и Политика конфиденциальности Условия
+            использования и Политика конфиденциальности
           </div>
           <div className={css.controlGroup}>
-            <ControlButton id="delete" />
+            <a
+              href={`${AppRoute.Root}./src/assets/Политика.pdf`}
+              target="_blank"
+            >
+              <ControlButton id="view" />
+            </a>
             <ControlButton id="delete" />
           </div>
         </div>

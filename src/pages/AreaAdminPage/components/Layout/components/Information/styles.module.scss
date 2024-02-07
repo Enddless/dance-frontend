@@ -14,6 +14,7 @@
   position: relative;
   cursor:pointer;
   display: flex;
+  align-items: stretch;
 }
 .document:hover {
   border: 1px solid #ffa800;
@@ -21,9 +22,11 @@
 .file {
   border-right: 1px solid #ffa800;
   padding: 0 10px 0 0;
+  display: flex;
+  align-items: center;
 }
 .controlGroup {
-  padding: 0 10px;
+  padding: 0 0 0 20px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
