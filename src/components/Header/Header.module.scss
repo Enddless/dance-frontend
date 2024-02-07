@@ -51,6 +51,14 @@
   flex-direction: row;
   align-items: center;
   column-gap: 10px;
+  svg {
+    cursor: pointer;
+    stroke: #FDF8F0;
+  }
+  svg:hover {
+    stroke:#FFA800;
+    stroke-width: 2.5;
+  }
 }
 .burgerMenu {
   position: relative;

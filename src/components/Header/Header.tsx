@@ -57,15 +57,19 @@ const Header = () => {
           })}
         </ul>
         <div className={css.burgerMenu}>
-          <BurgerIcon onClick={() => setIsShowBurger(!isShowBurger)}/>
-          {isShowBurger&& <Burger onClick={() => setIsShowBurger(!isShowBurger)}/>}
+          <BurgerIcon onClick={() => setIsShowBurger(!isShowBurger)} />
+          {isShowBurger && (
+            <Burger onClick={() => setIsShowBurger(!isShowBurger)} />
+          )}
         </div>
       </nav>
       {authorizationStatus === "AUTH" && userRole === "customers" && (
         <div className={css.userControl}>
-          <svg width="30" height="30" viewBox="0 0 30 30">
-            <use xlinkHref={`${sprite}#notification`}></use>
-          </svg>
+          <Link to={`${AppRoute.PersonalArea}/notifications`}>
+            <svg width="30" height="30" viewBox="0 0 30 30">
+              <use xlinkHref={`${sprite}#notification`}></use>
+            </svg>
+          </Link>
           <div className={css.subMenu}>
             <Button
               text={

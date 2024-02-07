@@ -77,9 +77,12 @@
   flex-direction: column;
   align-items: center;
   margin-top: 50px;
+  label {
+    cursor: pointer;
+  }
   .inputGroup {
     margin: 20px 0;
-    width: 20%;
+    width: 30%;
     display: flex;
     justify-content: space-evenly;
 
