@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import AboutSettings from "./components/About";
 import ContactsSettings from "./components/Contacts";
 import ControlUsers from "./components/Control-users";
@@ -17,8 +18,11 @@ interface IActiveButtonProps {
 }
 
 function Layout({ isActiveButton }: IActiveButtonProps) {
+  const classNamesList = classNames(css.layout, {
+    [css.overlay] : isActiveButton === "contacts"
+  })
   return (
-    <div className={css.layout}>
+    <div className={classNamesList}>
       {isActiveButton === "about" && <AboutSettings />}
       {isActiveButton === "news" && <News />}
       {isActiveButton === "halls" && <Halls />}

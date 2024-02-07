@@ -2,16 +2,15 @@
 
 .logoContainer {
   padding: 10px 60px 10px 10px;
-  height: 100px;
+  max-height: 100px;
 }
 .menu {
-  margin-top: 10px;
   @include TextLink;
 }
 .menuItem {
   display: block;
   width: 100%;
-  padding: 13px 0 13px 20px;
+  padding: 10px 0 10px 20px;
 }
 .menuItem:hover {
   background: $btn-background-five;
@@ -24,7 +23,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 15px 0 15px 30px;
+  padding: 10px 0 10px 30px;
   cursor: pointer;
   & svg {
     margin-right: 20px;
