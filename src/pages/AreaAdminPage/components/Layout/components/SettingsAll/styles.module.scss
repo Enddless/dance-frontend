@@ -177,3 +177,16 @@
     border: 1px solid #71856c;
   }
 }
+
+.pages {
+  display: flex;
+  column-gap: 30px;
+  align-items: flex-start;
+  .page {
+    width: 33%;
+    text-align: center;
+  }
+  .pageItem {
+    margin-top:10px;
+  }
+}
