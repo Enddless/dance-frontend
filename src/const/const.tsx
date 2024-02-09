@@ -1,4 +1,5 @@
-import { ICity, IPagesFooter, IPagesHeader, IPoints } from "../interfaces/interfaces";
+import { IPagesFooter, IPagesHeader} from "../interfaces/interfaces";
+import pinDef from "../assets/markerDefault.svg";
 
 export enum NameSpace {
   User = "user",
@@ -136,16 +137,18 @@ export const pagesFooter: IPagesFooter[] = [
     url: "/#contactsBlock",
   },
 ];
-export const POINTS: IPoints[] = [
+export const POINTS = [
   {
-    title: "Южно-Сахалинск",
-    lat: 46.960791,
-    lng: 142.746179,
+    title: "Южно-Сахалинск, Коммунистический проспект, 20, ",
+    lat: 46.960791, 
+    lng: 142.746179, //59.942749, 30.285424
   },
-];
-export const CITY:ICity = {
-  title: "Южно-Сахалинск",
-  lat: 46.960791,
-  lng: 142.746179,
-  zoom: 17,
+]; 
+export const CITY = {
+  title: "Южно-Сахалинск", //Санкт-Петербург, 3-я линия Васильевского острова, 20
+  lat: 46.957771, //59.938784
+  lng: 142.729587, // 30.314997
+  zoom: 13, //12
 };
+
+export const URL_MARKER_DEFAULT = pinDef;

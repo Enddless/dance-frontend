@@ -6,8 +6,10 @@ import { HashLink } from "react-router-hash-link";
 import { Link } from "react-router-dom";
 import { AppRoute } from "../../const/route";
 import { pagesFooter } from "../../const/const";
+import { useAppSelector } from "../../services/type-service";
 
 const Footer = () => {
+  const cityData = useAppSelector((state) => state.main.mainPage?.City);
   const scrollHandler = () => {
     window.scrollTo(0,0);
   }
@@ -60,7 +62,7 @@ const Footer = () => {
             </svg>
           </div>
           <p>
-            Южно-Сахалинск, Коммунистический проспект, 20, <br />c 09:00 до
+          {cityData?.title} <br />c 09:00 до
             21:00
           </p>
         </div>

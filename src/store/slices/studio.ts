@@ -8,11 +8,14 @@ import {
   addTeacherPhoto,
   changeAboutStudio,
   changeBanner,
+  changeCoordsCity,
+  changeCoordsPoints,
   changeLogotype,
   deleteBanner,
   deleteHall,
   deleteTeacher,
   getBanners,
+  getCoordsCity,
   getHalls,
   getPrice,
   getTeachers,
@@ -27,6 +30,8 @@ const initialState: StateStudio = {
   isTeachersLoading: LoadingStatus.Idle,
   isLogotypeLoading: LoadingStatus.Idle, 
   isPriceLoading:LoadingStatus.Idle,
+  isCityLoading:LoadingStatus.Idle,
+  isPointsLoading: LoadingStatus.Idle,
   aboutStudioData: null,
   bannersData: [],
   hallsData: [],
@@ -34,6 +39,8 @@ const initialState: StateStudio = {
   techersData: [],
   currentTeacherData: null,
   priceData: [],
+  points: undefined,
+  city: undefined,
 };
 
 export const studioSlice = createSlice({
@@ -63,6 +70,39 @@ export const studioSlice = createSlice({
       })
       .addCase(changeAboutStudio.rejected, (state) => {
         state.isStudioDataLoading = LoadingStatus.Rejected;
+      })
+      // ***** get coords city *****
+      .addCase(getCoordsCity.pending, (state) => {
+        state.isStudioDataLoading = LoadingStatus.Pending;
+      })
+      .addCase(getCoordsCity.fulfilled, (state, action) => {
+        state.city = action.payload;
+        state.isCityLoading = LoadingStatus.Fulfilled;
+      })
+      .addCase(getCoordsCity.rejected, (state) => {
+        state.isCityLoading = LoadingStatus.Rejected;
+      })
+      // ***** change coords city *****
+      .addCase(changeCoordsCity.pending, (state) => {
+        state.isCityLoading = LoadingStatus.Pending;
+      })
+      .addCase(changeCoordsCity.fulfilled, (state, action) => {
+        state.message = action.payload;
+        state.isCityLoading = LoadingStatus.Fulfilled;
+      })
+      .addCase(changeCoordsCity.rejected, (state) => {
+        state.isCityLoading = LoadingStatus.Rejected;
+      })
+      // ***** change coords points *****
+      .addCase(changeCoordsPoints.pending, (state) => {
+        state.isPointsLoading = LoadingStatus.Pending;
+      })
+      .addCase(changeCoordsPoints.fulfilled, (state, action) => {
+        state.message = action.payload;
+        state.isPointsLoading = LoadingStatus.Fulfilled;
+      })
+      .addCase(changeCoordsPoints.rejected, (state) => {
+        state.isPointsLoading = LoadingStatus.Rejected;
       })
       // ***** get banners*****
       .addCase(getBanners.pending, (state) => {

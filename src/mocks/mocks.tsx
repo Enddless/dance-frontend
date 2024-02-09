@@ -119,17 +119,17 @@ export const contactsStudio: IContactsStudio = {
       urlSvg: "",
     },
   ],
-  points: {
-    title: "Южно-Сахалинск",
-    lat: 46.960791,
-    lng: 142.746179,
-  },
-  city: {
-    title: "Южно-Сахалинск",
-    lat: 46.960791,
-    lng: 142.746179,
-    zoom: 17,
-  },
+  // points: {
+  //   title: "Южно-Сахалинск",
+  //   lat: 46.960791,
+  //   lng: 142.746179,
+  // },
+  // city: {
+  //   title: "Южно-Сахалинск",
+  //   lat: 46.960791,
+  //   lng: 142.746179,
+  //   zoom: 17,
+  // },
 };
 export const notificationData: INotification[] = [
   {

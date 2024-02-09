@@ -3,12 +3,48 @@ import sprite from "../../../../assets/sprite.svg";
 import TitleSection from "../../../../components/Title/Title";
 import MapBlock from "../../../../components/Map/Map";
 import SocialLinks from "../../../../components/SocialLinks/SocialLinks";
+import { useAppDispatch, useAppSelector } from "../../../../services/type-service";
+import { useEffect, useState } from "react";
+import src from "../../../../assets/images/NF.png";
+import { Link } from "react-router-dom";
+import { AppRoute } from "../../../../const/route";
+import { mainPageData } from "../../../../services/thunk/mainPage";
 
 const Contacts = () => {
+  const cityData = useAppSelector((state) => state.main.mainPage?.City);
+  const pointsData = useAppSelector((state) => state.main.mainPage?.Points);
+  const [CITY, setCity] = useState(cityData);
+  const [POINTS, setPoints] = useState(pointsData);
+
+  useEffect(() => {
+    if (cityData && pointsData) {
+      setCity(cityData);
+      setPoints(pointsData);
+    }
+  }, [cityData, pointsData]);
+
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(mainPageData());
+  }, [dispatch]);
+
   return (
     <section className={css.contacts} id="contactsBlock">
       <TitleSection title="Контакты" />
-      <MapBlock />
+      {CITY?.lat && CITY?.lng && POINTS?.lat && POINTS?.lng ? (
+        <MapBlock key={CITY.lat} CITY={CITY} POINTS={POINTS} />
+      ) : (
+        <div className={css.noMap}>
+          <p className={css.atention}>
+            Здесь должна быть <span>реклама</span> карта. Но ее нет. Задать
+            координаты можно в личном кабинете
+            <Link to={`${AppRoute.AdministratorArea}/contacts`}>
+               {" "}администратора
+            </Link>
+          </p>
+          <img src={src} alt="oops, no map here yet" />
+        </div>
+      )}
       <div className={css.info}>
         <div className={css.location}>
           <div>
@@ -16,7 +52,7 @@ const Contacts = () => {
               <use xlinkHref={`${sprite}#location`}></use>
             </svg>
           </div>
-          <p>Южно-Сахалинск, Коммунистический проспект, 20,</p>
+          <p>{cityData?.title}</p>
         </div>
 
         <div className={css.phone}>

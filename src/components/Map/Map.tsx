@@ -3,9 +3,9 @@ import { useRef, useEffect } from "react";
 import leaflet from "leaflet";
 import "leaflet/dist/leaflet.css";
 import useMap from "../../hooks/useMap";
-import { URL_MARKER_DEFAULT } from "./const";
 import { Marker, layerGroup } from "leaflet";
-import { CITY, POINTS } from "../../const/const";
+import { URL_MARKER_DEFAULT } from "../../const/const";
+import { CityData, PointsData } from "../../types/auth-type";
 
 const defaultCustomIcon = leaflet.icon({
   iconUrl: URL_MARKER_DEFAULT,
@@ -13,29 +13,31 @@ const defaultCustomIcon = leaflet.icon({
   iconAnchor: [20, 60],
 });
 
-const MapBlock = () => {
+type TMapProps = {
+  POINTS: PointsData;
+  CITY: CityData;
+};
+const MapBlock = ({ POINTS, CITY }: TMapProps) => {
   const mapRef = useRef(null);
   const map = useMap(mapRef, CITY);
   useEffect(() => {
     if (map) {
       const markerLayer = layerGroup().addTo(map);
 
-      POINTS.forEach((point) => {
+      
         const marker = new Marker({
-          lat: point.lat,
-          lng: point.lng,
+          lat: POINTS.lat,
+          lng: POINTS.lng,
         });
         marker.setIcon(defaultCustomIcon).addTo(markerLayer);
-      });
+     
       return () => {
         map.removeLayer(markerLayer);
       };
     }
   }, [map, POINTS]);
 
-  return (
-    <div className={css.wrapper} ref={mapRef}></div>
-  );
+  return <div className={css.wrapper} ref={mapRef}></div>;
 };
 
 export default MapBlock;

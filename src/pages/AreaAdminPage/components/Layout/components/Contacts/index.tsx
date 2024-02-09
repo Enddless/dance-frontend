@@ -1,36 +1,86 @@
 import css from "./styles.module.scss";
 import { useState } from "react";
-import { contactsStudio } from "../../../../../../mocks/mocks";
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "../../../../../../services/type-service";
+import {
+  changeCoordsCity,
+  changeCoordsPoints,
+} from "../../../../../../services/thunk/studio";
+import Button from "../../../../../../components/Button/Button";
 
 const ContactsSettings = () => {
-  const [city, setCity] = useState({
-    lat: contactsStudio.city.lat,
-    lng: contactsStudio.city.lng,
-    zoom: contactsStudio.city.zoom,
-  });
+  const dispatch = useAppDispatch();
+  const cityData = useAppSelector((state) => state.studio.city);
+  const pointsData = useAppSelector((state) => state.studio.points);
+  const [success, setSuccess] = useState(false);
+
+  const [tel, setTel] = useState("");
+  const [city, setCity] = useState(
+    cityData
+      ? {
+          title: cityData.title,
+          lat: cityData.lat,
+          lng: cityData.lng,
+          zoom: cityData.zoom,
+        }
+      : { title: "", lat: "", lng: "", zoom: "" }
+  );
+  const [location, setLocation] = useState(
+    pointsData
+      ? {
+          lat: pointsData.lat,
+          lng: pointsData.lng,
+        }
+      : { lat: "", lng: "" }
+  );
+
   const handleChangeCity = (e: { target: { name: string; value: string } }) => {
     setCity({ ...city, [e.target.name]: e.target.value });
   };
-  const [location, setLocation] = useState({
-    lat: contactsStudio.points.lat,
-    lng: contactsStudio.points.lng,
-  });
+
   const handleChangeLocation = (e: {
     target: { name: string; value: string };
   }) => {
     setLocation({ ...location, [e.target.name]: e.target.value });
   };
-  const [address, setAddress] = useState(contactsStudio.address);
-  const [tel, setTel] = useState(contactsStudio.phone);
+  const sendData = () => {
+    dispatch(
+      changeCoordsCity({
+        title: city.title,
+        lat: Number(city.lat),
+        lng: Number(city.lng),
+        zoom: Number(city.zoom),
+      })
+    ).unwrap().then(() => {
+      setSuccess(true);
+      setTimeout(() => {
+        setSuccess(false);
+      }, 2000); 
+    });
+    dispatch(
+      changeCoordsPoints({
+        lat: Number(location.lat),
+        lng: Number(location.lng),
+      })
+    ).unwrap().then(() => {
+      setSuccess(true);
+      setTimeout(() => {
+        setSuccess(false);
+      }, 2000); 
+    });
+  };
   return (
     <div className={css.container}>
       <fieldset>
         <legend>Контактные данные</legend>
         <input
           type="text"
-          value={address}
+          name="title"
+          value={city.title}
           placeholder="Введите адрес"
-          onChange={(e) => setAddress(e.target.value)}
+          onChange={handleChangeCity}
         />
         <input
           type="tel"
@@ -63,12 +113,13 @@ const ContactsSettings = () => {
           value={city.zoom}
           name="zoom"
           placeholder="Масштаб от 1 до 20"
+          max={20}
           onChange={handleChangeCity}
         />
       </fieldset>
 
       <fieldset>
-        <legend>Координаты филиалов</legend>
+        <legend>Координаты студии</legend>
         <input
           type="number"
           value={location.lat}
@@ -86,6 +137,7 @@ const ContactsSettings = () => {
           onChange={handleChangeLocation}
         />
       </fieldset>
+      <Button text={success ? "Это успех" : "Сохранить"} cls="btn-save" openModalForm={sendData} />
     </div>
   );
 };

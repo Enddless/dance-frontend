@@ -4,6 +4,7 @@ import {
   AboutStudioData,
   Banner,
   BannersData,
+  CityData,
   CurrentBannerId,
   CurrentHallId,
   CurrentPriceData,
@@ -13,6 +14,7 @@ import {
   Logotype,
   PhotoHall,
   PhotoTeacher,
+  PointsData,
   PriceData,
   TeacherData,
 } from "../../types/auth-type";
@@ -33,6 +35,38 @@ export const changeAboutStudio = createAsyncThunk<string, string, Extra>(
   async (description, { extra: api }) => {
     const { data } = await api.post(APIRoute.AboutStudio, {
       description: description,
+    });
+
+    return data;
+  }
+);
+
+// ********** get coords city **********
+export const getCoordsCity = createAsyncThunk<CityData, undefined, Extra>(
+  "admin/getCoordsCity",
+  async (_arg, { extra: api }) => {
+    const { data } = await api.get(APIRoute.CityMap);
+
+    return data;
+  }
+);
+// ********** change coords city **********
+export const changeCoordsCity = createAsyncThunk<string, CityData, Extra>(
+  "admin/changeCoordsCity",
+  async ({title, lat, lng, zoom}, { extra: api }) => {
+    const { data } = await api.post(APIRoute.CityMap, {
+      title: title, lat: lat, lng: lng, zoom: zoom
+    });
+
+    return data;
+  }
+);
+// ********** change coords points **********
+export const changeCoordsPoints = createAsyncThunk<string, PointsData, Extra>(
+  "admin/changeCoordsPoints",
+  async ({lat, lng}, { extra: api }) => {
+    const { data } = await api.post(APIRoute.PointsMap, {
+      lat: lat, lng: lng
     });
 
     return data;

@@ -30,6 +30,8 @@ export enum APIRoute {
   //admin-settings
   Banner = "/basicBanners",
   AboutStudio = "/studioSettings",
+  CityMap = "/studioCitySettings",
+  PointsMap = "/studioPointsSettings",
   Logotype = "/studioSettingsLogo",
   AddHallPhoto = "/hallsSettingsPhoto",
   AddTeacherPhoto = "/teacherSettingsPhoto",
