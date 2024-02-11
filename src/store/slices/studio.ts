@@ -16,6 +16,7 @@ import {
   deleteTeacher,
   getBanners,
   getCoordsCity,
+  getCoordsPoints,
   getHalls,
   getPrice,
   getTeachers,
@@ -92,6 +93,17 @@ export const studioSlice = createSlice({
       })
       .addCase(changeCoordsCity.rejected, (state) => {
         state.isCityLoading = LoadingStatus.Rejected;
+      })
+      // ***** get coords city *****
+      .addCase(getCoordsPoints.pending, (state) => {
+        state.isPointsLoading = LoadingStatus.Pending;
+      })
+      .addCase(getCoordsPoints.fulfilled, (state, action) => {
+        state.points = action.payload;
+        state.isPointsLoading = LoadingStatus.Fulfilled;
+      })
+      .addCase(getCoordsPoints.rejected, (state) => {
+        state.isPointsLoading = LoadingStatus.Rejected;
       })
       // ***** change coords points *****
       .addCase(changeCoordsPoints.pending, (state) => {

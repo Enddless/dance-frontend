@@ -61,6 +61,16 @@ export const changeCoordsCity = createAsyncThunk<string, CityData, Extra>(
     return data;
   }
 );
+// ********** get coords points **********
+export const getCoordsPoints = createAsyncThunk<PointsData, undefined, Extra>(
+  "admin/getCoordsPoints",
+  async (_arg, { extra: api }) => {
+    const { data } = await api.get(APIRoute.PointsMap);
+
+    return data;
+  }
+);
+
 // ********** change coords points **********
 export const changeCoordsPoints = createAsyncThunk<string, PointsData, Extra>(
   "admin/changeCoordsPoints",

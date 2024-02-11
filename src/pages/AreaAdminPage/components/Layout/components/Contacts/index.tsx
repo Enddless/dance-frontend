@@ -1,5 +1,5 @@
 import css from "./styles.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   useAppDispatch,
   useAppSelector,
@@ -7,6 +7,8 @@ import {
 import {
   changeCoordsCity,
   changeCoordsPoints,
+  getCoordsCity,
+  getCoordsPoints,
 } from "../../../../../../services/thunk/studio";
 import Button from "../../../../../../components/Button/Button";
 
@@ -36,6 +38,28 @@ const ContactsSettings = () => {
       : { lat: "", lng: "" }
   );
 
+  useEffect(() => {
+    dispatch(getCoordsCity());
+    dispatch(getCoordsPoints());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (cityData) {
+      setCity({
+        title: cityData.title,
+        lat: cityData.lat,
+        lng: cityData.lng,
+        zoom: cityData.zoom,
+      });
+    }
+    if (pointsData) {
+      setLocation({
+        lat: pointsData.lat,
+        lng: pointsData.lng,
+      });
+    }
+  }, [cityData, pointsData]);
+
   const handleChangeCity = (e: { target: { name: string; value: string } }) => {
     setCity({ ...city, [e.target.name]: e.target.value });
   };
@@ -53,24 +77,29 @@ const ContactsSettings = () => {
         lng: Number(city.lng),
         zoom: Number(city.zoom),
       })
-    ).unwrap().then(() => {
-      setSuccess(true);
-      setTimeout(() => {
-        setSuccess(false);
-      }, 2000); 
-    });
+    )
+      .unwrap()
+      .then(() => {
+        setSuccess(true);
+        setTimeout(() => {
+          setSuccess(false);
+        }, 2000);
+      });
     dispatch(
       changeCoordsPoints({
         lat: Number(location.lat),
         lng: Number(location.lng),
       })
-    ).unwrap().then(() => {
-      setSuccess(true);
-      setTimeout(() => {
-        setSuccess(false);
-      }, 2000); 
-    });
+    )
+      .unwrap()
+      .then(() => {
+        setSuccess(true);
+        setTimeout(() => {
+          setSuccess(false);
+        }, 2000);
+      });
   };
+
   return (
     <div className={css.container}>
       <fieldset>
@@ -137,7 +166,11 @@ const ContactsSettings = () => {
           onChange={handleChangeLocation}
         />
       </fieldset>
-      <Button text={success ? "Это успех" : "Сохранить"} cls="btn-save" openModalForm={sendData} />
+      <Button
+        text={success ? "Это успех" : "Сохранить"}
+        cls="btn-save"
+        openModalForm={sendData}
+      />
     </div>
   );
 };
