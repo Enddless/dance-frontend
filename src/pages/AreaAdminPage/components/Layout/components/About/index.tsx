@@ -24,11 +24,7 @@ const AboutSettings = () => {
   const [isActive, setIsActive] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
-  //получить описание с сервера
-  useEffect(() => {
-    dispatch(aboutStudio());
-  }, [dispatch]);
-
+  
   // Отправка описания на сервер
   const handleBlur = () => {
     dispatch(changeAboutStudio(description))

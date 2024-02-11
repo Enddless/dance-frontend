@@ -10,6 +10,7 @@ import { logout } from "../../../../services/thunk/auth";
 import { useNavigate } from "react-router-dom";
 import LogotypeSettings from "../Layout/components/LogotypeSettings";
 
+
 function TabsAdminMemo() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -18,7 +19,11 @@ function TabsAdminMemo() {
 
   //выход из аккаунта
   const handleClick = () => {
-    dispatch(logout());
+    dispatch(logout())
+      .unwrap()
+      .then(() => {
+        navigate(AppRoute.Root);
+      });
   };
   //возврат домой
   const returnHome = () => {

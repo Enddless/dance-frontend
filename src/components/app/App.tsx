@@ -9,7 +9,6 @@ import AreaPersonalPage from "../../pages/AreaPersonalPage";
 import AreaAdminPage from "../../pages/AreaAdminPage";
 import { RedirectPersonalArea } from "../redirect-personal-area";
 import { menuAreaAdministrator, menuAreaPersonal } from "../../const/const";
-import React from "react";
 import { Modal } from "../modal-form/Modal";
 import LoginForm from "../Forms/LoginForm";
 
@@ -50,20 +49,16 @@ const App = () => {
         <Route
           path={AppRoute.AdministratorArea}
           element={
-            <React.Fragment>
+            <RedirectPersonalArea>
               <AreaAdminPage />
-            </React.Fragment>
+            </RedirectPersonalArea>
           }
         >
           {menuAreaAdministrator.map((name) => (
             <Route
               key={name.title}
               path={name.path}
-              element={
-                <React.Fragment>
-                  <AreaAdminPage />
-                </React.Fragment>
-              }
+              element={<AreaAdminPage />}
             ></Route>
           ))}
         </Route>

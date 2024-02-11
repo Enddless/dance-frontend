@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../services/type-service";
 import { AuthorizationStatus } from "../../const/const";
 import { logout } from "../../services/thunk/auth";
 import ControlButton from "../controls-button";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import sprite from "../../assets/sprite.svg";
 
 type IModalFormProps = {
@@ -42,7 +42,12 @@ const AreaForm = ({ openModalForm }: IModalFormProps) => {
 
   //проверка авторизации пользователя
   const authorizationStatus = useAppSelector((state) => state.auth.authStatus);
-  const role = useAppSelector((state) => state.auth.userRole)?.role;
+  const roleData = useAppSelector((state) => state.auth.userRole)?.role;
+
+  const [role, setRole] = useState(roleData);
+  useEffect(() => {
+    setRole(roleData)
+  },[roleData])
 
   if (authorizationStatus !== AuthorizationStatus.Auth || role === "") {
     return <Navigate to={AppRoute.Root} />;
