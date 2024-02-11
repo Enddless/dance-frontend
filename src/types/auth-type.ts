@@ -50,7 +50,7 @@ export type StateStudio = {
   isLogotypeLoading: LoadingStatus;
   isPriceLoading: LoadingStatus;
   isCityLoading: LoadingStatus;
-  isPointsLoading:  LoadingStatus;
+  isPointsLoading: LoadingStatus;
   aboutStudioData: AboutStudioData | null;
   bannersData: BannersData[] | null;
   hallsData: HallData[] | null;
@@ -109,7 +109,13 @@ export type MainPageData = {
   City: CityData | undefined;
 };
 export type MainPageState = {
-  isMainPageDataLoading: LoadingStatus;
+  isStudioDataLoading: LoadingStatus;
+  isBannerLoading: LoadingStatus;
+  isTeachersLoading: LoadingStatus;
+  isPriceLoading: LoadingStatus;
+  isCityLoading: LoadingStatus;
+  isPointsLoading: LoadingStatus;
+  isHallsLoading: LoadingStatus;
   mainPage: MainPageData | null;
 };
 export type TeacherData = {

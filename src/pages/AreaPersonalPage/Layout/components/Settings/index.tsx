@@ -59,10 +59,17 @@ const Settings = () => {
   };
   // удаление аккаунта
   const [isDeleteAcc, setIsDeleteAcc] = useState(false);
+  const [successDel, setSuccessDel] = useState(false);
   const deleteAccount = () => {
     dispatch(deleteUserData())
       .unwrap()
-      .then(() => <Navigate to={`${AppRoute.Root}`} />);
+      .then(() => {
+        setSuccessDel(true);
+        setTimeout(() => {
+          setSuccessDel(false);
+          <Navigate to={`${AppRoute.Root}`} />
+        }, 3000);
+      });
   };
 
   if (!userData) {
@@ -193,6 +200,13 @@ const Settings = () => {
                   />
                 </div>
               </p>
+            </div>
+          </Modal>
+        )}
+        {successDel && (
+          <Modal>
+            <div className={css.deleteModal}>
+              <p>Аккаунт удален</p>
             </div>
           </Modal>
         )}
