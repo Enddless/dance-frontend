@@ -6,6 +6,7 @@
 }
 .menu {
   @include TextLink;
+  margin-top:20px;
 }
 .menuItem {
   display: block;
