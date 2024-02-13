@@ -3,7 +3,7 @@ import { Link, Navigate } from "react-router-dom";
 import { AppRoute } from "../../const/route";
 import { useAppDispatch, useAppSelector } from "../../services/type-service";
 import { AuthorizationStatus } from "../../const/const";
-import { logout } from "../../services/thunk/auth";
+import { logout } from "../../store/thunk/auth";
 import ControlButton from "../controls-button";
 import { useEffect, useState } from "react";
 import sprite from "../../assets/sprite.svg";

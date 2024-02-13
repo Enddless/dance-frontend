@@ -7,7 +7,7 @@ import {
   useAppSelector,
 } from "../../../../../../services/type-service";
 import css from "./styles.module.scss";
-import { deletePrice, getPrice } from "../../../../../../services/thunk/studio";
+import { deletePrice, getPrice } from "../../../../../../store/thunk/studio";
 import AddPriceForm from "./component/addPriceForm";
 import { Modal } from "../../../../../../components/modal-form/Modal";
 // import EditPriceForm from "./component/editPriceForm";

@@ -18,7 +18,7 @@ import {
   login,
   logout,
   registration,
-} from "../../services/thunk/auth";
+} from "../thunk/auth";
 
 const initialState: StateAuth = {
   authStatus: AuthorizationStatus.Unknown,

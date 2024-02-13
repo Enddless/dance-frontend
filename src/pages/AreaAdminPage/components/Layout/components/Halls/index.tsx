@@ -8,7 +8,7 @@ import {
   useAppSelector,
 } from "../../../../../../services/type-service";
 import { useEffect, useState } from "react";
-import { deleteHall, getHalls } from "../../../../../../services/thunk/studio";
+import { deleteHall, getHalls } from "../../../../../../store/thunk/studio";
 import AddHallForm from "./components/addHallForm";
 import EditHallForm from "./components/editHallForm";
 import { Modal } from "../../../../../../components/modal-form/Modal";

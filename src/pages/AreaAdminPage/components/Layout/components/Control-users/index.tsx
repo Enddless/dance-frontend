@@ -24,21 +24,27 @@ const ControlUsers = () => {
       </div>
       <div className={css.content}>
         <table className={css.table}>
-          <tr>
-            <th>Фамилия Имя</th>
-            <th>Дата регистрации</th>
-            <th>Состояние</th>
-          </tr>
-          <tr>
-            <td>Иванов Иван</td>
-            <td>21.08.2023</td>
-            <td>Активен</td>
-          </tr>
-          <tr>
-            <td>Васильева Мария</td>
-            <td>15.08.2023</td>
-            <td>Активен</td>
-          </tr>
+          <thead>
+            <tr>
+              <th>Фамилия Имя</th>
+              <th>Дата регистрации</th>
+              <th>Состояние</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Иванов Иван</td>
+              <td>21.08.2023</td>
+              <td>Активен</td>
+            </tr>
+            <tr>
+              <td>Васильева Мария</td>
+              <td>15.08.2023</td>
+              <td>Активен</td>
+            </tr>
+          </tbody>
+          <tfoot></tfoot>
         </table>
 
         <div className={css.controlsButton}>

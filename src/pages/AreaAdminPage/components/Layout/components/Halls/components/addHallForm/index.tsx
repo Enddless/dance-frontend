@@ -4,7 +4,7 @@ import ControlButton from "../../../../../../../../components/controls-button";
 import css from "./styles.module.scss";
 import { useAppDispatch, useAppSelector} from "../../../../../../../../services/type-service";
 import { API_URL } from "../../../../../../../../services/api";
-import { addHall, addHallPhoto, getHalls,} from "../../../../../../../../services/thunk/studio";
+import { addHall, addHallPhoto, getHalls,} from "../../../../../../../../store/thunk/studio";
 
 type TAddFormProps = {
   onClick?: () => void;

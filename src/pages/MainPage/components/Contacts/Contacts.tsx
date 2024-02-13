@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import src from "../../../../assets/images/NF.png";
 import { Link } from "react-router-dom";
 import { AppRoute } from "../../../../const/route";
-import { mainPageData } from "../../../../services/thunk/mainPage";
+import { mainPageData } from "../../../../store/thunk/mainPage";
 import Spinner from "../../../../components/Spinner";
 import { LoadingStatus } from "../../../../const/const";
 

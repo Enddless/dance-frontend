@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { APIRoute } from "../../const/route";
-import { Extra } from "../type-service";
+import { Extra } from "../../services/type-service";
 import { ReturnDataTickets } from "../../types/user-types";
 
 // ********** TICKETS **********

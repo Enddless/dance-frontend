@@ -6,8 +6,8 @@ import { useAppDispatch, useAppSelector } from "../../services/type-service";
 import { useLocation, useNavigate } from "react-router-dom";
 import TabsAdmin from "./components/Tabs";
 import { adminSlice } from "../../store/slices/admin";
-import { getCurrentUserRole } from "../../services/thunk/auth";
-import { aboutStudio } from "../../services/thunk/studio";
+import { getCurrentUserRole } from "../../store/thunk/auth";
+import { aboutStudio } from "../../store/thunk/studio";
 
 const AreaAdminPage = () => {
   const navigate = useNavigate();

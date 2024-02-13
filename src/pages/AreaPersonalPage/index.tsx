@@ -11,8 +11,8 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import TabsPersonal from "./Tabs";
 import { authSlice } from "../../store/slices/auth";
-import { getCurrentUserRole } from "../../services/thunk/auth";
-import { mainPageData } from "../../services/thunk/mainPage";
+import { getCurrentUserRole } from "../../store/thunk/auth";
+import { mainPageData } from "../../store/thunk/mainPage";
 
 const AreaPersonalPage = () => {
   const navigate = useNavigate();

@@ -6,7 +6,7 @@ import {
   useAppSelector,
 } from "../../../../../../../../services/type-service";
 import css from "./styles.module.scss";
-import { addPrice, getPrice } from "../../../../../../../../services/thunk/studio";
+import { addPrice, getPrice } from "../../../../../../../../store/thunk/studio";
 
 type TEditFormProps = {
   onClick?: () => void;

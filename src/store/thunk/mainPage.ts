@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { APIRoute } from "../../const/route";
 import { MainPageData } from "../../types/auth-type";
-import { Extra } from "../type-service";
+import { Extra } from "../../services/type-service";
 
 // ********** get main page data **********
 export const mainPageData = createAsyncThunk<MainPageData, undefined, Extra>(

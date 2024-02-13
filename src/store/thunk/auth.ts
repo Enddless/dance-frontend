@@ -8,8 +8,8 @@ import {
   UserCurrentPhoto,
   UserCurrentRole,
 } from "../../types/auth-type";
-import { addToken, deleteToken } from "../token";
-import { Extra } from "../type-service";
+import { addToken, deleteToken } from "../../services/token";
+import { Extra } from "../../services/type-service";
 
 // ********** AUTH **********
 export const registration = createAsyncThunk<ReturnData, AuthData, Extra>(

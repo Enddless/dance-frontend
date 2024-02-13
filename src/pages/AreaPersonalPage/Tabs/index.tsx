@@ -4,7 +4,7 @@ import { memo } from "react";
 import { useAppDispatch, useAppSelector } from "../../../services/type-service";
 import { menuAreaPersonal } from "../../../const/const";
 import { AppRoute } from "../../../const/route";
-import { getTickets } from "../../../services/thunk/tickets";
+import { getTickets } from "../../../store/thunk/tickets";
 import { authSlice } from "../../../store/slices/auth";
 import Button from "../../../components/Button/Button";
 

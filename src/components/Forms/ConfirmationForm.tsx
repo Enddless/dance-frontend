@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import css from "./forms.module.scss";
 import { useAppDispatch } from "../../services/type-service";
-import { confirmation } from "../../services/thunk/auth";
+import { confirmation } from "../../store/thunk/auth";
 import Button from "../Button/Button";
 
 type ICodeProps = {

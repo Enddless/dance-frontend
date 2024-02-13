@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { LoadingStatus, NameSpace } from "../../const/const";
-import { getTickets } from "../../services/thunk/tickets";
+import { getTickets } from "../thunk/tickets";
 import { StateUserData } from "../../types/user-types";
 
 const initialState: StateUserData = {

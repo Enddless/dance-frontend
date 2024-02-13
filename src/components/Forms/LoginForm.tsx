@@ -5,7 +5,7 @@ import {
   getCurrentUserData,
   getCurrentUserRole,
   login,
-} from "../../services/thunk/auth";
+} from "../../store/thunk/auth";
 import EyeIcon from "../EyeIcon";
 import Button from "../Button/Button";
 import { authSlice } from "../../store/slices/auth";

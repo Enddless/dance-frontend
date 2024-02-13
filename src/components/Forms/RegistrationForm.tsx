@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import css from "./forms.module.scss";
 import ConfirmationForm from "./ConfirmationForm";
 import { useAppDispatch } from "../../services/type-service";
-import { registration } from "../../services/thunk/auth";
+import { registration } from "../../store/thunk/auth";
 import EyeIcon from "../EyeIcon";
 import InputCheckbox from "../Input-checkbox";
 import Button from "../Button/Button";
