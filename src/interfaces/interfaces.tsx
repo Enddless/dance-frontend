@@ -20,17 +20,6 @@ export interface IReviewsInfo {
   };
 }
 
-export interface IPoints {
-  title: string;
-  lat: number;
-  lng: number;
-}
-export interface ICity {
-  title: string;
-  lat: number;
-  lng: number;
-  zoom: number;
-}
 
 export interface INotification {
   id: number;
@@ -49,15 +38,15 @@ export interface IContactsStudio {
       urlSvg: string,
     },
   ],
-  points: {
-    title: string,
-    lat: number,
-    lng: number,
-  },
-  city: {
-    title: string,
-    lat: number,
-    lng: number,
-    zoom: number,
-  },
+  // points: {
+  //   title: string,
+  //   lat: number,
+  //   lng: number,
+  // },
+  // city: {
+  //   title: string,
+  //   lat: number,
+  //   lng: number,
+  //   zoom: number,
+  // },
 }

@@ -2,16 +2,37 @@
 
 .contacts {
   position: relative;
+  min-height: 160px;
+}
+.noMap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  img {
+    width: 30%;
+  }
+  .atention {
+    a {
+      color: #93650c;
+    }
+  }
+  .atention a:hover {
+    color: $body-color-secondary;
+    font-weight: 500;
+  }
+  span {
+    text-decoration: line-through;
+  }
 }
 .info {
-  width: 305px;
-  background: $body-background-primary;
-  padding:30px 20px;
+  width: 270px;
+  background: rgba($body-background-primary, 0.6);
+  border-radius: 10px;
+  padding: 30px 20px;
   position: absolute;
-  bottom: 40px;
-  left: 40px;
+  bottom: 17px;
+  left: 17px;
   z-index: 400;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -32,10 +53,13 @@
   stroke: $body-color-primary;
   fill: $body-color-primary;
 }
-.socialBlock {
-  text-align: center;
-}
+
 .atention {
-  margin:0 100px;
+  margin: 0 100px;
   color: #93650c;
+}
+
+.spinnerContainer {
+  grid-column: span 12;
+  margin-top: 60px;
 }

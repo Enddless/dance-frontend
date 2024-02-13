@@ -18,6 +18,10 @@
   transition: all 500ms ease-in-out;
   box-shadow: 6px 6px 20px 0px rgba(63, 63, 62, 0.7);
 
+  & svg {
+    stroke: #13340a;
+  }
+
   .closeContainer {
     position: absolute;
     right: 15px;
@@ -50,9 +54,7 @@
   margin-bottom:10px;
   width:100%;
 
-  & svg {
-    stroke: #13340a;
-  }
+  
   a {
     display: flex;
     align-items: center;

@@ -1,60 +1,126 @@
 import css from "./styles.module.scss";
-import sprite from "../../../../../../assets/sprite.svg";
-import { useState } from "react";
-import { contactsStudio } from "../../../../../../mocks/mocks";
+import { useEffect, useState } from "react";
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "../../../../../../services/type-service";
+import {
+  changeCoordsCity,
+  changeCoordsPoints,
+  getCoordsCity,
+  getCoordsPoints,
+} from "../../../../../../services/thunk/studio";
+import Button from "../../../../../../components/Button/Button";
 
 const ContactsSettings = () => {
-  const [city, setCity] = useState({
-    lat: contactsStudio.city.lat,
-    lng: contactsStudio.city.lng,
-    zoom: contactsStudio.city.zoom,
-  });
+  const dispatch = useAppDispatch();
+  const cityData = useAppSelector((state) => state.studio.city);
+  const pointsData = useAppSelector((state) => state.studio.points);
+  const [success, setSuccess] = useState(false);
+
+  const [tel, setTel] = useState("");
+  const [city, setCity] = useState(
+    cityData
+      ? {
+          title: cityData.title,
+          lat: cityData.lat,
+          lng: cityData.lng,
+          zoom: cityData.zoom,
+        }
+      : { title: "", lat: "", lng: "", zoom: "" }
+  );
+  const [location, setLocation] = useState(
+    pointsData
+      ? {
+          lat: pointsData.lat,
+          lng: pointsData.lng,
+        }
+      : { lat: "", lng: "" }
+  );
+
+  useEffect(() => {
+    dispatch(getCoordsCity());
+    dispatch(getCoordsPoints());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (cityData) {
+      setCity({
+        title: cityData.title,
+        lat: cityData.lat,
+        lng: cityData.lng,
+        zoom: cityData.zoom,
+      });
+    }
+    if (pointsData) {
+      setLocation({
+        lat: pointsData.lat,
+        lng: pointsData.lng,
+      });
+    }
+  }, [cityData, pointsData]);
+
   const handleChangeCity = (e: { target: { name: string; value: string } }) => {
     setCity({ ...city, [e.target.name]: e.target.value });
-    
   };
-  const [location, setLocation] = useState({
-    lat: contactsStudio.points.lat,
-    lng: contactsStudio.points.lng, 
-  });
-  const handleChangeLocation = (e: { target: { name: string; value: string } }) => {
+
+  const handleChangeLocation = (e: {
+    target: { name: string; value: string };
+  }) => {
     setLocation({ ...location, [e.target.name]: e.target.value });
   };
-  const [address, setAddress] = useState(contactsStudio.address);
-  const [tel, setTel] = useState(contactsStudio.phone);
+  const sendData = () => {
+    dispatch(
+      changeCoordsCity({
+        title: city.title,
+        lat: Number(city.lat),
+        lng: Number(city.lng),
+        zoom: Number(city.zoom),
+      })
+    )
+      .unwrap()
+      .then(() => {
+        setSuccess(true);
+        setTimeout(() => {
+          setSuccess(false);
+        }, 2000);
+      });
+    dispatch(
+      changeCoordsPoints({
+        lat: Number(location.lat),
+        lng: Number(location.lng),
+      })
+    )
+      .unwrap()
+      .then(() => {
+        setSuccess(true);
+        setTimeout(() => {
+          setSuccess(false);
+        }, 2000);
+      });
+  };
+
   return (
     <div className={css.container}>
-      <div className={css.address}>
-        <svg width="25" height="25" viewBox="0 0 25 25">
-          <use xlinkHref={`${sprite}#location`}></use>
-        </svg>
+      <fieldset>
+        <legend>Контактные данные</legend>
         <input
           type="text"
-          value={address}
+          name="title"
+          value={city.title}
           placeholder="Введите адрес"
-          onChange={(e) => setAddress(e.target.value)}
+          onChange={handleChangeCity}
         />
-      </div>
-
-      <div className={css.phone}>
-        <svg width="25" height="25" viewBox="0 0 25 25">
-          <use xlinkHref={`${sprite}#phone`}></use>
-        </svg>
         <input
           type="tel"
           value={tel}
           placeholder="Введите телефон"
           onChange={(e) => setTel(e.target.value)}
         />
-      </div>
+      </fieldset>
 
-      <div className={css.city}>
-        <div className={css.description}>
-          <p>Укажите координаты для зума:</p>
-        </div>
-        <svg width="25" height="25" viewBox="0 0 25 25">
-          <use xlinkHref={`${sprite}#bookmark`}></use>
-        </svg>
+      <fieldset>
+        <legend>Координаты и масштаб города</legend>
         <input
           type="number"
           value={city.lat}
@@ -75,18 +141,14 @@ const ContactsSettings = () => {
           type="number"
           value={city.zoom}
           name="zoom"
-          placeholder="Увеличение от 1 до 20"
+          placeholder="Масштаб от 1 до 20"
+          max={20}
           onChange={handleChangeCity}
         />
-      </div>
+      </fieldset>
 
-      <div className={css.location}>
-        <div className={css.description}>
-          <p>Укажите координаты для филиалов:</p>
-        </div>
-        <svg width="25" height="25" viewBox="0 0 25 25">
-          <use xlinkHref={`${sprite}#bookmark`}></use>
-        </svg>
+      <fieldset>
+        <legend>Координаты студии</legend>
         <input
           type="number"
           value={location.lat}
@@ -103,7 +165,12 @@ const ContactsSettings = () => {
           pattern="[0-9]+(\.[0-9]+)?"
           onChange={handleChangeLocation}
         />
-      </div>
+      </fieldset>
+      <Button
+        text={success ? "Это успех" : "Сохранить"}
+        cls="btn-save"
+        openModalForm={sendData}
+      />
     </div>
   );
 };

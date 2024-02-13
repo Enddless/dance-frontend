@@ -23,8 +23,19 @@
 }
 .atention {
   grid-column: span 12;
-  color: #93650c;
+  a {
+    color: #93650c;
+  }
 }
+.atention a:hover {
+  color: $body-color-secondary;
+  font-weight:500;
+}
+.spinnerContainer {
+  grid-column: span 12;
+  margin-top: 60px;
+}
+
 @media screen and (max-width: 1280px) {
   .services {
     margin: 0 50px 100px;

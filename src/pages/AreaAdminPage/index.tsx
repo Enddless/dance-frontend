@@ -1,29 +1,20 @@
 import { useEffect } from "react";
 import Layout from "./components/Layout";
 import css from "./styles.module.scss";
-import {
-  AuthorizationStatus,
-  DEFAULT_BUTTON_AREA_ADMIN,
-} from "../../const/const";
-import { AppRoute } from "../../const/route";
+import { DEFAULT_BUTTON_AREA_ADMIN } from "../../const/const";
 import { useAppDispatch, useAppSelector } from "../../services/type-service";
 import { useLocation, useNavigate } from "react-router-dom";
 import TabsAdmin from "./components/Tabs";
 import { adminSlice } from "../../store/slices/admin";
+import { getCurrentUserRole } from "../../services/thunk/auth";
+import { aboutStudio } from "../../services/thunk/studio";
 
 const AreaAdminPage = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const currentMenuButton = useAppSelector((state) => state.admin.buttonActive);
-  const authStatus = useAppSelector((state) => state.auth.authStatus);
   const location = useLocation().pathname.slice(1).split("/")[1];
 
-  //если пользователь вышел, перенаправить на главную
-  useEffect(() => {
-    if (authStatus !== AuthorizationStatus.Auth.toString()) {
-      navigate(AppRoute.Root);
-    }
-  }, [authStatus, navigate]);
   // если поменялась кнопка,вызвать диспатч
   useEffect(() => {
     dispatch(adminSlice.actions.changeActiveButtonMenu(location));
@@ -35,6 +26,11 @@ const AreaAdminPage = () => {
       navigate(`${DEFAULT_BUTTON_AREA_ADMIN.path}`);
     }
   }, [navigate, location]);
+
+  useEffect(() => {
+    dispatch(getCurrentUserRole());
+    dispatch(aboutStudio());
+  }, [dispatch]);
 
   return (
     <div className={css.container}>

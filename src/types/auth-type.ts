@@ -49,6 +49,8 @@ export type StateStudio = {
   isTeachersLoading: LoadingStatus;
   isLogotypeLoading: LoadingStatus;
   isPriceLoading: LoadingStatus;
+  isCityLoading: LoadingStatus;
+  isPointsLoading: LoadingStatus;
   aboutStudioData: AboutStudioData | null;
   bannersData: BannersData[] | null;
   hallsData: HallData[] | null;
@@ -56,6 +58,8 @@ export type StateStudio = {
   techersData: TeacherData[] | null;
   currentTeacherData: TeacherData | null;
   priceData: PriceData[] | null;
+  points: PointsData | undefined;
+  city: CityData | undefined;
 };
 export type AboutStudioData = {
   idAtelier?: number;
@@ -101,9 +105,17 @@ export type MainPageData = {
   Halls: HallData[];
   Teachers: TeacherData[];
   Price: PriceData[];
+  Points: PointsData | undefined;
+  City: CityData | undefined;
 };
 export type MainPageState = {
-  isMainPageDataLoading: LoadingStatus;
+  isStudioDataLoading: LoadingStatus;
+  isBannerLoading: LoadingStatus;
+  isTeachersLoading: LoadingStatus;
+  isPriceLoading: LoadingStatus;
+  isCityLoading: LoadingStatus;
+  isPointsLoading: LoadingStatus;
+  isHallsLoading: LoadingStatus;
   mainPage: MainPageData | null;
 };
 export type TeacherData = {
@@ -123,23 +135,37 @@ export type Logotype = {
   photoLogo: File;
 };
 
-
-export type PriceData =  {
-  idPrice: number,
+export type PriceData = {
+  idPrice: number;
   title: string;
   descriptionOne: string;
   descriptionTwo: string;
   descriptionThree: string;
-  price: number,
+  price: number;
 };
-export type CurrentPriceData =  {
-  idPrice?: number,
+export type CurrentPriceData = {
+  idPrice?: number;
   title: string;
   descriptionOne: string;
   descriptionTwo: string;
   descriptionThree: string;
-  price: number,
+  price: number;
 };
 export type CurrentPriceId = {
   idPrice: number;
 };
+
+export type PointsData = {
+  // id: number;
+  // title: string;
+  lat: number;
+  lng: number;
+};
+
+export interface CityData {
+  id?: number;
+  title: string;
+  lat: number;
+  lng: number;
+  zoom: number;
+}

@@ -26,7 +26,6 @@ const Button = ({
   activeMenuUser,
   activeDashboardMenu,
 }: ButtonProps) => {
-  //классы для нажатых кнопок, переделать в switch/case
   const enterButton = cls === "btn-enter";
   const more = cls === "btn-more";
   const regButton = cls === "btn-reg";

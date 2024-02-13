@@ -19,6 +19,8 @@ function ControlButton({ id, onClick, isActive }: TControlsProps) {
         return "deleteControls";
       case "close":
         return "closeControls";
+      case "view":
+        return "viewControls";
       default:
         return "";
     }

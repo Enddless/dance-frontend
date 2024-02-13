@@ -117,7 +117,7 @@ const AddPriceForm = ({ onClick }: TAddFormProps) => {
                 cls={!isValidForm ? "btn-dis" : "btn-save"}
                 openModalForm={sendTicketData}
               />
-              <Button text="Отменить" cls="btn-cancel" />
+              <Button text="Отменить" cls="btn-cancel" openModalForm={onClick} />
             </div>
           </>
         </div>

@@ -1,46 +1,42 @@
 @import "../../../../../../main.module.scss";
 
 .container {
-  @include TextSecondary;
+  margin: 40px 0;
+  @include Grid;
+  grid-template-columns: repeat(10, 1fr);
+  column-gap:10px;
+}
+.document {
+  grid-column: span 5;
+  padding: 30px 20px 30px 30px;
+  border-radius:10px;
+  border: 1px solid #13340a;
+  position: relative;
+  cursor:pointer;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+}
+.document:hover {
+  border: 1px solid #ffa800;
+}
+.file {
+
+  padding: 0 10px 0 0;
+  display: flex;
+  align-items: center;
 }
 .controlGroup {
+  padding: 0 0 0 20px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  column-gap: 20px;
-  margin-bottom: 20px;
-
+  row-gap: 20px;
+  flex-direction: column;
+  border-left: 2px solid #ffa800;
 }
-.editText {
-  width: 100%;
-  height: 100%;
-  font-size: 20px;
-  resize: none;
-  font-family: $body-family-primary;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 33px;
-  letter-spacing: 0.4px;
-}
-.editText:focus {
-  outline: 1px solid $gray;
+.buttonContainer {
+  display: flex;
+  justify-content: center;
 }
 
-//scrollbar
-.editText::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-  border-radius: 10px 10px 10px 10px;
-}
-
-.editText::-webkit-scrollbar-track {
-  background: #71856c;
-  border-radius: 10px 10px 10px 10px;
-}
-
-.editText::-webkit-scrollbar-thumb {
-  background-color: #fdf8f0;
-  border: 1px solid #71856c;
-  border-radius: 10px 10px 10px 10px;
-}

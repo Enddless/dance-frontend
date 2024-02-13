@@ -4,15 +4,15 @@
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   margin: 0 100px 100px;
+  row-gap: 10px;
 }
 
 .text,
 .galerry {
   grid-column: span 12;
-  
 }
 .text {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 .galerry {
   display: grid;
@@ -43,9 +43,19 @@
 
 .atention {
   grid-column: span 12;
-  color: #93650c;
+  a {
+    color: #93650c;
+  }
+}
+.atention a:hover {
+  color: $body-color-secondary;
+  font-weight:500;
 }
 
+.spinnerContainer {
+  grid-column: span 12;
+  margin-top: 30px;
+}
 @media screen and (max-width: 1280px) {
   .about {
     margin: 0 50px 100px;

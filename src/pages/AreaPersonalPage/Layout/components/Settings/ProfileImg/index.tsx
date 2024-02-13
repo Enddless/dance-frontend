@@ -10,7 +10,7 @@ import {
   deleteUserPhoto,
   getCurrentUserData,
 } from "../../../../../../services/thunk/auth";
-import sprite from "../../../../../../assets/sprite.svg";
+import ControlButton from "../../../../../../components/controls-button";
 
 function ProfileImg() {
   const dispatch = useAppDispatch();
@@ -80,15 +80,11 @@ function ProfileImg() {
       .unwrap()
       .then(() => {
         dispatch(getCurrentUserData());
-        setPreviewImage("")
+        setPreviewImage("");
       });
   };
   return (
-    <form
-      className={css.profileImg}
-      encType="multipart/form-data"
-      // onSubmit={handleImageUpload}
-    >
+    <form className={css.profileImg} encType="multipart/form-data">
       <label htmlFor="photoUser" className={css.download}>
         <input
           type="file"
@@ -98,22 +94,14 @@ function ProfileImg() {
         />
 
         <div className={css.controls}>
-          <svg width="24" height="24" viewBox="0 0 24 24">
-            <use xlinkHref={`${sprite}#note`}></use>
-          </svg>
+          <ControlButton id="edit" />
         </div>
         {previewImage && previewImage !== "" && (
-          <img
-            src={previewImage}
-            alt="Preview"
-            //onLoad={handleImageUpload}
-          />
+          <img src={previewImage} alt="Preview" />
         )}
       </label>
       <div className={css.controls} onClick={deletePhoto}>
-        <svg width="24" height="24" viewBox="0 0 24 24">
-          <use xlinkHref={`${sprite}#trash`}></use>
-        </svg>
+        <ControlButton id="delete" />
       </div>
       {errorDownload && <p className={css.errorMessage}>{errorDownload}</p>}
     </form>

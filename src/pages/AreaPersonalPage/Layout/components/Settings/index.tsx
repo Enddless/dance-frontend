@@ -13,8 +13,9 @@ import {
   getCurrentUserData,
 } from "../../../../../services/thunk/auth";
 import { Modal } from "../../../../../components/modal-form/Modal";
-import { Navigate } from "react-router-dom";
-import { AppRoute } from "../../../../../const/route";
+import ControlButton from "../../../../../components/controls-button";
+// import { Navigate } from "react-router-dom";
+// import { AppRoute } from "../../../../../const/route";
 
 const Settings = () => {
   const dispatch = useAppDispatch();
@@ -59,10 +60,16 @@ const Settings = () => {
   };
   // удаление аккаунта
   const [isDeleteAcc, setIsDeleteAcc] = useState(false);
+  const [successDel, setSuccessDel] = useState(false);
+  const [errorDel, setErrorDel] = useState(false);
   const deleteAccount = () => {
-    dispatch(deleteUserData())
-      .unwrap()
-      .then(() => <Navigate to={`${AppRoute.Root}`} />);
+    setSuccessDel(true);
+    setTimeout(() => {
+      setSuccessDel(false);
+      dispatch(deleteUserData())
+        .unwrap()
+        .catch(() => setErrorDel(true));
+    }, 3000);
   };
 
   if (!userData) {
@@ -193,6 +200,21 @@ const Settings = () => {
                   />
                 </div>
               </p>
+            </div>
+          </Modal>
+        )}
+        {successDel && (
+          <Modal>
+            <div className={css.deleteModal}>
+              <p>Удаляем...</p>
+            </div>
+          </Modal>
+        )}
+        {errorDel && (
+          <Modal>
+            <div className={css.deleteModal}>
+              <ControlButton id="close" onClick={() => {setErrorDel(false); setSuccessDel(false)}} />
+              <p>Ой, что-то пошло не так &#128566 </p>
             </div>
           </Modal>
         )}

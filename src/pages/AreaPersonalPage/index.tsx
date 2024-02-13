@@ -3,27 +3,23 @@ import Layout from "./Layout";
 import css from "./styles.module.scss";
 import { useAppDispatch, useAppSelector } from "../../services/type-service";
 import {
-  AuthorizationStatus,
   DEFAULT_BUTTON_AREA_PERSONAL,
 } from "../../const/const";
-import { AppRoute } from "../../const/route";
+
 import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import TabsPersonal from "./Tabs";
 import { authSlice } from "../../store/slices/auth";
+import { getCurrentUserRole } from "../../services/thunk/auth";
+import { mainPageData } from "../../services/thunk/mainPage";
 
 const AreaPersonalPage = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const location = useLocation().pathname.slice(1).split("/")[1];
-  const authStatus = useAppSelector((state) => state.auth.authStatus);
   const currentButton = useAppSelector((state) => state.auth.buttonActive);
-  useEffect(() => {
-    if (authStatus !== AuthorizationStatus.Auth) {
-      navigate(AppRoute.Root);
-    }
-  }, [authStatus, navigate]);
+
 
   useEffect(() => {
     dispatch(authSlice.actions.changeActiveButtonMenuPersonal(location));
@@ -36,6 +32,10 @@ const AreaPersonalPage = () => {
     }
   }, [navigate, location]);
 
+  useEffect(() => {
+    dispatch(getCurrentUserRole())
+    dispatch(mainPageData())
+  }, [dispatch]);
   return (
     <>
       <Header />

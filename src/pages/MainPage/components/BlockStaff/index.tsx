@@ -5,6 +5,8 @@ import TitleSection from "../../../../components/Title/Title";
 import { API_URL } from "../../../../services/api";
 import { Link } from "react-router-dom";
 import { AppRoute } from "../../../../const/route";
+import Spinner from "../../../../components/Spinner";
+import { LoadingStatus } from "../../../../const/const";
 
 const StaffPage = () => {
   const main = useAppSelector((state) => state.main.mainPage);
@@ -12,46 +14,56 @@ const StaffPage = () => {
 
   const length = StaffInfo?.length;
 
+  const statusPersonal = useAppSelector(
+    (state) => state.main.isTeachersLoading
+  );
+
   return (
     <section className={css.personal}>
-      <div className={css.titleContainer}>
-        <TitleSection title="Персонал" />
-      </div>
-      {StaffInfo && length && length > 4 ? (
-        <SliderBlock staffInfo={StaffInfo} />
+      <TitleSection title="Персонал" />
+      {statusPersonal === LoadingStatus.Pending ? (
+        <div className={css.spinnerContainer}>
+          <Spinner />
+        </div>
       ) : (
-        <div className={css.staffInfo}>
-          {StaffInfo &&
-            StaffInfo.map((teacher) => (
-              <div key={teacher.idTeachers} className={css.block}>
-                <div className={css.photoContainer}>
-                  <div className={css.photoItem}>
-                    <div className={css.photoBody}>
-                      <img
-                        src={`${API_URL}${teacher.photoTeachers}`}
-                        alt="staffPhoto"
-                        className={css.staffPhoto}
-                      />
+        <>
+          {StaffInfo && length && length > 4 ? (
+            <SliderBlock staffInfo={StaffInfo} />
+          ) : (
+            <div className={css.staffInfo}>
+              {StaffInfo &&
+                StaffInfo.map((teacher) => (
+                  <div key={teacher.idTeachers} className={css.block}>
+                    <div className={css.photoContainer}>
+                      <div className={css.photoItem}>
+                        <div className={css.photoBody}>
+                          <img
+                            src={`${API_URL}${teacher.photoTeachers}`}
+                            alt="staffPhoto"
+                            className={css.staffPhoto}
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className={css.staffDescr}>
+                      <h5>{teacher.teachersName}</h5>
+                      <p>{teacher.description}</p>
                     </div>
                   </div>
-                </div>
-
-                <div className={css.staffDescr}>
-                  <h5>{teacher.teachersName}</h5>
-                  <p>{teacher.description}</p>
-                </div>
-              </div>
-            ))}
-        </div>
-      )}
-      {!StaffInfo && (
-        <p className={css.atention}>
-          Здесь еще нет персонала. Добавить его можно в личном кабинете
-          <Link to={`${AppRoute.AdministratorArea}/personal`}>
-            {" "}
-            администратора
-          </Link>
-        </p>
+                ))}
+            </div>
+          )}
+          {!StaffInfo && (
+            <p className={css.atention}>
+              Здесь еще нет персонала. Добавить его можно в личном кабинете
+              <Link to={`${AppRoute.AdministratorArea}/personal`}>
+                {" "}
+                администратора
+              </Link>
+            </p>
+          )}
+        </>
       )}
     </section>
   );
