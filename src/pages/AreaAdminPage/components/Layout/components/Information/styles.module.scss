@@ -15,12 +15,13 @@
   cursor:pointer;
   display: flex;
   align-items: stretch;
+  justify-content: space-between;
 }
 .document:hover {
   border: 1px solid #ffa800;
 }
 .file {
-  border-right: 2px solid #ffa800;
+
   padding: 0 10px 0 0;
   display: flex;
   align-items: center;
@@ -32,6 +33,7 @@
   align-items: center;
   row-gap: 20px;
   flex-direction: column;
+  border-left: 2px solid #ffa800;
 }
 .buttonContainer {
   display: flex;
