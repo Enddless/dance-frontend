@@ -6,7 +6,7 @@ import css from "./styles.module.scss";
 import { adminSlice } from "../../../../store/slices/admin";
 import sprite from "../../../../assets/sprite.svg";
 import { memo } from "react";
-import { logout } from "../../../../services/thunk/auth";
+import { logout } from "../../../../store/thunk/auth";
 import { useNavigate } from "react-router-dom";
 import LogotypeSettings from "../Layout/components/LogotypeSettings";
 

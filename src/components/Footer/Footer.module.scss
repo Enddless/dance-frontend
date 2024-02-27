@@ -9,6 +9,7 @@
   align-items: center;
   justify-content: space-between;
   column-gap: 10px;
+  position: relative;
 }
 
 .footerNav {
@@ -55,6 +56,13 @@
   text-align: center;
 }
 
+.organization {
+  position: absolute;
+  bottom:0;
+  bottom: 0;
+  left: 50px;
+  font-size:14px;
+}
 @media screen and (max-width: 1100px) {
   .footer {
     flex-direction: row;

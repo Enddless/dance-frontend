@@ -6,7 +6,7 @@ import {
   changeBanner,
   deleteBanner,
   getBanners,
-} from "../../../../../../services/thunk/studio";
+} from "../../../../../../store/thunk/studio";
 import {
   useAppDispatch,
   useAppSelector,

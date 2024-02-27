@@ -18,7 +18,7 @@ import {
   login,
   logout,
   registration,
-} from "../../services/thunk/auth";
+} from "../thunk/auth";
 
 const initialState: StateAuth = {
   authStatus: AuthorizationStatus.Unknown,
@@ -43,6 +43,12 @@ export const authSlice = createSlice({
     },
     changeFormActive(state, action: PayloadAction<string>) {
       state.formAuthActiveId = action.payload;
+    },
+    refreshUser(state, action) {
+      state.userData = {};
+      state.userRole = action.payload;
+      state.authStatus = AuthorizationStatus.Unknown;
+      console.log("test");
     },
   },
   extraReducers(builder) {

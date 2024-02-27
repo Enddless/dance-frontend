@@ -11,7 +11,7 @@ import {
   changeUserData,
   deleteUserData,
   getCurrentUserData,
-} from "../../../../../services/thunk/auth";
+} from "../../../../../store/thunk/auth";
 import { Modal } from "../../../../../components/modal-form/Modal";
 import ControlButton from "../../../../../components/controls-button";
 // import { Navigate } from "react-router-dom";

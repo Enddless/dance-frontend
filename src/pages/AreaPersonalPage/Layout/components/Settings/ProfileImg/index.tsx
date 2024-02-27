@@ -9,7 +9,7 @@ import {
   changeUserPhoto,
   deleteUserPhoto,
   getCurrentUserData,
-} from "../../../../../../services/thunk/auth";
+} from "../../../../../../store/thunk/auth";
 import ControlButton from "../../../../../../components/controls-button";
 
 function ProfileImg() {

@@ -81,6 +81,10 @@ const Footer = () => {
           <SocialLinks />
         </div>
       </div>
+
+      <div className={css.organization}>
+        <Link to="https://pnpl.site/">Проект разработан в рамках Pineapple Practice</Link>
+      </div>
     </div>
   );
 };

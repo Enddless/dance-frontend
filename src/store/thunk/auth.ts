@@ -8,8 +8,8 @@ import {
   UserCurrentPhoto,
   UserCurrentRole,
 } from "../../types/auth-type";
-import { addToken, deleteToken } from "../token";
-import { Extra } from "../type-service";
+import { addToken, deleteToken } from "../../services/token";
+import { Extra } from "../../services/type-service";
 
 // ********** AUTH **********
 export const registration = createAsyncThunk<ReturnData, AuthData, Extra>(
@@ -70,7 +70,6 @@ export const getCurrentUserData = createAsyncThunk<
   Extra
 >("user/data", async (_arg, { extra: api }) => {
   const { data } = await api.get<UserCurrentData>(APIRoute.UserData);
-  localStorage.setItem("user", JSON.stringify(data));
   return data;
 });
 

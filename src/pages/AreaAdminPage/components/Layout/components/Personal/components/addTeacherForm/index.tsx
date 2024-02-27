@@ -11,7 +11,7 @@ import {
   addTeacher,
   addTeacherPhoto,
   getTeachers,
-} from "../../../../../../../../services/thunk/studio";
+} from "../../../../../../../../store/thunk/studio";
 
 type TAddFormProps = {
   onClick?: () => void;

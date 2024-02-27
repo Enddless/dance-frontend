@@ -9,7 +9,7 @@ import {
   changeCoordsPoints,
   getCoordsCity,
   getCoordsPoints,
-} from "../../../../../../services/thunk/studio";
+} from "../../../../../../store/thunk/studio";
 import Button from "../../../../../../components/Button/Button";
 
 const ContactsSettings = () => {

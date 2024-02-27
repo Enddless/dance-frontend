@@ -3,7 +3,7 @@ import css from "./styles.module.scss";
 import {
   aboutStudio,
   changeLogotype,
-} from "../../../../../../services/thunk/studio";
+} from "../../../../../../store/thunk/studio";
 import {
   useAppDispatch,
   useAppSelector,

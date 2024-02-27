@@ -68,9 +68,12 @@
     outline: none;
   }
   .errorMessage {
+    text-align: right;
+    width: 70%;
     color: red;
-    font-size: 12px;
+    font-size: 11px;
     position: absolute;
+    line-height:14px;
     top: 2px;
     right: 0px;
   }

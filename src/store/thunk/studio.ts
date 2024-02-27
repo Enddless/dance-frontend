@@ -18,7 +18,7 @@ import {
   PriceData,
   TeacherData,
 } from "../../types/auth-type";
-import { Extra } from "../type-service";
+import { Extra } from "../../services/type-service";
 
 // ********** get about studio data **********
 export const aboutStudio = createAsyncThunk<AboutStudioData, undefined, Extra>(

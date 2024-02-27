@@ -20,7 +20,7 @@ import {
   getHalls,
   getPrice,
   getTeachers,
-} from "../../services/thunk/studio";
+} from "../thunk/studio";
 import { StateStudio } from "../../types/auth-type";
 
 const initialState: StateStudio = {

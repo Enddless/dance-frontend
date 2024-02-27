@@ -6,7 +6,7 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import MainReviews from "./components/Reviews/Reviews";
 import { useAppDispatch } from "../../services/type-service";
-import { mainPageData } from "../../services/thunk/mainPage";
+import { mainPageData } from "../../store/thunk/mainPage";
 import { useEffect } from "react";
 import Banners from "./components/Banners";
 
@@ -15,6 +15,7 @@ const MainPage = () => {
   useEffect(() => {
     dispatch(mainPageData());
   }, [dispatch]);
+
   return (
     <>
       <Header />

@@ -9,7 +9,7 @@ import {
 import {
   addPrice,
   getPrice,
-} from "../../../../../../../../services/thunk/studio";
+} from "../../../../../../../../store/thunk/studio";
 
 type TAddFormProps = {
   onClick?: () => void;

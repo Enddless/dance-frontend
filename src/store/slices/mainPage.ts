@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { LoadingStatus, NameSpace } from "../../const/const";
-import { mainPageData } from "../../services/thunk/mainPage";
+import { mainPageData } from "../thunk/mainPage";
 import { MainPageState } from "../../types/auth-type";
 
 const initialState: MainPageState = {

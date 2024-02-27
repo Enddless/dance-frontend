@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import css from "./forms.module.scss";
 import ConfirmationForm from "./ConfirmationForm";
 import { useAppDispatch } from "../../services/type-service";
-import { registration } from "../../services/thunk/auth";
+import { registration } from "../../store/thunk/auth";
 import EyeIcon from "../EyeIcon";
 import InputCheckbox from "../Input-checkbox";
 import Button from "../Button/Button";
@@ -46,7 +46,7 @@ const RegistrationForm = () => {
       !isValidateDblPassword &&
       formData.password !== ""
     ) {
-      setErrorPassword("Не менее 8 символов(англ.буквы,цифры,символы)");
+      setErrorPassword("Не менее 8 символов, с использованием цифр, букв,символов, как минимум 1 заглавная буква)");
     } else if (formData.password !== formData.dublPassword) {
       setErrorPassword("Пароли должны совпадать");
     } else {

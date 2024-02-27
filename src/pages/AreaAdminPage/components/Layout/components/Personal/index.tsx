@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import {
   deleteTeacher,
   getTeachers,
-} from "../../../../../../services/thunk/studio";
+} from "../../../../../../store/thunk/studio";
 import { API_URL } from "../../../../../../services/api";
 import AddTeacherForm from "./components/addTeacherForm";
 import EditTeacherForm from "./components/editTeacherForm";

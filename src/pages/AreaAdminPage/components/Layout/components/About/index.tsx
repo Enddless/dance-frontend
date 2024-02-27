@@ -8,7 +8,7 @@ import {
 import {
   aboutStudio,
   changeAboutStudio,
-} from "../../../../../../services/thunk/studio";
+} from "../../../../../../store/thunk/studio";
 
 const AboutSettings = () => {
   const dispatch = useAppDispatch();
