@@ -70,7 +70,6 @@ export const getCurrentUserData = createAsyncThunk<
   Extra
 >("user/data", async (_arg, { extra: api }) => {
   const { data } = await api.get<UserCurrentData>(APIRoute.UserData);
-  localStorage.setItem("user", JSON.stringify(data));
   return data;
 });
 

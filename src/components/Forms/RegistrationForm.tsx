@@ -46,7 +46,7 @@ const RegistrationForm = () => {
       !isValidateDblPassword &&
       formData.password !== ""
     ) {
-      setErrorPassword("Не менее 8 символов(англ.буквы,цифры,символы)");
+      setErrorPassword("Не менее 8 символов, с использованием цифр, букв,символов, как минимум 1 заглавная буква)");
     } else if (formData.password !== formData.dublPassword) {
       setErrorPassword("Пароли должны совпадать");
     } else {

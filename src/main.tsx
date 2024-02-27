@@ -7,9 +7,11 @@ import { PersistGate } from "redux-persist/integration/react";
 import { getCurrentUserData, getCurrentUserRole } from "./store/thunk/auth.ts";
 import { BrowserRouter } from "react-router-dom";
 import "./main.module.scss";
+// import Spinner from "./components/Spinner/index.tsx";
 
 store.dispatch(getCurrentUserData());
 store.dispatch(getCurrentUserRole());
+
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

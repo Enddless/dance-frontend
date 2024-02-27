@@ -30,11 +30,7 @@ const AreaForm = ({ openModalForm }: IModalFormProps) => {
   //выход из аккаунта
   const dispatch = useAppDispatch();
   const handleClick = () => {
-    dispatch(logout())
-      .unwrap()
-      .then(() => {
-        localStorage.removeItem("user");
-      });
+    dispatch(logout());
     if (openModalForm) {
       openModalForm();
     }

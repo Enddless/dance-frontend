@@ -16,10 +16,12 @@
 }
 .card {
   max-width: 320px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  a {height: 100%;}
 }
 
 .add {
@@ -44,7 +46,7 @@
 }
 .updateForm {
   position: relative;
-
+  height: 100%;
   .update {
     position: absolute;
     z-index: 15;
