@@ -8,14 +8,17 @@ import { AppRoute } from "../../const/route";
 import AreaPersonalPage from "../../pages/AreaPersonalPage";
 import AreaAdminPage from "../../pages/AreaAdminPage";
 import { RedirectPersonalArea } from "../redirect-personal-area";
-import { menuAreaAdministrator, menuAreaPersonal } from "../../const/const";
+import { AUTH_TOKEN_NAME, menuAreaAdministrator, menuAreaPersonal } from "../../const/const";
 import { Modal } from "../modal-form/Modal";
 import LoginForm from "../Forms/LoginForm";
 import { useEffect, useState } from "react";
 import Spinner from "../Spinner";
+import { useAppDispatch } from "../../services/type-service";
+import { authSlice } from "../../store/slices/auth";
 
 const App = () => {
   const location = useLocation();
+  const dispatch = useAppDispatch();
   const previousLocation = location.state?.previousLocation;
 
   const [loading, setLoading] = useState(true);
@@ -24,8 +27,17 @@ const App = () => {
     // Симулируем загрузку данных
     setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 50);
   }, []);
+  const token = localStorage.getItem(`${AUTH_TOKEN_NAME}`);
+  // const token = useAppSelector((state) => state.auth.token);
+
+  useEffect(() => {
+    if (!token) {
+      dispatch(authSlice.actions.refreshUser())
+    }
+  }, [token])
+  
 
   return (
     <>

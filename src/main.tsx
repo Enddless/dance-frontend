@@ -16,10 +16,10 @@ store.dispatch(getCurrentUserRole());
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter>
+      <PersistGate loading={<div>Loading</div>} persistor={persistor}>
+      <BrowserRouter>
           <App />
-        </BrowserRouter>
+        </BrowserRouter>     
       </PersistGate>
     </Provider>
   </React.StrictMode>

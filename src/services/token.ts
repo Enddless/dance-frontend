@@ -3,8 +3,11 @@ import {  AUTH_TOKEN_NAME } from "../const/const";
 export type Token = {
   token: string;
 };
+ 
+
 export const getToken = (): Token => {
   const token = localStorage.getItem(AUTH_TOKEN_NAME);
+  // const token = (state: State) => state.auth.token;
   return token ? {token} :  { token: ""};
 };
 

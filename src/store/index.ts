@@ -17,7 +17,7 @@ import {
   REGISTER,
 } from "redux-persist";
 
-export const api = createAPI();
+
 
 export const persistConfig = {
   key: "root",
@@ -37,7 +37,7 @@ export const reducer = combineReducers({
   [NameSpace.MainPage]: mainPageSlice.reducer,
 });
 const persistedReducer = persistReducer(persistConfig, reducer);
-
+export const api = createAPI();
 
 export const store = configureStore({
   reducer: persistedReducer,

@@ -51,6 +51,7 @@ export const login = createAsyncThunk<string, AuthData, Extra>(
 
     const token = response.data.token;
     addToken({ token });
+    // dispatch(authSlice.actions.addtokenStore(token))
     return response.data;
   }
 );
@@ -59,6 +60,7 @@ export const logout = createAsyncThunk<void, undefined, Extra>(
   async (_arg, { extra: api }) => {
     const { data } = await api.get(APIRoute.Logout);
     deleteToken();
+    // dispatch(authSlice.actions.deletetokenStore())
     return data;
   }
 );
