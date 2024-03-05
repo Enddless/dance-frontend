@@ -12,6 +12,7 @@ import { authSlice } from "../../store/slices/auth";
 import Burger from "../burger-menu/index";
 import BurgerIcon from "../burger-icon";
 import { pagesHeader } from "../../const/const";
+import { getAuthStatus } from "../../store/selectors/selectors";
 
 const Header = () => {
   const dispatch = useAppDispatch();
@@ -23,7 +24,7 @@ const Header = () => {
   };
 
   //проверка авторизации пользователя
-  const authorizationStatus = useAppSelector((state) => state.auth.authStatus);
+  const authorizationStatus = useAppSelector(getAuthStatus);
   const user = useAppSelector((state) => state.auth.userData);
 
   const [userData, setUserData] = useState(user);

@@ -7,6 +7,7 @@ import { logout } from "../../store/thunk/auth";
 import ControlButton from "../controls-button";
 import { useEffect, useState } from "react";
 import sprite from "../../assets/sprite.svg";
+import { getAuthStatus } from "../../store/selectors/selectors";
 
 type IModalFormProps = {
   openModalForm?: () => void;
@@ -37,7 +38,7 @@ const AreaForm = ({ openModalForm }: IModalFormProps) => {
   };
 
   //проверка авторизации пользователя
-  const authorizationStatus = useAppSelector((state) => state.auth.authStatus);
+  const authorizationStatus = useAppSelector(getAuthStatus);
   const roleData = useAppSelector((state) => state.auth.userRole)?.role;
 
   const [role, setRole] = useState(roleData);
