@@ -41,20 +41,38 @@ export const createAPI = (): AxiosInstance => {
         !originalRequest._retry &&
         currentToken !== ""
       ) {
-        await api
-          .post(APIRoute.UpdateToken)
-          .then((response) => {
-            const token = response.data.token;
-            originalRequest.headers.Authorization = `Bearer ${token}`;
-            addToken({ token });
-            return api(originalRequest);
-          })
-          .catch((error) => {
-            if (error.response.status === 500) {
-              deleteToken();
-              window.location.href = `${AppRoute.Root}`
-            }
-          });
+
+        try {
+          const response = await api.post(APIRoute.UpdateToken);
+          originalRequest._retry = true;
+          const token = response.data.token;
+          originalRequest.headers.Authorization = `Bearer ${token}`;
+          addToken({ token });
+          return api(originalRequest);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } catch (error: any) {
+          if (error.response?.status === 500) {
+            deleteToken();
+            window.location.href = `${AppRoute.Root}`
+          }
+          return Promise.reject(error);
+        }
+
+
+        // await api.post(APIRoute.UpdateToken)
+        //   .then((response) => {
+        //     originalRequest._retry = true;
+        //     const token = response.data.token;
+        //     originalRequest.headers.Authorization = `Bearer ${token}`;
+        //     addToken({ token });
+        //     return api(originalRequest);
+        //   })
+        //   .catch((error) => {
+        //     if (error.response.status === 500) {
+        //       deleteToken();
+        //       window.location.href = `${AppRoute.Root}`
+        //     }
+        //   });
 
       }
       return Promise.reject(error);
