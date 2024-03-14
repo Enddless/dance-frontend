@@ -12,6 +12,7 @@ export type StateAuth = {
   isUserPhotoLoading: LoadingStatus;
   buttonActive: string;
   formAuthActiveId: string;
+  token: string;
 };
 
 export type UserCurrentData = {

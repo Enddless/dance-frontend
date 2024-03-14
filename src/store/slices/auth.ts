@@ -32,23 +32,29 @@ const initialState: StateAuth = {
   isUserPhotoLoading: LoadingStatus.Idle,
   buttonActive: DEFAULT_BUTTON_AREA_PERSONAL.title,
   formAuthActiveId: DEFAULT_FORM_AUTH,
+  token: "",
 };
 
 export const authSlice = createSlice({
   name: NameSpace.Auth,
   initialState,
   reducers: {
+    addtokenStore(state, action: PayloadAction<string>){
+      state.token = action.payload;
+    },
+    deletetokenStore(state){
+      state.token = "";
+    },
     changeActiveButtonMenuPersonal(state, action: PayloadAction<string>) {
       state.buttonActive = action.payload;
     },
     changeFormActive(state, action: PayloadAction<string>) {
       state.formAuthActiveId = action.payload;
     },
-    refreshUser(state, action) {
+    refreshUser(state) {
       state.userData = {};
-      state.userRole = action.payload;
+      state.userRole = null;
       state.authStatus = AuthorizationStatus.Unknown;
-      console.log("test");
     },
   },
   extraReducers(builder) {
@@ -159,3 +165,5 @@ export const authSlice = createSlice({
       });
   },
 });
+
+export const {refreshUser} = authSlice.actions;

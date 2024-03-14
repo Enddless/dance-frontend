@@ -117,8 +117,8 @@ export const dataEvents: TEvent[] = [
   {
     id: 4,
     title: "Занятие 4",
-    start: moment(new Date(currentTime.getTime() + (1 * 24 + 4) * 60 * 60 * 1000)).toDate(),
-    end: moment(new Date(currentTime.getTime() + (1 * 24 + 6) * 60 * 60 * 1000)).toDate(),
+    start: moment(currentTime).toDate(),
+    end: moment(new Date(currentTime.getTime() + 1 * 60 * 60 * 1000)).toDate(),
     halls: halls.First,
     desc: "meeting",
     isDraggable: true,
