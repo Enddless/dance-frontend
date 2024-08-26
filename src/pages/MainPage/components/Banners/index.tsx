@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
-import SliderBlock from "../../../../components/Slider/SliderBlock";
-import { useAppSelector } from "../../../../services/type-service";
-import css from "./styles.module.scss";
-import { AppRoute } from "../../../../const/route";
-import Spinner from "../../../../components/Spinner";
-import { LoadingStatus } from "../../../../const/const";
+import { Link } from 'react-router-dom';
+import SliderBlock from '../../../../components/Slider/SliderBlock';
+import { useAppSelector } from '../../../../services/type-service';
+import css from './styles.module.scss';
+import { AppRoute } from '../../../../const/route';
+import Spinner from '../../../../components/Spinner';
+import { LoadingStatus } from '../../../../const/const';
 
 const Banners = () => {
   const main = useAppSelector((state) => state.main.mainPage);
@@ -23,10 +23,7 @@ const Banners = () => {
           ) : (
             <p className={css.atention}>
               Здесь еще нет баннеров. Добавить их можно в личном кабинете
-              <Link to={`${AppRoute.AdministratorArea}/news`}>
-                {" "}
-                администратора
-              </Link>
+              <Link to={`${AppRoute.AdministratorArea}/news`}> администратора</Link>
             </p>
           )}
         </>

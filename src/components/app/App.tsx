@@ -1,20 +1,23 @@
-import css from "./App.module.scss";
-import MainPage from "../../pages/MainPage/MainPage";
-import { Routes, Route, useLocation } from "react-router-dom";
-import NFPage from "../../pages/NotFoundPage/NFPage";
-import ReviewsPage from "../../pages/ReviewsPage/ReviewsPage";
-import DashboardPage from "../../pages/DashboardPage/DashboardPage";
-import { AppRoute } from "../../const/route";
-import AreaPersonalPage from "../../pages/AreaPersonalPage";
-import AreaAdminPage from "../../pages/AreaAdminPage";
-import { RedirectPersonalArea } from "../redirect-personal-area";
-import { AUTH_TOKEN_NAME, menuAreaAdministrator, menuAreaPersonal } from "../../const/const";
-import { Modal } from "../modal-form/Modal";
-import LoginForm from "../Forms/LoginForm";
-import { useEffect, useState } from "react";
-import Spinner from "../Spinner";
-import { useAppDispatch } from "../../services/type-service";
-import { authSlice } from "../../store/slices/auth";
+import MainPage from '../../pages/MainPage/MainPage';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import NFPage from '../../pages/NotFoundPage/NFPage';
+import ReviewsPage from '../../pages/ReviewsPage/ReviewsPage';
+import DashboardPage from '../../pages/DashboardPage/DashboardPage';
+import { AppRoute } from '../../const/route';
+import AreaPersonalPage from '../../pages/AreaPersonalPage';
+import AreaAdminPage from '../../pages/AreaAdminPage';
+import { RedirectPersonalArea } from '../redirect-personal-area';
+import {
+  AUTH_TOKEN_NAME,
+  menuAreaAdministrator,
+  menuAreaPersonal
+} from '../../const/const';
+import { Modal } from '../modal-form/Modal';
+import LoginForm from '../Forms/LoginForm';
+import { useEffect, useState } from 'react';
+import Spinner from '../Spinner';
+import { useAppDispatch } from '../../services/type-service';
+import { authSlice } from '../../store/slices/auth';
 
 const App = () => {
   const location = useLocation();
@@ -34,28 +37,24 @@ const App = () => {
 
   useEffect(() => {
     if (!token) {
-      dispatch(authSlice.actions.refreshUser())
+      dispatch(authSlice.actions.refreshUser());
     }
-  }, [token])
-  
+  }, [token]);
 
   return (
     <>
       {loading ? (
-        <div className={css.spinnerContainer}>
+        <div className='spinnerContainer'>
           <Spinner />
         </div>
       ) : (
-        <div className={css.app}>
+        <div className='app'>
           <Routes location={previousLocation || location}>
             <Route path={AppRoute.Root} element={<MainPage />} />
             <Route path={AppRoute.Dashboard} element={<DashboardPage />} />
             <Route path={AppRoute.Reviews} element={<ReviewsPage />} />
 
-            <Route
-              path={`${AppRoute.Modal}${AppRoute.Login}`}
-              element={<LoginForm />}
-            />
+            <Route path={`${AppRoute.Modal}${AppRoute.Login}`} element={<LoginForm />} />
 
             <Route path={AppRoute.NotFound} element={<NFPage />} />
 
@@ -65,14 +64,12 @@ const App = () => {
                 <RedirectPersonalArea>
                   <AreaPersonalPage />
                 </RedirectPersonalArea>
-              }
-            >
+              }>
               {menuAreaPersonal.map((name) => (
                 <Route
                   key={name.title}
                   path={name.path}
-                  element={<AreaPersonalPage />}
-                ></Route>
+                  element={<AreaPersonalPage />}></Route>
               ))}
             </Route>
             <Route
@@ -81,14 +78,12 @@ const App = () => {
                 <RedirectPersonalArea>
                   <AreaAdminPage />
                 </RedirectPersonalArea>
-              }
-            >
+              }>
               {menuAreaAdministrator.map((name) => (
                 <Route
                   key={name.title}
                   path={name.path}
-                  element={<AreaAdminPage />}
-                ></Route>
+                  element={<AreaAdminPage />}></Route>
               ))}
             </Route>
           </Routes>

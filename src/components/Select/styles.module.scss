@@ -1,18 +1,18 @@
-@import "../../main.module.scss";
+@import '../../main.module.scss';
 
 .selectContainer {
   grid-column: span 3;
 }
 .title {
   position: relative;
-  width:100%;
+  width: 100%;
   label {
     position: absolute;
     right: 10px;
     top: 10px;
   }
 }
-.optionBlock {  
+.optionBlock {
   width: 100%;
   border: none;
   border-radius: 4px;
@@ -22,7 +22,7 @@
   cursor: pointer;
   position: relative;
   z-index: 100;
-  margin-top:10px;
+  margin-top: 10px;
   @include TextFieldPlaceholder;
 
   .dataItem {
@@ -35,7 +35,7 @@
     cursor: pointer;
   }
   p {
-    @include fluidFontSize(10px, 16px, 480px, 1540px);
+    @include fluid-text(16, 10);
   }
 }
 //scrollbar

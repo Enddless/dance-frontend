@@ -1,37 +1,58 @@
-@use 'sass:math';
-
-@function strip-unit($number) {
-  @if type-of($number) == 'number' and not unitless($number) {
-    @return math.div($number, $number * 0 + 1);
-  }
-
-  @return $number;
+// преобразование текста динамически
+@mixin fluid-text($max: 48, $min: 16) {
+  font-size: clamp(#{$min}px, #{$max / 1440 * 100}vw, #{$max}px);
 }
 
-@function calcFluidFontSize($f-min, $f-max, $w-min, $w-max, $units: px) {
-  $f-min: strip-unit($f-min);
-  $f-max: strip-unit($f-max);
-  $w-min: strip-unit($w-min);
-  $w-max: strip-unit($w-max);
+// сбрасывает неокторые свойства присущие ссылкам
+@mixin reset-link {
+  color: inherit;
 
-  $k: calc(($f-max - $f-min) / ($w-max - $w-min));
-  $b: $f-min - $k * $w-min;
-
-  $b: $b + $units;
-
-  @return calc(#{$k} * 100vw + #{$b});
+  &,
+  &:hover {
+    text-decoration: none;
+  }
 }
 
-@mixin fluidFontSize($f-min, $f-max, $w-min, $w-max, $fallback: false) {
-  font-size: $f-min;
+@mixin reset-button {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
 
-  @media (min-width: $w-min) {
-    @if ($fallback) {
-      font-size: $fallback;
-    }
-    font-size: calcFluidFontSize($f-min, $f-max, $w-min, $w-max, px);
+// если параметр истина, то помещаем дисплэй инлайн-флекс
+@mixin flex-center($isInline: false) {
+  @if $isInline {
+    display: inline-flex;
+  } @else {
+    display: flex;
   }
-  @media (min-width: $w-max) {
-    font-size: $f-max;
-  }
+
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin abs-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+// размеры с пропорциями 1 к 1
+@mixin square($size) {
+  width: $size;
+  aspect-ratio: 1;
+}
+
+@mixin visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  clip-path: inset(100%) !important;
+  clip: rect(0 0 0 0) !important;
+  overflow: hidden !important;
 }

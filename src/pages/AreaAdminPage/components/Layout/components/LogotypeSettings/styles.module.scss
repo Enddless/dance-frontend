@@ -1,4 +1,4 @@
-@import "../../../../../../styles/variables.scss";
+@import '../../../../../../styles/variables.scss';
 
 .container {
   position: relative;
@@ -21,7 +21,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  a {height: 100%;}
+  a {
+    height: 100%;
+  }
 }
 
 .add {
@@ -33,12 +35,12 @@
     padding: 12px;
     background: $btn-background-three;
     color: $btn-color-one;
-    @include fluidFontSize(14px, 16px, 1280px, 1920px);
+    @include fluid-text(16, 14);
   }
   label:hover {
     background: $btn-background-five;
   }
-  input[type="file"] {
+  input[type='file'] {
     height: 100%;
     object-fit: cover;
     display: none;
@@ -54,11 +56,11 @@
     top: 10px;
   }
   img {
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
   }
-  input[type="file"] {
+  input[type='file'] {
     height: 100%;
     object-fit: cover;
     display: none;

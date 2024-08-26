@@ -1,4 +1,4 @@
-@import "../../main.module.scss";
+@import '../../main.module.scss';
 
 .btn {
   @include ButtonPrimary();
@@ -52,7 +52,7 @@
 .btnSave {
   background: $btn-background-three;
   color: $btn-color-one;
-  @include fluidFontSize(14px, 16px, 1280px, 1920px);
+  @include fluid-text(16, 14);
 }
 .btnSave:hover {
   background: $btn-background-four;
@@ -62,7 +62,7 @@
   background: $btn-background-two;
   text-decoration: none;
   width: 100%;
-  @include fluidFontSize(14px, 16px, 1280px, 1920px);
+  @include fluid-text(16, 14);
 }
 .btnDelete:hover {
   color: $btn-color-one;
@@ -70,14 +70,15 @@
 }
 .btnRecord {
   background: $btn-background-one;
-  @include fluidFontSize(14px, 16px, 1280px, 1920px);
+  @include fluid-text(16, 14);
 }
 .btnRecord:hover {
   background: $btn-background-three;
 }
 
 // ***** заблокированные кнопки******
-.btnDisabled, .btnDisabled:hover {
+.btnDisabled,
+.btnDisabled:hover {
   cursor: not-allowed;
   background: rgb(182, 182, 182);
   color: white;
@@ -97,7 +98,6 @@
   color: $btn-color-two;
   outline: 1px solid $btn-border;
   background: transparent;
-
 }
 .btnDashboardAdmin:hover,
 .activeDashboardMenu {

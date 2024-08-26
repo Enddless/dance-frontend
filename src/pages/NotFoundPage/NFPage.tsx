@@ -1,9 +1,9 @@
-import css from "./NFPage.module.scss";
-import nf from "../../assets/images/NF.png";
-import { AppRoute } from "../../const/route";
-import { Link } from "react-router-dom";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
+import css from './NFPage.module.scss';
+import nf from '../../assets/images/NF.png';
+import { AppRoute } from '../../const/route';
+import { Link } from 'react-router-dom';
+import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer';
 const NFPage = () => {
   return (
     <>
@@ -15,7 +15,7 @@ const NFPage = () => {
           <Link to={AppRoute.Root} className={css.link}>
             <p>Главная страница</p>
           </Link>
-          <img src={nf} alt="" />
+          <img src={nf} alt='' />
         </div>
       </div>
       <Footer />
