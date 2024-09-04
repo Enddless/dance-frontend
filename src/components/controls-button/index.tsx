@@ -1,6 +1,4 @@
-import sprite from "../../assets/sprite.svg";
-import css from "./styles.module.scss";
-import classNames from "classnames";
+import sprite from 'public/icons/sprite.svg';
 
 type TControlsProps = {
   id: string;
@@ -8,31 +6,27 @@ type TControlsProps = {
   isActive?: boolean;
 };
 function ControlButton({ id, onClick, isActive }: TControlsProps) {
-  const classNamesList = classNames(css.control, {
-    [css.activeControlButton]: isActive,
-  });
   const switchData = function (id: string) {
     switch (id) {
-      case "edit":
-        return "pencilControls";
-      case "delete":
-        return "deleteControls";
-      case "close":
-        return "closeControls";
-      case "view":
-        return "viewControls";
+      case 'edit':
+        return 'pencilControls';
+      case 'delete':
+        return 'deleteControls';
+      case 'close':
+        return 'closeControls';
+      case 'view':
+        return 'viewControls';
       default:
-        return "";
+        return '';
     }
   };
   return (
     <svg
-      width="30"
-      height="30"
-      viewBox="0 0 30 30"
-      className={classNamesList}
-      onClick={onClick}
-    >
+      width='30'
+      height='30'
+      viewBox='0 0 30 30'
+      className={`control ${isActive && 'activeControlButton'}`}
+      onClick={onClick}>
       <use xlinkHref={`${sprite}#${switchData(id)}`}></use>
     </svg>
   );

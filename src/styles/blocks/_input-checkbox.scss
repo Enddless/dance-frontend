@@ -1,0 +1,30 @@
+.checkbox {
+  &--agreement {
+    display: none;
+    &:checked + .checkbox--fake svg {
+      opacity: 1;
+      stroke: #13340a;
+    }
+  }
+  &--fake {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border: 1px solid #c4ccc1;
+    @include hover {
+      border: 1px solid var(--btn-color-three);
+    }
+    & > svg {
+      opacity: 0;
+      transition: 0.2s;
+    }
+  }
+
+  &__errorInput {
+    border: 1px solid red;
+  }
+}

@@ -1,0 +1,131 @@
+.card-personal__manager {
+  width: 600px;
+  min-height: 450px;
+  padding: 70px 25px 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 4px;
+  border: 1px solid var(--card-border-color);
+  background: var(--palette-color7);
+
+  &.card-add {
+    width: 785px;
+    padding: 60px;
+    & .card-personal__manager-item-data {
+      position: relative;
+      height: 150px;
+      grid-row: 1 / 3;
+    }
+  }
+  &-control {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+  &-download {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    grid-row: 1;
+    & img {
+      position: absolute;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  &-buttonGroup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+  }
+  &-form {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    column-gap: 30px;
+
+    & label,
+    & textarea {
+      width: 100%;
+      background: var(--palette-color-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 200px;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+    & textarea {
+      height: auto;
+      resize: none;
+    }
+
+    & input[type='file'] {
+      height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+  }
+  & .photo-container {
+    width: 100%;
+    height: 100%;
+
+    &__inner {
+      padding-top: 100%;
+      position: relative;
+    }
+    &__body {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+    }
+  }
+  &-item-data {
+    position: relative;
+
+    & .spinnerContainer {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  &-error {
+    position: absolute;
+    font-size: 12px;
+    color: red;
+    width: 100px;
+    bottom: 90px;
+  }
+}
+
+// @media screen and (max-width: 900px) {
+//   .container {
+//     width: 600px;
+//     padding: 50px 30px;
+//   }
+// }
+// @media screen and (max-width: 650px) {
+//   .container {
+//     height: 483px;
+//     width: 375px;
+//   }
+//   .form {
+//     display: flex;
+//     flex-direction: column;
+//     .download {
+//       position: relative;
+//       width: 100px;
+//       height: 100px;
+//     }
+//   }
+// }

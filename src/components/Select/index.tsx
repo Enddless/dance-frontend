@@ -1,7 +1,6 @@
-import css from "./styles.module.scss";
-import sprite from "../../assets/sprite.svg";
-import classNames from "classnames";
-import { useState } from "react";
+import sprite from 'public/icons/sprite.svg';
+import classNames from 'classnames';
+import { useState } from 'react';
 
 interface ISelectProps {
   title: string;
@@ -13,23 +12,22 @@ const SelectFilter = ({ title, data, isRecordSelect }: ISelectProps) => {
   const [option, setoption] = useState(false);
   const [optionValue, setoptionValue] = useState(title);
 
-  const classNamesList = classNames(css.selectContainer, {
-    [css.isRecordSelect]: isRecordSelect,
+  const classNamesList = classNames('selectContainer', {
+    selectContainer__isRecordSelect: isRecordSelect
   });
 
   return (
     <div className={classNamesList}>
-      <div onClick={() => setoption(!option)} className={css.title}>
+      <div onClick={() => setoption(!option)} className='selectContainer__title'>
         <input
-          type="text"
+          type='text'
           value={optionValue}
-          className="cursor"
+          className='cursor'
           required
-          readOnly
-        ></input>
+          readOnly></input>
 
         <label>
-          <svg width="13" height="8" viewBox="0 0 13 8">
+          <svg width='13' height='8' viewBox='0 0 13 8'>
             {option ? (
               <use xlinkHref={`${sprite}#topArrow`}></use>
             ) : (
@@ -39,17 +37,16 @@ const SelectFilter = ({ title, data, isRecordSelect }: ISelectProps) => {
         </label>
       </div>
       {option && (
-        <div className={css.optionBlock}>
+        <div className='selectContainer__optionBlock'>
           {data.map((item, index) => {
             return (
               <p
                 key={index}
-                className={css.dataItem}
+                className='selectContainer__dataItem'
                 onClick={() => {
                   setoptionValue(item);
                   setoption(!option);
-                }}
-              >
+                }}>
                 {item}
               </p>
             );

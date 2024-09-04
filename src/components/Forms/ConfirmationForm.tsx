@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
-import css from "./forms.module.scss";
-import { useAppDispatch } from "../../services/type-service";
-import { confirmation } from "../../store/thunk/auth";
-import Button from "../Button/Button";
+import { useEffect, useState } from 'react';
+import { useAppDispatch } from '../../services/type-service';
+import { confirmation } from '../../store/thunk/auth';
+import Button from '../button';
 
 type ICodeProps = {
   email: string;
@@ -10,9 +9,9 @@ type ICodeProps = {
 };
 const ConfirmationForm = ({ email, password }: ICodeProps) => {
   const dispatch = useAppDispatch();
-  const [codeData, setCodeData] = useState("");
+  const [codeData, setCodeData] = useState('');
   const [success, setSuccess] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
 
   const confirmSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -20,7 +19,7 @@ const ConfirmationForm = ({ email, password }: ICodeProps) => {
     const data = {
       emailUser: email,
       password,
-      code,
+      code
     };
     dispatch(confirmation(data))
       .unwrap()
@@ -28,39 +27,37 @@ const ConfirmationForm = ({ email, password }: ICodeProps) => {
         setSuccess(!success);
       })
       .catch(() => {
-        setErrorMessage("Неверный код. Попробуйте еще");
+        setErrorMessage('Неверный код. Попробуйте еще');
       });
   };
   const [isValidForm, setIsValidForm] = useState(false);
   useEffect(() => {
-    if (codeData !== "") {
+    if (codeData !== '') {
       setIsValidForm(true);
     } else setIsValidForm(false);
   }, [codeData]);
 
   return !success ? (
     <>
-      <h3>Подтверждение регистрации</h3>
-      <form onSubmit={confirmSubmit} className={css.form}>
+      <h3 className='modalForm__title'>Подтверждение регистрации</h3>
+      <form onSubmit={confirmSubmit} className='form-content'>
         <fieldset>
           <label>
             Код
             <input
-              type="number"
+              type='number'
               value={codeData}
-              onChange={(e) =>
-                setCodeData((e.target as HTMLInputElement).value)
-              }
-              name="code"
-              placeholder="****"
+              onChange={(e) => setCodeData((e.target as HTMLInputElement).value)}
+              name='code'
+              placeholder='****'
             />
           </label>
-          {errorMessage && errorMessage !== "" && (
-            <span className={css.errorMessage}>{errorMessage}</span>
+          {errorMessage && errorMessage !== '' && (
+            <span className='errorMessage'>{errorMessage}</span>
           )}
         </fieldset>
 
-        <Button text="Подтвердить" cls="btn-reg" disabled={!isValidForm} />
+        <Button text='Подтвердить' cls='btn-reg' disabled={!isValidForm} />
       </form>
     </>
   ) : (

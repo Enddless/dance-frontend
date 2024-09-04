@@ -1,89 +1,3 @@
-// // ***** TEXT SETTINGS ***** //
-// @mixin TextPrimary {
-//   @include fluid-text(18, 16);
-//   font-weight: 400;
-//   line-height: 140%;
-//   font-style: normal;
-//   font-family: $body-family-primary;
-//   color: $body-color-primary;
-// }
-// @mixin TextSecondary {
-//   @include fluid-text(16, 12);
-//   font-weight: 400;
-//   line-height: 140%;
-// }
-// @mixin TextPlaceholder {
-//   @include fluid-text(16, 14);
-//   font-weight: 400;
-//   line-height: 24px;
-// }
-// @mixin TextFieldPlaceholder {
-//   @include fluid-text(16, 14);
-//   font-weight: 400;
-//   line-height: 24px;
-// }
-// @mixin TextFieldTitle {
-//   @include fluid-text(12, 12);
-//   font-weight: 400;
-//   line-height: 16px;
-// }
-// @mixin TextFieldDescription {
-//   @include fluid-text(12, 12);
-//   font-weight: 400;
-//   line-height: 16px;
-// }
-// @mixin TextLink {
-//   @include fluid-text(20, 14);
-//   font-weight: 400;
-//   line-height: 24px;
-// }
-// @mixin H1 {
-//   @include fluid-text(56, 54);
-//   font-weight: 500;
-//   line-height: 110%;
-// }
-// @mixin H2 {
-//   @include fluid-text(48, 44);
-//   font-weight: 500;
-//   line-height: 120%;
-// }
-// @mixin H3 {
-//   @include fluid-text(32, 20);
-//   font-weight: 500;
-//   line-height: 120%;
-// }
-// @mixin H4 {
-//   @include fluid-text(24, 22);
-//   font-weight: 500;
-//   line-height: 120%;
-// }
-// @mixin H5 {
-//   @include fluid-text(18, 14);
-//   font-weight: 500;
-//   line-height: 120%;
-// }
-
-// @mixin ButtonPrimary {
-//   display: flex;
-//   // width: 119px;
-//   padding: 12px 32px;
-//   justify-content: center;
-//   align-items: center;
-//   gap: 10px;
-//   border: none;
-//   border-radius: 10px;
-//   cursor: pointer;
-//   font-family: $body-family-primary;
-//   @include fluid-text(20, 14);
-//   font-weight: 400;
-//   line-height: 24px;
-//   background: transparent;
-// }
-// @mixin ButtonDisabled {
-//   background: $gray;
-//   cursor: not-allowed;
-// }
-
 * {
   margin: 0;
   padding: 0;
@@ -95,16 +9,9 @@ body {
 
   font-family: var(--font-family-base);
   font-weight: 400;
-  line-height: 1.28;
-  color: var(--text-body);
+  line-height: 25px;
+  color: var(--color-body);
   background-color: var(--background-body);
-
-  user-select: none;
-  max-width: 1920px;
-  margin: 0 auto;
-  text-align: justify;
-  background: $body-background-primary;
-  @include TextPrimary;
 }
 a,
 button,
@@ -121,29 +28,66 @@ a {
 li {
   list-style-type: none;
 }
-
+fieldset {
+  border: none;
+}
 input,
 textarea {
+  @include fluid-text(16, 14);
+
+  line-height: 24px;
   width: 100%;
   height: 48px;
   border: none;
-  border-radius: 4px;
-  background: $white;
-  box-shadow: 2px 6px 10px 0px rgba(0, 0, 0, 0.1);
+  border-radius: var(--border-radius-mini);
+  background: var(--palette-color-white);
+  box-shadow: var(--shadow-input);
   padding: 13px 10px;
+  outline: 1px solid transparent;
   cursor: pointer;
-  @include TextFieldPlaceholder;
+  @include hover {
+    outline: 1px solid var(--palette-color5);
+  }
+  &:focus,
+  &:active {
+    outline: 1px solid var(--palette-color2);
+  }
 }
-input:hover,
-textarea:hover {
-  outline: 1px solid #ffa800;
+input[type='radio'] {
+  display: none;
+  margin-right: 5px;
+  + .radioLabel {
+    &:before {
+      content: '';
+      background: #f4f4f4;
+      border-radius: 100%;
+      border: 1px solid var(--palette-color1);
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-right: 4px;
+      vertical-align: top;
+      cursor: pointer;
+      text-align: center;
+      transition: all var(--transition-duration) ease;
+      margin-right: 10px;
+    }
+  }
+  &:checked {
+    + .radioLabel {
+      &:before {
+        background-color: var(--palette-color1);
+        box-shadow: inset 0 0 0 4px var(--palette-color7);
+      }
+    }
+  }
 }
 
-input:focus,
-textarea:focus {
-  outline: 1px solid #3aa31e;
+input[type='file'] {
+  height: 100%;
+  object-fit: cover;
+  display: none;
 }
-
 .invisibleScroll {
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -153,30 +97,30 @@ textarea:focus {
   }
 }
 
+.app {
+  overflow: hidden;
+}
+
 .spinnerContainer {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
 }
 
 //scrollbar
-body::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 10px;
   height: 10px;
   border-radius: 10px 10px 10px 10px;
 }
 
-body::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   background: #256613;
   border-radius: 10px 10px 10px 10px;
 }
 
-body::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background-color: #fdf8f0;
   border: 2px solid #256613;
   border-radius: 10px 10px 10px 10px;

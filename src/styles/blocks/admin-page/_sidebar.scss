@@ -1,0 +1,42 @@
+.admin-page__sidebar {
+  &-logo {
+    padding: 10px 60px 10px 10px;
+    height: 86px;
+  }
+  &-list {
+    @include fluid-text(20, 14);
+    font-weight: 400;
+    line-height: 24px;
+    margin-top: 20px;
+  }
+  &-item {
+    display: block;
+    width: 100%;
+    padding: 10px 0 10px 20px;
+    @include hover {
+      background: var(--btn-background-five);
+    }
+    &.active {
+      background: var(--btn-background-one);
+    }
+  }
+
+  & .logout {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 0 10px 30px;
+    cursor: pointer;
+    & svg {
+      margin-right: 20px;
+      stroke: #fdf8f0;
+    }
+  }
+  &__controls {
+    position: relative;
+    bottom: 0;
+    @include fluid-text(20, 14);
+    font-weight: 400;
+    line-height: 24px;
+  }
+}

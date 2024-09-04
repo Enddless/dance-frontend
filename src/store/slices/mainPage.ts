@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { LoadingStatus, NameSpace } from "../../const/const";
-import { mainPageData } from "../thunk/mainPage";
-import { MainPageState } from "../../types/auth-type";
+import { createSlice } from '@reduxjs/toolkit';
+import { LoadingStatus, NameSpace } from '../../const/const';
+import { mainPageData } from '../thunk/mainPage';
+import { MainPageState } from '../../interfaces/interfaces';
 
 const initialState: MainPageState = {
   mainPage: null,
@@ -9,9 +9,9 @@ const initialState: MainPageState = {
   isBannerLoading: LoadingStatus.Idle,
   isHallsLoading: LoadingStatus.Idle,
   isTeachersLoading: LoadingStatus.Idle,
-  isPriceLoading:LoadingStatus.Idle,
-  isCityLoading:LoadingStatus.Idle,
-  isPointsLoading: LoadingStatus.Idle,
+  isPriceLoading: LoadingStatus.Idle,
+  isCityLoading: LoadingStatus.Idle,
+  isPointsLoading: LoadingStatus.Idle
 };
 
 export const mainPageSlice = createSlice({
@@ -49,5 +49,5 @@ export const mainPageSlice = createSlice({
         state.isPointsLoading = LoadingStatus.Rejected;
         state.isHallsLoading = LoadingStatus.Rejected;
       });
-  },
+  }
 });

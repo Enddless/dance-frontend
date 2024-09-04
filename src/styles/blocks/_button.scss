@@ -1,0 +1,150 @@
+.button {
+  @include reset-button;
+  @include flex-center(true);
+  @include fluid-text(20, 14);
+
+  font-weight: 400;
+  line-height: 24px;
+  background: transparent;
+  padding: 12px 32px;
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+  color: var(--palette-color-white);
+  background-color: var(--palette-color2);
+
+  @include hover {
+    background-color: var(--palette-color1);
+  }
+  &:focus {
+    border: 1px solid var(--palette-color6);
+  }
+  &.disabled,
+  &.disabled:hover {
+    cursor: not-allowed;
+    background-color: var(--palette-color4);
+  }
+
+  // ***** кнопка входа ******
+  &__enter {
+    background: var(--palette-color5);
+
+    @include hover {
+      background: var(--palette-color7);
+      color: var(--palette-color1);
+    }
+  }
+  // ***** кнопка подгрузки отзывов ******
+  &__more {
+    background: var(--palette-color5);
+    @include hover {
+      background: var(--palette-color2);
+    }
+  }
+
+  // ***** кнопка войти или зарегистрироваться в формах входа ******
+  &__registration {
+    background: var(--palette-color1);
+    @include hover {
+      background: var(--palette-color5);
+    }
+  }
+
+  // ***** кнопки меню в ЛК пользователя ******
+  &__menuUser {
+    @include fluid-text(18, 14);
+
+    font-weight: 500;
+    line-height: 25px;
+    color: var(--palette-color1);
+    border: 1px solid var(--btn-border);
+    background-color: transparent;
+
+    @include hover {
+      background: var(--palette-color2);
+      color: var(--palette-color7);
+      border: 1px solid var(--palette-color2);
+    }
+  }
+
+  &__activeMenuUser {
+    background: var(--palette-color2);
+    color: var(--palette-color7);
+    border: 1px solid var(--palette-color2);
+    box-shadow: 2px 2px 15px 0px var(--btn-boxshadow);
+  }
+
+  // ***** кнопки сохранения, удаления, записи в ЛК пользователя ******
+  &__save {
+    @include fluid-text(16, 14);
+
+    background: var(--palette-color2);
+    color: var(--palette-color7);
+    @include hover {
+      background: var(--btn-background-four);
+    }
+  }
+
+  &__delete {
+    @include fluid-text(16, 14);
+
+    color: var(--palette-color1);
+    background: var(--palette-color7);
+    text-decoration: none;
+    width: 100%;
+
+    @include hover {
+      color: var(--palette-color7);
+      background: var(--palette-color6);
+    }
+  }
+
+  &__record {
+    @include fluid-text(16, 14);
+
+    background: var(--palette-color5);
+    @include hover {
+      background: var(--palette-color2);
+    }
+  }
+
+  // ***** кнопки сохранения, удаления в ЛК пользователя ******
+  &__add {
+    background: var(--palette-color2);
+    color: var(--palette-color7);
+
+    @include hover {
+      background: var(--palette-color1);
+    }
+  }
+
+  // ***** кнопки  в ЛК администратора ******
+  &__dashboardAdmin {
+    @include fluid-text(18, 14);
+
+    font-weight: 500;
+    line-height: 25px;
+    color: var(--palette-color1);
+    outline: 1px solid var(--palette-color1);
+    background: transparent;
+    @include hover {
+      background: var(--palette-color2);
+      color: var(--palette-color7);
+      outline: 1px solid var(--palette-color2);
+    }
+    &.activeDashboardMenu {
+      background: var(--palette-color2);
+      color: var(--palette-color7);
+      outline: 1px solid var(--palette-color2);
+    }
+  }
+
+  &__cancel {
+    background: var(--palette-color6);
+    color: var(--palette-color7);
+    @include hover {
+      background: var(--palette-color1);
+    }
+  }
+
+  //добавить кнопки для отзыва и записи для пользователя
+}

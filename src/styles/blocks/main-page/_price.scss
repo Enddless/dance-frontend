@@ -1,0 +1,33 @@
+.main-prices {
+  &__tile {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__spinnerContainer {
+    grid-column: span 12;
+    margin-top: 60px;
+  }
+  &__list {
+    @include desktop {
+      --gridColumns: 3;
+    }
+    @include tablet {
+      --gridColumns: 2;
+    }
+    @include mobile {
+      --gridColumns: 1;
+    }
+  }
+
+  // @media screen and (max-width: 1280px) {
+  //   .services {
+  //     margin: 0 50px 100px;
+  //   }
+  // }
+  // @media screen and (max-width: 600px) {
+  //   .services {
+  //     margin: 0 20px 30px;
+  //   }
+  // }
+}

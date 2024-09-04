@@ -1,40 +1,36 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { APIRoute } from "../../const/route";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { APIRoute } from '../../const/route';
+import { addToken, deleteToken } from '../../services/token';
+import { Extra } from '../../services/type-service';
 import {
   AuthData,
   AuthWithCodeData,
   ReturnData,
   UserCurrentData,
   UserCurrentPhoto,
-  UserCurrentRole,
-} from "../../types/auth-type";
-import { addToken, deleteToken } from "../../services/token";
-import { Extra } from "../../services/type-service";
+  UserCurrentRole
+} from '../../interfaces/interfaces';
 
 // ********** AUTH **********
 export const registration = createAsyncThunk<ReturnData, AuthData, Extra>(
-  "user/registration",
+  'user/registration',
   async ({ emailUser, password }, { extra: api }) => {
     const { data } = await api.post<ReturnData>(APIRoute.Registration, {
       emailUser,
-      password,
+      password
     });
 
     return data;
   }
 );
 
-export const confirmation = createAsyncThunk<
-  ReturnData,
-  AuthWithCodeData,
-  Extra
->(
-  "user/confirmation",
+export const confirmation = createAsyncThunk<ReturnData, AuthWithCodeData, Extra>(
+  'user/confirmation',
   async ({ emailUser, password, code }, { extra: api }) => {
     const { data } = await api.post<ReturnData>(APIRoute.Confirmation, {
       emailUser,
       password,
-      code,
+      code
     });
 
     return data;
@@ -42,11 +38,11 @@ export const confirmation = createAsyncThunk<
 );
 
 export const login = createAsyncThunk<string, AuthData, Extra>(
-  "user/login",
+  'user/login',
   async ({ emailUser, password }, { extra: api }) => {
     const response = await api.post(APIRoute.Login, {
       emailUser,
-      password,
+      password
     });
 
     const token = response.data.token;
@@ -56,7 +52,7 @@ export const login = createAsyncThunk<string, AuthData, Extra>(
   }
 );
 export const logout = createAsyncThunk<void, undefined, Extra>(
-  "user/logout",
+  'user/logout',
   async (_arg, { extra: api }) => {
     const { data } = await api.get(APIRoute.Logout);
     deleteToken();
@@ -70,40 +66,39 @@ export const getCurrentUserData = createAsyncThunk<
   UserCurrentData,
   string | undefined,
   Extra
->("user/data", async (_arg, { extra: api }) => {
+>('user/data', async (_arg, { extra: api }) => {
   const { data } = await api.get<UserCurrentData>(APIRoute.UserData);
   return data;
 });
 
 export const changeUserData = createAsyncThunk<string, UserCurrentData, Extra>(
-  "user/updatedata",
+  'user/updatedata',
   async ({ userName, genders, phoneNumber, dateOfBirth }, { extra: api }) => {
     const { data } = await api.post(APIRoute.UserData, {
       userName,
       genders,
       phoneNumber,
-      dateOfBirth,
+      dateOfBirth
     });
 
     return data;
   }
 );
-export const changeUserPhoto = createAsyncThunk<
-  string,
-  UserCurrentPhoto,
-  Extra
->("user/updatePhoto", async ({ photoUser }, { extra: api }) => {
-  const { data } = await api.post(APIRoute.AddPhoto, photoUser, {
-    headers: {
-      "content-type": "multipart/form-data",
-    },
-  });
+export const changeUserPhoto = createAsyncThunk<string, UserCurrentPhoto, Extra>(
+  'user/updatePhoto',
+  async ({ photoUser }, { extra: api }) => {
+    const { data } = await api.post(APIRoute.AddPhoto, photoUser, {
+      headers: {
+        'content-type': 'multipart/form-data'
+      }
+    });
 
-  return data;
-});
+    return data;
+  }
+);
 
 export const deleteUserPhoto = createAsyncThunk<string, undefined, Extra>(
-  "user/deletePhoto",
+  'user/deletePhoto',
   async (_arg, { extra: api }) => {
     const { data } = await api.post(APIRoute.DeletePhotoUser);
 
@@ -112,7 +107,7 @@ export const deleteUserPhoto = createAsyncThunk<string, undefined, Extra>(
 );
 
 export const deleteUserData = createAsyncThunk<string, undefined, Extra>(
-  "user/deleteData",
+  'user/deleteData',
   async (_arg, { extra: api }) => {
     const { data } = await api.post(APIRoute.DeleteUser);
     deleteToken();
@@ -125,7 +120,7 @@ export const getCurrentUserRole = createAsyncThunk<
   UserCurrentRole,
   string | undefined,
   Extra
->("user/role", async (_arg, { extra: api }) => {
+>('user/role', async (_arg, { extra: api }) => {
   const { data } = await api.get<UserCurrentRole>(APIRoute.Role);
 
   return data;

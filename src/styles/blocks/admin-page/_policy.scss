@@ -1,0 +1,40 @@
+.admin-page__policy {
+  &-list {
+    margin: 40px 0;
+    column-gap: 10px;
+  }
+
+  &-item {
+    grid-column: span 5;
+    padding: 30px 20px 30px 30px;
+    border-radius: 10px;
+    border: 1px solid #13340a;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    @include hover {
+      border: 1px solid #ffa800;
+    }
+    &-file {
+      padding: 0 10px 0 0;
+      display: flex;
+      align-items: center;
+    }
+    &-controls {
+      padding: 0 0 0 20px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      row-gap: 20px;
+      flex-direction: column;
+      border-left: 2px solid #ffa800;
+    }
+  }
+
+  &-buttonContainer {
+    display: flex;
+    justify-content: center;
+  }
+}

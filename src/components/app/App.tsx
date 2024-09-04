@@ -1,23 +1,24 @@
-import MainPage from '../../pages/MainPage/MainPage';
+import MainPage from '../../pages/main-page';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import NFPage from '../../pages/NotFoundPage/NFPage';
-import ReviewsPage from '../../pages/ReviewsPage/ReviewsPage';
-import DashboardPage from '../../pages/DashboardPage/DashboardPage';
+import NFPage from '../../pages/not-found-page';
+import ReviewsPage from '../../pages/reviews-page';
 import { AppRoute } from '../../const/route';
-import AreaPersonalPage from '../../pages/AreaPersonalPage';
-import AreaAdminPage from '../../pages/AreaAdminPage';
+import AreaPersonalPage from '../../pages/user-page';
 import { RedirectPersonalArea } from '../redirect-personal-area';
 import {
   AUTH_TOKEN_NAME,
   menuAreaAdministrator,
   menuAreaPersonal
 } from '../../const/const';
-import { Modal } from '../modal-form/Modal';
-import LoginForm from '../Forms/LoginForm';
+import { Modal } from '../modal-form';
+import LoginForm from '../forms/LoginForm';
 import { useEffect, useState } from 'react';
-import Spinner from '../Spinner';
+import Spinner from '../spinner';
 import { useAppDispatch } from '../../services/type-service';
 import { authSlice } from '../../store/slices/auth';
+import { CalendarWithEventsPage } from '../../pages/calendar-page';
+import AdminPage from '../../pages/admin-page';
+import { PageLayout } from '../../slices/page-layout';
 
 const App = () => {
   const location = useLocation();
@@ -50,19 +51,50 @@ const App = () => {
       ) : (
         <div className='app'>
           <Routes location={previousLocation || location}>
-            <Route path={AppRoute.Root} element={<MainPage />} />
-            <Route path={AppRoute.Dashboard} element={<DashboardPage />} />
-            <Route path={AppRoute.Reviews} element={<ReviewsPage />} />
+            <Route
+              path={AppRoute.Root}
+              element={
+                <PageLayout>
+                  <MainPage />{' '}
+                </PageLayout>
+              }
+            />
+            <Route
+              path={AppRoute.Dashboard}
+              element={
+                <PageLayout>
+                  <CalendarWithEventsPage />
+                </PageLayout>
+              }
+            />
+            <Route
+              path={AppRoute.Reviews}
+              element={
+                <PageLayout>
+                  <ReviewsPage />
+                </PageLayout>
+              }
+            />
 
             <Route path={`${AppRoute.Modal}${AppRoute.Login}`} element={<LoginForm />} />
 
-            <Route path={AppRoute.NotFound} element={<NFPage />} />
+            <Route
+              path={AppRoute.NotFound}
+              element={
+                <PageLayout>
+                  <NFPage />
+                </PageLayout>
+              }
+            />
 
             <Route
               path={AppRoute.PersonalArea}
               element={
                 <RedirectPersonalArea>
-                  <AreaPersonalPage />
+                  <PageLayout>
+                    {' '}
+                    <AreaPersonalPage />
+                  </PageLayout>
                 </RedirectPersonalArea>
               }>
               {menuAreaPersonal.map((name) => (
@@ -72,18 +104,16 @@ const App = () => {
                   element={<AreaPersonalPage />}></Route>
               ))}
             </Route>
+
             <Route
               path={AppRoute.AdministratorArea}
               element={
                 <RedirectPersonalArea>
-                  <AreaAdminPage />
+                  <AdminPage />
                 </RedirectPersonalArea>
               }>
               {menuAreaAdministrator.map((name) => (
-                <Route
-                  key={name.title}
-                  path={name.path}
-                  element={<AreaAdminPage />}></Route>
+                <Route key={name.title} path={name.path} element={<AdminPage />}></Route>
               ))}
             </Route>
           </Routes>

@@ -1,0 +1,102 @@
+:root {
+  //globals
+  --palette-color1: #13340a;
+  --palette-color2: #3aa31e;
+  --palette-color3: #71856c;
+  --palette-color4: #c4ccc1;
+  --palette-color5: #ffa800;
+  --palette-color6: #ffc700;
+  --palette-color7: #fffcf8;
+  --palette-color8: #fdf8f0;
+  --palette-color-white: #fff;
+  --palette-color-black: #000000;
+
+  --background-body: #fff;
+  --color-body: #13340a;
+  --font-family-base: 'Manrope', sans-serif;
+
+  --shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.05);
+  --shadow-button: 1px 1px 10px 0 rgba(0, 0, 0, 0.18);
+  --shadow-input: 2px 6px 10px 0px rgba(0, 0, 0, 0.1);
+
+  --blur-background: rgba(0, 0, 0, 0.4);
+
+  --border-radius-mini: 4px;
+  --border-radius-small: 10px;
+  --border-radius: 14px;
+  --border-radius-large: 30px;
+
+  --transition-duration: 0.4s;
+
+  --container-width: 1760px;
+  --container-padding-x: 80px;
+  --section-padding-y: 60px;
+  @include desktop {
+    --section-padding-y: 40px;
+  }
+  @include tablet {
+    --container-padding-x: 40px;
+  }
+  @include mobile {
+    --container-padding-x: 20px;
+    --section-padding-y: 30px;
+  }
+
+  //HEADER SETTINGS
+  --header-background: #13340a;
+  --header-color: #fdf8f0;
+
+  //FOOTER SETTINGS
+  --footer-background: #13340a;
+  --footer-color: #fdf8f0;
+
+  //FORM ENTER SETTINGS
+  --form-enter-background: #fdf8f0;
+  --form-enter-color: #13340a;
+
+  //BUTTON SETTINGS
+  --btn-background-one: #ffa800;
+  --btn-background-two: #ffa800;
+  --btn-background-three: #3aa31e;
+  --btn-background-four: #13340a;
+  --btn-background-five: #ffc700;
+  --btn-background-six: #71856c;
+  --btn-background-seven: #c4ccc1;
+
+  --btn-color-one: #fffcf8;
+  --btn-color-two: #13340a;
+  --btn-color-three: #ffa800;
+
+  --btn-boxshadow: #0000004d;
+  --btn-border: #13340a;
+  --input-border: #ffa800;
+
+  //TITLE SETTINGS
+
+  --subtitle-color-default: #fdf8f0;
+
+  //CARD SETTINGS
+  --card-price-background: #fff;
+  --card-review-background: white;
+  --card-hall-background: #fff;
+  --card-border-color: #13340a;
+  --card-title-color: #fffcf8;
+
+  //REVIEWS SETTINGS
+  --date-color: #71856c;
+
+  //DASHBOARD SETTINGS
+  --dashboard-color: #13340a;
+
+  //PERSONAL AREA: NOTIFICATION SETTINGS
+  --notification-background: #c4ccc1;
+  --form-enter-background: #fdf8f0;
+
+  //SIDEBAR IN ADMIN SETTINGS
+  --sidebar-background: #13340a;
+  --sidebar-color: #fdf8f0;
+  --layout-card-background: #fdf8f0;
+
+  //DESCRIPTION
+  --description-border-color: #71856c;
+}

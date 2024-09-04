@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import css from "./styles.module.scss";
+import { useEffect, useState } from 'react';
 
 function Spinner() {
   const [showLoader, setShowLoader] = useState(false);
@@ -11,11 +10,13 @@ function Spinner() {
     return () => clearTimeout(timer);
   }, []);
 
-  return showLoader && (
-    <div className={css.center}>
-      <div className={css.ring}></div>
-      <span>Loading...</span>
-    </div>
+  return (
+    showLoader && (
+      <div className='spinner'>
+        <div className='spinner__ring'></div>
+        <span>Loading...</span>
+      </div>
+    )
   );
 }
 

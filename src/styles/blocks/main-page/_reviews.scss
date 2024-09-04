@@ -1,0 +1,23 @@
+// если это блок отзывов на главной странице
+.main-reviews {
+  position: relative;
+
+  &__list {
+    column-gap: 20px;
+
+    @include desktop {
+      --gridColumns: 3;
+    }
+    @include tablet {
+      --gridColumns: 2;
+    }
+    @include mobile {
+      --gridColumns: 1;
+    }
+  }
+
+  // если это именно страница отзывов, то меняем разметку
+  & .containerReviewsPage {
+    display: block;
+  }
+}

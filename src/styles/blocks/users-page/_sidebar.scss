@@ -1,0 +1,27 @@
+.user__sidebar {
+  &-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;
+
+    @include mobile {
+      gap: 10px;
+    }
+    @include mobile-s {
+      flex-direction: column;
+    }
+  }
+  &-item {
+    @include mobile-s {
+      width: 100%;
+    }
+    & button {
+      @include mobile-s {
+        width: 100%;
+      }
+    }
+  }
+}

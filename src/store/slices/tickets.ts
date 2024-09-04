@@ -1,20 +1,17 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { LoadingStatus, NameSpace } from "../../const/const";
-import { getTickets } from "../thunk/tickets";
-import { StateUserData } from "../../types/user-types";
+import { createSlice } from '@reduxjs/toolkit';
+import { LoadingStatus, NameSpace } from '../../const/const';
+import { getTickets } from '../thunk/tickets';
+import { StateUserData } from '../../interfaces/interfaces';
 
 const initialState: StateUserData = {
   userTickets: null,
-  isTicketsLoading: LoadingStatus.Idle,
-  
+  isTicketsLoading: LoadingStatus.Idle
 };
 
 export const ticketSlice = createSlice({
   name: NameSpace.Ticket,
   initialState,
-  reducers: {
-    
-  },
+  reducers: {},
   extraReducers(builder) {
     builder
       // ***** tickets *****
@@ -27,7 +24,6 @@ export const ticketSlice = createSlice({
       })
       .addCase(getTickets.rejected, (state) => {
         state.isTicketsLoading = LoadingStatus.Rejected;
-      })
-      ;
-  },
+      });
+  }
 });

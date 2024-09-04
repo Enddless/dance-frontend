@@ -3,10 +3,9 @@ import {
   DEFAULT_BUTTON_AREA_PERSONAL,
   DEFAULT_FORM_AUTH,
   LoadingStatus,
-  NameSpace,
-} from "../../const/const";
-import { StateAuth } from "../../types/auth-type";
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+  NameSpace
+} from '../../const/const';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
   changeUserData,
   changeUserPhoto,
@@ -17,14 +16,15 @@ import {
   getCurrentUserRole,
   login,
   logout,
-  registration,
-} from "../thunk/auth";
+  registration
+} from '../thunk/auth';
+import { StateAuth } from '../../interfaces/interfaces';
 
 const initialState: StateAuth = {
   authStatus: AuthorizationStatus.Unknown,
   isRegistrationLoading: LoadingStatus.Idle,
   isConfirmationLoading: LoadingStatus.Idle,
-  message: "",
+  message: '',
   userData: {},
   userRole: null,
   isUserDataLoading: LoadingStatus.Idle,
@@ -32,18 +32,18 @@ const initialState: StateAuth = {
   isUserPhotoLoading: LoadingStatus.Idle,
   buttonActive: DEFAULT_BUTTON_AREA_PERSONAL.title,
   formAuthActiveId: DEFAULT_FORM_AUTH,
-  token: "",
+  token: ''
 };
 
 export const authSlice = createSlice({
   name: NameSpace.Auth,
   initialState,
   reducers: {
-    addtokenStore(state, action: PayloadAction<string>){
+    addtokenStore(state, action: PayloadAction<string>) {
       state.token = action.payload;
     },
-    deletetokenStore(state){
-      state.token = "";
+    deletetokenStore(state) {
+      state.token = '';
     },
     changeActiveButtonMenuPersonal(state, action: PayloadAction<string>) {
       state.buttonActive = action.payload;
@@ -55,7 +55,7 @@ export const authSlice = createSlice({
       state.userData = {};
       state.userRole = null;
       state.authStatus = AuthorizationStatus.Unknown;
-    },
+    }
   },
   extraReducers(builder) {
     builder
@@ -163,7 +163,7 @@ export const authSlice = createSlice({
         state.userData = {};
         state.userRole = null;
       });
-  },
+  }
 });
 
-export const {refreshUser} = authSlice.actions;
+export const { refreshUser } = authSlice.actions;

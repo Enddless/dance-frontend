@@ -1,0 +1,29 @@
+.title {
+  width: 100%;
+  margin-bottom: 20px;
+  grid-column: span 12;
+  align-items: center;
+  &__text {
+    @include fluid-text(32, 30);
+    font-weight: 500;
+    line-height: 38px;
+    white-space: nowrap;
+    grid-column: span 2;
+    color: var(--palette-color5);
+    text-align: center;
+
+    @include mobile {
+      grid-column: span 4;
+    }
+  }
+
+  &__line {
+    margin: 0 40px;
+    grid-column: span 5;
+    height: 0.5px;
+    background: var(--palette-color4);
+    @include mobile {
+      grid-column: span 4;
+    }
+  }
+}

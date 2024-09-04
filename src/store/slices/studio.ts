@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { LoadingStatus, NameSpace } from "../../const/const";
+import { createSlice } from '@reduxjs/toolkit';
+import { LoadingStatus, NameSpace } from '../../const/const';
 import {
   aboutStudio,
   addHall,
@@ -19,19 +19,19 @@ import {
   getCoordsPoints,
   getHalls,
   getPrice,
-  getTeachers,
-} from "../thunk/studio";
-import { StateStudio } from "../../types/auth-type";
+  getTeachers
+} from '../thunk/studio';
+import { StateStudio } from '../../interfaces/interfaces';
 
 const initialState: StateStudio = {
-  message: "",
+  message: '',
   isStudioDataLoading: LoadingStatus.Idle,
   isBannerLoading: LoadingStatus.Idle,
   isHallsLoading: LoadingStatus.Idle,
   isTeachersLoading: LoadingStatus.Idle,
-  isLogotypeLoading: LoadingStatus.Idle, 
-  isPriceLoading:LoadingStatus.Idle,
-  isCityLoading:LoadingStatus.Idle,
+  isLogotypeLoading: LoadingStatus.Idle,
+  isPriceLoading: LoadingStatus.Idle,
+  isCityLoading: LoadingStatus.Idle,
   isPointsLoading: LoadingStatus.Idle,
   aboutStudioData: null,
   bannersData: [],
@@ -41,7 +41,7 @@ const initialState: StateStudio = {
   currentTeacherData: null,
   priceData: [],
   points: undefined,
-  city: undefined,
+  city: undefined
 };
 
 export const studioSlice = createSlice({
@@ -247,7 +247,6 @@ export const studioSlice = createSlice({
       })
       .addCase(getPrice.rejected, (state) => {
         state.isPriceLoading = LoadingStatus.Rejected;
-      })
-      ;
-  },
+      });
+  }
 });

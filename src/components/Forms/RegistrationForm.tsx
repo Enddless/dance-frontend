@@ -1,27 +1,26 @@
-import { useState, useEffect } from "react";
-import css from "./forms.module.scss";
-import ConfirmationForm from "./ConfirmationForm";
-import { useAppDispatch } from "../../services/type-service";
-import { registration } from "../../store/thunk/auth";
-import EyeIcon from "../EyeIcon";
-import InputCheckbox from "../Input-checkbox";
-import Button from "../Button/Button";
-import { authSlice } from "../../store/slices/auth";
-import { validMail, validPassword } from "../../services/validate";
-import { AppRoute } from "../../const/route";
+import { useState, useEffect } from 'react';
+import policy from 'public/terms/Политика.pdf';
+import { useAppDispatch } from '../../services/type-service';
+import { registration } from '../../store/thunk/auth';
+import EyeIcon from '../eye-icon';
+import InputCheckbox from '../Input-checkbox';
+import Button from '../button';
+import { authSlice } from '../../store/slices/auth';
+import { validMail, validPassword } from '../../services/validate';
+import ConfirmationForm from './ConfirmationForm';
 
 const RegistrationForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showDoublePassword, setShowDoublePassword] = useState(false);
 
-  const [errorMail, setErrorMail] = useState("");
-  const [errorPassword, setErrorPassword] = useState("");
+  const [errorMail, setErrorMail] = useState('');
+  const [errorPassword, setErrorPassword] = useState('');
   const [agreement, setAgreement] = useState(false);
   const [isValidForm, setIsValidForm] = useState(false);
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-    dublPassword: "",
+    email: '',
+    password: '',
+    dublPassword: ''
   });
 
   const handleChange = (e: { target: { name: string; value: string } }) => {
@@ -31,36 +30,34 @@ const RegistrationForm = () => {
   //сообщение ошибки, если не заполнена почта
   useEffect(() => {
     const isValidateMail = validMail(formData.email);
-    if (!isValidateMail && formData.email !== "") {
-      setErrorMail("Введите корректный email");
+    if (!isValidateMail && formData.email !== '') {
+      setErrorMail('Введите корректный email');
     } else {
-      setErrorMail("");
+      setErrorMail('');
     }
   }, [formData]);
   //валидность на совпадение паролей
   useEffect(() => {
     const isValidatePassword = validPassword(formData.password);
     const isValidateDblPassword = validPassword(formData.dublPassword);
-    if (
-      !isValidatePassword &&
-      !isValidateDblPassword &&
-      formData.password !== ""
-    ) {
-      setErrorPassword("Не менее 8 символов, с использованием цифр, букв,символов, как минимум 1 заглавная буква)");
+    if (!isValidatePassword && !isValidateDblPassword && formData.password !== '') {
+      setErrorPassword(
+        'Не менее 8 символов, с использованием цифр, букв,символов, как минимум 1 заглавная буква)'
+      );
     } else if (formData.password !== formData.dublPassword) {
-      setErrorPassword("Пароли должны совпадать");
+      setErrorPassword('Пароли должны совпадать');
     } else {
-      setErrorPassword("");
+      setErrorPassword('');
     }
   }, [formData.password, formData.dublPassword]);
   //валидность формы
   useEffect(() => {
     if (
       agreement &&
-      errorPassword === "" &&
-      errorMail === "" &&
-      formData.password !== "" &&
-      formData.email !== ""
+      errorPassword === '' &&
+      errorMail === '' &&
+      formData.password !== '' &&
+      formData.email !== ''
     ) {
       setIsValidForm(true);
     } else setIsValidForm(false);
@@ -75,7 +72,7 @@ const RegistrationForm = () => {
     const password = formData.password;
     const data = {
       emailUser,
-      password,
+      password
     };
     dispatch(registration(data))
       .unwrap()
@@ -83,75 +80,63 @@ const RegistrationForm = () => {
         setSuccessForm(!successForm);
       })
       .catch(() => {
-        setErrorMail("Пользователь с такой почтой уже существует");
+        setErrorMail('Пользователь с такой почтой уже существует');
       });
   };
   //роут назад
   const handleBack = () => {
-    dispatch(authSlice.actions.changeFormActive("login"));
+    dispatch(authSlice.actions.changeFormActive('login'));
   };
 
   return (
     <>
       {!successForm ? (
         <>
-          <h3>Регистрация</h3>
-          <form onSubmit={handleSubmit} className={css.form}>
+          <h3 className='modalForm__title'>Регистрация</h3>
+          <form onSubmit={handleSubmit} className='form-content'>
             <fieldset>
-              <label htmlFor="email">Email</label>
+              <label htmlFor='email'>Email</label>
               <input
-                type="email"
+                type='email'
                 value={formData.email}
                 onChange={handleChange}
-                name="email"
-                placeholder="example@mail.com"
-                className={
-                  errorMail && errorMail !== "" ? `${css.errorInput}` : ""
-                }
+                name='email'
+                placeholder='example@mail.com'
+                className={errorMail && errorMail !== '' ? 'errorInput' : ''}
               />
-              {errorMail && errorMail !== "" && (
-                <span className={css.errorMessage}>{errorMail}</span>
+              {errorMail && errorMail !== '' && (
+                <span className='errorMessage'>{errorMail}</span>
               )}
             </fieldset>
             <fieldset>
-              <label htmlFor="password">Пароль</label>
+              <label htmlFor='password'>Пароль</label>
               <input
                 value={formData.password}
                 onChange={handleChange}
-                name="password"
-                type={showPassword ? "text" : "password"}
-                className={
-                  errorPassword && errorPassword !== ""
-                    ? `${css.errorInput}`
-                    : ""
-                }
-                placeholder="exampLe_56q"
+                name='password'
+                type={showPassword ? 'text' : 'password'}
+                className={errorPassword && errorPassword !== '' ? 'errorInput' : ''}
+                placeholder='exampLe_56q'
               />
-              <div className={css.eyeIcon}>
+              <div className='eyeIcon'>
                 <EyeIcon
                   showPassword={showPassword}
-                  togglePasswordVisibility={() =>
-                    setShowPassword(!showPassword)
-                  }
+                  togglePasswordVisibility={() => setShowPassword(!showPassword)}
                 />
               </div>
             </fieldset>
 
             <fieldset>
-              <label htmlFor="dublPassword">Повторите пароль</label>
+              <label htmlFor='dublPassword'>Повторите пароль</label>
               <input
                 value={formData.dublPassword}
                 onChange={handleChange}
-                name="dublPassword"
-                type={showDoublePassword ? "text" : "password"}
-                className={
-                  errorPassword && errorPassword !== ""
-                    ? `${css.errorInput}`
-                    : ""
-                }
-                placeholder="exampLe_56q"
+                name='dublPassword'
+                type={showDoublePassword ? 'text' : 'password'}
+                className={errorPassword && errorPassword !== '' ? 'errorInput' : ''}
+                placeholder='exampLe_56q'
               />
-              <div className={css.eyeIcon}>
+              <div className='eyeIcon'>
                 <EyeIcon
                   showPassword={showDoublePassword}
                   togglePasswordVisibility={() =>
@@ -160,33 +145,26 @@ const RegistrationForm = () => {
                 />
               </div>
 
-              {errorPassword && errorPassword !== "" && (
-                <p className={css.errorMessage}>{errorPassword}</p>
+              {errorPassword && errorPassword !== '' && (
+                <p className='errorMessage'>{errorPassword}</p>
               )}
             </fieldset>
 
-            <Button
-              text="Зарегистрироваться"
-              cls="btn-reg"
-              disabled={!isValidForm}
-            />
-            <div className={css.agreement}>
-              <label htmlFor="agreement" className={css.agreeCheckbox}>
+            <Button text='Зарегистрироваться' cls='btn-reg' disabled={!isValidForm} />
+            <div className='agreement'>
+              <label htmlFor='agreement' className='agreeCheckbox'>
                 <InputCheckbox
                   onChange={() => setAgreement(!agreement)}
                   agreement={
-                    formData.password !== "" || formData.dublPassword !== ""
+                    formData.password !== '' || formData.dublPassword !== ''
                       ? agreement
-                      : ""
+                      : ''
                   }
                 />
                 <p>
-                  регистрируясь, я соглашаюсь с{" "}
-                  <span className={css.conditions}>
-                    <a
-                      href={`${AppRoute.Root}./src/assets/Политика.pdf`}
-                      target="_blank"
-                    >
+                  регистрируясь, я соглашаюсь с{' '}
+                  <span className='conditions'>
+                    <a href={policy} target='_blank'>
                       условиями использования и Политикой конфиденциальности
                     </a>
                   </span>
@@ -195,7 +173,7 @@ const RegistrationForm = () => {
             </div>
           </form>
 
-          <label className={css.backButton} onClick={handleBack}>
+          <label className='backButton' onClick={handleBack}>
             Назад
           </label>
         </>

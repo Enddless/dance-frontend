@@ -1,0 +1,19 @@
+.control {
+  cursor: pointer;
+  stroke: #13340a;
+  stroke-width: 1.5;
+
+  @include hover {
+    stroke: #ffa800;
+    stroke-width: 2.5;
+  }
+  & .rightControls {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  & .activeControlButton {
+    stroke: #3aa31e;
+  }
+}

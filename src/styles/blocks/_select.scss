@@ -1,0 +1,65 @@
+.selectContainer {
+  grid-column: span 3;
+
+  &__title {
+    position: relative;
+    width: 100%;
+    label {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
+  }
+  &__optionBlock {
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    background: var(--palette-color-white);
+    box-shadow: 2px 6px 10px 0px rgba(0, 0, 0, 0.1);
+    padding: 13px 10px;
+    cursor: pointer;
+    position: relative;
+    z-index: 100;
+    margin-top: 10px;
+    &::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+      border-radius: 15px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #eee;
+      border-radius: 15px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--palette-color3);
+      border-radius: 15px;
+    }
+
+    & > p {
+      @include fluid-text(16, 10);
+    }
+  }
+  &__.dataItem {
+    font-size: 16px;
+    padding: 5px 0;
+    @include hover {
+      background: rgba($color: #ffc700, $alpha: 0.3);
+      cursor: pointer;
+    }
+  }
+
+  &__isRecordSelect {
+    width: 100%;
+    margin: 10px 0;
+    & .selectContainer__title {
+      background: var(--palette-color-white);
+      padding: 0;
+      line-height: 0;
+      border-radius: 30px;
+      border: 1px solid var(--palette-color-black);
+      padding: 4px 20px 4px 10px;
+    }
+  }
+}

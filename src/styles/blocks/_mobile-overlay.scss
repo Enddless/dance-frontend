@@ -1,0 +1,44 @@
+.mobile-overlay {
+  width: 100vw;
+  height: 100svh;
+  margin: 0;
+  padding: 43px 38px;
+  display: block;
+  z-index: 500;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border: none;
+
+  &:modal {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  &__close-button-wrapper {
+    display: flex;
+    justify-content: end;
+  }
+
+  &__list {
+    @include flex-center;
+
+    flex-direction: column;
+    row-gap: 20px;
+    min-height: 80vh;
+  }
+  &__item {
+    line-height: 30px;
+
+    &:has(a) {
+      & a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        & svg {
+          stroke: var(--palette-color2);
+        }
+      }
+    }
+  }
+}

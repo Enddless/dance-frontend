@@ -1,0 +1,9 @@
+.soc1al {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  & svg {
+    border-radius: 10px;
+  }
+}

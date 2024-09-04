@@ -1,0 +1,8 @@
+.main-personal {
+  &__personal-list {
+    @include tablet {
+      --gridColumns: 1;
+      justify-items: center;
+    }
+  }
+}

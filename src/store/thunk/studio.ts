@@ -1,5 +1,6 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { APIRoute } from "../../const/route";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { APIRoute } from '../../const/route';
+import { Extra } from '../../services/type-service';
 import {
   AboutStudioData,
   Banner,
@@ -16,13 +17,12 @@ import {
   PhotoTeacher,
   PointsData,
   PriceData,
-  TeacherData,
-} from "../../types/auth-type";
-import { Extra } from "../../services/type-service";
+  TeacherData
+} from '../../interfaces/interfaces';
 
 // ********** get about studio data **********
 export const aboutStudio = createAsyncThunk<AboutStudioData, undefined, Extra>(
-  "admin/aboutStudio",
+  'admin/aboutStudio',
   async (_arg, { extra: api }) => {
     const { data } = await api.get<AboutStudioData>(APIRoute.AboutStudio);
 
@@ -31,10 +31,10 @@ export const aboutStudio = createAsyncThunk<AboutStudioData, undefined, Extra>(
 );
 // ********** change about studio data **********
 export const changeAboutStudio = createAsyncThunk<string, string, Extra>(
-  "admin/changeAboutStudio",
+  'admin/changeAboutStudio',
   async (description, { extra: api }) => {
     const { data } = await api.post(APIRoute.AboutStudio, {
-      description: description,
+      description: description
     });
 
     return data;
@@ -43,7 +43,7 @@ export const changeAboutStudio = createAsyncThunk<string, string, Extra>(
 
 // ********** get coords city **********
 export const getCoordsCity = createAsyncThunk<CityData, undefined, Extra>(
-  "admin/getCoordsCity",
+  'admin/getCoordsCity',
   async (_arg, { extra: api }) => {
     const { data } = await api.get(APIRoute.CityMap);
 
@@ -52,10 +52,13 @@ export const getCoordsCity = createAsyncThunk<CityData, undefined, Extra>(
 );
 // ********** change coords city **********
 export const changeCoordsCity = createAsyncThunk<string, CityData, Extra>(
-  "admin/changeCoordsCity",
-  async ({title, lat, lng, zoom}, { extra: api }) => {
+  'admin/changeCoordsCity',
+  async ({ title, lat, lng, zoom }, { extra: api }) => {
     const { data } = await api.post(APIRoute.CityMap, {
-      title: title, lat: lat, lng: lng, zoom: zoom
+      title: title,
+      lat: lat,
+      lng: lng,
+      zoom: zoom
     });
 
     return data;
@@ -63,7 +66,7 @@ export const changeCoordsCity = createAsyncThunk<string, CityData, Extra>(
 );
 // ********** get coords points **********
 export const getCoordsPoints = createAsyncThunk<PointsData, undefined, Extra>(
-  "admin/getCoordsPoints",
+  'admin/getCoordsPoints',
   async (_arg, { extra: api }) => {
     const { data } = await api.get(APIRoute.PointsMap);
 
@@ -73,10 +76,11 @@ export const getCoordsPoints = createAsyncThunk<PointsData, undefined, Extra>(
 
 // ********** change coords points **********
 export const changeCoordsPoints = createAsyncThunk<string, PointsData, Extra>(
-  "admin/changeCoordsPoints",
-  async ({lat, lng}, { extra: api }) => {
+  'admin/changeCoordsPoints',
+  async ({ lat, lng }, { extra: api }) => {
     const { data } = await api.post(APIRoute.PointsMap, {
-      lat: lat, lng: lng
+      lat: lat,
+      lng: lng
     });
 
     return data;
@@ -84,23 +88,22 @@ export const changeCoordsPoints = createAsyncThunk<string, PointsData, Extra>(
 );
 
 // ********** get banner  **********
-export const getBanners = createAsyncThunk<
-  BannersData[],
-  string | undefined,
-  Extra
->("admin/getBanner", async (_arg, { extra: api }) => {
-  const { data } = await api.get<BannersData[]>(APIRoute.Banner);
-  return data;
-});
+export const getBanners = createAsyncThunk<BannersData[], string | undefined, Extra>(
+  'admin/getBanner',
+  async (_arg, { extra: api }) => {
+    const { data } = await api.get<BannersData[]>(APIRoute.Banner);
+    return data;
+  }
+);
 
 // ********** change banner **********
 export const changeBanner = createAsyncThunk<string, Banner, Extra>(
-  "admin/changeBanner",
+  'admin/changeBanner',
   async ({ PhotoBanner }, { extra: api }) => {
     const { data } = await api.post(APIRoute.Banner, PhotoBanner, {
       headers: {
-        "content-type": "multipart/form-data",
-      },
+        'content-type': 'multipart/form-data'
+      }
     });
 
     return data;
@@ -109,10 +112,10 @@ export const changeBanner = createAsyncThunk<string, Banner, Extra>(
 
 // ********** delete banner **********
 export const deleteBanner = createAsyncThunk<string, CurrentBannerId, Extra>(
-  "admin/deleteBanner",
+  'admin/deleteBanner',
   async ({ IdBanner }, { extra: api }) => {
     const { data } = await api.delete(APIRoute.Banner, {
-      data: { IdBanner: IdBanner },
+      data: { IdBanner: IdBanner }
     });
 
     return data;
@@ -121,12 +124,12 @@ export const deleteBanner = createAsyncThunk<string, CurrentBannerId, Extra>(
 
 // ********** change logotype **********
 export const changeLogotype = createAsyncThunk<string, Logotype, Extra>(
-  "admin/changeLogotype",
-  async ({photoLogo}, { extra: api }) => {
+  'admin/changeLogotype',
+  async ({ photoLogo }, { extra: api }) => {
     const { data } = await api.post(APIRoute.Logotype, photoLogo, {
       headers: {
-        "content-type": "multipart/form-data",
-      },
+        'content-type': 'multipart/form-data'
+      }
     });
 
     return data;
@@ -135,7 +138,7 @@ export const changeLogotype = createAsyncThunk<string, Logotype, Extra>(
 
 // ********** get halls data **********
 export const getHalls = createAsyncThunk<HallData[], undefined, Extra>(
-  "admin/getHalls",
+  'admin/getHalls',
   async (_arg, { extra: api }) => {
     const { data } = await api.get<HallData[]>(APIRoute.Halls);
 
@@ -145,12 +148,12 @@ export const getHalls = createAsyncThunk<HallData[], undefined, Extra>(
 
 // ********** add new hall **********
 export const addHallPhoto = createAsyncThunk<HallData, PhotoHall, Extra>(
-  "admin/addHallPhoto",
+  'admin/addHallPhoto',
   async ({ PhotoHall }, { extra: api }) => {
     const { data } = await api.post(APIRoute.AddHallPhoto, PhotoHall, {
       headers: {
-        "content-type": "multipart/form-data",
-      },
+        'content-type': 'multipart/form-data'
+      }
     });
 
     return data;
@@ -159,12 +162,12 @@ export const addHallPhoto = createAsyncThunk<HallData, PhotoHall, Extra>(
 
 // ********** add hall data **********
 export const addHall = createAsyncThunk<HallData, HallData, Extra>(
-  "admin/addHall",
+  'admin/addHall',
   async ({ IdHall, Title, Description }, { extra: api }) => {
     const { data } = await api.post(APIRoute.Halls, {
       IdHall: IdHall,
       Title: Title,
-      Description: Description,
+      Description: Description
     });
 
     return data;
@@ -173,10 +176,10 @@ export const addHall = createAsyncThunk<HallData, HallData, Extra>(
 
 // ********** delete hall **********
 export const deleteHall = createAsyncThunk<string, CurrentHallId, Extra>(
-  "admin/deleteHall",
+  'admin/deleteHall',
   async ({ IdHall }, { extra: api }) => {
     const { data } = await api.delete(APIRoute.Halls, {
-      data: { IdHall: IdHall },
+      data: { IdHall: IdHall }
     });
 
     return data;
@@ -185,7 +188,7 @@ export const deleteHall = createAsyncThunk<string, CurrentHallId, Extra>(
 
 // ********** get teachers data **********
 export const getTeachers = createAsyncThunk<TeacherData[], undefined, Extra>(
-  "admin/getTeachers",
+  'admin/getTeachers',
   async (_arg, { extra: api }) => {
     const { data } = await api.get<TeacherData[]>(APIRoute.Teachers);
 
@@ -194,28 +197,27 @@ export const getTeachers = createAsyncThunk<TeacherData[], undefined, Extra>(
 );
 
 // ********** add new teacher **********
-export const addTeacherPhoto = createAsyncThunk<
-  TeacherData,
-  PhotoTeacher,
-  Extra
->("admin/addTeacherPhoto", async ({ photoTeachers }, { extra: api }) => {
-  const { data } = await api.post(APIRoute.AddTeacherPhoto, photoTeachers, {
-    headers: {
-      "content-type": "multipart/form-data",
-    },
-  });
+export const addTeacherPhoto = createAsyncThunk<TeacherData, PhotoTeacher, Extra>(
+  'admin/addTeacherPhoto',
+  async ({ photoTeachers }, { extra: api }) => {
+    const { data } = await api.post(APIRoute.AddTeacherPhoto, photoTeachers, {
+      headers: {
+        'content-type': 'multipart/form-data'
+      }
+    });
 
-  return data;
-});
+    return data;
+  }
+);
 
 // ********** add teacher data **********
 export const addTeacher = createAsyncThunk<TeacherData, TeacherData, Extra>(
-  "admin/addTeacher",
+  'admin/addTeacher',
   async ({ idTeachers, teachersName, description }, { extra: api }) => {
     const { data } = await api.post(APIRoute.Teachers, {
       idTeachers: idTeachers,
       teachersName: teachersName,
-      description: description,
+      description: description
     });
 
     return data;
@@ -224,10 +226,10 @@ export const addTeacher = createAsyncThunk<TeacherData, TeacherData, Extra>(
 
 // ********** delete teacher **********
 export const deleteTeacher = createAsyncThunk<string, CurrentTeacherId, Extra>(
-  "admin/deleteTeacher",
+  'admin/deleteTeacher',
   async ({ idTeachers }, { extra: api }) => {
     const { data } = await api.delete(APIRoute.Teachers, {
-      data: { idTeachers: idTeachers },
+      data: { idTeachers: idTeachers }
     });
 
     return data;
@@ -236,7 +238,7 @@ export const deleteTeacher = createAsyncThunk<string, CurrentTeacherId, Extra>(
 
 // ********** get price data **********
 export const getPrice = createAsyncThunk<PriceData[], undefined, Extra>(
-  "admin/getTickets",
+  'admin/getTickets',
   async (_arg, { extra: api }) => {
     const { data } = await api.get<PriceData[]>(APIRoute.Price);
 
@@ -245,7 +247,7 @@ export const getPrice = createAsyncThunk<PriceData[], undefined, Extra>(
 );
 // ********** add price data **********
 export const addPrice = createAsyncThunk<void, CurrentPriceData, Extra>(
-  "admin/addPrice",
+  'admin/addPrice',
   async (
     { title, descriptionOne, descriptionTwo, descriptionThree, price },
     { extra: api }
@@ -255,7 +257,7 @@ export const addPrice = createAsyncThunk<void, CurrentPriceData, Extra>(
       descriptionOne,
       descriptionTwo,
       descriptionThree,
-      price,
+      price
     });
 
     return data;
@@ -264,10 +266,10 @@ export const addPrice = createAsyncThunk<void, CurrentPriceData, Extra>(
 
 // ********** delete price **********
 export const deletePrice = createAsyncThunk<string, CurrentPriceId, Extra>(
-  "admin/deletePrice",
+  'admin/deletePrice',
   async ({ idPrice }, { extra: api }) => {
     const { data } = await api.delete(APIRoute.DelPrice, {
-      data: { idPrice: idPrice },
+      data: { idPrice: idPrice }
     });
 
     return data;

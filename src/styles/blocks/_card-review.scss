@@ -1,0 +1,89 @@
+.card-reviews {
+  &__item {
+    grid-column: span 1;
+    display: flex;
+    height: 218px;
+    padding: 20px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    border-radius: 10px;
+    background: var(--card-review-background);
+    box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.05);
+    margin: 10px 0;
+    position: relative;
+
+    &.blurContent {
+      margin-bottom: 0;
+      filter: blur(6px);
+    }
+  }
+  &__user,
+  &__rating {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__name {
+    font-weight: 600;
+    line-height: 22px;
+  }
+  &__rating {
+    gap: 10px;
+    margin-right: 12px;
+    font-weight: 600;
+    line-height: 22px;
+  }
+
+  &__date {
+    @include fluid-text(16, 14);
+
+    color: var(--date-color);
+    line-height: 22px;
+  }
+
+  &__description {
+    @include fluid-text(16, 14);
+
+    line-height: 22px;
+  }
+  &__control {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+
+  &__ratingRedisign {
+    justify-content: flex-start;
+
+    .card-reviews__rating {
+      margin-left: 20px;
+    }
+  }
+  &__more {
+    position: absolute;
+    z-index: 10;
+    bottom: 10%;
+    right: 10px;
+    &:after {
+      content: '\2192';
+      font-size: 100px;
+    }
+  }
+
+  // @media screen and (max-width: 900px) {
+  //   .star {
+  //     gap: 4px;
+  //   }
+  // }
+
+  // @media screen and (max-width: 700px) {
+  //   .userInfo {
+  //     flex-direction: column;
+  //   }
+  //   .card {
+  //     grid-column: span 6;
+  //   }
+  // }
+}
