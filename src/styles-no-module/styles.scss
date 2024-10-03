@@ -1,0 +1,11 @@
+@import 'normalize', 'fonts', 'mixins', 'media', 'variables', 'utils', 'globals';
+
+@import 'blocks/section', 'blocks/modal-form', 'blocks/map', 'blocks/photo-container',
+  'blocks/logo', 'blocks/title', 'blocks/guide', 'blocks/spinner', 'blocks/burger-button',
+  'blocks/cross-button', 'blocks/mobile-overlay', 'blocks/button', 'blocks/grid',
+  'blocks/header', 'blocks/header-submenu', 'blocks/footer', 'blocks/main-page/about',
+  'blocks/main-page/personal', 'blocks/main-page/price', 'blocks/main-page/contacts',
+  'blocks/main-page/reviews', 'blocks/main-page/banners', 'blocks/not-found',
+  'blocks/review-page/review-page', 'blocks/calendar-page/calendar-page',
+  'blocks/admin-page/admin-page', 'blocks/admin-page/sidebar.scss',
+  'blocks/admin-page/logo';

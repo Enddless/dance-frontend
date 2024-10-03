@@ -1,0 +1,36 @@
+.button {
+  @include flex-center(true);
+
+  height: var(--button-height);
+  padding-inline: 35px;
+  font-size: 20px;
+  color: var(--color-light);
+  background-color: var(--color-dark);
+  cursor: pointer;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  -webkit-border-radius: var(--border-radius);
+  -moz-border-radius: var(--border-radius);
+  -ms-border-radius: var(--border-radius);
+  -o-border-radius: var(--border-radius);
+
+  @include hover {
+    background-color: var(--color-accent);
+    color: var(--color-dark);
+  }
+
+  &--transparent {
+    color: var(--color-dark);
+    background-color: transparent;
+  }
+
+  &--accent {
+    color: var(--color-dark);
+    background-color: var(--color-accent);
+
+    @include hover {
+      background-color: var(--color-dark);
+      color: var(--color-accent);
+    }
+  }
+}
