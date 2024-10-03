@@ -119,8 +119,8 @@ const CardHallEditForm = ({ onClick, id }: TEditFormProps) => {
             onChange={(e) => setDescriptionHall(e.target.value)}
           />
           <div className='card-hall__manager-buttonGroup'>
-            <Button text='Сохранить' cls='btn-save' openModalForm={sendHallData} />
-            <Button text='Отменить' cls='btn-cancel' openModalForm={onClick} />
+            <Button text='Сохранить' classList='btn-save' openModalForm={sendHallData} />
+            <Button text='Отменить' classList='btn-cancel' openModalForm={onClick} />
           </div>
         </div>
       </form>

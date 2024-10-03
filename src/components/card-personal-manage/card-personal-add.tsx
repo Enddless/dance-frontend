@@ -126,10 +126,10 @@ const CardPersonalAddForm = ({ onClick }: TAddFormProps) => {
               <Button
                 text='Сохранить'
                 disabled={!isValidForm}
-                cls={!isValidForm ? 'btn-dis' : 'btn-save'}
+                classList={!isValidForm ? 'btn-dis' : 'btn-save'}
                 openModalForm={sendTeacherData}
               />
-              <Button text='Отменить' cls='btn-cancel' openModalForm={onClick} />
+              <Button text='Отменить' classList='btn-cancel' openModalForm={onClick} />
             </div>
           </>
         </div>

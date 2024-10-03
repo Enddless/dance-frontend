@@ -4,9 +4,10 @@ import classNames from 'classnames';
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.scss';
 import { useCallback, useMemo, useState } from 'react';
-import { TEvent, dataEvents, localizer, messagesData, minTime } from './settingsEvent';
+import { dataEvents, localizer, messagesData, minTime } from './settingsEvent';
 import CalendarItemDetail from '../full-calendar-detail';
 import { useAppSelector } from '../../services/type-service';
+import { TEvent } from '../../interfaces/interfaces';
 
 const BigCalendar = () => {
   //определим роль,чтобы добавить возможность дранг энд дроп

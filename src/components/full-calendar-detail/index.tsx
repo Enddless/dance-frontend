@@ -1,5 +1,5 @@
+import { TEvent } from '../../interfaces/interfaces';
 import ControlButton from '../controls-button';
-import { TEvent } from '../full-calendar/settingsEvent';
 
 type TselectedEventProps = {
   selectedEvent: TEvent;

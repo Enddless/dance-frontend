@@ -1,6 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
-import { addToken, deleteToken, getToken } from './token';
-import { APIRoute, AppRoute } from '../const/route';
+import { getToken } from './token';
 
 export const API_URL = import.meta.env.VITE_API_URL;
 export const REQUEST_TIMEOUT = import.meta.env.VITE_REQUEST_TIMEOUT;

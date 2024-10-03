@@ -61,7 +61,7 @@ const PriceSettingsSlice = () => {
       <div className='admin-page__price-add'>
         <Button
           text='Добавить'
-          cls='add'
+          classList='add'
           openModalForm={() => setAddPriceForm(!addPriceForm)}
         />
       </div>
