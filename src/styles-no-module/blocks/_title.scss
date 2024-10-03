@@ -1,0 +1,33 @@
+.title {
+  @include Grid;
+
+  width: 100%;
+  margin-bottom: 20px;
+  grid-column: span 12;
+  align-items: center;
+  &__text {
+    white-space: nowrap;
+    grid-column: span 2;
+    color: $title-color-default;
+    text-align: center;
+    @include mobile {
+      grid-column: span 4;
+    }
+  }
+
+  &__line {
+    margin: 0 40px;
+    grid-column: span 5;
+    height: 1px;
+    background: linear-gradient(90deg, #563e0e 0%, rgba(86, 62, 14, 0) 100%);
+    @include mobile {
+      grid-column: span 4;
+    }
+
+    &--left {
+      grid-column: span 5;
+      height: 1px;
+      transform: rotate(180deg);
+    }
+  }
+}

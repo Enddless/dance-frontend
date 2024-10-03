@@ -1,0 +1,11 @@
+.main-banners {
+  &__spinnerContainer {
+    text-align: center;
+  }
+
+  @media screen and (max-width: 600px) {
+    .banners {
+      margin: 30px 0;
+    }
+  }
+}
