@@ -4,8 +4,8 @@ import { getCurrentUserData, getCurrentUserRole, login } from '../../store/thunk
 import EyeIcon from '../eye-icon';
 import Button from '../button';
 import { authSlice } from '../../store/slices/auth';
-import { useNavigate } from 'react-router';
 import { validMail } from '../../services/validate';
+import { useNavigate } from 'react-router';
 
 const LoginForm = () => {
   const navigate = useNavigate();

@@ -3,8 +3,8 @@ import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import useMap from '../../hooks/useMap';
 import { Marker, layerGroup } from 'leaflet';
-import { URL_MARKER_DEFAULT } from '../../const/const';
 import { CityData, PointsData } from '../../interfaces/interfaces';
+import { URL_MARKER_DEFAULT } from '../../const/const';
 
 const defaultCustomIcon = leaflet.icon({
   iconUrl: URL_MARKER_DEFAULT,

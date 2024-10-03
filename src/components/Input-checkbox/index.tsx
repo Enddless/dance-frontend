@@ -1,5 +1,5 @@
-import sprite from 'public/icons/sprite.svg';
 import classNames from 'classnames';
+import sprite from 'public/icons/sprite.svg';
 
 type IInputCheckboxProps = {
   onChange: () => void;
