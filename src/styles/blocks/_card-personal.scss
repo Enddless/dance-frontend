@@ -1,24 +1,51 @@
+// .personal {
+//   &-item {
+//     grid-column: span 1;
+//     max-height: 300px;
+//     display: grid;
+//     grid-template-columns: 200px 1fr;
+//     align-items: center;
+//     gap: 15px;
+
+//     @include tablet {
+//       max-height: 200px;
+//     }
+//     @include mobile {
+//       display: flex;
+//       flex-direction: column;
+//     }
+//     @include tablet {
+//       grid-template-columns: 150px 1fr;
+//     }
+//     @include mobile {
+//       grid-template-columns: 100px 1fr;
+//     }
+//   }
+//   &-description {
+//     margin-left: 15px;
+
+//     & h5 {
+//       margin-bottom: 10px;
+//       line-height: 22px;
+//       font-weight: 600;
+//     }
+//     & p {
+//       @include fluid-text(16, 14);
+//       font-weight: 400;
+//     }
+//   }
+// }
 .personal {
   &-item {
     grid-column: span 1;
     max-height: 300px;
-    display: grid;
-    grid-template-columns: 200px 1fr;
+    display: flex;
     align-items: center;
     gap: 15px;
 
-    // @include tablet {
-    //   max-height: 200px;
-    // }
-    // @include mobile {
-    //   display: flex;
-    //   flex-direction: column;
-    // }
-    @include tablet {
-      grid-template-columns: 150px 1fr;
-    }
     @include mobile {
-      grid-template-columns: 100px 1fr;
+      display: flex;
+      flex-direction: column;
     }
   }
   &-description {

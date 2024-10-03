@@ -38,10 +38,10 @@ const UserRecordSlice = () => {
   const filtersTitle = ['Выбор занятия', 'Выбор времени'];
   const record = true;
   return (
-    <div className='user__record grid grid--12'>
+    <div className='user-record grid grid--12'>
       {record ? (
         <>
-          <div className='user__record-filters'>
+          <div className='user-record__filters'>
             {filtersTitle.map((title) => {
               let data: string[] = [];
               if (title === 'Выбор зала') {
@@ -57,24 +57,26 @@ const UserRecordSlice = () => {
             })}
           </div>
 
-          <Button text='Записаться' cls='btn-rec' />
-          <div className='user__record-content grid grid--12'>
-            <h5 className='user__record-title'>Текущие записи</h5>
-            <table className='user__record-table'>
+          <Button text='Записаться' classList='user-record__button button--record' />
+          <div className='user-record__content grid grid--12'>
+            <h5 className='user-record__title'>Текущие записи</h5>
+            <table className='user-record__table'>
               <thead>
-                <tr>
+                <tr className='user-record__table-header'>
                   {titles.map((item) => (
-                    <th key={item}>{item}</th>
+                    <th className='user-record__table-header-cell' key={item}>
+                      {item}
+                    </th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {lessonsData.map(({ id, startDate, time, lesson }) => {
                   return (
-                    <tr className='user__record-table-row' key={id}>
-                      <td>{startDate}</td>
-                      <td>{time}</td>
-                      <td>{lesson}</td>
+                    <tr className='user-record__table-row' key={id}>
+                      <td className='user-record__table-cell'>{startDate}</td>
+                      <td className='user-record__table-cell'>{time}</td>
+                      <td className='user-record__table-cell'>{lesson}</td>
                     </tr>
                   );
                 })}
@@ -84,7 +86,9 @@ const UserRecordSlice = () => {
         </>
       ) : (
         <EmptyTemplate>
-          <p>Для того чтобы записаться на занятие Вам необходимо приобрести абонемент.</p>
+          <p className='user-record__empty-message'>
+            Для того чтобы записаться на занятие Вам необходимо приобрести абонемент.
+          </p>
         </EmptyTemplate>
       )}
     </div>

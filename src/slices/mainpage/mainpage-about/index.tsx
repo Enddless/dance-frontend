@@ -30,7 +30,7 @@ export const AboutSlice = () => {
   }, [statusHalls, statusStudio]);
 
   return (
-    <section className='section main-about'>
+    <section className='section main-about container'>
       <TitleSection title='О студии' cls='main-about__title' />
       {!isLoad ? (
         <div className='main-about__spinnerContainer'>

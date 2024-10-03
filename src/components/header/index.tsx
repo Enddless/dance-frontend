@@ -79,7 +79,7 @@ const Header = () => {
                     ? `${userData.userName}`
                     : `${userData.emailUser?.split('@')[0]}`
                 }
-                cls='btn-enter'
+                classList='header__button button--enter'
                 openModalForm={openModalForm}></Button>
               {isOpenModal && <HeaderSubmenu openModalForm={openModalForm} />}
             </div>
@@ -87,8 +87,11 @@ const Header = () => {
         )}
 
         {authorizationStatus === 'AUTH' && userRole === 'administrator' && (
-          <div className='header__submenu'>
-            <Button text='Admin' cls='btn-enter' openModalForm={openModalForm}></Button>
+          <div className='header__submenu   hidden-mobile'>
+            <Button
+              text='Admin'
+              classList='header__button button--enter'
+              openModalForm={openModalForm}></Button>
             {isOpenModal && <HeaderSubmenu openModalForm={openModalForm} />}
           </div>
         )}
@@ -97,20 +100,15 @@ const Header = () => {
           authorizationStatus === 'UNKNOWN' ||
           userRole === '') && (
           <Link
+            className='hidden-mobile'
             to={`${AppRoute.Modal}${AppRoute.Login}`}
             state={{ previousLocation: location }}
             onClick={() => dispatch(authSlice.actions.changeFormActive('login'))}>
-            <div className='buttonContainer'>
-              <Button
-                text='Вход'
-                cls='btn-enter'
-                // openModalForm={openModalForm}
-              ></Button>
-            </div>
-            {/* {isOpenModal && <LoginForm openModalForm={openModalForm} />} */}
+            <Button text='Вход' classList='header__button button--enter'></Button>
           </Link>
         )}
 
+        {/* dialogs and burgers-button for mobile */}
         {authorizationStatus === 'AUTH' && userRole === 'customers' && (
           <div className='header__mobile-controls visible-mobile'>
             <Link
@@ -127,6 +125,28 @@ const Header = () => {
               <span className='visually-hidden'>Open navigation menu</span>
             </button>
           </div>
+        )}
+
+        {authorizationStatus === 'AUTH' && userRole === 'administrator' && (
+          <button
+            className='button__burger-menu burger-button visible-mobile'
+            type='button'
+            onClick={() => setIsShowBurger(!isShowBurger)}>
+            <span className='visually-hidden'>Open navigation menu</span>
+          </button>
+        )}
+
+        {(authorizationStatus === 'NO_AUTH' ||
+          authorizationStatus === 'UNKNOWN' ||
+          userRole === '') && (
+          <>
+            <button
+              className='button__burger-menu burger-button visible-mobile'
+              type='button'
+              onClick={() => setIsShowBurger(!isShowBurger)}>
+              <span className='visually-hidden'>Open navigation menu</span>
+            </button>
+          </>
         )}
 
         {isShowBurger && (

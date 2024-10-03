@@ -1,0 +1,7 @@
+.error-message {
+  @include fluid-text(14, 12);
+
+  color: var(--error-message);
+  text-align: center;
+  margin-top: 10px;
+}

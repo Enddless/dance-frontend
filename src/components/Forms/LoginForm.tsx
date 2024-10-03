@@ -92,10 +92,10 @@ const LoginForm = () => {
             />
           </label>
           {errorMail && errorMail !== '' && (
-            <span className='errorMessage'>{errorMail}</span>
+            <span className='error-message'>{errorMail}</span>
           )}
           {errorMessage && errorMessage !== '' && (
-            <span className='errorMessage'>{errorMessage}</span>
+            <span className='error-message'>{errorMessage}</span>
           )}
         </fieldset>
 
@@ -134,7 +134,11 @@ const LoginForm = () => {
           </label>
         </div>
 
-        <Button text='Войти' cls='btn-reg' disabled={!isValidForm} />
+        <Button
+          text='Войти'
+          classList='form-content__button button--registration'
+          disabled={!isValidForm}
+        />
       </form>
     </>
   );

@@ -16,8 +16,8 @@ interface IActiveButtonProps {
 }
 
 export const ContentSlice = ({ isActiveButton }: IActiveButtonProps) => {
-  const classNamesList = classNames('admin-page__content', {
-    'admin-page__overlay': isActiveButton === 'contacts'
+  const classNamesList = classNames('admin__content', {
+    admin__overlay: isActiveButton === 'contacts'
   });
   return (
     <div className={classNamesList}>

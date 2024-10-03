@@ -18,7 +18,7 @@ export const PricesSlice = () => {
   const statusPrice = useAppSelector((state) => state.main.isPriceLoading);
 
   return (
-    <section className='section main-prices' id='pricesBlock'>
+    <section className='section main-prices container' id='pricesBlock'>
       <TitleSection title='Услуги и цены' cls='main-prices__title' />
       {statusPrice === LoadingStatus.Pending ? (
         <div className='main-prices__spinnerContainer'>

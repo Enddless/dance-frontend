@@ -9,7 +9,7 @@ interface ICardProps {
 
 const CardHalls = ({ hall, isMainPage }: ICardProps) => {
   const classNameList = classNames('card-halls__item', {
-    'card-halls__item-redisignBlock': isMainPage
+    'card-halls__item--grid': isMainPage
   });
 
   return (

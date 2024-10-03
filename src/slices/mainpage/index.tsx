@@ -17,13 +17,11 @@ export const MainPageSlice = () => {
   return (
     <>
       <BannersSlice />
-      <div className='container'>
-        <AboutSlice />
-        <PersonalSlice />
-        <PricesSlice />
-        <ReviewsSlice />
-        <ContactsSlice />
-      </div>
+      <AboutSlice />
+      <PersonalSlice />
+      <PricesSlice />
+      <ReviewsSlice />
+      <ContactsSlice />
     </>
   );
 };

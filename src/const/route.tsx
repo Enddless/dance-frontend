@@ -1,21 +1,19 @@
 export enum AppRoute {
-  Root = "/",
-  Modal = "/modal",
-  Login = "/login",
-  Registration = "/registration",
-  Recovery = "/recovery",
-  Dashboard = "/dashboard",
-  Reviews = "/reviews",
-  PersonalArea = "/inbox",
-  AdministratorArea = "/administration",
-  NotFound = "/*",
+  Root = '/',
+  Modal = '/modal',
+  Login = '/login',
+  Registration = '/registration',
+  Recovery = '/recovery',
+  Dashboard = '/dashboard',
+  PersonalArea = '/inbox',
+  AdministratorArea = '/administration',
+  NotFound = '/*'
 }
-
 
 export enum APIRoute {
   //auth
-  Registration = "/registration",
-  Confirmation = "/confirmation",
+  Registration = '/registration',
+  Confirmation = '/confirmation',
   Login = '/login',
   Logout = '/logOutOfAccount',
   //user
@@ -26,20 +24,20 @@ export enum APIRoute {
   UpdateToken = '/loginRefresh',
   Tickets = '/seasonTickets',
   AddPhoto = '/addUsersPhoto',
-  DeletePhotoUser = "/deleteUsersPhoto",
+  DeletePhotoUser = '/deleteUsersPhoto',
   //admin-settings
-  Banner = "/basicBanners",
-  AboutStudio = "/studioSettings",
-  CityMap = "/studioCitySettings",
-  PointsMap = "/studioPointsSettings",
-  Logotype = "/studioSettingsLogo",
-  AddHallPhoto = "/hallsSettingsPhoto",
-  AddTeacherPhoto = "/teacherSettingsPhoto",
-  Halls = "/hallsSettings",
-  Teachers = "/teachersSettings",
-  Price = "/ServicePrice",
-  AddPrice = "/addServicePrice",
-  DelPrice = "/deleteServicePrice",
+  Banner = '/basicBanners',
+  AboutStudio = '/studioSettings',
+  CityMap = '/studioCitySettings',
+  PointsMap = '/studioPointsSettings',
+  Logotype = '/studioSettingsLogo',
+  AddHallPhoto = '/hallsSettingsPhoto',
+  AddTeacherPhoto = '/teacherSettingsPhoto',
+  Halls = '/hallsSettings',
+  Teachers = '/teachersSettings',
+  Price = '/ServicePrice',
+  AddPrice = '/addServicePrice',
+  DelPrice = '/deleteServicePrice',
   //main page
-  MainPage = "/page",
+  MainPage = '/page'
 }

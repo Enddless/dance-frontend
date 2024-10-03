@@ -26,42 +26,51 @@
       text-align: center;
       color: var(--card-title-color);
     }
-    &-redisignBlock {
-      display: flex;
+    &--grid {
+      display: grid;
+      grid-template-columns: 50% 50%;
       column-gap: 20px;
       align-items: center;
 
-      & .photoContainer {
-        height: 439px;
+      @include desktop {
+        grid-template-columns: 400px 1fr;
       }
-      & .photoContainer,
-      & > p {
-        width: 50%;
+
+      @include tablet {
+        grid-template-columns: 350px 1fr;
       }
+
+      @include mobile {
+        display: flex;
+        flex-direction: column;
+        & .card-halls__item-photoContainer {
+          width: 100%;
+        }
+      }
+
       /* Стили для четных элементов */
       &:nth-child(even) {
-        flex-direction: row-reverse;
+        @include desktop {
+          grid-template-columns: 1fr 400px;
+        }
+
+        @include tablet {
+          grid-template-columns: 1fr 350px;
+        }
+
+        & > .card-halls__item-photoContainer {
+          order: 2;
+          @include mobile {
+            order: 1;
+          }
+        }
+        & > p {
+          order: 1;
+          @include mobile {
+            order: 2;
+          }
+        }
       }
     }
   }
-
-  //расположение блоков в плитку,в случае если карточек больше 3
-
-  // @media screen and (max-width: 800px) {
-  //   .redisignBlock {
-  //     flex-direction: column;
-  //     .photoContainer {
-  //       width: 100%;
-  //     }
-  //     p {
-  //       width: 100%;
-  //     }
-  //     &:nth-child(even) {
-  //       flex-direction: inherit;
-  //     }
-  //   }
-  //   .container {
-  //     grid-column: span 12;
-  //   }
-  // }
 }

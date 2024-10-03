@@ -3,78 +3,92 @@ import EyeIcon from '../../../components/eye-icon';
 import Button from '../../../components/button';
 
 const UserPasswordSlice = () => {
-  //состояние переключения "глазика"
-  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
-  const [showNewPassword, setShowNewPassword] = useState(false);
-  const [showDoublePassword, setShowDoublePassword] = useState(false);
+  // состояние переключения "глазика"
+  const [isCurrentPasswordVisible, setIsCurrentPasswordVisible] = useState(false);
+  const [isNewPasswordVisible, setIsNewPasswordVisible] = useState(false);
+  const [isDoublePasswordVisible, setIsDoublePasswordVisible] = useState(false);
+
   const toggleCurrentPasswordVisibility = () => {
-    setShowCurrentPassword(!showCurrentPassword);
+    setIsCurrentPasswordVisible(!isCurrentPasswordVisible);
   };
-  const togglePasswordVisibility = () => {
-    setShowNewPassword(!showNewPassword);
+
+  const toggleNewPasswordVisibility = () => {
+    setIsNewPasswordVisible(!isNewPasswordVisible);
   };
+
   const toggleDoublePasswordVisibility = () => {
-    setShowDoublePassword(!showDoublePassword);
+    setIsDoublePasswordVisible(!isDoublePasswordVisible);
   };
+
   const changePassword = () => {
-    //добавить диспатч на изменение пароля
+    // добавить диспатч на изменение пароля
   };
 
   return (
-    <div className='user__password grid grid--12'>
-      <div className='user__password-form'>
-        <fieldset>
-          <label htmlFor='currentPassword'>Текущий пароль</label>
+    <div className='user-password'>
+      <div className='user-password__form'>
+        <fieldset className='user-password__fieldset'>
+          <label htmlFor='currentPassword' className='user-password__label'>
+            Текущий пароль
+          </label>
           <input
-            type={showCurrentPassword ? 'text' : 'password'}
+            type={isCurrentPasswordVisible ? 'text' : 'password'}
             name='currentPassword'
             id='currentPassword'
-            className='checkbox'
+            className='user-password__input'
             placeholder='*****'
           />
-          <div className='eyeIcon'>
+          <div className='user-password__eye-icon'>
             <EyeIcon
-              showPassword={showCurrentPassword}
+              showPassword={isCurrentPasswordVisible}
               togglePasswordVisibility={toggleCurrentPasswordVisibility}
             />
           </div>
         </fieldset>
 
-        <fieldset>
-          <label htmlFor='newPassword'>Новый пароль</label>
+        <fieldset className='user-password__fieldset'>
+          <label htmlFor='newPassword' className='user-password__label'>
+            Новый пароль
+          </label>
           <input
-            type={showNewPassword ? 'text' : 'password'}
+            type={isNewPasswordVisible ? 'text' : 'password'}
             name='newPassword'
             id='newPassword'
-            className='checkbox'
+            className='user-password__input'
             placeholder='*****'
           />
-          <div className='eyeIcon'>
+          <div className='user-password__eye-icon'>
             <EyeIcon
-              showPassword={showNewPassword}
-              togglePasswordVisibility={togglePasswordVisibility}
+              showPassword={isNewPasswordVisible}
+              togglePasswordVisibility={toggleNewPasswordVisibility}
             />
           </div>
         </fieldset>
 
-        <fieldset>
-          <label htmlFor='doubleNewPassword'>Подтвердите пароль</label>
+        <fieldset className='user-password__fieldset'>
+          <label htmlFor='doubleNewPassword' className='user-password__label'>
+            Подтвердите пароль
+          </label>
           <input
-            type={showDoublePassword ? 'text' : 'password'}
+            type={isDoublePasswordVisible ? 'text' : 'password'}
             name='doubleNewPassword'
             id='doubleNewPassword'
-            className='checkbox'
+            className='user-password__input'
             placeholder='*****'
           />
-          <div className='eyeIcon'>
+          <div className='user-password__eye-icon'>
             <EyeIcon
-              showPassword={showDoublePassword}
+              showPassword={isDoublePasswordVisible}
               togglePasswordVisibility={toggleDoublePasswordVisibility}
             />
           </div>
         </fieldset>
 
-        <Button text='Сменить пароль' cls='btn-save' openModalForm={changePassword} />
+        <Button
+          text='Сменить пароль'
+          classList='user-password__button button button--save'
+          openModalForm={changePassword}
+        />
       </div>
     </div>
   );

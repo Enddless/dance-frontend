@@ -23,14 +23,6 @@ export const UserPageSlice = () => {
     }
   }, [navigate, location]);
 
-  // useEffect(() => {
-  //   dispatch(getCurrentUserRole());
-  //   dispatch(mainPageData());
-  // }, [dispatch]);
-
-  // показывать лоадер пока грузятся данные из perssit
-  // const isRehydrated = useAppSelector((state) => state._persist.rehydrated);
-
   return (
     <section className='section'>
       <div className='user container'>

@@ -1,16 +1,16 @@
-.selectContainer {
+.select-filter {
   grid-column: span 3;
 
   &__title {
     position: relative;
     width: 100%;
-    label {
-      position: absolute;
-      right: 10px;
-      top: 10px;
-    }
   }
-  &__optionBlock {
+  &__label {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+  &__options {
     width: 100%;
     border: none;
     border-radius: 4px;
@@ -21,6 +21,7 @@
     position: relative;
     z-index: 100;
     margin-top: 10px;
+
     &::-webkit-scrollbar {
       width: 10px;
       height: 10px;
@@ -36,24 +37,22 @@
       background-color: var(--palette-color3);
       border-radius: 15px;
     }
-
-    & > p {
-      @include fluid-text(16, 10);
-    }
   }
-  &__.dataItem {
-    font-size: 16px;
+  &__option {
+    @include fluid-text(16, 10);
+
     padding: 5px 0;
+
     @include hover {
       background: rgba($color: #ffc700, $alpha: 0.3);
       cursor: pointer;
     }
   }
 
-  &__isRecordSelect {
+  &--is-record-select {
     width: 100%;
     margin: 10px 0;
-    & .selectContainer__title {
+    & .select-filter__title {
       background: var(--palette-color-white);
       padding: 0;
       line-height: 0;

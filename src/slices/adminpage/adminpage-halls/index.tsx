@@ -39,38 +39,32 @@ const HallsSettingsSlice = () => {
 
   return (
     <>
-      {/* <p>Редактирование карточек пока работает без изменения фотки</p> */}
-      <div className='admin-page__halls grid grid--12'>
+      <div className='admin__content-halls admin-halls grid grid--3'>
         {halls !== null ? (
           <>
-            {halls.map((hall) => {
-              return (
-                <div className='admin-page__halls-cardwrapper' key={hall.IdHall}>
-                  <div className='admin-page__halls-controlGroup'>
-                    <ControlButton
-                      id='edit'
-                      onClick={() => handleEditCard(hall.IdHall)}
-                    />
-                    <ControlButton
-                      id='delete'
-                      onClick={() => deleteCurrentHall(hall.IdHall)}
-                    />
-                  </div>
-                  <CardHalls hall={hall} />
+            {halls.map((hall) => (
+              <div className='admin-halls__card-wrapper' key={hall.IdHall}>
+                <div className='admin-halls__control-group'>
+                  <ControlButton id='edit' onClick={() => handleEditCard(hall.IdHall)} />
+                  <ControlButton
+                    id='delete'
+                    onClick={() => deleteCurrentHall(hall.IdHall)}
+                  />
                 </div>
-              );
-            })}
+                <CardHalls hall={hall} />
+              </div>
+            ))}
           </>
         ) : (
-          <p className='admin-page__halls-text'>
-            У вас еще нет залов. Вы можете добавить зал нажав кнопку "Добавить"
+          <p className='admin-halls__text'>
+            У вас еще нет залов. Вы можете добавить зал, нажав кнопку "Добавить"
           </p>
         )}
       </div>
-      <div className='admin-page__halls-add'>
+      <div className='admin-halls__add'>
         <Button
           text='Добавить'
-          cls='add'
+          classList='admin-halls__button button--add'
           openModalForm={() => setAddHallForm(!addHallForm)}
         />
       </div>

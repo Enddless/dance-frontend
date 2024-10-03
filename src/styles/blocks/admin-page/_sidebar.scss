@@ -1,11 +1,17 @@
-.admin-page__sidebar {
+.admin__sidebar {
+  @include mobile {
+    padding: 20px;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
   &-logo {
     padding: 10px 60px 10px 10px;
     height: 86px;
   }
   &-list {
     @include fluid-text(20, 14);
-    font-weight: 400;
+
     line-height: 24px;
     margin-top: 20px;
   }
@@ -21,22 +27,23 @@
     }
   }
 
-  & .logout {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 10px 0 10px 30px;
-    cursor: pointer;
+  &-controls {
+    @include fluid-text(20, 14);
+
+    position: relative;
+    bottom: 0;
+    line-height: 24px;
+
     & svg {
       margin-right: 20px;
       stroke: #fdf8f0;
     }
   }
-  &__controls {
-    position: relative;
-    bottom: 0;
-    @include fluid-text(20, 14);
-    font-weight: 400;
-    line-height: 24px;
+  &-control {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 0 10px 30px;
+    cursor: pointer;
   }
 }

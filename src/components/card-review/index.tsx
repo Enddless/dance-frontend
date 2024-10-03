@@ -2,20 +2,14 @@ import sprite from 'public/icons/sprite.svg';
 import { IReviewsInfo } from '../../interfaces/interfaces';
 import ControlButton from '../controls-button';
 import classNames from 'classnames';
-import { Link } from 'react-router-dom';
 
 interface ICardProps {
   review: IReviewsInfo;
   id?: string;
-  lastChild?: boolean;
 }
 
-const CardReview = ({ review, id, lastChild }: ICardProps) => {
+const CardReview = ({ review, id }: ICardProps) => {
   const isAdminSettings = id === 'adminSettings';
-
-  const classContent = classNames('card-reviews__item', {
-    blurContent: lastChild
-  });
 
   const classNamesList = classNames('card-reviews__user', {
     ratingRedisign: isAdminSettings
@@ -23,7 +17,7 @@ const CardReview = ({ review, id, lastChild }: ICardProps) => {
 
   return (
     <>
-      <li className={classContent}>
+      <li className='card-reviews__item'>
         {review && (
           <>
             {isAdminSettings && (
@@ -54,13 +48,6 @@ const CardReview = ({ review, id, lastChild }: ICardProps) => {
           </>
         )}
       </li>
-      {lastChild && (
-        <Link to='/reviews'>
-          <div className='card-reviews__more'>
-            <h6>Смотреть все отзывы</h6>
-          </div>
-        </Link>
-      )}
     </>
   );
 };

@@ -69,8 +69,8 @@ export const LogotypeSettingsSlice = () => {
   return (
     <>
       {logotype && logotype !== '' ? (
-        <form className='updateForm' encType='multipart/form-data'>
-          <label htmlFor='reloadLogotype' className='update'>
+        <form className='logotype-settings__update-form' encType='multipart/form-data'>
+          <label htmlFor='reloadLogotype' className='logotype-settings__update'>
             <ControlButton id='edit' />
             <input
               type='file'
@@ -80,7 +80,7 @@ export const LogotypeSettingsSlice = () => {
             />
           </label>
 
-          <div className='card' id='logotype'>
+          <div className='logotype-settings__card' id='logotype'>
             <Link to={AppRoute.Root}>
               {previewImage && previewImage !== '' && (
                 <img src={previewImage} alt='logotype' />
@@ -89,8 +89,10 @@ export const LogotypeSettingsSlice = () => {
           </div>
         </form>
       ) : (
-        <form className='add' encType='multipart/form-data'>
-          <label htmlFor='logotype' className='download'>
+        <form className='logotype-settings__add' encType='multipart/form-data'>
+          <label
+            htmlFor='logotype'
+            className='logotype-settings__download button button--save'>
             Добавить лого
             <input
               type='file'
@@ -102,7 +104,10 @@ export const LogotypeSettingsSlice = () => {
           </label>
         </form>
       )}
-      {errorDownload && <p className='errorMessage'>{errorDownload}</p>}
+
+      {errorDownload && (
+        <p className='logotype-settings__error-message error-message'>{errorDownload}</p>
+      )}
     </>
   );
 };

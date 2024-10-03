@@ -41,11 +41,15 @@ const RecoveryForm = () => {
             />
           </label>
           {errorMail && inputData !== '' && (
-            <span className='errorMessage'>{errorMail}</span>
+            <span className='error-message'>{errorMail}</span>
           )}
         </fieldset>
 
-        <Button text='Отправить пароль на email' cls='btn-reg' disabled={!isValidForm} />
+        <Button
+          text='Отправить пароль на email'
+          classList='form-content__button button--registration'
+          disabled={!isValidForm}
+        />
       </form>
       <label className='backButton' onClick={handleBack}>
         Назад

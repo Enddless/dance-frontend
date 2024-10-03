@@ -60,35 +60,33 @@ const BannersSettingsSlice = () => {
 
   return (
     <>
-      <div className='admin-page__banners'>
+      <div className='admin__content-banners admin-banners'>
         {banner ? (
           <>
-            {banner.map((card) => {
-              return (
-                <div className='admin-page__banners-card' key={card.IdBanner} id='cards'>
-                  <div className='admin-page__banners-control'>
-                    <ControlButton
-                      id='delete'
-                      onClick={() => deleteCurrentBanner(card.IdBanner)}
-                    />
-                  </div>
-                  <img src={`${API_URL}${card.PhotoBanner}?v=1`} alt='sdfdfsd' />
+            {banner.map((card) => (
+              <div className='admin-banners__card' key={card.IdBanner}>
+                <div className='admin-banners__control'>
+                  <ControlButton
+                    id='delete'
+                    onClick={() => deleteCurrentBanner(card.IdBanner)}
+                  />
                 </div>
-              );
-            })}
+                <img src={`${API_URL}${card.PhotoBanner}?v=1`} alt='Баннер' />
+              </div>
+            ))}
           </>
         ) : (
-          <>
-            <p>У вас еще нет банеров. Вы можете добавить нажав кнопку "Добавить"</p>
-          </>
+          <p>У вас еще нет баннеров. Вы можете добавить, нажав кнопку "Добавить"</p>
         )}
       </div>
-      <form className='admin-page__banners-add'>
-        <label htmlFor='banner'>
+      <form className='admin-banners__add'>
+        <label htmlFor='banner' className='admin-banners__button button button--save'>
           Добавить
           <input type='file' name='banner' id='banner' onChange={handleFileChange} />
         </label>
-        {errorDownload && <p className='admin-page__banners-error'>{errorDownload}</p>}
+        {errorDownload && (
+          <p className='admin-banners__error error-message'>{errorDownload}</p>
+        )}
       </form>
     </>
   );

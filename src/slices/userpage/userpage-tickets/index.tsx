@@ -51,21 +51,22 @@ const ticketsData: ITicketsData[] = [
 ];
 
 const UserTicketsSlice = () => {
-  // const tickets = useAppSelector((state) => state.ticket.userTickets);
   const tickets = ticketsData;
   return (
-    <div className='user__tickets grid grid--12'>
-      {tickets ? (
-        <table className='user__tickets-table'>
-          <thead>
+    <div className='user-tickets grid grid--12'>
+      {tickets.length > 0 ? (
+        <table className='user-tickets__table'>
+          <thead className='user-tickets__thead'>
             <tr>
               {titles.map((item) => (
-                <th key={item}>{item}</th>
+                <th className='user-tickets__header' key={item}>
+                  {item}
+                </th>
               ))}
             </tr>
           </thead>
-          <tbody>
-            {ticketsData.map(
+          <tbody className='user-tickets__tbody'>
+            {tickets.map(
               ({
                 id,
                 dateOfPurchase,
@@ -75,21 +76,21 @@ const UserTicketsSlice = () => {
                 totalClasses,
                 status
               }) => {
-                const classNamesList = classNames('tableRow', {
-                  completed: status === 'Завершенный',
-                  nonActive: status === 'Неактивный'
+                const classNamesList = classNames('user-tickets__row', {
+                  'user-tickets__row--completed': status === 'Завершенный',
+                  'user-tickets__row--non-active': status === 'Неактивный'
                 });
 
                 return (
                   <tr className={classNamesList} key={id}>
-                    <td>{id}</td>
-                    <td>{dateOfPurchase}</td>
-                    <td>{startDate}</td>
-                    <td>{endDate}</td>
-                    <td>
+                    <td className='user-tickets__cell'>{id}</td>
+                    <td className='user-tickets__cell'>{dateOfPurchase}</td>
+                    <td className='user-tickets__cell'>{startDate}</td>
+                    <td className='user-tickets__cell'>{endDate}</td>
+                    <td className='user-tickets__cell'>
                       {usedClasses}/{totalClasses}
                     </td>
-                    <td>{status}</td>
+                    <td className='user-tickets__cell'>{status}</td>
                   </tr>
                 );
               }
@@ -98,10 +99,10 @@ const UserTicketsSlice = () => {
         </table>
       ) : (
         <EmptyTemplate>
-          <p>У Вас ещё нет абонементов. </p>
+          <p>У Вас ещё нет абонементов.</p>
           <p>
             Для приобритения обратитесь в студию по адресу: Южно-Сахалинск,
-            Коммунистический проспект, 20, c 09:00 до 21:00 или запишитесь на пробное
+            Коммунистический проспект, 20, с 09:00 до 21:00 или запишитесь на пробное
             занятие по телефону: <a href='tel:+74957887750'>+7 (495) 788-77-50</a>
           </p>
         </EmptyTemplate>

@@ -62,17 +62,13 @@
     width: 180px;
     display: flex;
     flex-direction: column;
-
-    & button {
-      width: 100%;
-      text-align: left;
-    }
   }
 
-  .buttonContainer {
+  &__button {
     width: 180px;
-    button {
-      width: 100%;
+
+    @include mobile {
+      width: 30px;
     }
   }
   &__userControl {

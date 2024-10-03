@@ -5,4 +5,20 @@
       justify-items: center;
     }
   }
+  &__personal-item {
+    height: 200px;
+  }
+  // &__personal-item {
+  //   grid-template-columns: 200px minmax(250px, 400px);
+  //   border: 1px solid green;
+
+  //   @include tablet {
+  //     grid-template-columns: 200px 300px;
+  //   }
+  // }
+  // &__personal-description {
+  //   white-space: nowrap;
+  //   overflow: hidden;
+  //   text-overflow: ellipsis;
+  // }
 }

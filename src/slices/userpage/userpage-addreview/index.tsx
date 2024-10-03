@@ -10,9 +10,9 @@ const AddReviewSlice = () => {
         <form className='user-review__form'>
           <label>Оставьте свой отзыв и оценку</label>
           <input type='text' placeholder='Имя' />
-          <textarea placeholder='Отзыв' rows={5} />
+          <textarea className='user-review__textarea' placeholder='Отзыв' rows={5} />
           <label>Оценка</label>
-          <div className='user-review__groupStar'>
+          <div className='user-review__group-star'>
             <svg width='20' height='20' viewBox='0 0 20 20' fill='none'>
               <use xlinkHref={`${sprite}#starTransparent`}></use>
             </svg>
@@ -29,7 +29,10 @@ const AddReviewSlice = () => {
               <use xlinkHref={`${sprite}#starTransparent`}></use>
             </svg>
           </div>
-          <Button text='Отправить отзыв' cls='btn-save' />
+          <Button
+            text='Отправить отзыв'
+            classList='user-review__button button button--save'
+          />
         </form>
       ) : (
         <EmptyTemplate>

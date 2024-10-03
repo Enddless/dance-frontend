@@ -1,7 +1,7 @@
 import MainPage from '../../pages/main-page';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import NFPage from '../../pages/not-found-page';
-import ReviewsPage from '../../pages/reviews-page';
+
 import { AppRoute } from '../../const/route';
 import AreaPersonalPage from '../../pages/user-page';
 import { RedirectPersonalArea } from '../redirect-personal-area';
@@ -64,14 +64,6 @@ const App = () => {
               element={
                 <PageLayout>
                   <CalendarWithEventsPage />
-                </PageLayout>
-              }
-            />
-            <Route
-              path={AppRoute.Reviews}
-              element={
-                <PageLayout>
-                  <ReviewsPage />
                 </PageLayout>
               }
             />

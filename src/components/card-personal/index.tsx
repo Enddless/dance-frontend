@@ -9,7 +9,7 @@ type TTeacherProps = {
 
 export const CardPersonal = ({ children, teacher, prefixClass }: TTeacherProps) => {
   return (
-    <li className={`${prefixClass}__personal-item personal-item `}>
+    <div className={`${prefixClass}__personal-item personal-item `}>
       {children}
       <PhotoContainer
         alt='staffPhoto'
@@ -21,6 +21,6 @@ export const CardPersonal = ({ children, teacher, prefixClass }: TTeacherProps) 
         <h5>{teacher.teachersName}</h5>
         <p>{teacher.description}</p>
       </div>
-    </li>
+    </div>
   );
 };

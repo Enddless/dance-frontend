@@ -105,7 +105,7 @@ const RegistrationForm = () => {
                 className={errorMail && errorMail !== '' ? 'errorInput' : ''}
               />
               {errorMail && errorMail !== '' && (
-                <span className='errorMessage'>{errorMail}</span>
+                <span className='error-message'>{errorMail}</span>
               )}
             </fieldset>
             <fieldset>
@@ -146,11 +146,15 @@ const RegistrationForm = () => {
               </div>
 
               {errorPassword && errorPassword !== '' && (
-                <p className='errorMessage'>{errorPassword}</p>
+                <p className='error-message'>{errorPassword}</p>
               )}
             </fieldset>
 
-            <Button text='Зарегистрироваться' cls='btn-reg' disabled={!isValidForm} />
+            <Button
+              text='Зарегистрироваться'
+              classList='form-content__button button--registration'
+              disabled={!isValidForm}
+            />
             <div className='agreement'>
               <label htmlFor='agreement' className='agreeCheckbox'>
                 <InputCheckbox

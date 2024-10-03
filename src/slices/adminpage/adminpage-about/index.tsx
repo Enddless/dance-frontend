@@ -36,8 +36,8 @@ const AboutSettingsSlice = () => {
   };
   return (
     <>
-      <div className='admin-page__about'>
-        <div className='admin-page__aboutcontrolGroup'>
+      <div className='admin__content-about admin-about'>
+        <div className='admin-about__control-group'>
           <ControlButton
             id='edit'
             onClick={() => {
@@ -54,7 +54,7 @@ const AboutSettingsSlice = () => {
             value={description}
             onBlur={handleBlur}
             onChange={(e) => setDescription(e.target.value)}
-            className='admin-page__about-editText'
+            className='admin-about__edit-text'
           />
         ) : (
           <>

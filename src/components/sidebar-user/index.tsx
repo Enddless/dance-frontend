@@ -25,22 +25,19 @@ function SidebarUserMemo() {
   };
 
   return (
-    <div className='user__sidebar'>
-      <ul className='user__sidebar-list'>
+    <div className='user-sidebar'>
+      <ul className='user-sidebar__list'>
         {menuAreaPersonal.map((button) => {
           const isActive = button.path === buttonActiveData;
           return (
-            <li key={button.id} className='user__sidebar-item'>
+            <li key={button.id} className='user-sidebar__item'>
               <NavLink
                 to={`${AppRoute.PersonalArea}/${button.path}`}
                 key={button.id}
-                // className={({ isActive }) =>
-                //   isActive ? ACTIVE_CLASS : LINK_CLASS
-                // }
                 onClick={() => handleClick(button.path)}>
                 <Button
                   text={button.title}
-                  cls='menuAreaUser'
+                  classList='user-sidebar__button button--menuUser'
                   activeMenuUser={isActive}
                 />
               </NavLink>

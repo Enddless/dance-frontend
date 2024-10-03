@@ -15,9 +15,9 @@
   @include hover {
     background-color: var(--palette-color1);
   }
-  &:focus {
-    border: 1px solid var(--palette-color6);
-  }
+  // &:focus {
+  //   border: 1px solid var(--palette-color6);
+  // }
   &.disabled,
   &.disabled:hover {
     cursor: not-allowed;
@@ -25,7 +25,7 @@
   }
 
   // ***** кнопка входа ******
-  &__enter {
+  &--enter {
     background: var(--palette-color5);
 
     @include hover {
@@ -34,7 +34,7 @@
     }
   }
   // ***** кнопка подгрузки отзывов ******
-  &__more {
+  &--more {
     background: var(--palette-color5);
     @include hover {
       background: var(--palette-color2);
@@ -42,7 +42,7 @@
   }
 
   // ***** кнопка войти или зарегистрироваться в формах входа ******
-  &__registration {
+  &--registration {
     background: var(--palette-color1);
     @include hover {
       background: var(--palette-color5);
@@ -50,7 +50,7 @@
   }
 
   // ***** кнопки меню в ЛК пользователя ******
-  &__menuUser {
+  &--menuUser {
     @include fluid-text(18, 14);
 
     font-weight: 500;
@@ -66,7 +66,7 @@
     }
   }
 
-  &__activeMenuUser {
+  &--activeMenuUser {
     background: var(--palette-color2);
     color: var(--palette-color7);
     border: 1px solid var(--palette-color2);
@@ -74,7 +74,7 @@
   }
 
   // ***** кнопки сохранения, удаления, записи в ЛК пользователя ******
-  &__save {
+  &--save {
     @include fluid-text(16, 14);
 
     background: var(--palette-color2);
@@ -84,7 +84,7 @@
     }
   }
 
-  &__delete {
+  &--delete {
     @include fluid-text(16, 14);
 
     color: var(--palette-color1);
@@ -98,7 +98,7 @@
     }
   }
 
-  &__record {
+  &--record {
     @include fluid-text(16, 14);
 
     background: var(--palette-color5);
@@ -108,7 +108,7 @@
   }
 
   // ***** кнопки сохранения, удаления в ЛК пользователя ******
-  &__add {
+  &--add {
     background: var(--palette-color2);
     color: var(--palette-color7);
 
@@ -126,25 +126,24 @@
     color: var(--palette-color1);
     outline: 1px solid var(--palette-color1);
     background: transparent;
+
     @include hover {
       background: var(--palette-color2);
       color: var(--palette-color7);
       outline: 1px solid var(--palette-color2);
     }
-    &.activeDashboardMenu {
-      background: var(--palette-color2);
-      color: var(--palette-color7);
-      outline: 1px solid var(--palette-color2);
-    }
+  }
+  &--activeDashboardMenu {
+    background: var(--palette-color2);
+    color: var(--palette-color7);
+    outline: 1px solid var(--palette-color2);
   }
 
-  &__cancel {
+  &--cancel {
     background: var(--palette-color6);
     color: var(--palette-color7);
     @include hover {
       background: var(--palette-color1);
     }
   }
-
-  //добавить кнопки для отзыва и записи для пользователя
 }

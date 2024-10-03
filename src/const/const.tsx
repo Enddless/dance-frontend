@@ -94,16 +94,11 @@ export const pagesHeader: IPagesHeader[] = [
   },
   {
     id: 4,
-    title: 'Отзывы',
-    url: '/reviews'
-  },
-  {
-    id: 5,
     title: 'Контакты',
     url: '/#contactsBlock'
   },
   {
-    id: 6,
+    id: 5,
     title: 'Скачать приложение',
     url: '/download'
   }
@@ -127,7 +122,7 @@ export const pagesFooter: IPagesFooter[] = [
   {
     id: 4,
     title: 'Отзывы',
-    url: '/reviews'
+    url: '/#reviewsBlock'
   },
   {
     id: 5,

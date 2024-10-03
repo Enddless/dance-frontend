@@ -40,7 +40,7 @@ export const ContactsSlice = () => {
   }, [statusPoints, statusCity]);
 
   return (
-    <section className='section main-contacts' id='contactsBlock'>
+    <section className='section main-contacts container' id='contactsBlock'>
       <TitleSection title='Контакты' cls='main-contacts__title' />
       {!isLoad ? (
         <div className='main-contacts__spinnerContainer'>
@@ -57,7 +57,6 @@ export const ContactsSlice = () => {
               <img src={src} alt='oops, no map here yet' />
             </div>
           )}
-
           <div className='main-contacts__info'>
             <div className='main-contacts__info-location'>
               <div>
@@ -81,7 +80,7 @@ export const ContactsSlice = () => {
               <p>Мы в социальных сетях:</p>
               <SocialLinks />
             </div>
-          </div>
+          </div>{' '}
         </>
       )}
     </section>

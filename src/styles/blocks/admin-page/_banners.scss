@@ -1,15 +1,18 @@
-.admin-page__banners {
+.admin-banners {
   max-height: 400px;
   overflow-y: scroll;
   position: relative;
   padding-right: 30px;
-  &-card {
-    & > img {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  &__card {
+    & img {
       width: 100%;
     }
   }
 
-  &-control {
+  &__control {
     background: var(--palette-color7);
     width: 70px;
     height: 70px;
@@ -21,19 +24,8 @@
     position: absolute;
     right: 30px;
   }
-  &-add {
+  &__add {
     margin-top: 60px;
-    & > label {
-      display: block;
-      width: 160px;
-      margin: 0 auto;
-      background: var(--btn-background-three);
-      color: var(--btn-color-one);
-      @include fluid-text(16, 14);
-      @include hover {
-        background: var(--btn-background-four);
-      }
-    }
 
     & input[type='file'] {
       height: 100%;
@@ -41,29 +33,9 @@
       display: none;
     }
   }
-
-  &-error {
-    color: red;
-    font-size: 18px;
-    text-align: center;
-    margin-top: 10px;
+  &__button {
+    display: flex;
+    width: 160px;
+    margin: 0 auto;
   }
-
-  // //scrollbar
-  // .container::-webkit-scrollbar {
-  //   width: 10px;
-  //   height: 10px;
-  //   border-radius: 10px 10px 10px 10px;
-  // }
-
-  // .container::-webkit-scrollbar-track {
-  //   background: #256613;
-  //   border-radius: 10px 10px 10px 10px;
-  // }
-
-  // .container::-webkit-scrollbar-thumb {
-  //   background-color: #fdf8f0;
-  //   border: 2px solid #256613;
-  //   border-radius: 10px 10px 10px 10px;
-  // }
 }

@@ -30,7 +30,9 @@ const Footer = () => {
               <ul>
                 {pagesFooter.map((page) => {
                   const check =
-                    page.title === 'Услуги и цены' || page.title === 'Контакты';
+                    page.title === 'Услуги и цены' ||
+                    page.title === 'Контакты' ||
+                    page.title === 'Отзывы';
                   return (
                     <li key={page.id}>
                       {check ? (

@@ -39,13 +39,12 @@ const PersonalSettingsSlice = () => {
 
   return (
     <>
-      {/* <p>Редактирование карточки пока работает без изменения фото</p> */}
-      <div className='admin-page__personal'>
+      <div className='admin__content-personal admin-personal'>
         {teachers !== null ? (
-          <ul className='admin-page__personal-list personal-list grid grid--2'>
+          <ul className='admin-personal__list personal-list grid grid--2'>
             {teachers.map((teacher) => (
-              <div key={teacher.idTeachers} className='admin-page__personal-item-wrapper'>
-                <div className='admin-page__personal-controlGroup'>
+              <li key={teacher.idTeachers} className='admin-personal__item-wrapper'>
+                <div className='admin-personal__control-group'>
                   <ControlButton
                     id='edit'
                     onClick={() => handleEditCard(teacher.idTeachers)}
@@ -55,21 +54,21 @@ const PersonalSettingsSlice = () => {
                     onClick={() => deleteCurrenTeacher(teacher.idTeachers)}
                   />
                 </div>
-                <CardPersonal teacher={teacher} prefixClass='admin-page' />
-              </div>
+                <CardPersonal teacher={teacher} prefixClass='admin-personal' />
+              </li>
             ))}
           </ul>
         ) : (
-          <p className='admin-page__personal-text'>
-            У вас еще нет персонала. Вы можете добавить преподавателя нажав кнопку
+          <p className='admin-personal__text'>
+            У вас еще нет персонала. Вы можете добавить преподавателя, нажав кнопку
             "Добавить"
           </p>
         )}
       </div>
-      <div className='admin-page__personal-add'>
+      <div className='admin-personal__add'>
         <Button
           text='Добавить'
-          cls='add'
+          classList='admin-personal__button button--add'
           openModalForm={() => setAddTeacherForm(!addTecherForm)}
         />
       </div>

@@ -53,11 +53,15 @@ const ConfirmationForm = ({ email, password }: ICodeProps) => {
             />
           </label>
           {errorMessage && errorMessage !== '' && (
-            <span className='errorMessage'>{errorMessage}</span>
+            <span className='error-message'>{errorMessage}</span>
           )}
         </fieldset>
 
-        <Button text='Подтвердить' cls='btn-reg' disabled={!isValidForm} />
+        <Button
+          text='Подтвердить'
+          classList='form-content__button button--registration'
+          disabled={!isValidForm}
+        />
       </form>
     </>
   ) : (

@@ -2,13 +2,15 @@
   width: 100vw;
   height: 100svh;
   margin: 0;
-  padding: 43px 38px;
+  padding: 43px 20px;
   display: block;
   z-index: 500;
   position: fixed;
   top: 0;
   left: 0;
   border: none;
+  background-color: var(--palette-color1);
+  color: var(--palette-color-white);
 
   &:modal {
     max-width: 100%;
@@ -30,6 +32,10 @@
   &__item {
     line-height: 30px;
 
+    & svg {
+      stroke: var(--palette-color-white);
+    }
+
     &:has(a) {
       & a {
         display: flex;
@@ -38,6 +44,31 @@
         & svg {
           stroke: var(--palette-color2);
         }
+      }
+    }
+  }
+
+  &--admin {
+    & .mobile-overlay__list {
+      gap: 10px;
+    }
+
+    & .mobile-overlay__item {
+      @include fluid-text(16, 14);
+
+      width: 250px;
+      line-height: 20px;
+      display: flex;
+      column-gap: 15px;
+      align-items: center;
+
+      @include hover {
+        background-color: var(--btn-background-five);
+      }
+
+      & a {
+        width: 100%;
+        padding: 5px;
       }
     }
   }

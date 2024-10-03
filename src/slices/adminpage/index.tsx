@@ -32,7 +32,7 @@ export const AdminPageSlice = () => {
   }, [dispatch]);
 
   return (
-    <section className='admin-page'>
+    <section className='admin grid grid--2'>
       <Sidebar />
 
       {currentMenuButton && <ContentSlice isActiveButton={currentMenuButton} />}

@@ -12,21 +12,21 @@ const SelectFilter = ({ title, data, isRecordSelect }: ISelectProps) => {
   const [option, setoption] = useState(false);
   const [optionValue, setoptionValue] = useState(title);
 
-  const classNamesList = classNames('selectContainer', {
-    selectContainer__isRecordSelect: isRecordSelect
+  const classNamesList = classNames('select-filter', {
+    'select-filter--is-record-select': isRecordSelect
   });
 
   return (
     <div className={classNamesList}>
-      <div onClick={() => setoption(!option)} className='selectContainer__title'>
+      <div onClick={() => setoption(!option)} className='select-filter__title'>
         <input
           type='text'
           value={optionValue}
-          className='cursor'
+          className='select-filter__input cursor'
           required
           readOnly></input>
 
-        <label>
+        <label className='select-filter__label'>
           <svg width='13' height='8' viewBox='0 0 13 8'>
             {option ? (
               <use xlinkHref={`${sprite}#topArrow`}></use>
@@ -37,12 +37,12 @@ const SelectFilter = ({ title, data, isRecordSelect }: ISelectProps) => {
         </label>
       </div>
       {option && (
-        <div className='selectContainer__optionBlock'>
+        <div className='select-filter__options'>
           {data.map((item, index) => {
             return (
               <p
                 key={index}
-                className='selectContainer__dataItem'
+                className='select-filter__option'
                 onClick={() => {
                   setoptionValue(item);
                   setoption(!option);

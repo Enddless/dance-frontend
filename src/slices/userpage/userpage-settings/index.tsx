@@ -72,135 +72,140 @@ const UserSettingsSlice = () => {
         <ProfileImg />
 
         <form className='user-settings__form'>
-          <div className='user-settings__form-info'>
-            <fieldset>
-              <label>Имя</label>
+          <fieldset className='user-settings__fieldset'>
+            <label className='user-settings__label'>Имя</label>
+            <input
+              type='text'
+              name='userName'
+              id='name'
+              placeholder='Введите имя'
+              value={userInput.userName}
+              onChange={handleChange}
+              className='user-settings__input input'
+            />
+          </fieldset>
+
+          <fieldset className='user-settings__fieldset'>
+            <label className='user-settings__label'>Пол</label>
+            <div className='user-settings__gender-checkboxes'>
               <input
-                type='text'
-                name='userName'
-                id='name'
-                placeholder='Введите имя'
-                value={userInput.userName}
-                onChange={handleChange}
+                type='radio'
+                id='female'
+                name='genders'
+                className='user-settings__radio radio'
+                value='female'
+                onChange={handleRadioChange}
+                checked={userInput.genders === 'female'}
               />
-            </fieldset>
+              <label htmlFor='female' className='radioLabel'>
+                Ж
+              </label>
 
-            <fieldset>
-              <label>Пол</label>
-              <div className='inputGroup'>
-                <input
-                  type='radio'
-                  id='female'
-                  name='genders'
-                  value='female'
-                  onChange={handleRadioChange}
-                  checked={userInput.genders === 'female'}
-                />
-                <label htmlFor='female' className='radioLabel'>
-                  Ж
-                </label>
-
-                <input
-                  type='radio'
-                  id='male'
-                  name='genders'
-                  className='radio'
-                  value='male'
-                  onChange={handleRadioChange}
-                  checked={userInput.genders === 'male'}
-                />
-                <label htmlFor='male' className='radioLabel'>
-                  М
-                </label>
-              </div>
-            </fieldset>
-
-            <fieldset>
-              <label>Номер телефона</label>
               <input
-                type='text'
-                name='phoneNumber'
-                id='tel'
-                placeholder='+71111111111'
-                value={userInput.phoneNumber}
-                onChange={handleChange}
+                type='radio'
+                id='male'
+                name='genders'
+                className='user-settings__radio radio'
+                value='male'
+                onChange={handleRadioChange}
+                checked={userInput.genders === 'male'}
               />
-            </fieldset>
-
-            <fieldset>
-              <label>E-mail</label>
-              <input
-                type='email'
-                name='emailUser'
-                id='email'
-                value={userData.emailUser}
-                disabled
-              />
-            </fieldset>
-
-            <fieldset>
-              <label>Дата рождения</label>
-              <input
-                type='date'
-                name='dateOfBirth'
-                id='date'
-                value={userInput.dateOfBirth}
-                onChange={handleChange}
-              />
-            </fieldset>
-
-            <div className='user-settings__form-buttons'>
-              <Button
-                text='Сохранить'
-                cls='btn-save'
-                openModalForm={(e: React.MouseEvent<HTMLButtonElement>) =>
-                  saveSettings(e)
-                }
-              />
-              <div className='user-settings__deleteAccount'>
-                <Button
-                  text='Удалить профиль'
-                  cls='btn-del'
-                  openModalForm={() => setIsDeleteAcc(!isDeleteAcc)}
-                />
-                {isDeleteAcc && (
-                  <Modal>
-                    <div className='user-settings__deleteModal'>
-                      <p>Вы уверены?</p>
-                      <div className='user-settings__deleteModal-buttonGroup'>
-                        <Button text='Да' cls='btn-save' openModalForm={deleteAccount} />
-                        <Button
-                          text='Нет'
-                          cls='btn-cancel'
-                          openModalForm={() => setIsDeleteAcc(!isDeleteAcc)}
-                        />
-                      </div>
-                    </div>
-                  </Modal>
-                )}
-                {successDel && (
-                  <Modal>
-                    <div className='deleteModal'>
-                      <p>Удаляем...</p>
-                    </div>
-                  </Modal>
-                )}
-                {errorDel && (
-                  <Modal>
-                    <div className='deleteModal'>
-                      <ControlButton
-                        id='close'
-                        onClick={() => {
-                          setErrorDel(false);
-                          setSuccessDel(false);
-                        }}
-                      />
-                      <p>Ой, что-то пошло не так &#128566 </p>
-                    </div>
-                  </Modal>
-                )}
-              </div>
+              <label htmlFor='male' className='radioLabel'>
+                М
+              </label>
             </div>
+          </fieldset>
+
+          <fieldset className='user-settings__fieldset'>
+            <label className='user-settings__label'>Номер телефона</label>
+            <input
+              type='text'
+              name='phoneNumber'
+              id='tel'
+              placeholder='+71111111111'
+              value={userInput.phoneNumber}
+              onChange={handleChange}
+              className='user-settings__input input'
+            />
+          </fieldset>
+
+          <fieldset className='user-settings__fieldset'>
+            <label className='user-settings__label'>E-mail</label>
+            <input
+              type='email'
+              name='emailUser'
+              id='email'
+              value={userData.emailUser}
+              className='user-settings__input input'
+              disabled
+            />
+          </fieldset>
+
+          <fieldset className='user-settings__fieldset'>
+            <label className='user-settings__label'>Дата рождения</label>
+            <input
+              type='date'
+              name='dateOfBirth'
+              id='date'
+              value={userInput.dateOfBirth}
+              onChange={handleChange}
+            />
+          </fieldset>
+
+          <div className='user-settings__buttons'>
+            <Button
+              text='Сохранить'
+              classList='user-settings__button button--save'
+              openModalForm={(e: React.MouseEvent<HTMLButtonElement>) => saveSettings(e)}
+            />
+
+            <Button
+              text='Удалить профиль'
+              classList='user-settings__button button--delete'
+              openModalForm={() => setIsDeleteAcc(!isDeleteAcc)}
+            />
+            {isDeleteAcc && (
+              <Modal>
+                <div className='user-settings__delete-modal'>
+                  <p className='user-settings__delete-modal-text'>Вы уверены?</p>
+                  <div className='user-settings__delete-modal-buttons'>
+                    <Button
+                      text='Да'
+                      classList='user-settings__button button--save'
+                      openModalForm={deleteAccount}
+                    />
+                    <Button
+                      text='Нет'
+                      classList='user-settings__button button--cancel'
+                      openModalForm={() => setIsDeleteAcc(!isDeleteAcc)}
+                    />
+                  </div>
+                </div>
+              </Modal>
+            )}
+            {successDel && (
+              <Modal>
+                <div className='user-settings__delete-modal'>
+                  <p className='user-settings__delete-modal-text'>Удаляем...</p>
+                </div>
+              </Modal>
+            )}
+            {errorDel && (
+              <Modal>
+                <div className='user-settings__delete-modal'>
+                  <ControlButton
+                    id='close'
+                    onClick={() => {
+                      setErrorDel(false);
+                      setSuccessDel(false);
+                    }}
+                  />
+                  <p className='user-settings__delete-modal-text'>
+                    Ой, что-то пошло не так &#128566
+                  </p>
+                </div>
+              </Modal>
+            )}
           </div>
         </form>
       </div>
