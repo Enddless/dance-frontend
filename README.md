@@ -1,5 +1,5 @@
 # Studia
-![Studia photo](/main_photo1.jpg)
+![Studia photo](/main_photo1.png)
 
 ## Содержание
 - [Общая информация](#общая-информация)
