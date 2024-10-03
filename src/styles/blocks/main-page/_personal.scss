@@ -6,7 +6,9 @@
     }
   }
   &__personal-item {
-    height: 200px;
+    // height: 200px;
+    flex-direction: column;
+    max-height: 100%;
   }
   // &__personal-item {
   //   grid-template-columns: 200px minmax(250px, 400px);
@@ -16,9 +18,11 @@
   //     grid-template-columns: 200px 300px;
   //   }
   // }
-  // &__personal-description {
-  //   white-space: nowrap;
-  //   overflow: hidden;
-  //   text-overflow: ellipsis;
-  // }
+  &__personal-description {
+    margin: 0;
+    & h5,
+    & p {
+      text-align: center;
+    }
+  }
 }
