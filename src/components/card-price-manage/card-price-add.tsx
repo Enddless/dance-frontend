@@ -104,10 +104,14 @@ const CardPriceAddForm = ({ onClick }: TAddFormProps) => {
               <Button
                 text='Сохранить'
                 disabled={!isValidForm}
-                classList={!isValidForm ? 'btn-dis' : 'btn-save'}
+                classList={!isValidForm ? 'disabled' : 'button--save'}
                 openModalForm={sendTicketData}
               />
-              <Button text='Отменить' classList='btn-cancel' openModalForm={onClick} />
+              <Button
+                text='Отменить'
+                classList='button--cancel'
+                openModalForm={onClick}
+              />
             </div>
           </>
         </div>

@@ -162,7 +162,7 @@ const ContactsSettingsSlice = () => {
       </fieldset>
       <Button
         text={success ? 'Это успех' : 'Сохранить'}
-        classList='btn-save'
+        classList='button--save'
         openModalForm={sendData}
       />
     </div>

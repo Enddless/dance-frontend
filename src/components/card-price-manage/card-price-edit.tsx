@@ -117,10 +117,10 @@ const EditPriceForm = ({ onClick, id }: TEditFormProps) => {
               <Button
                 text='Сохранить'
                 disabled={!isValidForm}
-                classList={!isValidForm ? 'btn-dis' : 'btn-save'}
+                classList={!isValidForm ? 'disabled' : 'button--save'}
                 openModalForm={sendTicketData}
               />
-              <Button text='Отменить' classList='btn-cancel' />
+              <Button text='Отменить' classList='button--cancel' />
             </div>
           </>
         </div>

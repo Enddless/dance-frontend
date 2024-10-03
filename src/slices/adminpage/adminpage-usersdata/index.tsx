@@ -6,8 +6,8 @@ const ControlUsersSlice = () => {
     <div className='admin-page__usersData'>
       <div className='admin-page__usersData-toolbar'>
         <div className='admin-page__usersData-buttonContainer'>
-          <Button text='Пользователи' classList='btn-save' />
-          <Button text='Запись' classList='btn-save' />
+          <Button text='Пользователи' classList='button--save' />
+          <Button text='Запись' classList='button--save' />
         </div>
         <form className='admin-page__usersData-searchForm searchForm'>
           <input type='search' id='search' name='search' placeholder='Найти' />
@@ -46,9 +46,9 @@ const ControlUsersSlice = () => {
         </table>
 
         <div className='admin-page__usersData-controlsButton'>
-          <Button text='Добавить' classList='btn-save' />
-          <Button text='Редактировать' classList='btn-reg' />
-          <Button text='Удалить' classList='btn-more' />
+          <Button text='Добавить' classList='button--save' />
+          <Button text='Редактировать' classList='button--enter' />
+          <Button text='Удалить' classList='button--more' />
         </div>
       </div>
     </div>
